@@ -1,0 +1,97 @@
+<!-- Declaración del tipo de documento -->
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos -->
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Revision detalle de pedido</title>
+    <!-- Enlace a la hoja de estilos -->
+    <link rel="stylesheet" href="../../Resources/css/estilo_detalle.css">
+    <link rel="stylesheet" href="../../Resources/css/styles.css">
+
+</head>
+
+<body>
+    <!-- Encabezado -->
+    <header>
+        <!-- Contenedor parte principal -->
+        <div id="container-hero">ㅤ</div>
+    </header>
+    <div class="titulo">
+        <h1>Nombre del usuario solicitante de este libro</h1>
+    </div>
+
+    <div class="user">
+        <h1>Samantha Rivera</h1>
+    </div>
+
+    <div class="info">
+        <h1>Más parametros acerca del pedido</h1>
+    </div>
+
+    
+        <!-- Realizamos una clase para ingresar los datos que llevara la tarjeta -->
+    <div class="container-card">
+
+        <div class="card">
+
+            <div class="contenido-card">
+                <figure>
+                    <img src="../../recursos/imagenes/rivers.jpg" height="auto" width="10">
+                </figure>
+
+                <h3>Correo del usuario</h3>
+                <p>RiversPioSamy1306@gmail.com</p>
+                <h3>Teléfono</h3>
+                <p>+503 7022 5826</p>
+                <h3>Tipo de pago</h3>
+                <p>Efectivo</p>
+                <h3>Cantidad solicitada</h3>
+                <p>5</p>
+                <h3>Fecha de pedido</h3>
+                <p>31/01/24</p>
+            </div>
+        </div>
+    </div>
+    ‎
+    <div class="totalidad">
+        <p>‎</p>
+        <H4>TOTAL: $299.76USD</H4>
+        <H5>METODO DE PAGO: Con tarjeta</H5>
+
+    </div>
+
+    
+        <!--Hacemos una clase para añadir los botones a los cuales les damos una funciòn-->
+
+    <div class="button-container">
+        <div class="finalizado">
+            <button onclick="AlertF()">Finalizado</button>
+        </div>
+
+        <div class="entregado">
+            <button onclick="AlertE()">Entregado</button>
+        </div>
+
+        <div class="pendiente">
+            <button onclick="AlertP()">Pendiente</button>
+        </div>
+
+        <div class="cancelado">
+            <button onclick="AlertC()">Cancelado</button>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br>
+    <!-- Script para cargar los iconos de Font Awesome -->
+    <script src="https://kit.fontawesome.com/81581fb069.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    
+    <script src="../../Resources/js/header.js"></script>
+</body>
+
+</html>
