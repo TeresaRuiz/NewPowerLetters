@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="../../Resources/img/favicon (1).png" type="image/x-icon">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="../../Resources/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../Resources/css/styles.css">
+
+    <title>Power Letters</title>
+</head>
+
+
+<body>
+    <div class="container my-3">
+        <!-- Logo de Power Letters -->
+        <div class="col-12 text-center">
+            <img src="../../recursos/imagenes/powerletters.png" alt="Power Letters" class="img-fluid">
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Formulario de inicio de sesión -->
+                        <form action="#">
+                            <div class="text-center mb-3">
+                                <h2>Iniciar sesión</h2>
+                            </div>
+                            <!-- Campo para el nombre de usuario -->
+                            <div class="mb-3">
+                                <label for="nombreUsuario" class="form-label">Nombre de usuario</label>
+                                <input type="text" class="form-control" id="nombreUsuario"
+                                    placeholder="Ingrese su nombre de usuario">
+                            </div>
+                            <!-- Campo para la contraseña -->
+                            <div class="mb-3">
+                                <label for="contrasena" class="form-label">Contraseña</label>
+                                <input type="password" class="form-control" id="contrasena"
+                                    placeholder="Ingrese su contraseña">
+                            </div>
+                            <!-- Enlace para recuperar la contraseña -->
+                            <div class="mb-3 text-end">
+                                <a href="recuperacionp1.html">¿Olvidaste la contraseña?</a>
+                            </div>
+                            <div class="mb-3 text-end">
+                                <a href="../publico/registro_cliente.html">¿No tienes una cuenta? Registrate acá</a>
+                            </div>
+                            <!-- Botón para enviar el formulario -->
+                            <div class="d-flex justify-content-center">
+                                <button type="submit" class="btn btn-primary" onclick="showAlerta()">Ingresar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Scripts JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="../../recursos/js/iniciar_sesion.js"></script>
+</body>
