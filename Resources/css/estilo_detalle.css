@@ -50,6 +50,16 @@
     margin: auto;
 }
 
+.seccion{
+    text-align: center;
+    margin-top:150px ;
+    font-size: 30px;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(216, 171, 241);
+}
+
+
+
 /************** imagen de usuario************/
 
 
