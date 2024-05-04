@@ -4,7 +4,7 @@ footer.classList.add('footer');
 footer.id = 'footer';
 
 // Agrega el contenido del header
-header.innerHTML = `
+footer.innerHTML = `
 <footer class="footer">
          
          <div class="footer__container container grid">
@@ -150,4 +150,4 @@ header.innerHTML = `
       `;
 
       // Inserta el header al principio del body
-      document.body.insertBefore(header, document.body.firstChild);
+      document.body.appendChild(footer);
