@@ -44,13 +44,19 @@ header.innerHTML = `
                      <span>Clasificación</span>
                   </a>
                </li>
-
                <li class="nav__item">
-               <a href="../Private/inicio_admin.html"  class="nav__link">
-                     <i class="ri-message-3-line"></i>
-                     <span>Descuento</span>
+               <a href="../Private/autores.html"  class="nav__link">
+                     <i class="ri-book-3-line"></i>
+                     <span>Autores</span>
                   </a>
                </li>
+               <li class="nav__item">
+               <a href="../Private/editoriales.html"  class="nav__link">
+                     <i class="ri-book-3-line"></i>
+                     <span>Editoriales</span>
+                  </a>
+               </li>
+            
                <li class="nav__item">
                <a href="../Private/inicio_admin.html"  class="nav__link">
                   <i class="ri-message-3-line"></i>
