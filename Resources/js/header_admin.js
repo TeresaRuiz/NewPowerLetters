@@ -18,7 +18,7 @@ header.innerHTML = `
             <ul class="nav__list">
 
                <li class="nav__item">
-                  <a href="../Public/index.html" class="nav__link active-link">
+                  <a href="../Private/" class="nav__link active-link">
                      <i class="ri-home-line"></i>
                      <span>Inicio</span>
                   </a>
@@ -26,33 +26,33 @@ header.innerHTML = `
 
 
                <li class="nav__item">
-                  <a href="../Public/libros_recomendados.html" class="nav__link">
+                  <a href="../Public/" class="nav__link">
                      <i class="ri-book-3-line"></i>
                      <span>Libros</span>
                   </a>
                </li>
 
                <li class="nav__item">
-                  <a href="../Public/libros_recomendados.html" class="nav__link">
+                  <a href="../Private/generos.html" class="nav__link">
                      <i class="ri-book-3-line"></i>
                      <span>Generos</span>
                   </a>
                </li>
                <li class="nav__item">
-                  <a href="../Public/libros_recomendados.html" class="nav__link">
+                  <a href="../Public/" class="nav__link">
                      <i class="ri-book-3-line"></i>
                      <span>Categorias</span>
                   </a>
                </li>
 
                <li class="nav__item">
-                  <a href="../Public/comentarios.html" class="nav__link">
+                  <a href="../Public/" class="nav__link">
                      <i class="ri-message-3-line"></i>
                      <span>Descuento</span>
                   </a>
                </li>
                <li class="nav__item">
-               <a href="../Public/comentarios.html" class="nav__link">
+               <a href="../Public/" class="nav__link">
                   <i class="ri-message-3-line"></i>
                   <span>Comentarios</span>
                </a>
@@ -85,16 +85,3 @@ header.innerHTML = `
 // Inserta el header al principio del body
 document.body.insertBefore(header, document.body.firstChild);
 
-
-// Función para manejar el clic en el enlace con la clase "dropdown-toggle"
-document.addEventListener("DOMContentLoaded", function() {
-    const dropdownToggles = document.querySelectorAll(".dropdown-toggle");
-
-    dropdownToggles.forEach(function(toggle) {
-        toggle.addEventListener("click", function(e) {
-            e.preventDefault(); // Evita que el enlace se siga al hacer clic
-            const dropdownMenu = this.nextElementSibling;
-            dropdownMenu.style.display = dropdownMenu.style.display === "block" ? "none" : "block";
-        });
-    });
-});

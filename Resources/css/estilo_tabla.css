@@ -95,3 +95,70 @@
 .agregar {
   margin-left: 20px;
 }
+
+/* Estilos para el contenedor principal del modal */
+.modal {
+  position: fixed; /* Se posiciona fijamente en relación con la ventana del navegador */
+  top: 0; /* Desde la parte superior de la ventana */
+  left: 0; /* Desde el lado izquierdo de la ventana */
+  width: 100%; /* Ancho completo de la ventana */
+  height: 100%; /* Altura completa de la ventana */
+  display: flex; /* Usa el modelo de caja flexible */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+}
+
+/* Estilos para el fondo oscuro detrás del modal */
+.modal-background {
+  position: fixed; /* Se posiciona fijamente en relación con la ventana del navegador */
+  top: 0; /* Desde la parte superior de la ventana */
+  left: 0; /* Desde el lado izquierdo de la ventana */
+  width: 100%; /* Ancho completo de la ventana */
+  height: 100%; /* Altura completa de la ventana */
+  background-color: rgba(0, 0, 0, 0.5); /* Color de fondo oscuro semitransparente */
+}
+
+/* Estilos para la tarjeta modal */
+.card {
+  position: fixed; /* Se posiciona fijamente en relación con la ventana del navegador */
+  top: 50%; /* Desde el 50% de la parte superior */
+  left: 50%; /* Desde el 50% del lado izquierdo */
+  transform: translate(-50%, -50%); /* Mueve el elemento a la mitad de su propio tamaño hacia arriba y hacia la izquierda */
+  display: flex; /* Usa el modelo de caja flexible */
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  background-color: var(--body-color); /* Color de fondo de la tarjeta */
+  border-radius: 8px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
+  padding: 20px; /* Espaciado interno */
+  width: 500px; /* Ancho de la tarjeta */
+  height: 400px; /* Altura de la tarjeta */
+  z-index: 2; /* Asegura que esté por encima del fondo oscuro */
+}
+
+/* Estilos para el botón de cierre dentro de la tarjeta modal */
+.card .close {
+  position: absolute; /* Se posiciona absolutamente en relación con su contenedor */
+  top: 10px; /* Desde la parte superior 10px */
+  right: 10px; /* Desde el lado derecho 10px */
+  cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre él */
+  font-size: 20px; /* Tamaño de fuente */
+  color: var(--first-color); /* Color del texto */
+}
+
+
+.genero__label{
+  display: block;
+  text-align: initial;
+  color: var(--title-color);
+  font-weight: var(--font-medium);
+  margin-bottom: .25rem;
+}
+
+.genero__input{
+  width: 100%;
+  background-color: var(--container-color);
+  border: 2px solid var(--border-color);
+  padding: 1rem;
+  color: var(--text-color);
+}

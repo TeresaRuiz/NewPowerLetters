@@ -16,21 +16,21 @@
     <header class="header">
         <!-- Código del encabezado omitido por brevedad -->
     </header>
-    
+
     <main class="main section">
         <div class="container">
             <h1 class="section__title">Géneros</h1>
             <!-- Formulario de búsqueda y botón de agregar -->
             <div class="search-container">
                 <div class="search-form">
-                  <input type="text" class="search-input" placeholder="Buscar...">
-                  <button class="search-button"><i class="ri-search-line"></i></button>
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-button"><i class="ri-search-line"></i></button>
                 </div>
                 <div class="agregar">
-                  <button class="add-button"><i class="ri-add-line"></i> Agregar</button>
+                    <button class="add-button"><i class="ri-add-line"></i> Agregar</button>
                 </div>
-              </div>
-            
+            </div>
+
             <!-- Tabla con estilo elegante -->
             <table class="table">
                 <thead>
@@ -60,8 +60,28 @@
                 </tbody>
             </table>
         </div>
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span class="close">&times;</span>
+                <div class="card-body">
+                    <h2>Agrega un nuevo género</h2>
+                    <br>
+                    <div>
+                        <label for="nombre" class="genero__label">Nombre del género</label>
+                        <input type="text" name="genero" id="genero" placeholder="Escribe tu género" class="genero__input">
+                    </div>
+                    <br><br>
+                    <button type="submit" class="login__button button">Guardar</button>
+                </div>
+            </div>
+        </div>
+
+
     </main>
     <script src="../../Resources/js/header_admin.js"></script>
+    <script src="../../Resources/js/modal_genero.js"></script>
 </body>
 
 </html>
