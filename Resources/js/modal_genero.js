@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", function() {
+    var modal = document.getElementById("myModal");
+    modal.style.display = "none"; // Oculta el modal al cargar la página
+});
+
 // Obtener el modal
 var modal = document.getElementById("myModal");
 
@@ -17,9 +22,9 @@ span.onclick = function () {
     modal.style.display = "none";
 }
 
-// Cuando el usuario hace clic en cualquier lugar fuera del modal, cerrarlo
+// Cuando el usuario hace clic en cualquier lugar fuera del botón y del modal, cerrarlo
 window.onclick = function (event) {
-    if (event.target == modal) {
+    if (event.target !== btn && event.target !== modal) {
         modal.style.display = "none";
     }
 }
