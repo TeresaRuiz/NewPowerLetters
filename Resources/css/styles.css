@@ -1295,3 +1295,59 @@ img {
     width: 290px;
   }
 }
+
+.dropdown-menu {
+  width: 200px; /* Establece el ancho del menú desplegable en 200 píxeles */
+  background: #fff; /* Establece el color de fondo del menú desplegable en blanco */
+  position: absolute; /* Posiciona el menú desplegable de forma absoluta */
+  top: 100%; /* Posiciona el menú desplegable 100% por debajo de su elemento padre */
+  left: 420; /* Posiciona el menú desplegable 420 píxeles a la izquierda de su elemento padre */
+  padding: 14px 0px; /* Agrega un relleno (padding) de 14 píxeles en la parte superior e inferior, y 0 píxeles en los lados izquierdo y derecho */
+  visibility: hidden; /* Oculta el menú desplegable por defecto */
+  opacity: 0; /* Establece la opacidad del menú desplegable en 0, lo que significa que no será visible */
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); /* Agrega una sombra suave al menú desplegable */
+  z-index: 10; /* Establece el orden de apilamiento (z-index) del menú desplegable en 10, lo que significa que se mostrará por encima de otros elementos con un z-index más bajo */
+  transition: all 300ms ease; /* Agrega una transición suave de 300 milisegundos para todos los cambios de estilo en el menú desplegable */
+}
+
+.nav__item-dropdown:hover .dropdown-menu {
+  visibility: visible; /* Hace visible el menú desplegable cuando se hace hover sobre el elemento con la clase nav__item-dropdown */
+  opacity: 1; /* Establece la opacidad del menú desplegable en 1, lo que significa que será completamente visible */
+}
+
+.dropdown-menu:before {
+  content: ''; /* Agrega un contenido vacío antes del menú desplegable */
+  width: 0; /* Establece el ancho del elemento en 0 píxeles */
+  height: 0; /* Establece la altura del elemento en 0 píxeles */
+  border-left: 12px solid transparent; /* Agrega un borde izquierdo transparente de 12 píxeles */
+  border-right: 12px solid transparent; /* Agrega un borde derecho transparente de 12 píxeles */
+  border-bottom: 12px solid rgb(245, 243, 243); /* Agrega un borde inferior de 12 píxeles de color negro */
+  position: absolute; /* Posiciona el elemento de forma absoluta */
+  top: -12px; /* Posiciona el elemento 12 píxeles por encima de su elemento padre */
+  left: 10%; /* Posiciona el elemento 515% a la izquierda de su elemento padre */
+  transform: translateX(20%); /* Centra horizontalmente el elemento */
+}
+
+.dropdown-menu li {
+  list-style: none; /* Quita los puntos de la lista en el menú desplegable */
+}
+
+.dropdown-menu li a {
+  display: block; /* Muestra cada elemento de la lista como un bloque */
+  color: var(--body-font);
+  padding: 6px 14px; /* Agrega un padding vertical de 6 píxeles y horizontal de 14 píxeles a cada elemento de la lista */
+  margin-top: 10px; /* Agrega un margen superior de 10 píxeles a cada elemento de la lista */
+  font-size: 14px; /* Establece el tamaño de fuente de cada elemento de la lista en 14 píxeles */
+  text-transform: uppercase; /* Convierte el texto de cada elemento de la lista en mayúsculas */
+  transition: all 300ms ease; /* Define una transición suave de 300 milisegundos para todos los estilos de cada elemento de la lista */
+}
+
+.dropdown-menu li a:hover {
+  background: var(--first-color); /* Establece el fondo de cada elemento de la lista en #0074C7 cuando se hace hover */
+  color: #fff; /* Establece el color del texto en #fff cuando se hace hover */
+  transform: scale(1.1); /* Ajusta el tamaño de cada elemento de la lista cuando se hace hover */
+  padding: 6px 30px; /* Agrega un padding horizontal de 30 píxeles a cada elemento de la lista cuando se hace hover */
+  font-size: 14px; /* Mantiene el tamaño de fuente de cada elemento de la lista en 14 píxeles cuando se hace hover */
+  box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5); /* Agrega un sombreado suave a cada elemento de la lista cuando se hace hover */
+}
+
