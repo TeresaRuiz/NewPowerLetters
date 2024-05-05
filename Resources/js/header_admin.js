@@ -37,9 +37,9 @@ header.innerHTML = `
                     </a>
                 </li>
                 <li class="nav__item">
-                    <a href="../Private/inicio_admin.html"  class="nav__link">
+                    <a href="../Private/comentarios.html"  class="nav__link">
                         <i class="ri-message-3-line"></i>
-                        <span>Reseñas</span>
+                        <span>Comentarios</span>
                     </a>
                 </li>
 
@@ -53,7 +53,6 @@ header.innerHTML = `
                     <li><a href="../Private/autores.html">Autores</a></li>
                      <li><a href="../Private/clasificacion.html">Clasificaciones</a></li>
                      <li><a href="../Private/editoriales.html">Editoriales</a></li>
-                        
                     </ul>
                 </li>
                 

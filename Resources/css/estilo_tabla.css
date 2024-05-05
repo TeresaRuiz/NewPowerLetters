@@ -42,6 +42,14 @@
     cursor: pointer;
   }
 
+  .action-icons i.ri-eye-off-fill {
+    color: red; /* Color para el icono de bloqueo */
+  }
+  
+  .action-icons i.ri-eye-fill {
+    color: green; /* Color para el icono de visualización */
+  }
+
 
 /* Estilos para el formulario de búsqueda */
 .search-form {
