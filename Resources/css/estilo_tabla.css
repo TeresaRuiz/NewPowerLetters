@@ -1,0 +1,97 @@
+ /* Estilo específico para la tabla */
+ .table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+
+  .table th,
+  .table td {
+    padding: 12px;
+    text-align: left;
+  }
+
+  .table th {
+    background-color: var(--first-color); /* Cambia al color que desees */
+    color: var(--white-color); /* Cambia al color que desees */
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .table tbody tr:nth-child(even) {
+    background-color: var(--container-color); /* Cambia al color que desees */
+  }
+
+  .table tbody tr:hover {
+    background-color: var(--body-color); /* Cambia al color que desees */
+  }
+
+  .table td {
+    border-bottom: 1px solid var(--border-color); /* Cambia al color que desees */
+  }
+
+  /* Estilo para los íconos de acciones */
+  .action-icons {
+    display: flex;
+    gap: 40px;
+  }
+
+  .action-icons a {
+    color: var(--first-color); /* Cambia al color que desees */
+    font-size: 1.9rem;
+    cursor: pointer;
+  }
+
+
+/* Estilos para el formulario de búsqueda */
+.search-form {
+  display: flex; /* Hace que los elementos hijos se muestren en línea */
+  align-items: center; /* Centra verticalmente los elementos hijos */
+  background-color: var(--container-color); /* Color de fondo del formulario */
+  border: 2px solid var(--border-color); /* Borde sólido con el color especificado */
+  padding-inline: 1rem; /* Relleno horizontal */
+  width: 50%; /* Ancho del formulario */
+}
+
+/* Estilos para el botón de búsqueda */
+.search-button {
+  color: var(--first-color); /* Color del texto del botón */
+  border: none; /* Sin borde */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cambia el cursor al puntero */
+}
+
+/* Estilos para el campo de entrada de búsqueda */
+.search-input {
+  width: 100%; /* Ancho completo del contenedor */
+  padding-block: 1rem; /* Relleno vertical */
+  background-color: var(--container-color); /* Color de fondo */
+  color: var(--text-color); /* Color del texto */
+  flex: 1; /* El campo de entrada se expande para ocupar el espacio disponible */
+}
+
+
+.add-button {
+  padding: 7px 16px;
+  background-color: var(--first-color); /* Cambia al color que desees */
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.add-button:hover {
+  background-color: #218838; /* Cambia al color que desees */
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.agregar {
+  margin-left: 20px;
+}

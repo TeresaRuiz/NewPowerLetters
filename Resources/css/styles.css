@@ -75,7 +75,8 @@ body {
 }
 
 input,
-button {
+button,
+search-button {
   border: none;
   outline: none;
 }
