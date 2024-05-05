@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Libros</title>
+    <link rel="stylesheet" href="../../Resources/css/styles.css">
+    <link rel="stylesheet" href="../../Resources/css/estilo_libros.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <!-- Agregamos la hoja de estilos de RemixIcon -->
+</head>
+
+<body>
+
+    <header class="header">
+        <!-- Código del encabezado omitido por brevedad -->
+    </header>
+
+    <main class="main section">
+        <div class="container">
+            <h1 class="section__title">Gestión de libros</h1>
+            <!-- Formulario de búsqueda y botón de agregar -->
+            <div class="search-container">
+                <div class="search-form">
+                    <input type="text" class="search-input" placeholder="Buscar...">
+                    <button class="search-button"><i class="ri-search-line"></i></button>
+                </div>
+                <div class="agregar">
+                    <button class="add-button"><i class="ri-add-line"></i> Agregar</button>
+                </div>
+            </div>
+
+            <!-- Tabla con estilo elegante -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Imagen</th>
+                        <th>Titúlo</th>
+                        <th>Autor</th>
+                        <th>Precio</th>
+                        <th>Descripción</th>
+                        <th>ㅤㅤAcciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>1</td>
+                        <td>Harry.png</td>
+                        <td>Harry Potter 1</td>
+                        <td>J.K Rowling</td>
+                        <td>20.00$</td>
+                        <td>Primer libro</td>
+                        <td class="action-icons">
+                            <a href="#"><i class="ri-eye-line"></i></a>
+                            <a href="#"><i class="ri-edit-line"></i></a>
+                            <a href="#"><i class="ri-delete-bin-line"></i></a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>2</td>
+                        <td>Harry.png</td>
+                        <td>Harry Potter 2</td>
+                        <td>J.K Rowling</td>
+                        <td>15.00$</td>
+                        <td>Segundo libro</td>
+                        <td class="action-icons">
+                            <a href="#"><i class="ri-eye-line"></i></a>
+                            <a href="#"><i class="ri-edit-line"></i></a>
+                            <a href="#"><i class="ri-delete-bin-line"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2>Agregar un nuevo libro</h2><br>
+                    <form id="addBookForm">
+                        <div class="libros__group grid">
+                            <div>
+                                <label for="titulo" class="libro__label">Título</label>
+                                <input type="text" name="titulo" id="titulo" placeholder="Título del libro"
+                                    class="libro__input" required>
+                            </div>
+                            <div>
+                                <label for="autor" class="libro__label">Autor</label>
+                                <input type="number" name="autor" id="autor" placeholder="Elige el autor"
+                                    class="libro__input" required>
+                            </div>
+                            <div>
+                                <label for="precio" class="libro__label">Precio</label>
+                                <input type="number" step="0.01" name="precio" id="precio"
+                                    placeholder="Precio del libro" class="libro__input" required>
+                            </div>
+                            <div>
+                                <label for="descripcion" class="libro__label">Descripción</label>
+                                <input type="text" name="descripcion" id="descripcion"
+                                    placeholder="Descripción del libro" class="libro__input">
+                            </div>
+                            <div>
+                                <label for="imagen" class="libro__label">Imagen</label>
+                                <input type="file" name="imagen" id="imagen" accept="image/*" class="libro__input">
+                            </div>
+                            <div>
+                                <label for="clasificacion" class="libro__label">Clasificación</label>
+                                <input type="number" name="clasificacion" id="clasificacion"
+                                    placeholder="Elige la clasificación" class="libro__input" required>
+                            </div>
+                            <div>
+                                <label for="editorial" class="libro__label">Editorial</label>
+                                <input type="number" name="editorial" id="editorial" placeholder="Elige la editorial"
+                                    class="libro__input" required>
+                            </div>
+                            
+                            <div>
+                                <label for="existencias" class="libro__label">Existencias</label>
+                                <input type="number" name="existencias" id="existencias"
+                                    placeholder="Número de existencias" class="libro__input" required>
+                            </div>
+                            <div>
+                                <label for="genero" class="libro__label">Género</label>
+                                <input type="number" name="genero" id="genero" placeholder="Elige el género"
+                                    class="libro__input" required>
+                            </div>
+                            <br>
+                            <button type="submit" class="libro__button button">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        </div>
+
+    </main>
+    <script src="../../Resources/js/header_admin.js"></script>
+    <script src="../../Resources/js/modal_genero.js"></script>
+</body>
+
+</html>
