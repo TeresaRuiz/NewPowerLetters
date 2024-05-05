@@ -21,10 +21,3 @@ btn.onclick = function () {
 span.onclick = function () {
     modal.style.display = "none";
 }
-
-// Cuando el usuario hace clic en cualquier lugar fuera del botón y del modal, cerrarlo
-window.onclick = function (event) {
-    if (event.target !== btn && event.target !== modal) {
-        modal.style.display = "none";
-    }
-}

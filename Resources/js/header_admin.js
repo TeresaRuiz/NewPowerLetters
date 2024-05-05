@@ -39,9 +39,9 @@ header.innerHTML = `
                   </a>
                </li>
                <li class="nav__item">
-               <a href="../Private/inicio_admin.html"  class="nav__link">
+               <a href="../Private/clasificacion.html"  class="nav__link">
                      <i class="ri-book-3-line"></i>
-                     <span>Categorias</span>
+                     <span>Clasificación</span>
                   </a>
                </li>
 
