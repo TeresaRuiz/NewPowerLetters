@@ -2,11 +2,11 @@
 // Se incluye la clase para validar los datos de entrada.
 require_once('../../helpers/validator.php');
 // Se incluye la clase padre.
-require_once('../../models/handler/marca_handler.php');
+require_once('../../models/handler/clasificacion_handler.php');
 /*
  *  Clase para manejar el encapsulamiento de los datos de la tabla USUARIO.
  */
-class marcaData extends marcaHandler
+class clasificacionData extends clasificacionHandler
 {
     // Atributo genérico para manejo de errores.
     private $data_error = null;
@@ -20,32 +20,32 @@ class marcaData extends marcaHandler
             $this->id = $value;
             return true;
         } else {
-            $this->data_error = 'El identificador de la marca es incorrecto';
+            $this->data_error = 'El identificador de la clasificación es incorrecto';
             return false;
         }
     }
 
     public function setNombre($value, $min = 2, $max = 50)
     {
-        // Verificar si la marca ya existe en la base de datos
-        $checkSql = 'SELECT COUNT(*) as count FROM tb_marcas WHERE marca = ?';
+        // Verificar si la clasificación ya existe en la base de datos
+        $checkSql = 'SELECT COUNT(*) as count FROM tb_clasificaciones WHERE nombre = ?';
         $checkParams = array($value);
         $checkResult = Database::getRow($checkSql, $checkParams);
     
         if ($checkResult['count'] > 0) {
-            $this->data_error = 'La marca ya existe';
+            $this->data_error = 'La clasificación ya existe';
             return false;
         }
     
-        // Validar el valor y la longitud del nombre de la marca
+        // Validar el valor y la longitud del nombre de la clasificación
         if (!Validator::validateAlphabetic($value)) {
-            $this->data_error = 'El nombre de la marca debe ser un valor alfabético';
+            $this->data_error = 'El nombre de la clasificación debe ser un valor alfabético';
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
             $this->nombre = $value;
             return true;
         } else {
-            $this->data_error = 'El nombre de la marca debe tener una longitud entre ' . $min . ' y ' . $max;
+            $this->data_error = 'El nombre de la clasificación debe tener una longitud entre ' . $min . ' y ' . $max;
             return false;
         }
     }
