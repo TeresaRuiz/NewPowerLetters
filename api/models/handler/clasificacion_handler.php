@@ -1,73 +1,76 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 /*
- *  Clase para manejar el comportamiento de los datos de la tabla administrador.
+ *  Clase para manejar el comportamiento de los datos de la tabla CATEGORIA.
  */
-class clasificacionHandler
-{
-    /*
-     *  Declaración de atributos para el manejo de datos.
-     */
+class generoHandler
+{/*
+ *  Declaración de atributos para el manejo de datos.
+ */
     protected $id = null;
     protected $nombre = null;
-    protected $descripcion = null;
 
-    /*
-     *  Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
-     */
     public function searchRows()
     {
+        // Obtener el valor de búsqueda y envolverlo con comodines para usar con LIKE
         $value = '%' . Validator::getSearchValue() . '%';
-        $sql = 'SELECT id_clasificacion, nombre, descripcion
-                FROM tb_clasificaciones
-                WHERE nombre LIKE ?
-                ORDER BY nombre';
+
+        // Definir la consulta SQL para buscar coincidencias en la tabla tb_generos
+        $sql = 'SELECT id_genero, nombre
+            FROM tb_generos
+            WHERE nombre LIKE ?
+            ORDER BY nombre'; // Ordenar por nombre para un resultado ordenado
+
+        // Establecer los parámetros para la consulta (el término de búsqueda)
         $params = array($value);
+
+        // Ejecutar la consulta y devolver las filas resultantes
         return Database::getRows($sql, $params);
     }
-    
+
+    // Para crear una nueva fila en tb_generos
     public function createRow()
     {
-        $sql = 'INSERT INTO tb_clasificaciones(nombre)
-                VALUES(?)';
-        $params = array($this->nombre);
+        // Cambiar el nombre de las columnas y sus valores
+        $sql = 'INSERT INTO tb_generos (nombre) VALUES (?)';
+        $params = array($this->nombre); // Solo necesitamos el nombre
         return Database::executeRow($sql, $params);
     }
-    
-//Llamar los datos de la base de datos 
+
+    // Para leer todas las filas de tb_generos
     public function readAll()
     {
-        $sql = 'SELECT id_clasificacion, nombre, descripcion
-                FROM tb_clasificaciones';
+        // Cambiar las columnas seleccionadas y la tabla
+        $sql = 'SELECT id_genero, nombre FROM tb_generos ORDER BY nombre';
         return Database::getRows($sql);
     }
 
+    // Para leer una fila específica por id
     public function readOne()
     {
-        $sql = 'SELECT id_clasificacion, nombre, descripcion
-                FROM tb_clasificaciones
-                WHERE id_clasificacion = ?';
-        $params = array($this->id);
+        // Buscar por id en tb_generos
+        $sql = 'SELECT id_genero, nombre FROM tb_generos WHERE id_genero = ?';
+        $params = array($this->id); // Id para filtrar
         return Database::getRow($sql, $params);
     }
 
+    // Para actualizar una fila específica por id
     public function updateRow()
     {
-        $sql = 'UPDATE tb_clasificaciones
-                SET nombre = ?
-                WHERE id_clasificacion = ?';
-        $params = array($this->nombre, $this->id);
+        // Cambiar la consulta SQL para actualizar el nombre
+        $sql = 'UPDATE tb_generos SET nombre = ? WHERE id_genero = ?';
+        $params = array($this->nombre, $this->id); // Parámetros de actualización
         return Database::executeRow($sql, $params);
     }
-    
 
+    // Para eliminar una fila específica por id
     public function deleteRow()
     {
-        $sql = 'DELETE FROM tb_clasificaciones
-                WHERE id_clasificacion = ?';
-        $params = array($this->id);
+        // Cambiar la consulta SQL para eliminar por id
+        $sql = 'DELETE FROM tb_generos WHERE id_genero = ?';
+        $params = array($this->id); // Parámetro para la eliminación
         return Database::executeRow($sql, $params);
     }
-    
 }
+;
