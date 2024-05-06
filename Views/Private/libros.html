@@ -20,15 +20,15 @@
     <main class="main section">
         <div class="container">
             <h1 class="section__title">Gestión de libros</h1>
-            <!-- Formulario de búsqueda y botón de agregar -->
-            <div class="search-container">
-                <div class="search-form">
-                    <input type="text" class="search-input" placeholder="Buscar...">
-                    <button class="search-button"><i class="ri-search-line"></i></button>
+             <!-- Formulario de búsqueda y botón de agregar -->
+             <form id="searchForm" class="search-container">
+                <div class="search-form" id="search_libros">
+                    <input type="search" name="search" class="search-input" placeholder="Buscar...">
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
                 </div>
-                <div class="agregar">
-                    <button class="add-button"><i class="ri-add-line"></i> Agregar</button>
-                </div>
+            </form>
+            <div class="agregar">
+                <button class="add-button"><i class="ri-add-line"></i> Agregar</button>
             </div>
 
             <!-- Tabla con estilo elegante -->
@@ -44,7 +44,8 @@
                         <th>ㅤㅤAcciones</th>
                     </tr>
                 </thead>
-                <tbody>
+                
+                <tbody id="tableBody">
                     <tr>
                         <td>1</td>
                         <td>Harry.png</td>
@@ -58,19 +59,7 @@
                             <a href="#"><i class="ri-delete-bin-line"></i></a>
                         </td>
                     </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Harry.png</td>
-                        <td>Harry Potter 2</td>
-                        <td>J.K Rowling</td>
-                        <td>15.00$</td>
-                        <td>Segundo libro</td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-eye-line"></i></a>
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                            <a href="#"><i class="ri-delete-bin-line"></i></a>
-                        </td>
-                    </tr>
+                    
                 </tbody>
             </table>
         </div>
@@ -78,10 +67,10 @@
         <div id="myModal" class="modal">
             <div class="modal-background"></div>
             <div class="modal-content card">
-                <span class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
                 <div class="card-body">
                     <h2>Agregar un nuevo libro</h2><br>
-                    <form id="addBookForm">
+                    <form id="saveForm">
                         <div class="libros__group grid">
                             <div>
                                 <label for="titulo" class="libro__label">Título</label>
@@ -138,14 +127,14 @@
 
 
     </main>
-    <script src="../../Resources/js/header_admin.js"></script>
-    <script src="../../Resources/js/modals_.js"></script>
     <!--=============== SWIPER JS ===============-->
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
     <!--=============== SCROLLREVEAL ===============-->
     <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../Resources/js/header_admin.js"></script>
     <script src="../../Resources/js/main.js"></script>
-    <script src="../../Resources/js/footer.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
 </body>
 
 </html>

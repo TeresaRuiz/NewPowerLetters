@@ -87,15 +87,178 @@ document.body.insertBefore(header, document.body.firstChild);
 
 // Función para mostrar u ocultar el menú desplegable al hacer clic en el enlace "Autores"
 document.addEventListener("DOMContentLoaded", function () {
-   const dropdownLinks = document.querySelectorAll('.nav__link-dropdown');
+    const dropdownLinks = document.querySelectorAll('.nav__link-dropdown');
 
-   dropdownLinks.forEach(link => {
-      link.addEventListener('click', function (e) {
-         e.preventDefault();
-         const dropdownMenu = this.nextElementSibling;
-         dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
-      });
-   });
+    dropdownLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const dropdownMenu = this.nextElementSibling;
+            dropdownMenu.style.display = dropdownMenu.style.display === 'block' ? 'none' : 'block';
+        });
+    });
 });
+
+// Crea el elemento header
+const footer = document.createElement('footer');
+footer.classList.add('footer');
+footer.id = 'footer';
+
+// Agrega el contenido del header
+footer.innerHTML = `
+<footer class="footer">
+         
+         <div class="footer__container container grid">
+
+            <div>
+
+               <a href="#" class="footer__logo">
+                  <i class="ri-book-3-line"></i> Power Letters
+               </a>
+
+               <p class="footer__description">
+                  Encuentra y explora lo mejor <br>
+                  de Power Letters de todos tus <br>
+                  escritores favoritos.
+               </p>
+
+            </div>
+
+            <div class="footer__data grid">
+
+               <div>
+
+                  <h3 class="footer__title">Sobre</h3>
+
+                  <ul class="footer__links">
+                     
+                     <li class="footer__links">
+                        <a href="" class="footer__link">Politica de privacidad</a>
+                     </li>
+                     
+                     <li class="footer__links">
+                        <a href="" class="footer__link">Equipo de servicios</a>
+                     </li>
+
+
+                  </ul>
+
+               </div>
+
+
+               <div>
+
+                  <h3 class="footer__title">Compañia</h3>
+
+                  <ul class="footer__links">
+                     
+                     <li class="footer__links">
+                        <a href="" class="footer__link">Blogs</a>
+                     </li>
+
+                     <li class="footer__links">
+                        <a href="" class="footer__link">Comunidad</a>
+                     </li>
+
+                     <li class="footer__links">
+                        <a href="" class="footer__link"> Nuestro equipo</a>
+                     </li>
+
+                     <li class="footer__links">
+                        <a href="" class="footer__link">Centro de ayuda</a>
+                     </li>
+
+
+                  </ul>
+
+               </div>
+
+
+               <div>
+
+                  <h3 class="footer__title">Contacto</h3>
+
+                  <ul class="footer__links">
+                     
+                     <li class="footer__links">
+                        <address class="footer__info">
+                           San Salvador <br>
+                           Mejicanos, ITR
+                        </address>
+                     </li>
+
+
+                     <li class="footer__links">
+                        <address class="footer__info">
+                            powerletters@gmail.com <br>
+                            503 7884
+                        </address>
+                     </li>
+
+
+                  </ul>
+
+               </div>
+
+               <div>
+
+                  <h3 class="footer__title">Redes</h3>
+
+                  <div class="footer__social">
+
+                     <a href="https://www.facebook.com/" target="_blank" class="footer__social-link">
+                        <i class="ri-facebook-circle-line"></i>
+                     </a>
+
+                     <a href=" https://www.instagram.com/
+                     " target="_blank" class="footer__social-link">
+                        <i class="ri-instagram-line"></i>
+                     </a>
+
+                     <a href=" https://twitter.com/
+                     " target="_blank" class="footer__social-link">
+                        <i class="ri-twitter-x-line"></i>
+                     </a>
+
+                  </div>
+
+               </div>
+
+            </div>
+
+         </div>
+
+         <span class="footer__copy">
+            &; Todos los derechos reservados a Teresa Ruiz y  Aniket Gawade
+         </span>
+
+      </footer>
+
+      <!--========== SCROLL UP ==========-->
+      
+      <a href="#" class="scrollup" id="scroll-up">
+
+         <i class="ri-arrow-up-line"></i>
+      </a>
+      `;
+
+// Inserta el header al principio del body
+document.body.appendChild(footer);
+
+
+var modal = document.getElementById("myModal");
+var btn = document.querySelector(".add-button");
+
+// Ocultar el modal al cargar la página
+modal.style.display = "none";
+
+// Abrir el modal al hacer clic en el botón de añadir
+btn.onclick = function () {
+    modal.style.display = "block";
+};
+
+// Cerrar el modal de añadir al hacer clic en el botón de cierre
+function closeModal() {
+    modal.style.display = "none";
+}
 
 
