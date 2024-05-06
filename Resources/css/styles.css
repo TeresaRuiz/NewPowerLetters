@@ -439,7 +439,8 @@ img {
   margin-bottom: 1.25rem;
 }
 
-.login__button{
+.login__button,
+.genero__button {
   width: 100%;
   cursor: pointer;
 }
