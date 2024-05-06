@@ -1,3 +1,6 @@
+// Constante para completar la ruta de la API.
+const USER_API = 'services/admin/administrador.php';
+
 // Crea el elemento header
 const header = document.createElement('header');
 header.classList.add('header');
