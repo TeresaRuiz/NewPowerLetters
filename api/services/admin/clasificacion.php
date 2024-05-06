@@ -1,13 +1,13 @@
 <?php
 // Se incluye la clase del modelo.
-require_once('../../models/data/marca_data.php');
+require_once('../../models/data/clasificacion_data.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
     // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
     session_start();
     // Se instancia la clase correspondiente.
-    $marca = new marcaData;
+    $clasificacion = new clasificacionData;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null, 'fileStatus' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
@@ -26,56 +26,57 @@ if (isset($_GET['action'])) {
                 break;
                 case 'createRow':
                     $_POST = Validator::validateForm($_POST);
-                    if (!$marca->setNombre($_POST['nombreMarca'])) {
-                        $result['error'] = $marca->getDataError();
-                    } elseif ($marca->createRow()) {
+                    if (!$clasificacion->setNombre($_POST['clasificación'])) {
+                        $result['error'] = $clasificacion->getDataError();
+                    } elseif ($clasificacion->createRow()) {
                         $result['status'] = 1;
-                        $result['message'] = 'Marca agregada correctamente';
+                        $result['message'] = 'Clasificación agregada correctamente';
                     } else {
-                        $result['error'] = $marca->getDataError() ?: 'Ocurrió un problema al agregar la marca';
+                        $result['error'] = $clasificacion->getDataError() ?: 'Ocurrió un problema al agregar la clasificación';
                     }
                 break;
             case 'readAll':
-                if ($result['dataset'] = $marca->readAll()) {
+                if ($result['dataset'] = $clasificacion->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } else {
-                    $result['error'] = 'No existen marcas registradas';
+                    $result['error'] = 'No existen clasificaciones registradas';
                 }
                 break;
             case 'readOne':
-                if (!$marca->setId($_POST['idMarca'])) {
-                    $result['error'] = $marca->getDataError();
-                } elseif ($result['dataset'] = $marca->readOne()) {
+                if (!$clasificacion->setId($_POST['idClas'])) {
+                    $result['error'] = $clasificacion->getDataError();
+                } elseif ($result['dataset'] = $clasificacion->readOne()) {
                     $result['status'] = 1;
                 } else {
-                    $result['error'] = 'Marca inexistente';
+                    $result['error'] = 'Clasificación inexistente';
                 }
                 break;
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$marca->setid($_POST['idMarca']) or
-                    !$marca->setNombre($_POST['nombreMarca']) 
+                    !$clasificacion->setid($_POST['idClas']) or
+                    !$clasificacion->setNombre($_POST['clasificación'])or
+                    !$clasificacion->setDescripcion($_POST['Descripción']) 
                 ) {
-                    $result['error'] = $marca->getDataError();
-                } elseif ($marca->updateRow()) {
+                    $result['error'] = $clasificacion->getDataError();
+                } elseif ($clasificacion->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Marca modificado correctamente';
+                    $result['message'] = 'Clasificación modificado correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al modificar la marca';
+                    $result['error'] = 'Ocurrió un problema al modificar la clasificación';
                 }
                 break;
             case 'deleteRow':
                 if (
-                    !$marca->setid($_POST['idMarca']) 
+                    !$clasificacion->setid($_POST['idClas']) 
                 ) {
-                    $result['error'] = $marca->getDataError();
-                } elseif ($marca->deleteRow()) {
+                    $result['error'] = $clasificacion->getDataError();
+                } elseif ($clasificacion->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Marca eliminada correctamente';
+                    $result['message'] = 'Clasificación eliminada correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al eliminar la marca';
+                    $result['error'] = 'Ocurrió un problema al eliminar la clasificación';
                 }
                 break;
             
