@@ -49,6 +49,31 @@ class clasificacionData extends clasificacionHandler
             return false;
         }
     }
+
+    public function setDescripcion($value, $min = 2, $max = 50)
+    {
+        // Verificar si la clasificación ya existe en la base de datos
+        $checkSql = 'SELECT COUNT(*) as count FROM tb_clasificaciones WHERE nombre = ?';
+        $checkParams = array($value);
+        $checkResult = Database::getRow($checkSql, $checkParams);
+    
+        if ($checkResult['count'] > 0) {
+            $this->data_error = 'La clasificación ya existe';
+            return false;
+        }
+    
+        // Validar el valor y la longitud del nombre de la clasificación
+        if (!Validator::validateAlphabetic($value)) {
+            $this->data_error = 'El nombre de la clasificación debe ser un valor alfabético';
+            return false;
+        } elseif (Validator::validateLength($value, $min, $max)) {
+            $this->nombre = $value;
+            return true;
+        } else {
+            $this->data_error = 'El nombre de la clasificación debe tener una longitud entre ' . $min . ' y ' . $max;
+            return false;
+        }
+    }
     
 
 
