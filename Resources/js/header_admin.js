@@ -43,6 +43,13 @@ header.innerHTML = `
                     </a>
                 </li>
 
+                <li class="nav__item">
+                <a href="../Private/usuarios.html"  class="nav__link">
+                    <i class="ri-message-3-line"></i>
+                    <span>Usuarios</span>
+                </a>
+            </li>
+
                 <li class="nav__item nav__item-dropdown">
                     <a href="#" class="nav__link nav__link-dropdown">
                         <i class="ri-book-3-line"></i>
