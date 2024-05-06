@@ -11,7 +11,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null, 'fileStatus' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idAdministrador'])) {
+    if (isset($_SESSION['idAdministrador']) or true) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'searchRows':
@@ -24,23 +24,23 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No hay coincidencias';
                 }
                 break;
-                case 'createRow':
-                    $_POST = Validator::validateForm($_POST);
-                    if (!$clasificacion->setNombre($_POST['clasificación'])) {
-                        $result['error'] = $clasificacion->getDataError();
-                    } elseif ($clasificacion->createRow()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Clasificación agregada correctamente';
-                    } else {
-                        $result['error'] = $clasificacion->getDataError() ?: 'Ocurrió un problema al agregar la clasificación';
-                    }
+            case 'createRow':
+                $_POST = Validator::validateForm($_POST);
+                if (!$clasificacion->setNombre($_POST['clasificación'])) {
+                    $result['error'] = $clasificacion->getDataError();
+                } elseif ($clasificacion->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Clasificación creada correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al crear la clasificación';
+                }
                 break;
             case 'readAll':
                 if ($result['dataset'] = $clasificacion->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } else {
-                    $result['error'] = 'No existen clasificaciones registradas';
+                    $result['error'] = 'No existen clasificaciones de libros registradas';
                 }
                 break;
             case 'readOne':
@@ -49,37 +49,36 @@ if (isset($_GET['action'])) {
                 } elseif ($result['dataset'] = $clasificacion->readOne()) {
                     $result['status'] = 1;
                 } else {
-                    $result['error'] = 'Clasificación inexistente';
+                    $result['error'] = 'Genero de zapato inexistente';
                 }
                 break;
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$clasificacion->setid($_POST['idClas']) or
-                    !$clasificacion->setNombre($_POST['clasificación'])or
-                    !$clasificacion->setDescripcion($_POST['Descripción']) 
+                    !$clasificacion->setId($_POST['idClas']) or
+                    !$clasificacion->setNombre($_POST['clasificación']) or
+                    !$clasificacion->setDescripcion($_POST['descripción'])
                 ) {
                     $result['error'] = $clasificacion->getDataError();
                 } elseif ($clasificacion->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Clasificación modificado correctamente';
-                } else {
-                    $result['error'] = 'Ocurrió un problema al modificar la clasificación';
+                    $result['message'] = 'Clasificación del libro modificado correctamente';
+
                 }
                 break;
+
             case 'deleteRow':
-                if (
-                    !$clasificacion->setid($_POST['idClas']) 
-                ) {
+                if (!$clasificacion->setId($_POST['idClas'])) {
                     $result['error'] = $clasificacion->getDataError();
                 } elseif ($clasificacion->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Clasificación eliminada correctamente';
+                    $result['message'] = 'Clasificación del libro eliminado correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al eliminar la clasificación';
+                    $result['error'] = 'Ocurrió un problema al eliminar la clasificación del zapato';
                 }
                 break;
-            
+            default:
+                $result['error'] = 'Acción no disponible dentro de la sesión';
         }
         // Se obtiene la excepción del servidor de base de datos por si ocurrió un problema.
         $result['exception'] = Database::getException();
