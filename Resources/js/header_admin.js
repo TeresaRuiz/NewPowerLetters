@@ -31,7 +31,7 @@ header.innerHTML = `
                 </li>
                
                 <li class="nav__item">
-                    <a href="../Private/inicio_admin.html"  class="nav__link">
+                    <a href="../Private/pedidos.html"  class="nav__link">
                         <i class="ri-book-3-line"></i>
                         <span>Pedidos</span>
                     </a>
