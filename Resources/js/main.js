@@ -1,4 +1,14 @@
+const someElement = document.getElementById('some-element-id');
 
+if (someElement) {
+    someElement.classList.add('some-class');
+} else {
+    console.error('El elemento no existe');
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    // Código que manipula elementos del DOM
+});
 
 
 /*=============== SEARCH ===============*/

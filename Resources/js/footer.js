@@ -12,13 +12,13 @@ footer.innerHTML = `
             <div>
 
                <a href="#" class="footer__logo">
-                  <i class="ri-book-3-line"></i> E-Book
+                  <i class="ri-book-3-line"></i> Power Letters
                </a>
 
                <p class="footer__description">
-                  Find and explore the best <br>
-                  eBooks from all your <br>
-                  favorite writers.
+                  Encuentra y explora lo mejor <br>
+                  de Power Letters de todos tus <br>
+                  escritores favoritos.
                </p>
 
             </div>
@@ -27,24 +27,16 @@ footer.innerHTML = `
 
                <div>
 
-                  <h3 class="footer__title">About</h3>
+                  <h3 class="footer__title">Sobre</h3>
 
                   <ul class="footer__links">
                      
                      <li class="footer__links">
-                        <a href="" class="footer__link">Awards</a>
-                     </li>
-
-                     <li class="footer__links">
-                        <a href="" class="footer__link">FAQs</a>
-                     </li>
-
-                     <li class="footer__links">
-                        <a href="" class="footer__link">Privacy policy</a>
+                        <a href="" class="footer__link">Politica de privacidad</a>
                      </li>
                      
                      <li class="footer__links">
-                        <a href="" class="footer__link">Terms of services</a>
+                        <a href="" class="footer__link">Equipo de servicios</a>
                      </li>
 
 
@@ -55,7 +47,7 @@ footer.innerHTML = `
 
                <div>
 
-                  <h3 class="footer__title">Company</h3>
+                  <h3 class="footer__title">Compañia</h3>
 
                   <ul class="footer__links">
                      
@@ -64,15 +56,15 @@ footer.innerHTML = `
                      </li>
 
                      <li class="footer__links">
-                        <a href="" class="footer__link">Community</a>
+                        <a href="" class="footer__link">Comunidad</a>
                      </li>
 
                      <li class="footer__links">
-                        <a href="" class="footer__link"> Our team</a>
+                        <a href="" class="footer__link"> Nuestro equipo</a>
                      </li>
 
                      <li class="footer__links">
-                        <a href="" class="footer__link">Help center</a>
+                        <a href="" class="footer__link">Centro de ayuda</a>
                      </li>
 
 
@@ -83,22 +75,22 @@ footer.innerHTML = `
 
                <div>
 
-                  <h3 class="footer__title">Contact</h3>
+                  <h3 class="footer__title">Contacto</h3>
 
                   <ul class="footer__links">
                      
                      <li class="footer__links">
                         <address class="footer__info">
-                           Av. Lokhandwala <br>
-                           Lima 41,Mumbai-86 
+                           San Salvador <br>
+                           Mejicanos, ITR
                         </address>
                      </li>
 
 
                      <li class="footer__links">
                         <address class="footer__info">
-                            ebook@gmail.com <br>
-                            0987-654-321 
+                            powerletters@gmail.com <br>
+                            503 7884
                         </address>
                      </li>
 
@@ -109,7 +101,7 @@ footer.innerHTML = `
 
                <div>
 
-                  <h3 class="footer__title">Social</h3>
+                  <h3 class="footer__title">Redes</h3>
 
                   <div class="footer__social">
 
@@ -136,7 +128,7 @@ footer.innerHTML = `
          </div>
 
          <span class="footer__copy">
-            &#169; All Rights Reserved By Aniket Gawade
+            &; Todos los derechos reservados a Teresa Ruiz y  Aniket Gawade
          </span>
 
       </footer>
