@@ -1,11 +1,3 @@
-const someElement = document.getElementById('some-element-id');
-
-if (someElement) {
-    someElement.classList.add('some-class');
-} else {
-    console.error('El elemento no existe');
-}
-
 document.addEventListener('DOMContentLoaded', function() {
     // Código que manipula elementos del DOM
 });
@@ -220,7 +212,7 @@ window.addEventListener('scroll', scrollActive)
                              
 
                              function loader(){
-                                document.querySelector('.loader__container').classList.add('active-load');
+                               // document.querySelector('.loader__container').classList.add('active-load');
                              }
 
                              function fadeout(){

@@ -19,8 +19,6 @@ document.addEventListener("DOMContentLoaded", function() {
     var viewAuthorModal = document.getElementById("viewAuthorModal");
     var viewSpans = document.querySelectorAll("#viewAuthorModal .close");
 
-    // Ocultar el modal de vista al cargar la página
-    viewAuthorModal.style.display = "none";
 
     // Seleccionar todos los botones que deben abrir el modal de vista
     var viewBtns = document.querySelectorAll(".action-icons a:first-child");
@@ -75,10 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
     
-    // Cerrar el modal al hacer clic en el botón de cierre
-    closeBtn.addEventListener("click", function () {
-        viewAuthorModal.style.display = "none";
-    });
+    
     
     // Cerrar el modal si se hace clic fuera del contenido del modal
     window.addEventListener("click", function (event) {
