@@ -100,7 +100,7 @@ if (isset($_GET['action'])) {
 
             case 'deleteRow': // Acción para eliminar una fila por ID.
                 // Verificar y establecer el ID del género a eliminar.
-                if (!$clasificacion->setId($_POST['idGenero'])) {
+                if (!$clasificacion->setId($_POST['idClas'])) {
                     $result['error'] = $clasificacion->getDataError(); // Mensaje de error si el ID es inválido.
                 } elseif ($clasificacion->deleteRow()) { // Intentar eliminar la fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
