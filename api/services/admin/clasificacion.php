@@ -1,6 +1,6 @@
 <?php
 // Importar la clase que gestiona los datos relacionados con 'género'.
-require_once('../../models/data/genero_data.php');
+require_once('../../models/data/clasificacion_data.php');
 
 // Verificar si se ha recibido una acción mediante el parámetro 'action' en la URL.
 if (isset($_GET['action'])) {
@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     session_start();
 
     // Crear una instancia de la clase 'generoData' para interactuar con los datos relacionados con 'género'.
-    $genero = new generoData;
+    $clasificacion = new clasificacionData;
 
     // Inicializar un arreglo para almacenar el resultado de las operaciones de la API.
     $result = array(
@@ -29,7 +29,7 @@ if (isset($_GET['action'])) {
                 // Validar el término de búsqueda usando una clase de validación.
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError(); // Mensaje de error si la validación falla.
-                } elseif ($result['dataset'] = $genero->searchRows()) { // Buscar filas en la base de datos.
+                } elseif ($result['dataset'] = $clasificacion->searchRows()) { // Buscar filas en la base de datos.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias'; // Mensaje con la cantidad de coincidencias encontradas.
                 } else {
@@ -42,9 +42,17 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
 
                 // Establecer el nombre del nuevo género.
-                if (!$genero->setNombre($_POST['genero'])) {
-                    $result['error'] = $genero->getDataError(); // Obtener mensaje de error si la validación falla.
-                } elseif ($genero->createRow()) { // Intentar crear una nueva fila.
+                if (
+                    !$clasificacion->setId($_POST['idClas'])or
+                    !$clasificacion->setNombre($_POST['clasificacion'])or
+                    !$clasificacion->setDescripcion($_POST['descripcion'])
+                
+                )
+                
+
+                 {
+                    $result['error'] = $clasificacion->getDataError(); // Obtener mensaje de error si la validación falla.
+                } elseif ($clasificacion->createRow()) { // Intentar crear una nueva fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Género creado correctamente'; // Mensaje de éxito.
                 } else {
@@ -53,7 +61,7 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'readAll': // Acción para leer todas las filas (géneros).
-                if ($result['dataset'] = $genero->readAll()) { // Leer todos los géneros de la base de datos.
+                if ($result['dataset'] = $clasificacion->readAll()) { // Leer todos los géneros de la base de datos.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
                 } else {
@@ -63,9 +71,9 @@ if (isset($_GET['action'])) {
 
             case 'readOne': // Acción para leer una fila específica por ID.
                 // Validar e ingresar el ID del género.
-                if (!$genero->setId($_POST['idGenero'])) {
-                    $result['error'] = $genero->getDataError(); // Mensaje de error si el ID es inválido.
-                } elseif ($result['dataset'] = $genero->readOne()) { // Leer el género específico.
+                if (!$clasificacion->setId($_POST['idClas'])) {
+                    $result['error'] = $clasificacion->getDataError(); // Mensaje de error si el ID es inválido.
+                } elseif ($result['dataset'] = $clasificacion->readOne()) { // Leer el género específico.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                 } else {
                     $result['error'] = 'Género inexistente'; // Mensaje de error si no se encuentra el género.
@@ -78,11 +86,12 @@ if (isset($_GET['action'])) {
 
                 // Verificar y establecer el ID y el nombre del género a actualizar.
                 if (
-                    !$genero->setId($_POST['idGenero']) ||
-                    !$genero->setNombre($_POST['nombreGEN'])
+                    !$clasificacion->setId($_POST['idClas'])or
+                    !$clasificacion->setNombre($_POST['clasificacion'])or
+                    !$clasificacion->setDescripcion($_POST['descripcion'])
                 ) {
-                    $result['error'] = $genero->getDataError(); // Mensaje de error si la validación falla.
-                } elseif ($genero->updateRow()) { // Intentar actualizar la fila.
+                    $result['error'] = $clasificacion->getDataError(); // Mensaje de error si la validación falla.
+                } elseif ($clasificacion->updateRow()) { // Intentar actualizar la fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Género modificado correctamente'; // Mensaje de éxito.
                 } else {
@@ -92,9 +101,9 @@ if (isset($_GET['action'])) {
 
             case 'deleteRow': // Acción para eliminar una fila por ID.
                 // Verificar y establecer el ID del género a eliminar.
-                if (!$genero->setId($_POST['idGenero'])) {
-                    $result['error'] = $genero->getDataError(); // Mensaje de error si el ID es inválido.
-                } elseif ($genero->deleteRow()) { // Intentar eliminar la fila.
+                if (!$clasificacion->setId($_POST['idGenero'])) {
+                    $result['error'] = $clasificacion->getDataError(); // Mensaje de error si el ID es inválido.
+                } elseif ($clasificacion->deleteRow()) { // Intentar eliminar la fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Género eliminado correctamente'; // Mensaje de éxito.
                 } else {
