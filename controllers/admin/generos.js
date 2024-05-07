@@ -132,6 +132,7 @@ const openUpdate = async (id) => {
     }
 }
 
+
 /*
 *   Función asíncrona para eliminar un registro.
 *   Parámetros: id (identificador del registro seleccionado).
