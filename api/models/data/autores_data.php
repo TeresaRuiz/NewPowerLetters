@@ -2,11 +2,11 @@
 // Se incluye la clase para validar los datos de entrada.
 require_once('../../helpers/validator.php');
 // Se incluye la clase padre.
-require_once('../../models/handler/clasificacion_handler.php');
+require_once('../../models/handler/autores_handler.php');
 /*
  *  Clase para manejar el encapsulamiento de los datos de la tabla CATEGORIA.
  */
-class clasificacionData extends clasificacionHandler
+class autoresData extends autoresHandler
 {
     /*
      *  Atributos adicionales.
@@ -43,17 +43,17 @@ class clasificacionData extends clasificacionHandler
         }
     }
 
-    public function setDescripcion($value, $min = 2, $max = 50)
+    public function setBiografia($value, $min = 2, $max = 50)
     {
         // Valida que el nombre sea alfanumérico.
         if (!Validator::validateAlphanumeric($value)) {
-            $this->data_error = 'La descripción debe ser un valor alfanumérico'; // Almacena mensaje de error.
+            $this->data_error = 'La biografia debe ser un valor alfanumérico'; // Almacena mensaje de error.
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
-            $this->descripcion = $value; // Asigna el valor del nombre.
+            $this->biografia = $value; // Asigna el valor del nombre.
             return true;
         } else {
-            $this->data_error = 'La descripcion debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
+            $this->data_error = 'La biografia debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
             return false;
         }
     }

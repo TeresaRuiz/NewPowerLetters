@@ -53,12 +53,13 @@
             <div class="modal-background"></div>
             <div class="modal-content card">
                 <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
-               
-               <div class="card-body">
+
+                <div class="card-body">
                     <h2>Agrega un nuevo autor</h2>
                     <br>
 
                     <form id="saveForm">
+                        <input type="hidden" id="idAutor" name="idAutor">
                         <div>
                             <label for="nombre" class="autores__label">Nombre del autor</label>
                             <input type="text" name="autor" id="autor" placeholder="Escribe el autor"
@@ -72,9 +73,9 @@
                         </div>
                         <br><br>
                         <button type="submit" class="login__button button">Guardar</button>
-                        
+
                     </form>
-                 
+
                 </div>
             </div>
         </div>
@@ -90,7 +91,7 @@
     <script src="../../Resources/js/main.js"></script>
     <script src="../../Resources/js/sweetalert.min.js"></script>
     <script src="../../controllers/utils/components.js"></script>
-    <script src="../../controllers/admin/generos.js"></script>
+    <script src="../../controllers/admin/autores.js"></script>
 </body>
 
 </html>
