@@ -2,11 +2,11 @@
 // Se incluye la clase para validar los datos de entrada.
 require_once('../../helpers/validator.php');
 // Se incluye la clase padre.
-require_once('../../models/handler/genero_handler.php');
+require_once('../../models/handler/clasificacion_handler.php');
 /*
  *  Clase para manejar el encapsulamiento de los datos de la tabla CATEGORIA.
  */
-class GeneroData extends GeneroHandler
+class clasificacionData extends clasificacionHandler
 {
     /*
      *  Atributos adicionales.
@@ -23,7 +23,7 @@ class GeneroData extends GeneroHandler
             $this->id = $value; // Asigna el valor del identificador.
             return true;
         } else {
-            $this->data_error = 'El identificador del género es incorrecto'; // Almacena mensaje de error.
+            $this->data_error = 'El identificador de la clasificación es incorrecto'; // Almacena mensaje de error.
             return false;
         }
     }
@@ -39,6 +39,21 @@ class GeneroData extends GeneroHandler
             return true;
         } else {
             $this->data_error = 'El nombre debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
+            return false;
+        }
+    }
+
+    public function setDescripcion($value, $min = 2, $max = 50)
+    {
+        // Valida que el nombre sea alfanumérico.
+        if (!Validator::validateAlphanumeric($value)) {
+            $this->data_error = 'La descripción debe ser un valor alfanumérico'; // Almacena mensaje de error.
+            return false;
+        } elseif (Validator::validateLength($value, $min, $max)) {
+            $this->descripcion = $value; // Asigna el valor del nombre.
+            return true;
+        } else {
+            $this->data_error = 'La descripcion debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
             return false;
         }
     }
