@@ -43,7 +43,6 @@ if (isset($_GET['action'])) {
 
                 // Establecer el nombre del nuevo género.
                 if (
-                    !$clasificacion->setId($_POST['idClas'])or
                     !$clasificacion->setNombre($_POST['clasificacion'])or
                     !$clasificacion->setDescripcion($_POST['descripcion'])
                 
