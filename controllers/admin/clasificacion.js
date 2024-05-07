@@ -1,5 +1,5 @@
 // Constantes para completar las rutas de la API.
-const GENERO_API = 'services/admin/genero.php';
+const CLASIFICACION_API = 'services/admin/clasificacion.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer el contenido de la tabla.
@@ -7,9 +7,9 @@ const TABLE_BODY = document.getElementById('tableBody'),
     ROWS_FOUND = document.getElementById('rowsFound');
 // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
-    ID_GENERO = document.getElementById('idGenero'),
-    NOMBRE_Gen = document.getElementById('nombreGEN'),
-    IMAGEN_Gen = document.getElementById('nombreIMG');
+    ID_CLASIFICACION = document.getElementById('idClas'),
+    NOMBRE_CLASIFICACION = document.getElementById('clasificación'),
+    DESCRIPCION_CLASIFICACION= document.getElementById('descripción');
 // Se establece el título de la página web.
 document.querySelector('title').textContent = 'Género de zapatos';
 
@@ -34,11 +34,11 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (ID_GENERO.value) ? action = 'updateRow' : action = 'createRow';
+    (ID_CLASIFICACION.value) ? action = 'updateRow' : action = 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(GENERO_API, action, FORM);
+    const DATA = await fetchData(CLASIFICACION_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se cierra la caja de diálogo.
@@ -64,7 +64,7 @@ const fillTable = async (form = null) => {
     // Se verifica la acción a realizar.
     (form) ? action = 'searchRows' : action = 'readAll';
     // Petición para obtener los registros disponibles.
-    const DATA = await fetchData(GENERO_API, action, form);
+    const DATA = await fetchData(CLASIFICACION_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se recorre el conjunto de registros fila por fila.
@@ -73,11 +73,12 @@ const fillTable = async (form = null) => {
             TABLE_BODY.innerHTML += `
             <tr>
                 <td>${row.nombre}</td>
+                <td>${row.descripcion}</td>
                 <td class="action-icons">
-                    <a onclick="openUpdate(${row.id_genero})">
+                    <a onclick="openUpdate(${row.id_clasificacion})">
                         <i class="ri-edit-line"></i>
                     </a>
-                    <a onclick="openDelete(${row.id_genero})">
+                    <a onclick="openDelete(${row.id_clasificacion})">
                         <i class="ri-delete-bin-line"></i>
                     </a>
                 </td>
@@ -116,7 +117,7 @@ const openUpdate = async (id) => {
     const FORM = new FormData();
     FORM.append('idGenero', id);
     // Petición para obtener los datos del registro solicitado.
-    const DATA = await fetchData(GENERO_API, 'readOne', FORM);
+    const DATA = await fetchData(CLASIFICACION_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         MODAL_TITLE.textContent = 'Actualizar género de zapatos';
@@ -124,9 +125,9 @@ const openUpdate = async (id) => {
         SAVE_FORM.reset();
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        ID_GENERO.value = ROW.id_color;
-        NOMBRE_Gen.value = ROW.nombre_genero;
-        IMAGEN_Gen.value = ROW.imagen_genero;
+        ID_CLASIFICACION.value = ROW.id_clasificacion;
+        NOMBRE_CLASIFICACION.value = ROW.nombre;
+        DESCRIPCION_CLASIFICACION.value = ROW.descripcion;
     } else {
         sweetAlert(2, DATA.error, false);
     }
@@ -144,9 +145,9 @@ const openDelete = async (id) => {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('idGenero', id);
+        FORM.append('idClas', id);
         // Petición para eliminar el registro seleccionado.
-        const DATA = await fetchData(GENERO_API, 'deleteRow', FORM);
+        const DATA = await fetchData(CLASIFICACION_API, 'deleteRow', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (DATA.status) {
             // Se muestra un mensaje de éxito.
