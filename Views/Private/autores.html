@@ -21,83 +21,76 @@
         <div class="container">
             <h1 class="section__title">Autores</h1>
             <!-- Formulario de búsqueda y botón de agregar -->
-            <div class="search-container">
-                <div class="search-form">
-                    <input  id="search_autor" class="search-input" placeholder="Buscar...">
-                    <button class="search-button"><i class="ri-search-line"></i></button>
+            <form id="searchForm" class="search-container">
+                <div class="search-form" id="search_generos">
+                    <input type="search" name="search" class="search-input" placeholder="Buscar...">
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
                 </div>
-                <div class="agregar">
-                    <button class="add-button"><i class="ri-add-line"></i> Agregar</button>
-                </div>
+            </form>
+            <div class="agregar">
+                <button class="add-button"><i class="ri-add-line"></i> Agregar</button>
             </div>
 
             <!-- Tabla con estilo elegante -->
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <td colspan="2" id="rowsFound"></td>
+                    </tr>
+                    <tr>
                         <th>Nombre del autor</th>
-                        <th>Biografía</th>
+                        <th>biografia</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Nombre 1</td>
-                        <td>Descripción 1</td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-eye-line"></i></a>
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                            <a href="#"><i class="ri-delete-bin-line"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Nombre 2</td>
-                        <td>Descripción 2</td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-eye-line"></i></a>
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                            <a href="#"><i class="ri-delete-bin-line"></i></a>
-                        </td>
-                    </tr>
+                <tbody id="tableBody">
                 </tbody>
             </table>
+        </div>
         </div>
         <!-- Modal -->
         <div id="myModal" class="modal">
             <div class="modal-background"></div>
             <div class="modal-content card">
-                <span class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
-                <div class="card-body">
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+               
+               <div class="card-body">
                     <h2>Agrega un nuevo autor</h2>
                     <br>
-                    <div>
-                        <label for="nombre" class="autores__label">Nombre del autor</label>
-                        <input type="text" name="autor" id="autor" placeholder="Escribe el autor" class="autores__input">
-                    </div>
-                    <br>
-                    <div>
-                        <label for="nombre" class="autores__label">Biografía del autor</label>
-                        <input type="text" name="autorbio" id="autorbio" placeholder="Escribe la biografía"
-                            class="autores__input">
-                    </div>
-                    <br><br>
-                    <button type="submit" class="login__button button">Guardar</button>
+
+                    <form id="saveForm">
+                        <div>
+                            <label for="nombre" class="autores__label">Nombre del autor</label>
+                            <input type="text" name="autor" id="autor" placeholder="Escribe el autor"
+                                class="autores__input">
+                        </div>
+                        <br>
+                        <div>
+                            <label for="nombre" class="autores__label">Biografía del autor</label>
+                            <input type="text" name="autorbio" id="autorbio" placeholder="Escribe la biografía"
+                                class="autores__input">
+                        </div>
+                        <br><br>
+                        <button type="submit" class="login__button button">Guardar</button>
+                        
+                    </form>
+                 
                 </div>
             </div>
         </div>
 
     </main>
-    <script src="../../Resources/js/header_admin.js"></script>
-    <script src="../../Resources/js/modals_.js"></script>
     <!--=============== SWIPER JS ===============-->
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
     <!--=============== SCROLLREVEAL ===============-->
     <script src="../../Resources/js/scrollreveal.min.js"></script>
-    <script src="../../Resources/js/main.js"></script>
+    <script src="../../Resources/js/header_admin.js"></script>
     <script src="../../Resources/js/footer.js"></script>
+    <script src="../../Resources/js/modals_.js"></script>
+    <script src="../../Resources/js/main.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/admin/generos.js"></script>
 </body>
 
 </html>
