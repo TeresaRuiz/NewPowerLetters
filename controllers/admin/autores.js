@@ -99,12 +99,11 @@ const fillTable = async (form = null) => {
 */
 const openCreate = () => {
     // Se muestra la caja de diálogo con su título.
-    SAVE_MODAL.show();
-    MODAL_TITLE.textContent = 'Agregar un nuevo género de zapatos';
+    //SAVE_MODAL.show();
+    modal.style.display = "block";
+    MODAL_TITLE.textContent = 'Agregar un nuevo autor';
     // Se prepara el formulario.
     SAVE_FORM.reset();
-    NOMBRE_autor.disabled = false;
-    biografia_autor.disabled = false;
 }
 
 /*
@@ -120,14 +119,14 @@ const openUpdate = async (id) => {
     const DATA = await fetchData(AUTORES_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        MODAL_TITLE.textContent = 'Actualizar género de zapatos';
-        // Se prepara el formulario.
-        SAVE_FORM.reset();
+        
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
         ID_autor.value = ROW.id_autor;
         NOMBRE_autor.value = ROW.nombre;
         biografia_autor.value = ROW.biografia;
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Actualizar autor';
     } else {
         sweetAlert(2, DATA.error, false);
     }
@@ -141,7 +140,7 @@ const openUpdate = async (id) => {
 */
 const openDelete = async (id) => {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el género de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar al autor de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
