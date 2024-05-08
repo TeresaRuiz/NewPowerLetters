@@ -20,8 +20,8 @@
     <main class="main section">
         <div class="container">
             <h1 class="section__title">Gestión de libros</h1>
-             <!-- Formulario de búsqueda y botón de agregar -->
-             <form id="searchForm" class="search-container">
+            <!-- Formulario de búsqueda y botón de agregar -->
+            <form id="searchForm" class="search-container">
                 <div class="search-form" id="search_libros">
                     <input type="search" name="search" class="search-input" placeholder="Buscar...">
                     <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
@@ -44,7 +44,7 @@
                         <th>ㅤㅤAcciones</th>
                     </tr>
                 </thead>
-                
+
                 <tbody id="tableBody">
                     <tr>
                         <td>1</td>
@@ -59,7 +59,7 @@
                             <a href="#"><i class="ri-delete-bin-line"></i></a>
                         </td>
                     </tr>
-                    
+
                 </tbody>
             </table>
         </div>
@@ -79,8 +79,8 @@
                             </div>
                             <div>
                                 <label for="autor" class="libro__label">Autor</label>
-                                <input type="number" name="autor" id="autor" placeholder="Elige el autor"
-                                    class="libro__input" required>
+                                <select name="idAutor" id="idAutor" class="libro__input" required>Elige una opción
+                                </select>
                             </div>
                             <div>
                                 <label for="precio" class="libro__label">Precio</label>
@@ -98,13 +98,14 @@
                             </div>
                             <div>
                                 <label for="clasificacion" class="libro__label">Clasificación</label>
-                                <input type="number" name="clasificacion" id="clasificacion"
-                                    placeholder="Elige la clasificación" class="libro__input" required>
+                                <select name="idClas" id="idClas" class="libro__input" required>
+                                </select>
                             </div>
                             <div>
                                 <label for="editorial" class="libro__label">Editorial</label>
-                                <input type="number" name="editorial" id="editorial" placeholder="Elige la editorial"
-                                    class="libro__input" required>
+                                <select name="idEditorial" id="idEditorial" class="libro__input"
+                                    placeholder="Elige la editorial" required>
+                                </select>
                             </div>
 
                             <div>
@@ -114,8 +115,9 @@
                             </div>
                             <div>
                                 <label for="genero" class="libro__label">Género</label>
-                                <input type="number" name="genero" id="genero" placeholder="Elige el género"
-                                    class="libro__input" required>
+                                <select name="idGenero" id="idGenero" class="libro__input" placeholder="Elige el genero"
+                                    required>
+                                </select>
                             </div>
                             <br>
                             <button type="submit" class="libro__button button">Guardar</button>
