@@ -10,7 +10,7 @@ const SAVE_FORM = document.getElementById('saveForm'),
     ID_EDITORIAL = document.getElementById('idEditorial'),
     NOMBRE_EDITORIAL = document.getElementById('editorial');
 // Se establece el título de la página web.
-document.querySelector('title').textContent = 'Género de zapatos';
+document.querySelector('title').textContent = 'Editoriales de libros';
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -97,11 +97,12 @@ const fillTable = async (form = null) => {
 */
 const openCreate = () => {
     // Se muestra la caja de diálogo con su título.
-    SAVE_MODAL.show();
-    MODAL_TITLE.textContent = 'Agregar un nuevo género de zapatos';
+    //SAVE_MODAL.show();
+    
+    modal.style.display = "block";
+    MODAL_TITLE.textContent = 'Agregar una nueva editorial de libros';
     // Se prepara el formulario.
     SAVE_FORM.reset();
-    NOMBRE_EDITORIAL.disabled = false;
 }
 
 /*
@@ -117,13 +118,13 @@ const openUpdate = async (id) => {
     const DATA = await fetchData(EDITORIAL_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        MODAL_TITLE.textContent = 'Actualizar género de zapatos';
-        // Se prepara el formulario.
-        SAVE_FORM.reset();
+
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
         ID_EDITORIAL.value = ROW.id_editorial;
         NOMBRE_EDITORIAL.value = ROW.nombre;
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Actualizar editorial';
     } else {
         sweetAlert(2, DATA.error, false);
     }
@@ -136,7 +137,7 @@ const openUpdate = async (id) => {
 */
 const openDelete = async (id) => {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el género de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar la editorial de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
