@@ -30,9 +30,9 @@ if (isset($_GET['action'])) {
                     $result['error'] = $editorial->getDataError();
                 } elseif ($editorial->createRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Género creado correctamente';
+                    $result['message'] = 'Editorial creada correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al crear el género';
+                    $result['error'] = 'Ocurrió un problema al crear la editorial';
                 }
                 break;
             case 'readAll':
@@ -40,7 +40,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } else {
-                    $result['error'] = 'No existen generos de zapatos registradas';
+                    $result['error'] = 'No existen editoriales registradas';
                 }
                 break;
             case 'readOne':
@@ -49,7 +49,7 @@ if (isset($_GET['action'])) {
                 } elseif ($result['dataset'] = $editorial->readOne()) {
                     $result['status'] = 1;
                 } else {
-                    $result['error'] = 'Genero de zapato inexistente';
+                    $result['error'] = 'Editorial inexistente';
                 }
                 break;
             case 'updateRow':
@@ -61,10 +61,10 @@ if (isset($_GET['action'])) {
                     $result['error'] = $editorial->getDataError();
                 } elseif ($editorial->updateRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Genero del zapato modificado correctamente';
+                    $result['message'] = 'Editorial modificada correctamente';
                     // Se asigna el estado del archivo después de actualizar.
                 } else {
-                    $result['error'] = 'Ocurrió un problema al modificar el genero del zapato';
+                    $result['error'] = 'Ocurrió un problema al modificar la editorial';
                 }
                 break;
             case 'deleteRow':
@@ -72,9 +72,9 @@ if (isset($_GET['action'])) {
                     $result['error'] = $editorial->getDataError();
                 } elseif ($editorial->deleteRow()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Genero del zapato eliminado correctamente';
+                    $result['message'] = 'Editorial eliminada correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al eliminar el genero del zapato';
+                    $result['error'] = 'Ocurrió un problema al eliminar la editorial';
                 }
                 break;
             default:
