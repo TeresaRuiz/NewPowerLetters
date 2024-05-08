@@ -5,7 +5,7 @@ var btn = document.querySelector(".add-button");
 modal.style.display = "none";
 
 // Abrir el modal al hacer clic en el botón de añadir
-btn.onclick = function () {
+function  AbrirModal() {
     modal.style.display = "block";
 };
 
