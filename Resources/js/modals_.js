@@ -1,4 +1,5 @@
 var modal = document.getElementById("myModal");
+var MODAL_TITLE = document.getElementById("modalTitle");
 var btn = document.querySelector(".add-button");
 
 // Ocultar el modal al cargar la página

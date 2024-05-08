@@ -98,12 +98,10 @@ const fillTable = async (form = null) => {
 */
 const openCreate = () => {
     // Se muestra la caja de diálogo con su título.
-    SAVE_MODAL.show();
+    modal.style.display = "block";
     MODAL_TITLE.textContent = 'Agregar un nuevo género de zapatos';
     // Se prepara el formulario.
     SAVE_FORM.reset();
-    NOMBRE_Gen.disabled = false;
-    IMAGEN_Gen.disabled = false;
 }
 
 /*
@@ -121,10 +119,10 @@ const openUpdate = async (id) => {
     if (DATA.status) {
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        AbrirModal(true, {
-            ID_GENERO: ROW.id_genero,
-            NOMBRE_Gen: ROW.nombre_genero
-        });
+        ID_GENERO.value = ROW.id_genero;
+        NOMBRE_Gen.value = ROW.nombre;
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Actualizar un género de zapatos';
     } else {
         sweetAlert(2, DATA.error, false);
     }

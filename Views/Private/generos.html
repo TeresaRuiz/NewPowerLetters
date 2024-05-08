@@ -28,7 +28,7 @@
                 </div>
             </form>
             <div class="agregar">
-                <button class="add-button" onclick="AbrirModal()"><i class="ri-add-line"></i> Agregar</button>
+                <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Agregar</button>
             </div>
 
             <!-- Tabla con estilo elegante -->
@@ -52,14 +52,14 @@
             <div class="modal-content card">
                 <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
                 <div class="card-body">
-                    <h2>Agrega un nuevo género</h2>
+                    <h2 id="modalTitle"></h2>
                     <br>
                     <form id="saveForm">
                         <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                        <input type="hidden" id="idGenero" name="idGenero">
+                        <input type="number" id="idGenero" name="idGenero" style=" display: none;">
                         <div>
                             <label class="genero__label">Nombre del género</label>
-                            <input type="text" name="genero" id="genero" placeholder="Escribe tu género"
+                            <input type="text" name="nombreGEN" id="nombreGEN" placeholder="Escribe tu género"
                                 class="genero__input">
                         </div>
                         <br><br>

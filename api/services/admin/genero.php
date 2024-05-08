@@ -42,7 +42,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
 
                 // Establecer el nombre del nuevo género.
-                if (!$genero->setNombre($_POST['genero'])) {
+                if (!$genero->setNombre($_POST['nombreGEN'])) {
                     $result['error'] = $genero->getDataError(); // Obtener mensaje de error si la validación falla.
                 } elseif ($genero->createRow()) { // Intentar crear una nueva fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
