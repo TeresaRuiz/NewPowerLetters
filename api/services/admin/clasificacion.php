@@ -53,9 +53,9 @@ if (isset($_GET['action'])) {
                     $result['error'] = $clasificacion->getDataError(); // Obtener mensaje de error si la validación falla.
                 } elseif ($clasificacion->createRow()) { // Intentar crear una nueva fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
-                    $result['message'] = 'Género creado correctamente'; // Mensaje de éxito.
+                    $result['message'] = 'Clasificación creada correctamente'; // Mensaje de éxito.
                 } else {
-                    $result['error'] = 'Ocurrió un problema al crear el género'; // Mensaje de error si ocurre un problema al crear.
+                    $result['error'] = 'Ocurrió un problema al crear clasificación '; // Mensaje de error si ocurre un problema al crear.
                 }
                 break;
 
@@ -64,7 +64,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
                 } else {
-                    $result['error'] = 'No existen géneros registrados'; // Mensaje si no se encuentran géneros.
+                    $result['error'] = 'No existen clasificaciones registradas'; // Mensaje si no se encuentran géneros.
                 }
                 break;
 
@@ -75,7 +75,7 @@ if (isset($_GET['action'])) {
                 } elseif ($result['dataset'] = $clasificacion->readOne()) { // Leer el género específico.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                 } else {
-                    $result['error'] = 'Género inexistente'; // Mensaje de error si no se encuentra el género.
+                    $result['error'] = 'Clasificación inexistente'; // Mensaje de error si no se encuentra el género.
                 }
                 break;
 
@@ -92,9 +92,9 @@ if (isset($_GET['action'])) {
                     $result['error'] = $clasificacion->getDataError(); // Mensaje de error si la validación falla.
                 } elseif ($clasificacion->updateRow()) { // Intentar actualizar la fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
-                    $result['message'] = 'Género modificado correctamente'; // Mensaje de éxito.
+                    $result['message'] = 'Clasificación modificado correctamente'; // Mensaje de éxito.
                 } else {
-                    $result['error'] = 'Ocurrió un problema al modificar el género'; // Mensaje de error si ocurre un problema.
+                    $result['error'] = 'Ocurrió un problema al modificar clasificación'; // Mensaje de error si ocurre un problema.
                 }
                 break;
 
@@ -104,9 +104,9 @@ if (isset($_GET['action'])) {
                     $result['error'] = $clasificacion->getDataError(); // Mensaje de error si el ID es inválido.
                 } elseif ($clasificacion->deleteRow()) { // Intentar eliminar la fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
-                    $result['message'] = 'Género eliminado correctamente'; // Mensaje de éxito.
+                    $result['message'] = 'Clasificación eliminado correctamente'; // Mensaje de éxito.
                 } else {
-                    $result['error'] = 'Ocurrió un problema al eliminar el género'; // Mensaje de error si ocurre un problema.
+                    $result['error'] = 'Ocurrió un problema al eliminar clasificación'; // Mensaje de error si ocurre un problema.
                 }
                 break;
 

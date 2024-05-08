@@ -28,7 +28,7 @@
                 </div>
             </form>
             <div class="agregar">
-                <button class="add-button" onclick="AbrirModal()"><i class="ri-add-line"></i> Agregar</button>
+                <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Agregar</button>
             </div>
 
             <!-- Tabla con estilo elegante -->
@@ -53,18 +53,18 @@
             <div class="modal-content card">
                 <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
                 <div class="card-body">
-                    <h2>Agrega una nueva clasificación</h2>
+                    <h2 id="modalTitle"></h2>
                     <br>
                     <form id="saveForm">
                         <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                        <input type="hidden" id="idClas" name="idClas">
+                        <input type="number" id="idClas" name="idClas" style="display: none;">
                         <div>
                             <label for="nombre" class="clasificacion__label">Nombre de la clasificacion</label>
-                            <input type="text" name="clasificacion" id="clasificacion" placeholder="Escribe tu género"
+                            <input type="text" name="clasificacion" id="clasificacion" placeholder="Escribe tu clasificacion"
                                 class="clasificacion__input">
 
                             <label for="nombre" class="clasificacion__label">Descripción</label>
-                            <input type="text" name="descripcion" id="descripcion" placeholder="Escribe tu género"
+                            <input type="text" name="descripcion" id="descripcion" placeholder="Escribe tu descripción"
                                 class="clasificacion__input">
                         </div>
 
