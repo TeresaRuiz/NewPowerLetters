@@ -48,8 +48,6 @@ if (isset($_GET['action'])) {
                     !$autores->setBiografia($_POST['autorbio'])
                 
                 )
-                
-
                  {
                     $result['error'] = $autores->getDataError(); // Obtener mensaje de error si la validación falla.
                 } elseif ($autores->createRow()) { // Intentar crear una nueva fila.
@@ -93,7 +91,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = $autores->getDataError(); // Mensaje de error si la validación falla.
                 } elseif ($autores->updateRow()) { // Intentar actualizar la fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
-                    $result['message'] = 'Género modificado correctamente'; // Mensaje de éxito.
+                    $result['message'] = 'Autor modificado correctamente'; // Mensaje de éxito.
                 } else {
                     $result['error'] = 'Ocurrió un problema al modificar el Autor'; // Mensaje de error si ocurre un problema.
                 }
