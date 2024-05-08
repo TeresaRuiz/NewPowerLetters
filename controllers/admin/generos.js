@@ -119,14 +119,12 @@ const openUpdate = async (id) => {
     const DATA = await fetchData(GENERO_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        MODAL_TITLE.textContent = 'Actualizar género de zapatos';
-        // Se prepara el formulario.
-        SAVE_FORM.reset();
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        ID_GENERO.value = ROW.id_color;
-        NOMBRE_Gen.value = ROW.nombre_genero;
-        IMAGEN_Gen.value = ROW.imagen_genero;
+        AbrirModal(true, {
+            ID_GENERO: ROW.id_genero,
+            NOMBRE_Gen: ROW.nombre_genero
+        });
     } else {
         sweetAlert(2, DATA.error, false);
     }
