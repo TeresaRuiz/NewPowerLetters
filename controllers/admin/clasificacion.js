@@ -99,8 +99,8 @@ const fillTable = async (form = null) => {
 */
 const openCreate = () => {
     // Se muestra la caja de diálogo con su título.
-    SAVE_MODAL.show();
-    MODAL_TITLE.textContent = 'Agregar un nuevo género de zapatos';
+    modal.style.display = "block";
+    MODAL_TITLE.textContent = 'Agregar una clasificación';
     // Se prepara el formulario.
     SAVE_FORM.reset();
     NOMBRE_CLAS.disabled = false;
@@ -120,7 +120,6 @@ const openUpdate = async (id) => {
     const DATA = await fetchData(CLASIFICACION_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        MODAL_TITLE.textContent = 'Actualizar género de zapatos';
         // Se prepara el formulario.
         SAVE_FORM.reset();
         // Se inicializan los campos con los datos.
@@ -128,6 +127,8 @@ const openUpdate = async (id) => {
         ID_CLAS.value = ROW.id_clasificacion;
         NOMBRE_CLAS.value = ROW.nombre;
         DESCRIPCION_CLAS.value = ROW.descripcion;
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Actualizar clasificación';
     } else {
         sweetAlert(2, DATA.error, false);
     }
@@ -141,7 +142,7 @@ const openUpdate = async (id) => {
 */
 const openDelete = async (id) => {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el género de forma permanente?');
+    const RESPONSE = await confirmAction('¿Desea eliminar clasificación de forma permanente?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
