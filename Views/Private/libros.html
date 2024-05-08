@@ -28,38 +28,25 @@
                 </div>
             </form>
             <div class="agregar">
-                <button class="add-button"><i class="ri-add-line"></i> Agregar</button>
+                <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Agregar</button>
             </div>
 
             <!-- Tabla con estilo elegante -->
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Imagen</th>
-                        <th>Titúlo</th>
-                        <th>Autor</th>
+                        <th>Titulo</th>
                         <th>Precio</th>
                         <th>Descripción</th>
+                        <th>Imagen</th>
+                        <th>Existencias</th>
+                        <th>Autor</th>
                         <th>ㅤㅤAcciones</th>
                     </tr>
                 </thead>
 
                 <tbody id="tableBody">
-                    <tr>
-                        <td>1</td>
-                        <td>Harry.png</td>
-                        <td>Harry Potter 1</td>
-                        <td>J.K Rowling</td>
-                        <td>20.00$</td>
-                        <td>Primer libro</td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-eye-line"></i></a>
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                            <a href="#"><i class="ri-delete-bin-line"></i></a>
-                        </td>
-                    </tr>
-
+            
                 </tbody>
             </table>
         </div>
@@ -71,6 +58,8 @@
                 <div class="card-body">
                     <h2>Agregar un nuevo libro</h2><br>
                     <form id="saveForm">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" id="id_libro" name="id_libro" style=" display: none;">
                         <div class="libros__group grid">
                             <div>
                                 <label for="titulo" class="libro__label">Título</label>
@@ -139,6 +128,7 @@
     <script src="../../Resources/js/main.js"></script>
     <script src="../../Resources/js/sweetalert.min.js"></script>
     <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/admin/libros.js"></script>
 </body>
 
 </html>
