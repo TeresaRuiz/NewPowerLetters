@@ -176,3 +176,39 @@
   padding: 1rem;
   color: var(--text-color);
 }
+
+/* Media query para pantallas de tamaño pequeño (móviles) */
+@media only screen and (max-width: 600px) {
+  .table th,
+  .table td {
+    padding: 8px; /* Reducir el padding en celdas de la tabla */
+  }
+
+  .table th {
+    font-size: 14px; /* Reducir el tamaño de fuente de las cabeceras de la tabla */
+  }
+
+  /* Agrega más estilos específicos para pantallas pequeñas si es necesario */
+}
+
+/* Media query para pantallas pequeñas (móviles) */
+@media only screen and (max-width: 600px) {
+  .card {
+    width: 90%; /* Ajusta el ancho de la tarjeta modal para pantallas pequeñas */
+    height: auto; /* Ajusta la altura de la tarjeta modal para que se adapte al contenido */
+    padding: 15px; /* Reduce el espaciado interno de la tarjeta modal */
+  }
+
+  .card .close {
+    font-size: 18px; /* Reduce el tamaño de fuente del botón de cierre */
+  }
+}
+
+/* Media query para pantallas medianas (tablets) */
+@media only screen and (min-width: 601px) and (max-width: 1024px) {
+  .card {
+    width: 70%; /* Ajusta el ancho de la tarjeta modal para pantallas medianas */
+    height: auto; /* Ajusta la altura de la tarjeta modal para que se adapte al contenido */
+    padding: 18px; /* Ajusta el espaciado interno de la tarjeta modal */
+  }
+}
