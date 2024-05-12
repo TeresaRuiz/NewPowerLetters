@@ -25,7 +25,7 @@ if (isset($_GET['action'])) {
             case 'searchRows':
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
-                } elseif ($result['dataset'] = $producto->searchRows()) {
+                } elseif ($result['dataset'] = $libros->searchRows()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } else {
@@ -59,12 +59,13 @@ if (isset($_GET['action'])) {
                 break;
             case 'readAll':
                 if ($result['dataset'] = $libros->readAll()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
                 } else {
-                    $result['error'] = 'No existen libros registrados';
+                    $result['error'] = 'No existen libros registrados'; // Mensaje si no se encuentran autores.
                 }
                 break;
+
             case 'readOne':
                 if (!$libros->setId($_POST['id_libro'])) {
                     $result['error'] = $libros->getDataError();
