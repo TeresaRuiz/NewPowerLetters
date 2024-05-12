@@ -106,4 +106,17 @@ class AdministradorHandler
     // Ejecutar la consulta y retornar los resultados.
     return Database::getRows($sql, $params);
 }
+public function createRow()
+{
+    // Consulta SQL para insertar un nuevo administrador.
+    $sql = 'INSERT INTO tb_administradores(nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
+            VALUES(?, ?, ?, ?, ?, ?, ?)';
+    
+    // Parámetros para la consulta preparada.
+    $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->fecha, $this->imagen);
+    
+    // Ejecutar la consulta y retornar el resultado.
+    return Database::executeRow($sql, $params);
+}
+
 
