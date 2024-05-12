@@ -141,3 +141,15 @@ public function readOne()
     // Obtener y retornar el resultado de la consulta.
     return Database::getRow($sql, $params);
 }
+
+public function updateRow()
+{
+    // Consulta SQL para actualizar los datos de un administrador.
+    $sql = 'UPDATE tb_administradores
+            SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?, telefono_adm = ?
+            WHERE id_administrador = ?';
+    // Parámetros para la consulta.
+    $params = array($this->nombre, $this->usuario, $this->correo, $this->telefono, $this->id);
+    // Ejecutar la consulta y retornar el resultado.
+    return Database::executeRow($sql, $params);
+}
