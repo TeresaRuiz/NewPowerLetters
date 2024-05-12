@@ -63,3 +63,28 @@ class AdministradorHandler
         $params = array($this->clave, $_SESSION['idAdministrador']);
         return Database::executeRow($sql, $params);
     }
+
+    public function readProfile()
+    {
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen
+                FROM tb_administradores
+                WHERE id_administrador = ?';
+        $params = array($_SESSION['idAdministrador']);
+        return Database::getRow($sql, $params);
+    }
+
+    public function editProfile()
+{
+    // Sentencia SQL para actualizar el perfil del administrador.
+    $sql = 'UPDATE tb_administradores
+            SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?, clave_administrador = ?, telefono_adm = ?, fecha_registro = ?, imagen = ?
+            WHERE id_administrador = ?';
+    
+    // Parámetros para la consulta preparada.
+    $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->fecha, $this->imagen, $_SESSION['idAdministrador']);
+    
+    // Ejecutar la consulta y retornar el resultado.
+    return Database::executeRow($sql, $params);
+}
+
+
