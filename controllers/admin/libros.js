@@ -51,3 +51,47 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         sweetAlert(2, DATA.error, false);
     }
 });
+
+
+/*
+*   Función asíncrona para llenar la tabla con los registros disponibles.
+*   Parámetros: form (objeto opcional con los datos de búsqueda).
+*   Retorno: ninguno.
+*/
+const fillTable = async (form = null) => {
+    // Se inicializa el contenido de la tabla.
+    ROWS_FOUND.textContent = '';
+    TABLE_BODY.innerHTML = '';
+    // Se verifica la acción a realizar.
+    (form) ? action = 'searchRows' : action = 'readAll';
+    // Petición para obtener los registros disponibles.
+    const DATA = await fetchData(LIBRO_API, action, form);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se recorre el conjunto de registros fila por fila.
+        DATA.dataset.forEach(row => {
+            // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            TABLE_BODY.innerHTML += `
+            <tr>
+                <td>${row.titulo}</td>
+                <td>${row.precio}</td>
+                <td>${row.descripcion}</td>
+                <td><img src="${SERVER_URL}images/libros/${row.imagen}" height="50"></td>
+                <td>${row.existencias}</td>
+                <td class="action-icons">
+                    <a onclick="openUpdate(${row.id_libro})">
+                        <i class="ri-edit-line"></i>
+                    </a>
+                    <a onclick="openDelete(${row.id_libro})">
+                        <i class="ri-delete-bin-line"></i>
+                    </a>
+                </td>
+            </tr>
+            `;
+        });
+        // Se muestra un mensaje de acuerdo con el resultado.
+        ROWS_FOUND.textContent = DATA.message;
+    } else {
+        sweetAlert(4, DATA.error, true);
+    }
+}
