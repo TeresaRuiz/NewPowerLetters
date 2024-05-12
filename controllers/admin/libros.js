@@ -7,8 +7,8 @@ const LIBRO_API = 'services/admin/libros.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer el contenido de la tabla.
-const TABLE_BODY = document.getElementById('tableBody'),
-    ROWS_FOUND = document.getElementById('rowsFound');
+const TABLE_BODY = document.getElementById('tableBody');
+const ROWS_FOUND = document.getElementById('rowsFound');
     // Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
 id_libro= document.getElementById('id_libro'),

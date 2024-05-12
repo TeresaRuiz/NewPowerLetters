@@ -24,7 +24,7 @@ class LibroData extends LibroHandler
             $this->id = $value; // Asigna el valor del identificador.
             return true;
         } else {
-            $this->data_error = 'El identificador del género es incorrecto'; // Almacena mensaje de error.
+            $this->data_error = 'El identificador del libro es incorrecto'; // Almacena mensaje de error.
             return false;
         }
     }

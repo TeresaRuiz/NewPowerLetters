@@ -15,8 +15,8 @@ if (isset($_GET['action'])) {
         'message' => null, // Mensaje descriptivo del resultado.
         'dataset' => null, // Datos resultantes de la operación.
         'error' => null, // Mensaje de error si ocurre un problema.
-        'exception' => null // Excepción del servidor de base de datos si es aplicable.
-    );
+        'exception' => null,// Excepción del servidor de base de datos si es aplicable.
+        'fileStatus' => null);// Estado de archivo (si es necesario para alguna operación).
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
     if (isset($_SESSION['idAdministrador'])or true) {
@@ -57,6 +57,8 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al crear el libro'; // Mensaje de error si ocurre un problema.
                 }
                 break;
+
+
             case 'readAll':
                 if ($result['dataset'] = $libros->readAll()) {
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
@@ -75,6 +77,8 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Libro inexistente';
                 }
                 break;
+
+                
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
