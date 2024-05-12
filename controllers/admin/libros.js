@@ -94,4 +94,18 @@ const fillTable = async (form = null) => {
     } else {
         sweetAlert(4, DATA.error, true);
     }
+    
 }
+/*
+*   Función para preparar el formulario al momento de insertar un registro.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+const openCreate = () => {
+    // Se muestra la caja de diálogo con su título.
+    modal.style.display = "block";
+    MODAL_TITLE.textContent = 'Agregar un nuevo libro';
+    // Se prepara el formulario.
+    SAVE_FORM.reset();
+}
+
