@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 /*
  *  Clase para manejar el comportamiento de los datos de la tabla administrador.
  */
@@ -23,7 +23,7 @@ class AdministradorHandler
      *  Métodos para gestionar la cuenta del administrador.
      */
 
-     public function checkUser($username, $password)
+    public function checkUser($username, $password)
     {
         $sql = 'SELECT id_administrador, user_administrador, clave_administrador
                 FROM tb_administradores
@@ -74,82 +74,94 @@ class AdministradorHandler
     }
 
     public function editProfile()
-{
-    // Sentencia SQL para actualizar el perfil del administrador.
-    $sql = 'UPDATE tb_administradores
+    {
+        // Sentencia SQL para actualizar el perfil del administrador.
+        $sql = 'UPDATE tb_administradores
             SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?, clave_administrador = ?, telefono_adm = ?, fecha_registro = ?, imagen = ?
             WHERE id_administrador = ?';
-    
-    // Parámetros para la consulta preparada.
-    $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->fecha, $this->imagen, $_SESSION['idAdministrador']);
-    
-    // Ejecutar la consulta y retornar el resultado.
-    return Database::executeRow($sql, $params);
-}
+
+        // Parámetros para la consulta preparada.
+        $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->fecha, $this->imagen, $_SESSION['idAdministrador']);
+
+        // Ejecutar la consulta y retornar el resultado.
+        return Database::executeRow($sql, $params);
+    }
     /*
      *  Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
      */
     public function searchRows()
-{
-    // Obtener el valor de búsqueda y formatearlo adecuadamente.
-    $value = '%' . Validator::getSearchValue() . '%';
-    
-    // Consulta SQL para buscar administradores por nombre o apellido.
-    $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador
+    {
+        // Obtener el valor de búsqueda y formatearlo adecuadamente.
+        $value = '%' . Validator::getSearchValue() . '%';
+
+        // Consulta SQL para buscar administradores por nombre o apellido.
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador
             FROM tb_administradores
             WHERE nombre_administrador LIKE ? OR user_administrador LIKE ?
             ORDER BY nombre_administrador';
-    
-    // Parámetros para la consulta preparada.
-    $params = array($value, $value);
-    
-    // Ejecutar la consulta y retornar los resultados.
-    return Database::getRows($sql, $params);
-}
-public function createRow()
-{
-    // Consulta SQL para insertar un nuevo administrador.
-    $sql = 'INSERT INTO tb_administradores(nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-            VALUES(?, ?, ?, ?, ?, ?, ?)';
-    
-    // Parámetros para la consulta preparada.
-    $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->fecha, $this->imagen);
-    
-    // Ejecutar la consulta y retornar el resultado.
-    return Database::executeRow($sql, $params);
-}
 
-public function readAll()
-{
-    // Consulta SQL para seleccionar todos los administradores.
-    $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm
+        // Parámetros para la consulta preparada.
+        $params = array($value, $value);
+
+        // Ejecutar la consulta y retornar los resultados.
+        return Database::getRows($sql, $params);
+    }
+    public function createRow()
+    {
+        // Consulta SQL para insertar un nuevo administrador.
+        $sql = 'INSERT INTO tb_administradores(nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
+            VALUES(?, ?, ?, ?, ?, ?, ?)';
+
+        // Parámetros para la consulta preparada.
+        $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->fecha, $this->imagen);
+
+        // Ejecutar la consulta y retornar el resultado.
+        return Database::executeRow($sql, $params);
+    }
+
+    public function readAll()
+    {
+        // Consulta SQL para seleccionar todos los administradores.
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm
             FROM tb_administradores
             ORDER BY nombre_administrador';
 
-    // Obtener y retornar los resultados de la consulta.
-    return Database::getRows($sql);
-}
+        // Obtener y retornar los resultados de la consulta.
+        return Database::getRows($sql);
+    }
 
-public function readOne()
-{
-    // Consulta SQL para seleccionar un administrador por su ID.
-    $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm
+    public function readOne()
+    {
+        // Consulta SQL para seleccionar un administrador por su ID.
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm
             FROM tb_administradores
             WHERE id_administrador = ?';
-    // Parámetros para la consulta.
-    $params = array($this->id);
-    // Obtener y retornar el resultado de la consulta.
-    return Database::getRow($sql, $params);
-}
+        // Parámetros para la consulta.
+        $params = array($this->id);
+        // Obtener y retornar el resultado de la consulta.
+        return Database::getRow($sql, $params);
+    }
 
-public function updateRow()
-{
-    // Consulta SQL para actualizar los datos de un administrador.
-    $sql = 'UPDATE tb_administradores
+    public function updateRow()
+    {
+        // Consulta SQL para actualizar los datos de un administrador.
+        $sql = 'UPDATE tb_administradores
             SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?, telefono_adm = ?
             WHERE id_administrador = ?';
-    // Parámetros para la consulta.
-    $params = array($this->nombre, $this->usuario, $this->correo, $this->telefono, $this->id);
-    // Ejecutar la consulta y retornar el resultado.
-    return Database::executeRow($sql, $params);
+        // Parámetros para la consulta.
+        $params = array($this->nombre, $this->usuario, $this->correo, $this->telefono, $this->id);
+        // Ejecutar la consulta y retornar el resultado.
+        return Database::executeRow($sql, $params);
+    }
+
+    public function deleteRow()
+    {
+        // Consulta SQL para eliminar un administrador por su ID.
+        $sql = 'DELETE FROM tb_administradores
+            WHERE id_administrador = ?';
+        // Parámetros para la consulta.
+        $params = array($this->id);
+        // Ejecutar la consulta y retornar el resultado.
+        return Database::executeRow($sql, $params);
+    }
 }
