@@ -107,6 +107,7 @@ const openCreate = () => {
     MODAL_TITLE.textContent = 'Agregar un nuevo libro';
     // Se prepara el formulario.
     SAVE_FORM.reset();
+    fillSelect(GENERO_API, 'readAll', 'nombreGEN');
 }
 
 /*
