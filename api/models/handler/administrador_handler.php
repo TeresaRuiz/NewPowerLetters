@@ -86,5 +86,24 @@ class AdministradorHandler
     // Ejecutar la consulta y retornar el resultado.
     return Database::executeRow($sql, $params);
 }
-
+    /*
+     *  Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
+     */
+    public function searchRows()
+{
+    // Obtener el valor de búsqueda y formatearlo adecuadamente.
+    $value = '%' . Validator::getSearchValue() . '%';
+    
+    // Consulta SQL para buscar administradores por nombre o apellido.
+    $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador
+            FROM tb_administradores
+            WHERE nombre_administrador LIKE ? OR user_administrador LIKE ?
+            ORDER BY nombre_administrador';
+    
+    // Parámetros para la consulta preparada.
+    $params = array($value, $value);
+    
+    // Ejecutar la consulta y retornar los resultados.
+    return Database::getRows($sql, $params);
+}
 
