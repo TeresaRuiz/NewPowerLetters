@@ -4,7 +4,7 @@ require_once('../../helpers/validator.php');
 // Se incluye la clase padre.
 require_once('../../models/handler/libro_handler.php');
 /*
- *  Clase para manejar el encapsulamiento de los datos de la tabla CATEGORIA.
+ *  Clase para manejar el encapsulamiento de los datos de la tabla LIBROS.
  */
 class LibroData extends LibroHandler
 {
@@ -160,10 +160,10 @@ class LibroData extends LibroHandler
     public function setFilename()
     {
         if ($data = $this->readFilename()) {
-            $this->filename = $data['imagen_producto'];
+            $this->filename = $data['imagen'];
             return true;
         } else {
-            $this->data_error = 'Producto inexistente';
+            $this->data_error = 'Libro inexistente';
             return false;
         }
     }
