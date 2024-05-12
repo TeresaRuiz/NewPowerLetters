@@ -39,12 +39,12 @@ if (isset($_GET['action'])) {
                 // Validar y establecer los campos necesarios para crear un libro.
                 if (
                     !$libros->setTitulo($_POST['titulo']) ||
-                    !$libros->setAutor($_POST['idAutor']) ||
+                    !$libros->setAutor($_POST['autor']) ||
                     !$libros->setPrecio($_POST['precio']) ||
                     !$libros->setDescripcion($_POST['descripcion']) ||
                     !$libros->setImagen($_FILES['imagen']) ||
-                    !$libros->setClasificación($_POST['idClas']) ||
-                    !$libros->setEditorial($_POST['idEditorial']) ||
+                    !$libros->setClasificación($_POST['clasificacion']) ||
+                    !$libros->setEditorial($_POST['editorial']) ||
                     !$libros->setExistencias($_POST['existencias']) ||
                     !$libros->setGenero($_POST['nombreGEN'])
                 ) {
@@ -81,12 +81,12 @@ if (isset($_GET['action'])) {
                     !$libros->setId($_POST['id_libro']) or
                     !$libros->setFilename() or
                     !$libros->setTitulo($_POST['titulo']) ||
-                    !$libros->setAutor($_POST['idAutor']) ||
+                    !$libros->setAutor($_POST['autor']) ||
                     !$libros->setPrecio($_POST['precio']) ||
                     !$libros->setDescripcion($_POST['descripcion']) ||
                     !$libros->setImagen($_FILES['imagen']) ||
-                    !$libros->setClasificación($_POST['idClas']) ||
-                    !$libros->setEditorial($_POST['idEditorial']) ||
+                    !$libros->setClasificación($_POST['clasificacion']) ||
+                    !$libros->setEditorial($_POST['editorial']) ||
                     !$libros->setExistencias($_POST['existencias']) ||
                     !$libros->setGenero($_POST['nombreGEN'])
                 ) {
