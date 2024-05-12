@@ -440,6 +440,7 @@ img {
 }
 
 .login__button,
+.libro__button,
 .genero__button {
   width: 100%;
   cursor: pointer;
