@@ -68,7 +68,7 @@ const fillTable = async (form = null) => {
                 <td>${row.descripcion}</td>
                 <td>${row.imagen}</td>
                 <td>${row.existencias}</td>
-                <td>${row.autor}</td>
+                <td>${row.id_autor}</td>
                 <td class="action-icons">
                 <a onclick="openUpdate(${row.id_libro})">
                 <i class="ri-eye-line"></i>
