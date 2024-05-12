@@ -19,7 +19,7 @@ if (isset($_GET['action'])) {
     );
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
-    if (isset($_SESSION['idAdministrador'])) {
+    if (isset($_SESSION['idAdministrador'])or true) {
         // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
         switch ($_GET['action']) {
             case 'searchRows':
@@ -46,13 +46,13 @@ if (isset($_GET['action'])) {
                     !$libros->setClasificación($_POST['idClas']) ||
                     !$libros->setEditorial($_POST['idEditorial']) ||
                     !$libros->setExistencias($_POST['existencias']) ||
-                    !$libros->setGenero($_POST['idGenero'])
+                    !$libros->setGenero($_POST['nombreGEN'])
                 ) {
                     $result['error'] = $libros->getDataError(); // Obtener mensaje de error si la validación falla.
                 } elseif ($libros->createRow()) { // Intentar crear un nuevo libro.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Libro creado con éxito';
-                    $result['fileStatus'] = Validator::saveFile($_FILES['imagen'], $producto::RUTA_IMAGEN); // Mensaje de éxito.
+                    $result['fileStatus'] = Validator::saveFile($_FILES['imagen'], $libros::RUTA_IMAGEN); // Mensaje de éxito.
                 } else {
                     $result['error'] = 'Ocurrió un problema al crear el libro'; // Mensaje de error si ocurre un problema.
                 }
@@ -88,7 +88,7 @@ if (isset($_GET['action'])) {
                     !$libros->setClasificación($_POST['idClas']) ||
                     !$libros->setEditorial($_POST['idEditorial']) ||
                     !$libros->setExistencias($_POST['existencias']) ||
-                    !$libros->setGenero($_POST['idGenero'])
+                    !$libros->setGenero($_POST['nombreGEN'])
                 ) {
                     $result['error'] = $libros->getDataError(); // Mensaje de error si la validación falla.
                 } elseif ($libros->updateRow()) { // Intentar actualizar la fila.

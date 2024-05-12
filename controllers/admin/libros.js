@@ -1,3 +1,7 @@
+const AUTORES_API = 'services/admin/autores.php';
+const CLASIFICACION_API = 'services/admin/clasificacion.php';
+const EDITORIAL_API = 'services/admin/editoriales.php';
+const GENERO_API = 'services/admin/genero.php';
 // Constantes para completar las rutas de la API.
 const LIBRO_API = 'services/admin/libros.php';
 // Constante para establecer el formulario de buscar.
@@ -107,7 +111,10 @@ const openCreate = () => {
     MODAL_TITLE.textContent = 'Agregar un nuevo libro';
     // Se prepara el formulario.
     SAVE_FORM.reset();
-    fillSelect(LIBRO_API, 'readAll', 'nombreGEN');
+    fillSelect(GENERO_API, 'readAll', 'nombreGEN');
+    fillSelect(EDITORIAL_API, 'readAll', 'editorial');
+    fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion');
+    fillSelect(AUTORES_API, 'readAll', 'autor');
 }
 
 /*
@@ -130,7 +137,10 @@ const openUpdate = async (id) => {
         precio.value = ROW.precio;
         descripcion.value = ROW.descripcion;
         existencias.value = ROW.existencias;
-        fillSelect(LIBRO_API, 'readAll', 'nombreGEN', ROW.nombre);
+        fillSelect(GENERO_API, 'readAll', 'nombreGEN', ROW.nombre);
+        fillSelect(EDITORIAL_API, 'readAll', 'editorial', ROW.nombre);
+        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion', ROW.nombre);
+        fillSelect(AUTORES_API, 'readAll', 'autor', ROW.nombre);
         AbrirModal();
         MODAL_TITLE.textContent = 'Actualizar un libro';
     } else {
