@@ -107,7 +107,7 @@ const openCreate = () => {
     MODAL_TITLE.textContent = 'Agregar un nuevo libro';
     // Se prepara el formulario.
     SAVE_FORM.reset();
-    fillSelect(GENERO_API, 'readAll', 'nombreGEN');
+    fillSelect(LIBRO_API, 'readAll', 'nombreGEN');
 }
 
 /*
@@ -130,7 +130,7 @@ const openUpdate = async (id) => {
         precio.value = ROW.precio;
         descripcion.value = ROW.descripcion;
         existencias.value = ROW.existencias;
-        fillSelect(GENERO_API, 'readAll', 'nombreGEN', ROW.nombre);
+        fillSelect(LIBRO_API, 'readAll', 'nombreGEN', ROW.nombre);
         AbrirModal();
         MODAL_TITLE.textContent = 'Actualizar un libro';
     } else {
