@@ -54,3 +54,12 @@ class AdministradorHandler
             return false;
         }
     }
+
+    public function changePassword()
+    {
+        $sql = 'UPDATE tb_administradores
+                SET clave_administrador = ?
+                WHERE id_administrador = ?';
+        $params = array($this->clave, $_SESSION['idAdministrador']);
+        return Database::executeRow($sql, $params);
+    }
