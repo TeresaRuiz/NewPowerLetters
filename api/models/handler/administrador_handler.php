@@ -130,4 +130,14 @@ public function readAll()
     return Database::getRows($sql);
 }
 
-
+public function readOne()
+{
+    // Consulta SQL para seleccionar un administrador por su ID.
+    $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm
+            FROM tb_administradores
+            WHERE id_administrador = ?';
+    // Parámetros para la consulta.
+    $params = array($this->id);
+    // Obtener y retornar el resultado de la consulta.
+    return Database::getRow($sql, $params);
+}
