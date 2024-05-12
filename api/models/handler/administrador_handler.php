@@ -119,4 +119,15 @@ public function createRow()
     return Database::executeRow($sql, $params);
 }
 
+public function readAll()
+{
+    // Consulta SQL para seleccionar todos los administradores.
+    $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm
+            FROM tb_administradores
+            ORDER BY nombre_administrador';
+
+    // Obtener y retornar los resultados de la consulta.
+    return Database::getRows($sql);
+}
+
 
