@@ -131,7 +131,7 @@ const openUpdate = async (id) => {
         existencias.value = ROW.existencias;
         fillSelect(GENERO_API, 'readAll', 'nombreGEN', ROW.nombre);
         AbrirModal();
-        MODAL_TITLE.textContent = 'Actualizar un género de zapatos';
+        MODAL_TITLE.textContent = 'Actualizar un libro';
     } else {
         sweetAlert(2, DATA.error, false);
     }
