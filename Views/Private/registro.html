@@ -25,7 +25,8 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            margin: 0; /* Cambia el color de fondo según tu preferencia */
+            margin: 0;
+            /* Cambia el color de fondo según tu preferencia */
         }
 
         .container_registro {
@@ -39,15 +40,19 @@
             /* Ajusta el color de fondo del formulario según tu preferencia */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Añade sombra al formulario */
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            /* Añade sombra al formulario */
             width: 100%;
-            max-width: 2200px; /* Ajusta el ancho máximo del formulario según tu preferencia */
+            max-width: 2200px;
+            /* Ajusta el ancho máximo del formulario según tu preferencia */
         }
 
         .register__group {
             display: grid;
-            grid-template-columns: repeat(2, 1fr); /* Divide en 3 columnas */
-            grid-gap: 10px; /* Espacio entre elementos */
+            grid-template-columns: repeat(2, 1fr);
+            /* Divide en 3 columnas */
+            grid-gap: 10px;
+            /* Espacio entre elementos */
         }
 
         .register__label {
@@ -63,10 +68,10 @@
             border: 1px solid #ccc;
             box-sizing: border-box;
         }
-
     </style>
 </head>
 <!--==================== REGISTRO DE USUARIOS ====================-->
+
 <body>
 
     <div class="container_registro">
@@ -76,36 +81,46 @@
 
             <h3 class="register__title">Registro de administradores</h3>
 
+            <input type="number" id="idAdministrador" name="idAdministrador" style=" display: none;">
             <div class="register__group grid">
 
                 <div>
                     <label for="nombre" class="register__label">Nombre</label>
-                    <input type="text" name="nombreAdministrador" id="nombreAdministrador" placeholder="Escribe tu nombre" class="register__input">
+                    <input type="text" name="nombreAdministrador" id="nombreAdministrador"
+                        placeholder="Escribe tu nombre" class="register__input">
                 </div>
 
                 <div>
                     <label for="nombre_usuario" class="register__label">Nombre de usuario</label>
-                    <input type="text" name="UsuarioAdministrador" id="UsuarioAdministrador" placeholder="Elige un nombre de usuario" class="register__input">
+                    <input type="text" name="UsuarioAdministrador" id="UsuarioAdministrador"
+                        placeholder="Elige un nombre de usuario" class="register__input">
                 </div>
 
                 <div>
                     <label for="correo" class="register__label">Correo electrónico</label>
-                    <input type="email" name="correoAdministrador" id="correoAdministrador" placeholder="Ingresa tu correo electrónico" class="register__input">
+                    <input type="email" name="correoAdministrador" id="correoAdministrador"
+                        placeholder="Ingresa tu correo electrónico" class="register__input">
                 </div>
 
                 <div>
                     <label for="clave" class="register__label">Contraseña</label>
-                    <input type="password" name="claveAdministrador" id="claveAdministrador" placeholder="Ingresa tu contraseña" class="register__input">
+                    <input type="password" name="claveAdministrador" id="claveAdministrador"
+                        placeholder="Ingresa tu contraseña" class="register__input">
                 </div>
-
+                <div>
+                    <label for="confirmarClave" class="register__label">Confirmar contraseña</label>
+                    <input id="confirmarClave" type="password" name="confirmarClave" class="register__input" required>
+                </div>
                 <div>
                     <label for="telefono" class="register__label">Teléfono</label>
-                    <input type="text" name="telefono" id="telefono" placeholder="Ingresa tu teléfono" class="register__input">
+                    <input type="text" name="telefono" id="telefono" placeholder="Ingresa tu teléfono"
+                        class="register__input">
                 </div>
 
                 <div>
                     <label for="fecha" class="register__label">Fecha de registro</label>
-                    <input type="text" name="fecha_registro" id="fecha_registro" placeholder="Ingresa tu teléfono" class="register__input">
+                    <input type="text" name="fecha_registro" id="fecha_registro" placeholder="Ingresa tu teléfono"
+                        class="register__input">
                 </div>
 
 

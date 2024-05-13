@@ -33,7 +33,8 @@ if (isset($_GET['action'])) {
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador']) or
                     !$administrador->setTelefono($_POST['telefono']) or
-                    !$administrador->setFechaRegistro($_POST['fecha_registro'])
+                    !$administrador->setFechaRegistro($_POST['fecha_registro'])or
+                    !$libros->setImagen($_FILES['imagen'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($_POST['claveAdministrador'] != $_POST['confirmarClave']) {
@@ -70,7 +71,8 @@ if (isset($_GET['action'])) {
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador']) or
                     !$administrador->setTelefono($_POST['telefono']) or
-                    !$administrador->setFechaRegistro($_POST['fecha_registro'])
+                    !$administrador->setFechaRegistro($_POST['fecha_registro'])or
+                    !$libros->setImagen($_FILES['imagen'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($administrador->updateRow()) {
@@ -93,11 +95,11 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'getUser':
-                if (isset($_SESSION['aliasAdministrador'])) {
+                if (isset($_SESSION['UsuarioAdministrador'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['aliasAdministrador'];
+                    $result['username'] = $_SESSION['UsuarioAdministrador'];
                 } else {
-                    $result['error'] = 'Alias de administrador indefinido';
+                    $result['error'] = 'Usuario de administrador indefinido';
                 }
                 break;
             case 'logOut':
@@ -123,13 +125,14 @@ if (isset($_GET['action'])) {
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador']) or
                     !$administrador->setTelefono($_POST['telefono']) or
-                    !$administrador->setFechaRegistro($_POST['fecha_registro'])
+                    !$administrador->setFechaRegistro($_POST['fecha_registro'])or
+                    !$libros->setImagen($_FILES['imagen'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($administrador->editProfile()) {
                     $result['status'] = 1;
                     $result['message'] = 'Perfil modificado correctamente';
-                    $_SESSION['aliasAdministrador'] = $_POST['aliasAdministrador'];
+                    $_SESSION['UsuarioAdministrador'] = $_POST['UsuarioAdministrador'];
                 } else {
                     $result['error'] = 'Ocurrió un problema al modificar el perfil';
                 }
@@ -171,7 +174,8 @@ if (isset($_GET['action'])) {
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador']) or
                     !$administrador->setTelefono($_POST['telefono']) or
-                    !$administrador->setFechaRegistro($_POST['fecha_registro'])
+                    !$administrador->setFechaRegistro($_POST['fecha_registro'])or
+                    !$libros->setImagen($_FILES['imagen'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($_POST['claveAdministrador'] != $_POST['confirmarClave']) {
@@ -185,7 +189,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'logIn':
                 $_POST = Validator::validateForm($_POST);
-                if ($administrador->checkUser($_POST['alias'], $_POST['clave'])) {
+                if ($administrador->checkUser($_POST['usuario'], $_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                 } else {
