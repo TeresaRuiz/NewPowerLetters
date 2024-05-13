@@ -78,9 +78,9 @@ const fillTable = async (form = null) => {
             TABLE_BODY.innerHTML += `
             <tr>
                 <td>${row.titulo_libro}</td>
-                <td>${row.precio}</td>
                 <td>${row.descripcion_libro}</td>
                 <td><img src="${SERVER_URL}images/libros/${row.imagen}" height="50"></td>
+                <td>${row.precio}</td>
                 <td>${row.existencias}</td>
                 <td class="action-icons">
                     <a onclick="openUpdate(${row.id_libro})">
@@ -160,7 +160,7 @@ const openDelete = async (id) => {
     if (RESPONSE) {
         // Se define una constante tipo objeto con los datos del registro seleccionado.
         const FORM = new FormData();
-        FORM.append('id_autor', id);
+        FORM.append('id_libro', id);
         // Petición para eliminar el registro seleccionado.
         const DATA = await fetchData(LIBRO_API, 'deleteRow', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.

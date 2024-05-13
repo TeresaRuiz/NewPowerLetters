@@ -105,13 +105,13 @@ class LibroData extends LibroHandler
     {
         // Valida que el nombre sea alfanumérico.
         if (!Validator::validateAlphanumeric($value)) {
-            $this->data_error = 'El nombre debe ser un valor alfanumérico'; // Almacena mensaje de error.
+            $this->data_error = 'La clasificación debe ser un valor alfanumérico'; // Almacena mensaje de error.
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
             $this->clasificacion = $value; // Asigna el valor del nombre.
             return true;
         } else {
-            $this->data_error = 'El nombre debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
+            $this->data_error = 'La clasificación debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
             return false;
         }
     }
@@ -126,7 +126,7 @@ class LibroData extends LibroHandler
             $this->editorial = $value; // Asigna el valor del nombre.
             return true;
         } else {
-            $this->data_error = 'El nombre debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
+            $this->data_error = 'La editorial debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
             return false;
         }
     }
