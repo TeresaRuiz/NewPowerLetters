@@ -125,6 +125,34 @@ const openCreate = () => {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
+
+const openUpdate = async (id) => {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id_libro', id);
+    // Petición para obtener los datos del registro solicitado.
+    const DATA = await fetchData(LIBRO_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se inicializan los campos con los datos.
+        const ROW = DATA.dataset;
+        id_libro.value = ROW.id_libro;
+        titulo.value = ROW.titulo;
+        precio.value = ROW.precio;
+        descripcion.value = ROW.descripcion;
+        existencias.value = ROW.existencias;
+        fillSelect(GENERO_API, 'readAll', 'nombreGEN', ROW.id_genero);
+        fillSelect(EDITORIAL_API, 'readAll', 'editorial', ROW.id_editorial);
+        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion', ROW.id_clasificacion);
+        fillSelect(AUTORES_API, 'readAll', 'autor', ROW.id_autor);
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Actualizar un libro';
+    } else {
+        sweetAlert(2, DATA.error, false);
+    }
+}
+
+
 const viewDetails = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
@@ -174,32 +202,6 @@ const viewDetails = async (id) => {
         sweetAlert(2, DATA.error, false);
     }
 };
-
-const openUpdate = async (id) => {
-    // Se define una constante tipo objeto con los datos del registro seleccionado.
-    const FORM = new FormData();
-    FORM.append('id_libro', id);
-    // Petición para obtener los datos del registro solicitado.
-    const DATA = await fetchData(LIBRO_API, 'readOne', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (DATA.status) {
-        // Se inicializan los campos con los datos.
-        const ROW = DATA.dataset;
-        id_libro.value = ROW.id_libro;
-        titulo.value = ROW.titulo;
-        precio.value = ROW.precio;
-        descripcion.value = ROW.descripcion;
-        existencias.value = ROW.existencias;
-        fillSelect(GENERO_API, 'readAll', 'nombreGEN', ROW.id_genero);
-        fillSelect(EDITORIAL_API, 'readAll', 'editorial', ROW.id_editorial);
-        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion', ROW.id_clasificacion);
-        fillSelect(AUTORES_API, 'readAll', 'autor', ROW.id_autor);
-        AbrirModal();
-        MODAL_TITLE.textContent = 'Actualizar un libro';
-    } else {
-        sweetAlert(2, DATA.error, false);
-    }
-}
 
 /*
 *   Función asíncrona para eliminar un registro.
