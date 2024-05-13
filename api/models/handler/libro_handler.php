@@ -27,12 +27,38 @@ class LibroHandler
      *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
      */
     public function searchRows()
-    {
-        $value = '%' . Validator::getSearchValue() . '%';
-        $sql = '';
-        $params = array($value, $value);
-        return Database::getRows($sql, $params);
-    }
+{
+    $value = '%' . Validator::getSearchValue() . '%';
+    $sql = 'SELECT
+        l.id_libro,
+        l.titulo AS titulo_libro,
+        l.descripcion AS descripcion_libro,
+        l.precio,
+        l.imagen,
+        a.nombre AS nombre_autor,
+        c.nombre AS nombre_clasificacion,
+        e.nombre AS nombre_editorial,
+        g.nombre AS nombre_genero,
+        l.existencias
+    FROM
+        tb_libros AS l
+    INNER JOIN
+        tb_autores AS a ON l.id_autor = a.id_autor
+    INNER JOIN
+        tb_clasificaciones AS c ON l.id_clasificacion = c.id_clasificacion
+    INNER JOIN
+        tb_editoriales AS e ON l.id_editorial = e.id_editorial
+    INNER JOIN
+        tb_generos AS g ON l.id_genero = g.id_genero
+    WHERE
+        l.titulo LIKE ? OR
+        l.descripcion LIKE ?
+    ORDER BY
+        l.titulo;';
+    $params = array($value, $value);
+    return Database::getRows($sql, $params);
+}
+
 
     public function createRow()
     {
