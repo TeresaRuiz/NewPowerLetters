@@ -1,9 +1,9 @@
-// Crea el elemento header
+// Crea el elemento footer
 const footer = document.createElement('footer');
 footer.classList.add('footer');
 footer.id = 'footer';
 
-// Agrega el contenido del header
+// Agrega el contenido del footer
 footer.innerHTML = `
 <footer class="footer">
          
@@ -32,11 +32,11 @@ footer.innerHTML = `
                   <ul class="footer__links">
                      
                      <li class="footer__links">
-                        <a href="" class="footer__link">Politica de privacidad</a>
+                        <a href="url_privacidad" class="footer__link">Politica de privacidad</a>
                      </li>
                      
                      <li class="footer__links">
-                        <a href="" class="footer__link">Equipo de servicios</a>
+                        <a href="url_servicios" class="footer__link">Equipo de servicios</a>
                      </li>
 
 
@@ -52,19 +52,19 @@ footer.innerHTML = `
                   <ul class="footer__links">
                      
                      <li class="footer__links">
-                        <a href="" class="footer__link">Blogs</a>
+                        <a href="url_blogs" class="footer__link">Blogs</a>
                      </li>
 
                      <li class="footer__links">
-                        <a href="" class="footer__link">Comunidad</a>
+                        <a href="url_comunidad" class="footer__link">Comunidad</a>
                      </li>
 
                      <li class="footer__links">
-                        <a href="" class="footer__link"> Nuestro equipo</a>
+                        <a href="url_equipo" class="footer__link"> Nuestro equipo</a>
                      </li>
 
                      <li class="footer__links">
-                        <a href="" class="footer__link">Centro de ayuda</a>
+                        <a href="url_ayuda" class="footer__link">Centro de ayuda</a>
                      </li>
 
 
@@ -109,13 +109,11 @@ footer.innerHTML = `
                         <i class="ri-facebook-circle-line"></i>
                      </a>
 
-                     <a href=" https://www.instagram.com/
-                     " target="_blank" class="footer__social-link">
+                     <a href="https://www.instagram.com/" target="_blank" class="footer__social-link">
                         <i class="ri-instagram-line"></i>
                      </a>
 
-                     <a href=" https://twitter.com/
-                     " target="_blank" class="footer__social-link">
+                     <a href="https://twitter.com/" target="_blank" class="footer__social-link">
                         <i class="ri-twitter-x-line"></i>
                      </a>
 
@@ -128,7 +126,7 @@ footer.innerHTML = `
          </div>
 
          <span class="footer__copy">
-            &; Todos los derechos reservados a Teresa Ruiz y  Aniket Gawade
+            &copy; Todos los derechos reservados a Teresa Ruiz y  Aniket Gawade
          </span>
 
       </footer>
@@ -136,10 +134,9 @@ footer.innerHTML = `
       <!--========== SCROLL UP ==========-->
       
       <a href="#" class="scrollup" id="scroll-up">
-
          <i class="ri-arrow-up-line"></i>
       </a>
-      `;
+`;
 
-      // Inserta el header al principio del body
-      document.body.appendChild(footer);
+// Inserta el footer al final del body
+document.body.appendChild(footer);
