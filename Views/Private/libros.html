@@ -118,6 +118,56 @@
                 </div>
             </div>
         </div>
+
+        <!-- Modal de vista-->
+        <!-- Modal de vista con imagen a la izquierda -->
+        <div id="myModalView" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2><br>
+                    <div class="libros_group grid">
+                        <div>
+                            <h3 id="tituloVista"></h3>
+                            <br>
+                            <img id="vista" src="${SERVER_URL}images/libros/${row.imagen}" width="100">
+                        </div>
+                        <div>
+                            <div>
+                                <label for="autor" class="libro__label">Autor:</label>
+                                <p id="autorVista"></p>
+                            </div>
+                            <div>
+                                <label for="precio" class="libro__label">Precio:</label>
+                                <p id="precioVista"></p>
+                            </div>
+                            <div>
+                                <label for="descripcion" class="libro__label">Descripción:</label>
+                                <p id="descripcionVista"></p>
+                            </div>
+                            <div>
+                                <label for="clasificacion" class="libro__label">Clasificación:</label>
+                                <p id="clasificacionVista"></p>
+                            </div>
+                            <div>
+                                <label for="editorial" class="libro__label">Editorial:</label>
+                                <p id="editorialVista"></p>
+                            </div>
+                            <div>
+                                <label for="existencias" class="libro__label">Existencias:</label>
+                                <p id="existenciasVista"></p>
+                            </div>
+                            <div>
+                                <label for="genero" class="libro__label">Género:</label>
+                                <p id="generoVista"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         </div>
     </main>
     <!--=============== SWIPER JS ===============-->

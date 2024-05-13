@@ -151,8 +151,6 @@ const openUpdate = async (id) => {
         sweetAlert(2, DATA.error, false);
     }
 }
-
-
 const viewDetails = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
@@ -163,70 +161,47 @@ const viewDetails = async (id) => {
     if (DATA.status) {
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        id_libro.value = ROW.id_libro;
-        titulo.value = ROW.titulo;
-        precio.value = ROW.precio;
-        descripcion.value = ROW.descripcion;
-        existencias.value = ROW.existencias;
-        fillSelect(GENERO_API, 'readAll', 'nombreGEN', ROW.id_genero);
-        fillSelect(EDITORIAL_API, 'readAll', 'editorial', ROW.id_editorial);
-        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion', ROW.id_clasificacion);
-        fillSelect(AUTORES_API, 'readAll', 'autor', ROW.id_autor);
-
-        // Repite este proceso para los otros campos generados por fillSelect si es necesario
-        AbrirModal();
-        MODAL_TITLE.textContent = 'Detalles del libro';
-        // Deshabilitar los campos para que no se puedan editar
-        id_libro.disabled = true;
-        titulo.disabled = true;
-        precio.disabled = true;
-        descripcion.disabled = true;
-        existencias.disabled = true;
-
-        // Deshabilitar los campos generados por fillSelect
-        const selectFields = [
-            document.getElementById('nombreGEN'),
-            document.getElementById('editorial'),
-            document.getElementById('clasificacion'),
-            document.getElementById('autor')
-        ];
-
-        selectFields.forEach(field => {
-            field.disabled = true;
-            field.style.backgroundColor = '#f0f2ff';
-            field.style.color = '#2e3762';
-        });
-        // Ocultar o deshabilitar los botones de actualización
-        boton.style.display = 'none';
+        AbrirModalVista();
+        MODAL_TITLE.textContent = 'Detalle de un libro';
+        // Actualizar los elementos del modal con la información del libro
+        document.getElementById('tituloVista').innerText = ROW.titulo;
+        document.getElementById('vista').src = `${SERVER_URL}images/libros/${ROW.imagen}`;
+        document.getElementById('precioVista').innerText = ROW.precio;
+        document.getElementById('descripcionVista').innerText = ROW.descripcion;
+        document.getElementById('existenciasVista').innerText = ROW.existencias;
+        fillSelect(GENERO_API, 'readAll', 'generoVista', ROW.id_genero);
+        fillSelect(EDITORIAL_API, 'readAll', 'editorialVista', ROW.id_editorial);
+        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacionVista', ROW.id_clasificacion);
+        fillSelect(AUTORES_API, 'readAll', 'autorVista', ROW.id_autor);
     } else {
         sweetAlert(2, DATA.error, false);
     }
 };
 
-/*
-*   Función asíncrona para eliminar un registro.
-*   Parámetros: id (identificador del registro seleccionado).
-*   Retorno: ninguno.
-*/
-const openDelete = async (id) => {
-    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Desea eliminar el libro de forma permanente?');
-    // Se verifica la respuesta del mensaje.
-    if (RESPONSE) {
-        // Se define una constante tipo objeto con los datos del registro seleccionado.
-        const FORM = new FormData();
-        FORM.append('id_libro', id);
-        // Petición para eliminar el registro seleccionado.
-        const DATA = await fetchData(LIBRO_API, 'deleteRow', FORM);
-        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-        if (DATA.status) {
-            // Se muestra un mensaje de éxito.
-            await sweetAlert(1, DATA.message, true);
-            // Se carga nuevamente la tabla para visualizar los cambios.
-            fillTable();
-        } else {
-            sweetAlert(2, DATA.error, false);
+    /*
+    *   Función asíncrona para eliminar un registro.
+    *   Parámetros: id (identificador del registro seleccionado).
+    *   Retorno: ninguno.
+    */
+    const openDelete = async (id) => {
+        // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+        const RESPONSE = await confirmAction('¿Desea eliminar el libro de forma permanente?');
+        // Se verifica la respuesta del mensaje.
+        if (RESPONSE) {
+            // Se define una constante tipo objeto con los datos del registro seleccionado.
+            const FORM = new FormData();
+            FORM.append('id_libro', id);
+            // Petición para eliminar el registro seleccionado.
+            const DATA = await fetchData(LIBRO_API, 'deleteRow', FORM);
+            // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+            if (DATA.status) {
+                // Se muestra un mensaje de éxito.
+                await sweetAlert(1, DATA.message, true);
+                // Se carga nuevamente la tabla para visualizar los cambios.
+                fillTable();
+            } else {
+                sweetAlert(2, DATA.error, false);
+            }
         }
     }
-}
 
