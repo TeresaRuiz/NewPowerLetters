@@ -20,46 +20,35 @@
     <main class="main section">
         <div class="container">
             <h1 class="section__title">Gestión de libros</h1>
-             <!-- Formulario de búsqueda y botón de agregar -->
-             <form id="searchForm" class="search-container">
+            <!-- Formulario de búsqueda y botón de agregar -->
+            <form id="searchForm" class="search-container">
                 <div class="search-form" id="search_libros">
                     <input type="search" name="search" class="search-input" placeholder="Buscar...">
                     <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
                 </div>
             </form>
             <div class="agregar">
-                <button class="add-button"><i class="ri-add-line"></i> Agregar</button>
+                <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Agregar</button>
             </div>
 
             <!-- Tabla con estilo elegante -->
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Imagen</th>
-                        <th>Titúlo</th>
-                        <th>Autor</th>
-                        <th>Precio</th>
+                        <td colspan="2" id="rowsFound"></td>
+                    </tr>
+                    <tr>
+                        <th>Titulo</th>
                         <th>Descripción</th>
-                        <th>ㅤㅤAcciones</th>
+                        <th>Imagen</th>
+                        <th>Precio</th>
+                        <th>Existencias</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
-                
+
                 <tbody id="tableBody">
-                    <tr>
-                        <td>1</td>
-                        <td>Harry.png</td>
-                        <td>Harry Potter 1</td>
-                        <td>J.K Rowling</td>
-                        <td>20.00$</td>
-                        <td>Primer libro</td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-eye-line"></i></a>
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                            <a href="#"><i class="ri-delete-bin-line"></i></a>
-                        </td>
-                    </tr>
-                    
+
                 </tbody>
             </table>
         </div>
@@ -69,8 +58,10 @@
             <div class="modal-content card">
                 <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
                 <div class="card-body">
-                    <h2>Agregar un nuevo libro</h2><br>
+                    <h2 id="modalTitle"></h2><br>
                     <form id="saveForm">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" id="id_libro" name="id_libro" style=" display: none;">
                         <div class="libros__group grid">
                             <div>
                                 <label for="titulo" class="libro__label">Título</label>
@@ -79,8 +70,8 @@
                             </div>
                             <div>
                                 <label for="autor" class="libro__label">Autor</label>
-                                <input type="number" name="autor" id="autor" placeholder="Elige el autor"
-                                    class="libro__input" required>
+                                <select name="autor" id="autor" class="libro__input" required>Elige una opción
+                                </select>
                             </div>
                             <div>
                                 <label for="precio" class="libro__label">Precio</label>
@@ -94,17 +85,18 @@
                             </div>
                             <div>
                                 <label for="imagen" class="libro__label">Imagen</label>
-                                <input type="file" name="imagen" id="imagen" accept="image/*" class="libro__input">
+                                <input type="file" name="imagen" id="imagen" accept=".png, .jpg" class="libro__input">
                             </div>
                             <div>
                                 <label for="clasificacion" class="libro__label">Clasificación</label>
-                                <input type="number" name="clasificacion" id="clasificacion"
-                                    placeholder="Elige la clasificación" class="libro__input" required>
+                                <select name="clasificacion" id="clasificacion" class="libro__input" required>
+                                </select>
                             </div>
                             <div>
                                 <label for="editorial" class="libro__label">Editorial</label>
-                                <input type="number" name="editorial" id="editorial" placeholder="Elige la editorial"
-                                    class="libro__input" required>
+                                <select name="editorial" id="editorial" class="libro__input"
+                                    placeholder="Elige la editorial" required>
+                                </select>
                             </div>
 
                             <div>
@@ -113,30 +105,32 @@
                                     placeholder="Número de existencias" class="libro__input" required>
                             </div>
                             <div>
-                                <label for="genero" class="libro__label">Género</label>
-                                <input type="number" name="genero" id="genero" placeholder="Elige el género"
-                                    class="libro__input" required>
+                                <label for="genero" class="libro__label">Genero</label>
+                                <select name="nombreGEN" id="nombreGEN" class="libro__input" required>
+                                </select>
                             </div>
                             <br>
-                            <button type="submit" class="libro__button button">Guardar</button>
+                            <div>
+                                <button type="submit" id="boton" class="genero__button button">Guardar</button>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
         </div>
-
-
     </main>
     <!--=============== SWIPER JS ===============-->
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
     <!--=============== SCROLLREVEAL ===============-->
     <script src="../../Resources/js/scrollreveal.min.js"></script>
     <script src="../../Resources/js/header_admin.js"></script>
-    <script src="../../Resources/js/footer.js"></script>
+    <!--<script src="../../Resources/js/footer.js"></script>-->
     <script src="../../Resources/js/modals_.js"></script>
     <script src="../../Resources/js/main.js"></script>
     <script src="../../Resources/js/sweetalert.min.js"></script>
     <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/admin/libros.js"></script>
 </body>
 
 </html>

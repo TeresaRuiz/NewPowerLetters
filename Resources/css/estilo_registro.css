@@ -1,0 +1,48 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* Cambia el color de fondo según tu preferencia */
+}
+
+.container_registro {
+    /* Añade estilos para el contenedor */
+    max-width: 600px;
+    width: 100%;
+    padding: 20px;
+}
+
+.register__form {
+    /* Ajusta el color de fondo del formulario según tu preferencia */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    /* Añade sombra al formulario */
+    width: 100%;
+    max-width: 2200px;
+    /* Ajusta el ancho máximo del formulario según tu preferencia */
+}
+
+.register__group {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* Divide en 3 columnas */
+    grid-gap: 10px;
+    /* Espacio entre elementos */
+}
+
+.register__label {
+    /* Añade estilos a los labels */
+    margin-bottom: 20px;
+}
+
+.register__input {
+    /* Añade estilos a los inputs */
+    width: 100%;
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
