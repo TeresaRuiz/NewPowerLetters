@@ -44,17 +44,14 @@ class LibroData extends LibroHandler
         }
     }
 
-    public function setAutor($value, $min = 2, $max = 50)
+    public function setAutor($value)
     {
         // Valida que el nombre sea alfanumérico.
-        if (!Validator::validateAlphanumeric($value)) {
-            $this->data_error = 'El autor debe ser un valor alfanumérico'; // Almacena mensaje de error.
-            return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
-            $this->autor = $value; // Asigna el valor del nombre.
+        if (Validator::validateNaturalNumber($value)) {
+            $this->autor = $value;
             return true;
         } else {
-            $this->data_error = 'El autor debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
+            $this->data_error = 'El autor es incorrecto'; // Almacena mensaje de error.
             return false;
         }
     }
@@ -86,7 +83,7 @@ class LibroData extends LibroHandler
 
     public function setImagen($file, $filename = null)
     {
-        if (Validator::validateImageFile($file, 1000)) {
+        if (Validator::validateImageFile($file, 500)) {
             $this->imagen = Validator::getFileName();
             return true;
         } elseif (Validator::getFileError()) {
@@ -101,32 +98,26 @@ class LibroData extends LibroHandler
         }
     }
 
-    public function setClasificación($value, $min = 2, $max = 50)
+    public function setClasificación($value)
     {
         // Valida que el nombre sea alfanumérico.
-        if (!Validator::validateAlphanumeric($value)) {
-            $this->data_error = 'La clasificación debe ser un valor alfanumérico'; // Almacena mensaje de error.
-            return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->clasificacion = $value; // Asigna el valor del nombre.
             return true;
         } else {
-            $this->data_error = 'La clasificación debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
+            $this->data_error = 'Clasificación incorrecta'; // Almacena mensaje de error.
             return false;
         }
     }
 
-    public function setEditorial($value, $min = 2, $max = 50)
+    public function setEditorial($value)
     {
         // Valida que el nombre sea alfanumérico.
-        if (!Validator::validateAlphanumeric($value)) {
-            $this->data_error = 'La editorial debe ser un valor alfanumérico'; // Almacena mensaje de error.
-            return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
+        if (Validator::validateNaturalNumber($value)) {
             $this->editorial = $value; // Asigna el valor del nombre.
             return true;
         } else {
-            $this->data_error = 'La editorial debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
+            $this->data_error = 'Editorial incorrecta'; // Almacena mensaje de error.
             return false;
         }
     }
@@ -142,17 +133,14 @@ class LibroData extends LibroHandler
         }
     }
 
-    public function setGenero($value, $min = 2, $max = 50)
+    public function setGenero($value)
     {
-        // Valida que el nombre sea alfanumérico.
-        if (!Validator::validateAlphanumeric($value)) {
-            $this->data_error = 'El genero debe ser un valor alfanumérico'; // Almacena mensaje de error.
-            return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
+         // Valida que el nombre sea alfanumérico.
+         if (Validator::validateNaturalNumber($value)) {
             $this->genero = $value; // Asigna el valor del nombre.
             return true;
         } else {
-            $this->data_error = 'El genero debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
+            $this->data_error = 'Género incorrecta'; // Almacena mensaje de error.
             return false;
         }
     }

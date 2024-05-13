@@ -1,170 +1,262 @@
  /* Estilo específico para la tabla */
  .table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
+   width: 100%;
+   border-collapse: collapse;
+   margin-top: 20px;
+ }
 
-  .table th,
-  .table td {
-    padding: 12px;
-    text-align: left;
-  }
+ .table th,
+ .table td {
+   padding: 12px;
+   text-align: left;
+ }
 
-  .table th {
-    background-color: var(--first-color); /* Cambia al color que desees */
-    color: var(--white-color); /* Cambia al color que desees */
-    font-weight: bold;
-    text-transform: uppercase;
-  }
+ .table th {
+   background-color: var(--first-color);
+   /* Cambia al color que desees */
+   color: var(--white-color);
+   /* Cambia al color que desees */
+   font-weight: bold;
+   text-transform: uppercase;
+ }
 
-  .table tbody tr:nth-child(even) {
-    background-color: var(--container-color); /* Cambia al color que desees */
-  }
+ .table tbody tr:nth-child(even) {
+   background-color: var(--container-color);
+   /* Cambia al color que desees */
+ }
 
-  .table tbody tr:hover {
-    background-color: var(--body-color); /* Cambia al color que desees */
-  }
+ .table tbody tr:hover {
+   background-color: var(--body-color);
+   /* Cambia al color que desees */
+ }
 
-  .table td {
-    border-bottom: 1px solid var(--border-color); /* Cambia al color que desees */
-  }
+ .table td {
+   border-bottom: 1px solid var(--border-color);
+   /* Cambia al color que desees */
+ }
 
-  /* Estilo para los íconos de acciones */
-  .action-icons {
-    display: flex;
-    gap: 40px;
-  }
+ /* Estilo para los íconos de acciones */
+ .action-icons {
+   display: flex;
+   gap: 40px;
+ }
 
-  .action-icons a {
-    color: var(--first-color); /* Cambia al color que desees */
-    font-size: 1.9rem;
-    cursor: pointer;
-  }
+ .action-icons a {
+   color: var(--first-color);
+   /* Cambia al color que desees */
+   font-size: 1.9rem;
+   cursor: pointer;
+ }
 
-  
-/* Estilos para el formulario de búsqueda */
-.search-form {
-    display: flex; /* Hace que los elementos hijos se muestren en línea */
-    align-items: center; /* Centra verticalmente los elementos hijos */
-    background-color: var(--container-color); /* Color de fondo del formulario */
-    border: 2px solid var(--border-color); /* Borde sólido con el color especificado */
-    padding-inline: 1rem; /* Relleno horizontal */
-    width: 50%; /* Ancho del formulario */
-  }
-  
-  /* Estilos para el botón de búsqueda */
-  .search-button {
-    color: var(--first-color); /* Color del texto del botón */
-    border: none; /* Sin borde */
-    border-radius: 5px; /* Bordes redondeados */
-    cursor: pointer; /* Cambia el cursor al puntero */
-  }
-  
-  /* Estilos para el campo de entrada de búsqueda */
-  .search-input {
-    width: 100%; /* Ancho completo del contenedor */
-    padding-block: 1rem; /* Relleno vertical */
-    background-color: var(--container-color); /* Color de fondo */
-    color: var(--text-color); /* Color del texto */
-    flex: 1; /* El campo de entrada se expande para ocupar el espacio disponible */
-  }
-  
-  
-  .add-button {
-    padding: 7px 16px;
-    background-color: var(--first-color); /* Cambia al color que desees */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .add-button:hover {
-    background-color: #218838; /* Cambia al color que desees */
-  }
-  
-  .search-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-  }
-  
-  .agregar {
-    margin-left: 20px;
-  }
-  
-  /* Estilos para el contenedor principal del modal */
-  .modal {
-    position: fixed; /* Se posiciona fijamente en relación con la ventana del navegador */
-    top: 0; /* Desde la parte superior de la ventana */
-    left: 0; /* Desde el lado izquierdo de la ventana */
-    width: 100%; /* Ancho completo de la ventana */
-    height: 100%; /* Altura completa de la ventana */
-    display: flex; /* Usa el modelo de caja flexible */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-  }
-  
-  /* Estilos para el fondo oscuro detrás del modal */
-  .modal-background {
-    position: fixed; /* Se posiciona fijamente en relación con la ventana del navegador */
-    top: 0; /* Desde la parte superior de la ventana */
-    left: 0; /* Desde el lado izquierdo de la ventana */
-    width: 100%; /* Ancho completo de la ventana */
-    height: 100%; /* Altura completa de la ventana */
-    background-color: rgba(0, 0, 0, 0.5); /* Color de fondo oscuro semitransparente */
-  }
-  
-  /* Estilos para la tarjeta modal */
-  .card {
-    position: fixed; /* Se posiciona fijamente en relación con la ventana del navegador */
-    top: 50%; /* Desde el 50% de la parte superior */
-    left: 50%; /* Desde el 50% del lado izquierdo */
-    transform: translate(-50%, -50%); /* Mueve el elemento a la mitad de su propio tamaño hacia arriba y hacia la izquierda */
-    display: flex; /* Usa el modelo de caja flexible */
-    justify-content: center; /* Centra horizontalmente */
-    align-items: center; /* Centra verticalmente */
-    background-color: var(--body-color); /* Color de fondo de la tarjeta */
-    border-radius: 8px; /* Bordes redondeados */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
-    padding: 20px; /* Espaciado interno */
-    width: 1000px; /* Ancho de la tarjeta */
-    height: 500px; /* Altura de la tarjeta */
-    z-index: 2; /* Asegura que esté por encima del fondo oscuro */
-  }
-  
-  /* Estilos para el botón de cierre dentro de la tarjeta modal */
-  .card .close {
-    position: absolute; /* Se posiciona absolutamente en relación con su contenedor */
-    top: 10px; /* Desde la parte superior 10px */
-    right: 10px; /* Desde el lado derecho 10px */
-    cursor: pointer; /* Cambia el cursor a un puntero cuando se pasa sobre él */
-    font-size: 20px; /* Tamaño de fuente */
-    color: var(--first-color); /* Color del texto */
-  }
-  
-  
-  .libro__label{
-    display: block;
-    text-align: initial;
-    color: var(--title-color);
-    font-weight: var(--font-medium);
-    margin-bottom: .25rem;
-  }
-  
-  .libro__input{
-    width: 100%;
-    background-color: var(--container-color);
-    border: 2px solid var(--border-color);
-    padding: 1rem;
-    color: var(--text-color);
-  }
 
-  .libros__group {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Divide en 3 columnas */
-    grid-gap: 40px; /* Espacio entre elementos */
-}
+ /* Estilos para el formulario de búsqueda */
+ .search-form {
+   display: flex;
+   /* Hace que los elementos hijos se muestren en línea */
+   align-items: center;
+   /* Centra verticalmente los elementos hijos */
+   background-color: var(--container-color);
+   /* Color de fondo del formulario */
+   border: 2px solid var(--border-color);
+   /* Borde sólido con el color especificado */
+   padding-inline: 1rem;
+   /* Relleno horizontal */
+   width: 50%;
+   /* Ancho del formulario */
+ }
+
+ /* Estilos para el botón de búsqueda */
+ .search-button {
+   color: var(--first-color);
+   /* Color del texto del botón */
+   border: none;
+   /* Sin borde */
+   border-radius: 5px;
+   /* Bordes redondeados */
+   cursor: pointer;
+   /* Cambia el cursor al puntero */
+ }
+
+ /* Estilos para el campo de entrada de búsqueda */
+ .search-input {
+   width: 100%;
+   /* Ancho completo del contenedor */
+   padding-block: 1rem;
+   /* Relleno vertical */
+   background-color: var(--container-color);
+   /* Color de fondo */
+   color: var(--text-color);
+   /* Color del texto */
+   flex: 1;
+   /* El campo de entrada se expande para ocupar el espacio disponible */
+ }
+
+
+ .add-button {
+   padding: 7px 16px;
+   background-color: var(--first-color);
+   /* Cambia al color que desees */
+   color: #fff;
+   border: none;
+   border-radius: 5px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+ }
+
+ .add-button:hover {
+   background-color: #218838;
+   /* Cambia al color que desees */
+ }
+
+ .search-container {
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin-bottom: 20px;
+ }
+
+ .agregar {
+   margin-left: 20px;
+ }
+
+ /* Estilos para el contenedor principal del modal */
+ .modal {
+   position: fixed;
+   /* Se posiciona fijamente en relación con la ventana del navegador */
+   top: 0;
+   /* Desde la parte superior de la ventana */
+   left: 0;
+   /* Desde el lado izquierdo de la ventana */
+   width: 100%;
+   /* Ancho completo de la ventana */
+   height: 100%;
+   /* Altura completa de la ventana */
+   display: flex;
+   /* Usa el modelo de caja flexible */
+   justify-content: center;
+   /* Centra horizontalmente */
+   align-items: center;
+   /* Centra verticalmente */
+ }
+
+ /* Estilos para el fondo oscuro detrás del modal */
+ .modal-background {
+   position: fixed;
+   /* Se posiciona fijamente en relación con la ventana del navegador */
+   top: 0;
+   /* Desde la parte superior de la ventana */
+   left: 0;
+   /* Desde el lado izquierdo de la ventana */
+   width: 100%;
+   /* Ancho completo de la ventana */
+   height: 100%;
+   /* Altura completa de la ventana */
+   background-color: rgba(0, 0, 0, 0.5);
+   /* Color de fondo oscuro semitransparente */
+ }
+
+ /* Estilos para la tarjeta modal */
+ .card {
+   position: fixed;
+   /* Se posiciona fijamente en relación con la ventana del navegador */
+   top: 50%;
+   /* Desde el 50% de la parte superior */
+   left: 50%;
+   /* Desde el 50% del lado izquierdo */
+   transform: translate(-50%, -50%);
+   /* Mueve el elemento a la mitad de su propio tamaño hacia arriba y hacia la izquierda */
+   display: flex;
+   /* Usa el modelo de caja flexible */
+   justify-content: center;
+   /* Centra horizontalmente */
+   align-items: center;
+   /* Centra verticalmente */
+   background-color: var(--body-color);
+   /* Color de fondo de la tarjeta */
+   border-radius: 8px;
+   /* Bordes redondeados */
+   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   /* Sombra de la tarjeta */
+   padding: 20px;
+   /* Espaciado interno */
+   width: 1000px;
+   /* Ancho de la tarjeta */
+   height: 500px;
+   /* Altura de la tarjeta */
+   z-index: 2;
+   /* Asegura que esté por encima del fondo oscuro */
+ }
+
+ /* Estilos para el botón de cierre dentro de la tarjeta modal */
+ .card .close {
+   position: absolute;
+   /* Se posiciona absolutamente en relación con su contenedor */
+   top: 10px;
+   /* Desde la parte superior 10px */
+   right: 10px;
+   /* Desde el lado derecho 10px */
+   cursor: pointer;
+   /* Cambia el cursor a un puntero cuando se pasa sobre él */
+   font-size: 20px;
+   /* Tamaño de fuente */
+   color: var(--first-color);
+   /* Color del texto */
+ }
+
+
+ .libro__label {
+   display: block;
+   text-align: initial;
+   color: var(--title-color);
+   font-weight: var(--font-medium);
+   margin-bottom: .25rem;
+ }
+
+ .libro__input {
+   width: 100%;
+   background-color: var(--container-color);
+   border: 2px solid var(--border-color);
+   padding: 1rem;
+   color: var(--text-color);
+ }
+
+ .libros__group {
+   display: grid;
+   grid-template-columns: repeat(3, 1fr);
+   /* Divide en 3 columnas */
+   grid-gap: 40px;
+   /* Espacio entre elementos */
+ }
+
+
+ .libro__image {
+   max-width: 200px;
+   /* Ajusta el tamaño máximo de la imagen */
+   margin-right: 20px;
+   /* Espacio a la derecha de la imagen */
+ }
+
+ .libros_group {
+   display: grid;
+   grid-template-columns: auto 1fr;
+   /* La imagen ocupa el ancho necesario y el resto se ajusta */
+   grid-gap: 20px;
+   /* Espacio entre elementos */
+ }
+
+ .libros_group div {
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   /* Divide en 3 columnas */
+   grid-gap: 40px;
+   /* Espacio entre elementos */
+ }
+
+ .libros_group label {
+   font-weight: bold;
+ }
+
+ .libros_group p {
+   margin: 0;
+   /* Elimina el margen de los párrafos */
+ }
