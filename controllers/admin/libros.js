@@ -9,13 +9,13 @@ const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer el contenido de la tabla.
 const TABLE_BODY = document.getElementById('tableBody');
 const ROWS_FOUND = document.getElementById('rowsFound');
-    // Constantes para establecer los elementos del formulario de guardar.
+// Constantes para establecer los elementos del formulario de guardar.
 const SAVE_FORM = document.getElementById('saveForm'),
-id_libro= document.getElementById('id_libro'),
-titulo= document.getElementById('titulo'),
-precio = document.getElementById('precio'),
-descripcion = document.getElementById('descripcion'),
-existencias = document.getElementById('existencias');
+    id_libro = document.getElementById('id_libro'),
+    titulo = document.getElementById('titulo'),
+    precio = document.getElementById('precio'),
+    descripcion = document.getElementById('descripcion'),
+    existencias = document.getElementById('existencias');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -89,6 +89,9 @@ const fillTable = async (form = null) => {
                     <a onclick="openDelete(${row.id_libro})">
                         <i class="ri-delete-bin-line"></i>
                     </a>
+                    <a onclick="viewDetails(${row.id_libro})">
+                    <i class="ri-search-eye-line"></i>
+                    </a>
                 </td>
             </tr>
             `;
@@ -98,7 +101,7 @@ const fillTable = async (form = null) => {
     } else {
         sweetAlert(4, DATA.error, true);
     }
-    
+
 }
 /*
 *   Función para preparar el formulario al momento de insertar un registro.
@@ -122,6 +125,56 @@ const openCreate = () => {
 *   Parámetros: id (identificador del registro seleccionado).
 *   Retorno: ninguno.
 */
+const viewDetails = async (id) => {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id_libro', id);
+    // Petición para obtener los datos del registro solicitado.
+    const DATA = await fetchData(LIBRO_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se inicializan los campos con los datos.
+        const ROW = DATA.dataset;
+        id_libro.value = ROW.id_libro;
+        titulo.value = ROW.titulo;
+        precio.value = ROW.precio;
+        descripcion.value = ROW.descripcion;
+        existencias.value = ROW.existencias;
+        fillSelect(GENERO_API, 'readAll', 'nombreGEN', ROW.id_genero);
+        fillSelect(EDITORIAL_API, 'readAll', 'editorial', ROW.id_editorial);
+        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion', ROW.id_clasificacion);
+        fillSelect(AUTORES_API, 'readAll', 'autor', ROW.id_autor);
+
+        // Repite este proceso para los otros campos generados por fillSelect si es necesario
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Detalles del libro';
+        // Deshabilitar los campos para que no se puedan editar
+        id_libro.disabled = true;
+        titulo.disabled = true;
+        precio.disabled = true;
+        descripcion.disabled = true;
+        existencias.disabled = true;
+
+        // Deshabilitar los campos generados por fillSelect
+        const selectFields = [
+            document.getElementById('nombreGEN'),
+            document.getElementById('editorial'),
+            document.getElementById('clasificacion'),
+            document.getElementById('autor')
+        ];
+
+        selectFields.forEach(field => {
+            field.disabled = true;
+            field.style.backgroundColor = '#f0f2ff';
+            field.style.color = '#2e3762';
+        });
+        // Ocultar o deshabilitar los botones de actualización
+        boton.style.display = 'none';
+    } else {
+        sweetAlert(2, DATA.error, false);
+    }
+};
+
 const openUpdate = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
     const FORM = new FormData();
@@ -137,10 +190,10 @@ const openUpdate = async (id) => {
         precio.value = ROW.precio;
         descripcion.value = ROW.descripcion;
         existencias.value = ROW.existencias;
-        fillSelect(GENERO_API, 'readAll', 'nombreGEN', ROW.nombre);
-        fillSelect(EDITORIAL_API, 'readAll', 'editorial', ROW.nombre);
-        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion', ROW.nombre);
-        fillSelect(AUTORES_API, 'readAll', 'autor', ROW.nombre);
+        fillSelect(GENERO_API, 'readAll', 'nombreGEN', ROW.id_genero);
+        fillSelect(EDITORIAL_API, 'readAll', 'editorial', ROW.id_editorial);
+        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion', ROW.id_clasificacion);
+        fillSelect(AUTORES_API, 'readAll', 'autor', ROW.id_autor);
         AbrirModal();
         MODAL_TITLE.textContent = 'Actualizar un libro';
     } else {
