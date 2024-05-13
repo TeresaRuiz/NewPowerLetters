@@ -79,7 +79,7 @@ const fillTable = async (form = null) => {
             <tr>
                 <td>${row.titulo_libro}</td>
                 <td>${row.descripcion_libro}</td>
-                <td><img src="${SERVER_URL}images/libros/${row.imagen}" height="50"></td>
+                <td><img src="${SERVER_URL}images/libros/${row.imagen}" width="50"></td>
                 <td>${row.precio}</td>
                 <td>${row.existencias}</td>
                 <td class="action-icons">
