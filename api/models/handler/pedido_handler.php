@@ -17,39 +17,44 @@ class PedidoHandler
     protected $id_detalle = null;
 
     public function searchRows()
-{
-    $value = '%' . Validator::getSearchValue() . '%';
-    $sql = 'SELECT
-    p.id_pedido,
-    p.id_usuario,
-    p.direccion_pedido,
-    p.estado,
-    p.fecha_pedido,
-    d.id_detalle,
-    r.comentario AS comentario_resena
-FROM
-    tb_pedidos AS p
-INNER JOIN
-    tb_detalle_pedidos AS d ON p.id_pedido = d.id_pedido
-LEFT JOIN
-    tb_resenias AS r ON d.id_resena = r.id_resena
-WHERE
-    p.id_pedido = ? OR
-    p.id_usuario = ? OR
-    p.direccion_pedido LIKE ? OR
-    p.estado LIKE ? OR
-    p.fecha_pedido LIKE ? OR
-    d.id_detalle = ? OR
-    r.comentario LIKE ?
-ORDER BY
-    p.fecha_pedido;';
-    $params = array($value, $value, $value, $value, $value, $value, $value);
-    return Database::getRows($sql, $params);
-}
+    {
+        $value = '%' . Validator::getSearchValue() . '%';
+        $sql = 'SELECT
+            p.id_pedido,
+            p.id_usuario,
+            p.direccion_pedido,
+            p.estado,
+            p.fecha_pedido,
+            d.id_detalle,
+            r.comentario AS comentario_resena,
+            u.nombre_usuario
+        FROM
+            tb_pedidos AS p
+        INNER JOIN
+            tb_detalle_pedidos AS d ON p.id_pedido = d.id_pedido
+        LEFT JOIN
+            tb_resenias AS r ON d.id_resena = r.id_resena
+        INNER JOIN
+            tb_usuarios AS u ON p.id_usuario = u.id_usuario
+        WHERE
+            p.id_pedido LIKE ? OR
+            p.id_usuario LIKE ? OR
+            u.nombre_usuario LIKE ? OR
+            p.direccion_pedido LIKE ? OR
+            p.estado LIKE ? OR
+            p.fecha_pedido LIKE ? OR
+            r.comentario LIKE ?
+        ORDER BY
+            p.fecha_pedido;';
+        $params = array($value, $value, $value, $value, $value, $value, $value);
+        return Database::getRows($sql, $params);
+    }
 
-public function readAll()
-{
-    $sql = 'SELECT
+
+
+    public function readAll()
+    {
+        $sql = 'SELECT
     p.id_pedido,
     p.id_usuario,
     u.nombre_usuario,
@@ -65,12 +70,12 @@ INNER JOIN
     tb_usuarios AS u ON p.id_usuario = u.id_usuario
 ORDER BY
     p.fecha_pedido;';
-    return Database::getRows($sql);
-}
+        return Database::getRows($sql);
+    }
 
-public function readOne()
-{
-    $sql = 'SELECT
+    public function readOne()
+    {
+        $sql = 'SELECT
         p.id_pedido,
         p.id_usuario,
         p.direccion_pedido,
@@ -83,16 +88,16 @@ public function readOne()
         tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
     WHERE
         p.id_pedido = ?';
-    $params = array($this->id);
-    return Database::getRow($sql, $params);
-}
-public function updateRow()
-{
-    $sql = 'UPDATE tb_pedidos
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
+    }
+    public function updateRow()
+    {
+        $sql = 'UPDATE tb_pedidos
             SET direccion_pedido = ?, estado = ?
             WHERE id_pedido = ?';
-    $params = array($this->direccion, $this->estado, $this->id);
-    return Database::executeRow($sql, $params);
-}
+        $params = array($this->direccion, $this->estado, $this->id);
+        return Database::executeRow($sql, $params);
+    }
 
 }

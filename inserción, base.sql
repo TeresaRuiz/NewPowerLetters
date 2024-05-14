@@ -306,71 +306,24 @@ VALUES
 
   
   SELECT*FROM tb_libros;
-
-INSERT INTO tb_pedidos (fecha_pedido, id_usuario, estado)
-VALUES ('2024-03-06 10:00:00', 1, 'PENDIENTE'),
-('2024-03-06 11:30:00', 2, 'ENTREGADO'),
-('2024-03-06 12:45:00', 3, 'FINALIZADO'),
-('2024-03-06 14:20:00', 4, 'CANCELADO'),
-('2024-03-06 15:10:00', 5, 'PENDIENTE'),
-('2024-03-06 16:00:00', 6, 'PENDIENTE'),
-('2024-03-06 17:30:00', 7, 'ENTREGADO'),
-('2024-03-06 18:45:00', 8, 'FINALIZADO'),
-('2024-03-06 20:20:00', 9, 'CANCELADO'),
-('2024-03-06 21:10:00', 10, 'PENDIENTE'),
-('2024-03-06 22:00:00', 11, 'PENDIENTE'),
-('2024-03-07 09:30:00', 12, 'ENTREGADO'),
-('2024-03-07 10:45:00', 13, 'FINALIZADO'),
-('2024-03-07 12:20:00', 14, 'CANCELADO'),
-('2024-03-07 13:10:00', 15, 'PENDIENTE'),
-('2024-03-07 14:00:00', 16, 'PENDIENTE'),
-('2024-03-07 15:30:00', 17, 'ENTREGADO'),
-('2024-03-07 16:45:00', 18, 'FINALIZADO'),
-('2024-03-07 18:20:00', 19, 'CANCELADO'),
-('2024-03-07 19:10:00', 20, 'PENDIENTE'),
-('2024-03-07 20:00:00', 21, 'PENDIENTE'),
-('2024-03-07 21:30:00', 22, 'ENTREGADO'),
-('2024-03-07 22:45:00', 23, 'FINALIZADO'),
-('2024-03-08 09:20:00', 24, 'CANCELADO'),
-('2024-03-08 10:10:00', 25, 'PENDIENTE');
-
-SELECT*FROM tb_pedidos;
-
-INSERT INTO tb_resenias (comentario)
+  
+  INSERT INTO tb_resenias (comentario)
 values ('Me encanto'), ('Muy bueno'), ('Un poco alto el precio pero estubo bien'), ('lo adore'), ('No me gusto'), ('Compre dos me encanto'),
 ('Muy caro el precio'), ('Mucho texto xd'), ('Un clasico'), ('me divirtio lo recomiendo'), ('El autor no me gusta'), ('Muy bueno lo recomiendo'), ('El nombre me encanto'), ('Muy interesante'), ('Me encanto el final'), ('Saquen una peli de este libro'),
 ('Era mejor el anterior'), ('Mas texto xd'), ('la trilogia me encanto'), ('me emociono la gran batalla'),('Se me daño'), ('Mas bonito mejor'), ('Mas texto xd'), ('facinante'), ('final hermoso <3');
 
 SELECT*FROM tb_resenias;
 
-INSERT INTO tb_detalle_pedidos (id_pedido, id_libro, cantidad, id_resena)
-VALUES 
-  (1, 1, 2, 1),
-  (2, 2, 1, 2),
-  (3, 3, 3, 3),
-  (4, 4, 1, 4),
-  (5, 5, 2, 5),
-  (6, 6, 1, 6),
-  (7, 7, 4, 7),
-  (8, 8, 2, 8),
-  (9, 9, 1, 9),
-  (10, 10, 3, 10),
-  (11, 11, 2, 11),
-  (12, 12, 1, 12),
-  (13, 13, 4, NULL), -- Sin reseña
-  (14, 2, 3, 13),
-  (15, 4, 2, 14),
-  (16, 6, 1, 15),
-  (17, 8, 3, 16),
-  (18, 10, 2, 17),
-  (19, 12, 1, 18),
-  (20, 14, 4, 19),
-  (21, 16, 2, 20),
-  (22, 18, 1, 21),
-  (23, 20, 3, 22),
-  (24, 22, 2, 23),
-  (25, 24, 1, NULL); -- Sin reseña
-  
+-- Insertar datos en la tabla tb_detalle_pedidos
+INSERT INTO tb_detalle_pedidos (id_libro, cantidad, id_resena)
+VALUES (1, 2, 1);
+-- Insertar datos en la tabla tb_pedidos
+INSERT INTO tb_pedidos (id_usuario, direccion_pedido, estado, fecha_pedido, id_detalle)
+VALUES (1, 'Calle Principal 123', 'PENDIENTE', '2024-05-13 10:00:00', 1);
+
+
+
+SELECT*FROM tb_pedidos;
 SELECT*FROM tb_detalle_pedidos;
 
 SELECT
@@ -403,28 +356,51 @@ ORDER BY
 
 
 SELECT
-    l.id_libro,
-    l.titulo,
-    l.descripcion AS descripcion_libro,
-    l.precio,
-    l.imagen,
-    a.nombre AS nombre_autor,
-    c.nombre AS nombre_clasificacion,
-    e.nombre AS nombre_editorial,
-    g.nombre AS nombre_genero,
-    l.existencias
+        p.id_pedido,
+        p.id_usuario,
+        p.direccion_pedido,
+        p.estado,
+        p.fecha_pedido,
+        d.id_detalle
+    FROM
+        tb_pedidos AS p
+    INNER JOIN
+        tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
+    ORDER BY
+        p.fecha_pedido;
+        
+
+SELECT
+    p.id_pedido,
+    p.id_usuario AS nombre,
+    p.direccion_pedido,
+    p.estado,
+    p.fecha_pedido,
+    d.id_detalle
 FROM
-    tb_libros AS l
+    tb_pedidos AS p
 INNER JOIN
-    tb_autores AS a ON l.id_autor = a.id_autor
-INNER JOIN
-    tb_clasificaciones AS c ON l.id_clasificacion = c.id_clasificacion
-INNER JOIN
-    tb_editoriales AS e ON l.id_editorial = e.id_editorial
-INNER JOIN
-    tb_generos AS g ON l.id_genero = g.id_genero
-WHERE
-    l.titulo LIKE '%buscar%'
+    tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
 ORDER BY
-    l.titulo;
+    p.fecha_pedido;
+    
+    
+    
+    SELECT
+    p.id_pedido,
+    p.id_usuario,
+    u.nombre_usuario,
+    p.direccion_pedido,
+    p.estado,
+    p.fecha_pedido,
+    d.id_detalle
+FROM
+    tb_pedidos AS p
+INNER JOIN
+    tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
+INNER JOIN
+    tb_usuarios AS u ON p.id_usuario = u.id_usuario
+ORDER BY
+    p.fecha_pedido;
+
     
