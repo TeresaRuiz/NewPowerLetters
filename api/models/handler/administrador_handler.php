@@ -16,7 +16,6 @@ class AdministradorHandler
     protected $correo = null;
     protected $clave = null;
     protected $telefono = null;
-    protected $fecha = null;
     protected $imagen = null;
 
     /*
@@ -25,16 +24,16 @@ class AdministradorHandler
 
     public function checkUser($username, $password)
     {
-        $sql = 'SELECT id_administrador, user_administrador, clave_administrador
+        $sql = 'SELECT id_administrador, correo_administrador, clave_administrador
                 FROM tb_administradores
-                WHERE user_administrador = ?';
+                WHERE correo_administrador = ?';
         $params = array($username);
         if (!($data = Database::getRow($sql, $params))) {
             return false;
         } elseif (password_verify($password, $data['clave_administrador'])) {
             $_SESSION['idAdministrador'] = $data['id_administrador'];
-            $_SESSION['usuarioAdministrador'] = $data['user_administrador'];
-            return true;
+            $_SESSION['correoAdministrador'] = $data['correo_administrador'];
+            return $data['id_administrador']; // Devuelve el id_administrador
         } else {
             return false;
         }
@@ -57,12 +56,14 @@ class AdministradorHandler
 
     public function changePassword()
     {
-        $sql = 'UPDATE tb_administradores
+        $sql = 'UPDATE administrador
                 SET clave_administrador = ?
                 WHERE id_administrador = ?';
         $params = array($this->clave, $_SESSION['idAdministrador']);
         return Database::executeRow($sql, $params);
     }
+
+    
 
     public function readProfile()
     {
@@ -77,11 +78,11 @@ class AdministradorHandler
     {
         // Sentencia SQL para actualizar el perfil del administrador.
         $sql = 'UPDATE tb_administradores
-            SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?, clave_administrador = ?, telefono_adm = ?, fecha_registro = ?, imagen = ?
+            SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?, clave_administrador = ?, telefono_adm = ?, imagen = ?
             WHERE id_administrador = ?';
 
         // Parámetros para la consulta preparada.
-        $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->fecha, $this->imagen, $_SESSION['idAdministrador']);
+        $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->imagen, $_SESSION['idAdministrador']);
 
         // Ejecutar la consulta y retornar el resultado.
         return Database::executeRow($sql, $params);
@@ -109,11 +110,11 @@ class AdministradorHandler
     public function createRow()
     {
         // Consulta SQL para insertar un nuevo administrador.
-        $sql = 'INSERT INTO tb_administradores(nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-            VALUES(?, ?, ?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO tb_administradores(nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, imagen)
+            VALUES(?, ?, ?, ?, ?, ?)';
 
         // Parámetros para la consulta preparada.
-        $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->fecha, $this->imagen);
+        $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->imagen);
 
         // Ejecutar la consulta y retornar el resultado.
         return Database::executeRow($sql, $params);
