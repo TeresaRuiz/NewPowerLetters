@@ -20,32 +20,32 @@ class PedidoHandler
     {
         $value = '%' . Validator::getSearchValue() . '%';
         $sql = 'SELECT
-            p.id_pedido,
-            p.id_usuario,
-            p.direccion_pedido,
-            p.estado,
-            p.fecha_pedido,
-            d.id_detalle,
-            r.comentario AS comentario_resena,
-            u.nombre_usuario
-        FROM
-            tb_pedidos AS p
-        INNER JOIN
-            tb_detalle_pedidos AS d ON p.id_pedido = d.id_pedido
-        LEFT JOIN
-            tb_resenias AS r ON d.id_resena = r.id_resena
-        INNER JOIN
-            tb_usuarios AS u ON p.id_usuario = u.id_usuario
-        WHERE
-            p.id_pedido LIKE ? OR
-            p.id_usuario LIKE ? OR
-            u.nombre_usuario LIKE ? OR
-            p.direccion_pedido LIKE ? OR
-            p.estado LIKE ? OR
-            p.fecha_pedido LIKE ? OR
-            r.comentario LIKE ?
-        ORDER BY
-            p.fecha_pedido;';
+        p.id_pedido,
+        p.id_usuario,
+        p.direccion_pedido,
+        p.estado,
+        p.fecha_pedido,
+        d.id_detalle,
+        r.comentario AS comentario_resena,
+        u.nombre_usuario
+    FROM
+        tb_pedidos AS p
+    INNER JOIN
+        tb_detalle_pedidos AS d ON p.id_pedido = d.id_pedido
+    LEFT JOIN
+        tb_resenias AS r ON d.id_resena = r.id_resena
+    INNER JOIN
+        tb_usuarios AS u ON p.id_usuario = u.id_usuario
+    WHERE
+        p.id_pedido LIKE ? OR
+        p.id_usuario LIKE ? OR
+        u.nombre_usuario LIKE ? OR
+        p.direccion_pedido LIKE ? OR
+        p.estado LIKE ? OR
+        p.fecha_pedido LIKE ? OR
+        r.comentario LIKE ?
+    ORDER BY
+        p.fecha_pedido;';
         $params = array($value, $value, $value, $value, $value, $value, $value);
         return Database::getRows($sql, $params);
     }
