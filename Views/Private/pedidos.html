@@ -21,11 +21,13 @@
         <div class="container">
             <h1 class="section__title">Gestión de pedidos</h1>
             <!-- Formulario de búsqueda y botón de agregar -->
+            <form id="searchForm" class="search-container"></form>
             <div class="search-container">
                 <div class="search-form">
                     <input type="text" class="search-input" placeholder="Buscar...">
                     <button class="search-button"><i class="ri-search-line"></i></button>
                 </div>
+                </form>
                 <div class="agregar">
                     <button class="add-button"></i> Actualizar</button>
                 </div>
@@ -35,74 +37,24 @@
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Fecha de pedido</th>
-                        <th>Dirección de pedido</th>
-                        <th>Cliente</th>
-                        <th>Estado</th>
-                        <th>Acciones</th>
+                        <td colspan="2" id="rowsFound"></td>
+                    </tr>
+                    <tr>
+                    <th>Fecha de pedido</th>
+                    <th>Dirección de pedido</th>
+                    <th>Cliente</th>
+                    <th>Estado</th>
+                    <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>2022-06-51 09:10:00</td>
-                        <td>El Salvador</td>
-                        <td>Taylor Swift</td>
-                        <td>
-                            <div>
-                                <i class="ri-hourglass-fill" style="color: orange;"></i> PENDIENTE
-                            </div>
-                        </td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-eye-fill"></i></a>
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>2022-06-51 09:10:00</td>
-                        <td>El Salvador</td>
-                        <td>Lisandro Quezada</td>
-                        <td>
-                            <i class="ri-checkbox-circle-fill" style="color: green;"></i> FINALIZADO
-                        </td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-eye-fill"></i></a>
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>2022-06-51 09:10:00</td>
-                        <td>El Salvador</td>
-                        <td> Lionel Messi</td>
-                        <td>
-                            <i class="ri-truck-line" style="color: blue;"></i> ENTREGADO
-                        </td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-eye-fill"></i></a>
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>2022-06-51 09:10:00</td>
-                        <td>El Salvador</td>
-                        <td>Luis Suarez</td>
-                        <td>
-                            <i class="ri-close-circle-fill" style="color: red;"></i> CANCELADO
-                        </td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-eye-fill"></i></a>
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                        </td>
-                    </tr>
+                <tbody id="tableBody">
+
                 </tbody>
+                
             </table>
         </div>
 
-         <!-- Modal -->
+        <!-- Modal -->
         <div id="myModal" class="modal">
             <div class="modal-background"></div>
             <div class="modal-content card">
@@ -144,14 +96,17 @@
         </div>
 
     </main>
-    <script src="../../Resources/js/header_admin.js"></script>
-    <script src="../../Resources/js/modals_.js"></script>
-    <!--=============== SWIPER JS ===============-->
-    <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="../../Resources/js/scrollreveal.min.js"></script>
-    <script src="../../Resources/js/main.js"></script>
-    <script src="../../Resources/js/footer.js"></script>
+     <!--=============== SWIPER JS ===============-->
+     <script src="../../Resources/js/swiper-bundle.min.js"></script>
+     <!--=============== SCROLLREVEAL ===============-->
+     <script src="../../Resources/js/scrollreveal.min.js"></script>
+     <script src="../../Resources/js/header_admin.js"></script>
+     <!--<script src="../../Resources/js/footer.js"></script>-->
+     <script src="../../Resources/js/modals_.js"></script>
+     <script src="../../Resources/js/main.js"></script>
+     <script src="../../Resources/js/sweetalert.min.js"></script>
+     <script src="../../controllers/utils/components.js"></script>
+     <script src="../../controllers/admin/pedidos.js"></script>
 </body>
 
 </html>

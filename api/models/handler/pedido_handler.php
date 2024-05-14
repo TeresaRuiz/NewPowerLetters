@@ -52,6 +52,7 @@ public function readAll()
     $sql = 'SELECT
     p.id_pedido,
     p.id_usuario,
+    u.nombre_usuario,
     p.direccion_pedido,
     p.estado,
     p.fecha_pedido,
@@ -60,6 +61,8 @@ FROM
     tb_pedidos AS p
 INNER JOIN
     tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
+INNER JOIN
+    tb_usuarios AS u ON p.id_usuario = u.id_usuario
 ORDER BY
     p.fecha_pedido;';
     return Database::getRows($sql);

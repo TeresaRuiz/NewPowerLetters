@@ -25,7 +25,7 @@ if (isset($_GET['action'])) {
             case 'searchRows':
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
-                } elseif ($result['dataset'] = $libros->searchRows()) {
+                } elseif ($result['dataset'] = $pedido->searchRows()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
                 } else {
@@ -33,20 +33,40 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
+                case 'createRow': // Acción para crear un nuevo libro.
+                    $_POST = Validator::validateForm($_POST);
+    
+                    // Validar y establecer los campos necesarios para crear un libro.
+                    if (
+                        !$pedido->setId($_POST['id_pedido']) or
+                            !$pedido->setIdUsuario($_POST['usuario']) or
+                            !$pedido->setDireccion($_POST['direccion']) ||
+                            !$pedido->setEstado(isset($_POST['estadoProducto']) ? 1 : 0)||
+                            !$pedido->setFecha($_POST['fecha']) ||
+                            !$pedido->setIdDetalle($_POST['detalle'])
+                    ) {
+                        $result['error'] = $pedido->getDataError(); // Obtener mensaje de error si la validación falla.
+                    } elseif ($pedido->createRow()) { // Intentar crear un nuevo libro.
+                        $result['status'] = 1; // Indicar que la operación fue exitosa.
+                        $result['message'] = 'Pedido creado con éxito';
+                    } else {
+                        $result['error'] = 'Ocurrió un problema al crear el pedido'; // Mensaje de error si ocurre un problema.
+                    }
+                    break;
                 
             case 'readAll':
                 if ($result['dataset'] = $pedido->readAll()) {
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
                 } else {
-                    $result['error'] = 'No exiten libros registrados'; // Mensaje si no se encuentran autores.
+                    $result['error'] = 'No exiten pedidos registrados'; // Mensaje si no se encuentran autores.
                 }
                 break;
 
                 case 'readOne':
                     if (!$pedido->setId($_POST['id_pedido'])) {
-                        $result['error'] = $libros->getDataError();
-                    } elseif ($result['dataset'] = $libros->readOne()) {
+                        $result['error'] = $pedido->getDataError();
+                    } elseif ($result['dataset'] = $pedido->readOne()) {
                         $result['status'] = 1;
                     } else {
                         $result['error'] = 'Pedido inexistente';
