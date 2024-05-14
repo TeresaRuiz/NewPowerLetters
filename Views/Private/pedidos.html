@@ -19,20 +19,15 @@
 
     <main class="main section">
         <div class="container">
+            <br>
             <h1 class="section__title">Gestión de pedidos</h1>
             <!-- Formulario de búsqueda y botón de agregar -->
-            <form id="searchForm" class="search-container"></form>
-            <div class="search-container">
-                <div class="search-form">
-                    <input type="text" class="search-input" placeholder="Buscar...">
-                    <button class="search-button"><i class="ri-search-line"></i></button>
+            <form id="searchForm" class="search-container">
+                <div class="search-form" id="search_generos">
+                    <input type="search" name="search" class="search-input" placeholder="Buscar...">
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
                 </div>
-                </form>
-                <div class="agregar">
-                    <button class="add-button"></i> Actualizar</button>
-                </div>
-            </div>
-
+            </form>
             <!-- Tabla con estilo elegante -->
             <table class="table">
                 <thead>
@@ -40,17 +35,17 @@
                         <td colspan="2" id="rowsFound"></td>
                     </tr>
                     <tr>
-                    <th>Fecha de pedido</th>
-                    <th>Dirección de pedido</th>
-                    <th>Cliente</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
+                        <th>Fecha de pedido</th>
+                        <th>Dirección de pedido</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
 
                 </tbody>
-                
+
             </table>
         </div>
 
@@ -96,17 +91,17 @@
         </div>
 
     </main>
-     <!--=============== SWIPER JS ===============-->
-     <script src="../../Resources/js/swiper-bundle.min.js"></script>
-     <!--=============== SCROLLREVEAL ===============-->
-     <script src="../../Resources/js/scrollreveal.min.js"></script>
-     <script src="../../Resources/js/header_admin.js"></script>
-     <!--<script src="../../Resources/js/footer.js"></script>-->
-     <script src="../../Resources/js/modals_.js"></script>
-     <script src="../../Resources/js/main.js"></script>
-     <script src="../../Resources/js/sweetalert.min.js"></script>
-     <script src="../../controllers/utils/components.js"></script>
-     <script src="../../controllers/admin/pedidos.js"></script>
+    <!--=============== SWIPER JS ===============-->
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../Resources/js/header_admin.js"></script>
+    <!--<script src="../../Resources/js/footer.js"></script>-->
+    <script src="../../Resources/js/modals_.js"></script>
+    <script src="../../Resources/js/main.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/admin/pedidos.js"></script>
 </body>
 
 </html>
