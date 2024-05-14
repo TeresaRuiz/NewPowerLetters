@@ -94,12 +94,6 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    public function setFechaRegistro($value)
-    {
-        // Aquí puedes validar el formato de la fecha si es necesario
-        $this->fecha = $value;
-        return true;
-    }
 
     public function setImagen($file, $filename = null)
     {

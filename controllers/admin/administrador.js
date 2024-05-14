@@ -12,8 +12,7 @@ UsuarioAdministrador = document.getElementById('UsuarioAdministrador'),
 correoAdministrador = document.getElementById('correoAdministrador'),
 claveAdministrador = document.getElementById('claveAdministrador'),
 confirmarClave = document.getElementById('confirmarClave'),
-telefono = document.getElementById('telefono'),
-fecha = document.getElementsBy('fecha_registro');
+telefono = document.getElementById('telefono');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {

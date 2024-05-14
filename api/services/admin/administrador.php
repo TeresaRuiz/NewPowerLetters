@@ -33,7 +33,6 @@ if (isset($_GET['action'])) {
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador']) or
                     !$administrador->setTelefono($_POST['telefono']) or
-                    !$administrador->setFechaRegistro($_POST['fecha_registro'])or
                     !$libros->setImagen($_FILES['imagen'])
                 ) {
                     $result['error'] = $administrador->getDataError();
@@ -71,7 +70,6 @@ if (isset($_GET['action'])) {
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador']) or
                     !$administrador->setTelefono($_POST['telefono']) or
-                    !$administrador->setFechaRegistro($_POST['fecha_registro'])or
                     !$libros->setImagen($_FILES['imagen'])
                 ) {
                     $result['error'] = $administrador->getDataError();
@@ -125,7 +123,6 @@ if (isset($_GET['action'])) {
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador']) or
                     !$administrador->setTelefono($_POST['telefono']) or
-                    !$administrador->setFechaRegistro($_POST['fecha_registro'])or
                     !$libros->setImagen($_FILES['imagen'])
                 ) {
                     $result['error'] = $administrador->getDataError();
@@ -174,7 +171,6 @@ if (isset($_GET['action'])) {
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
                     !$administrador->setClave($_POST['claveAdministrador']) or
                     !$administrador->setTelefono($_POST['telefono']) or
-                    !$administrador->setFechaRegistro($_POST['fecha_registro'])or
                     !$libros->setImagen($_FILES['imagen'])
                 ) {
                     $result['error'] = $administrador->getDataError();
