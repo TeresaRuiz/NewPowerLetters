@@ -109,10 +109,8 @@
     justify-content: center; /* Centra horizontalmente los elementos */
     align-items: center; /* Centra verticalmente los elementos */
     margin-left: 10px; /* Reducir el margen izquierdo en pantallas pequeñas */
-    margin-right: 160px; /* Reducir el margen derecho en pantallas pequeñas */
+    margin-right: 10px; /* Reducir el margen derecho en pantallas pequeñas */
     background-position: left;
-    
-    
 }
 
 .form {
@@ -123,7 +121,10 @@
     padding: 30px;
     border-radius: 20px;
     font-family: sans-serif;
-    width: 100%; /* Ancho del formulario para ocupar todo el ancho en pantallas pequeñas */
+    width: 90%; /* Ancho del formulario para ocupar el 90% del ancho en pantallas pequeñas */
+    max-width: 650px; /* Ancho máximo del formulario */
+    margin-top: 20px; /* Cambiar el margen superior para que no se superponga con la imagen */
+    margin-bottom: 20px; /* Agregar un margen inferior para separar del siguiente contenido */
 }
 
 body {
@@ -138,9 +139,9 @@ body {
 
 .container_registro {
     /* Añade estilos para el contenedor */
-    max-width: 600px;
+    max-width: 700px;
     width: 100%;
-    padding: 20px;
+    padding: 0px;
 }
 
 
@@ -163,6 +164,8 @@ body {
         width: 650px; /* Ancho fijo del formulario para pantallas más grandes */
         margin-left: 120px; /* Margen izquierdo para pantallas más grandes */
         margin-right: 0; /* Reiniciar margen derecho para evitar desplazamientos */
+       margin-top:300px ;
+        
       
     }
 }
@@ -170,13 +173,17 @@ body {
 .imgR img {
     width: 80%;
     object-fit: cover;
-    margin-right: 20px; /* Margen derecho en pantallas más grandes */
+    margin-top: 200px;
+    margin-right: 40px; /* Margen derecho en pantallas más grandes */
 }
 
 @media (max-width: 767px) {
     .imgR img {
        
-        margin-right: 400px; /* Margen derecho en pantallas más pequeñas */
+        margin-right: 10px; /* Margen derecho en pantallas más pequeñas */
+        margin-left: 80px;
+        height: 300px;
+        margin-top: 200px;
     }
     body{
         flex-direction: column;
