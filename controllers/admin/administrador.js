@@ -13,7 +13,6 @@ correoAdministrador = document.getElementById('correoAdministrador'),
 claveAdministrador = document.getElementById('claveAdministrador'),
 confirmarClave = document.getElementById('confirmarClave'),
 telefono = document.getElementById('telefono');
-
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para llenar la tabla con los registros existentes.
