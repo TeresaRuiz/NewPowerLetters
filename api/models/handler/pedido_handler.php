@@ -83,5 +83,13 @@ public function readOne()
     $params = array($this->id);
     return Database::getRow($sql, $params);
 }
+public function updateRow()
+{
+    $sql = 'UPDATE tb_pedidos
+            SET direccion_pedido = ?, estado = ?
+            WHERE id_pedido = ?';
+    $params = array($this->direccion, $this->estado, $this->id);
+    return Database::executeRow($sql, $params);
+}
 
 }
