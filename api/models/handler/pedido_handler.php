@@ -82,14 +82,22 @@ class PedidoHandler
         p.direccion_pedido,
         p.estado,
         p.fecha_pedido,
-        d.id_detalle
-        FROM
+        d.id_detalle,
+        l.titulo,
+        l.imagen AS imagen_libro,
+        d.cantidad,
+        r.comentario
+    FROM
         tb_pedidos AS p
-        INNER JOIN
+    INNER JOIN
         tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
-        INNER JOIN
+    INNER JOIN
         tb_usuarios AS u ON p.id_usuario = u.id_usuario
-        WHERE
+    INNER JOIN
+        tb_libros AS l ON d.id_libro = l.id_libro
+    LEFT JOIN
+        tb_resenias AS r ON d.id_resena = r.id_resena  
+    WHERE
         p.id_pedido = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);

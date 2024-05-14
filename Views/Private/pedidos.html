@@ -90,6 +90,51 @@
             </div>
         </div>
 
+        <!-- Modal de vista con imagen a la izquierda -->
+        <div id="myModalView" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModalDetalles()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2><br>
+                    <div class="libros_group grid">
+                        <div>
+                            <h3 id="tituloVista"></h3>
+                            <br>
+                            <img id="vista" src="${SERVER_URL}images/libros/${row.imagen}" width="100">
+                        </div>
+                        <div>
+                            <div>
+                                <label for="Cantidad" class="genero__label">Cantidad:</label>
+                                <p id="Cantidad"></p>
+                            </div>
+                            <div>
+                                <label for="Comentario" class="genero__label">Comentario:</label>
+                                <p id="Comentario"></p>
+                            </div>
+                            <div>
+                                <label for="Cliente" class="genero__label">Solicitado por el cliente:</label>
+                                <p id="Cliente"></p>
+                            </div>
+                            <div>
+                                <label for="direccion" class="genero__label">Dirección de pedido:</label>
+                                <p id="direccionPedido"></p>
+                            </div>
+                            <div>
+                                <label for="Estado" class="genero__label">Estado:</label>
+                                <p id="Estado"></p>
+                            </div>
+                            <div>
+                                <label for="Fecha" class="genero__label">Fecha:</label>
+                                <p id="Fecha"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
     </main>
     <!--=============== SWIPER JS ===============-->
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
