@@ -74,7 +74,7 @@ const fillTable = async (form = null) => {
                 <td>${row.nombre_usuario}</td>
                 <td>
                     <div>
-                        <i class="ri-hourglass-fill" style="color: orange;"></i> ${row.estado}
+                        ${row.estado}
                     </div>
                 </td>
                 <td class="action-icons">
