@@ -56,12 +56,12 @@ if (isset($_GET['action'])) {
                     case 'updateRow':
                         $_POST = Validator::validateForm($_POST);
                         if (
-                            !$pedido->setId($_POST['id_libro']) or
-                            !$pedido->setIdUsuario($_POST['id_libro']) or
-                            !$pedido->setDireccion($_POST['titulo']) ||
-                            !$pedido->setEstado($_POST['autor']) ||
-                            !$pedido->setFecha($_POST['descripcion']) ||
-                            !$pedido->setIdDetalle($_POST['imagen'])
+                            !$pedido->setId($_POST['id_pedido']) or
+                            !$pedido->setIdUsuario($_POST['usuario']) or
+                            !$pedido->setDireccion($_POST['direccion']) ||
+                            !$pedido->setEstado(isset($_POST['estadoProducto']) ? 1 : 0)||
+                            !$pedido->setFecha($_POST['fecha']) ||
+                            !$pedido->setIdDetalle($_POST['detalle'])
                         ) {
                             $result['error'] = $pedido->getDataError(); // Mensaje de error si la validación falla.
                         } elseif ($pedido->updateRow()) { // Intentar actualizar la fila.

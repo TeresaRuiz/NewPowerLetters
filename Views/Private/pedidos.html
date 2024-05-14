@@ -102,6 +102,47 @@
             </table>
         </div>
 
+         <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2>
+                    <br>
+                    <form id="saveForm">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" id="id_pedido" name="id_pedido" style=" display: none;">
+                        <div>
+                            <label class="genero__label">Cliente</label>
+                            <input type="text" name="usuario" id="usuario" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+                        <div>
+                            <label class="genero__label">Dirección</label>
+                            <input type="text" name="direccion" id="direccion" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+
+                        <div>
+                            <label class="genero__label">Estado</label>
+                            <input type="text" name="estadoProducto" id="estadoProducto" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+
+                        <div>
+                            <label class="genero__label">Fecha</label>
+                            <input type="text" name="fecha" id="fecha" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+
+                        <br><br>
+                        <button type="submit" class="genero__button button">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </main>
     <script src="../../Resources/js/header_admin.js"></script>
     <script src="../../Resources/js/modals_.js"></script>
