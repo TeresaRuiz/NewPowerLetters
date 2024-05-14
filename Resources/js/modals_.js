@@ -20,5 +20,7 @@ function  AbrirModalVista() {
 // Cerrar el modal de añadir al hacer clic en el botón de cierre
 function closeModal() {
     modal.style.display = "none";
+}
+function closeModalDetalles() {
     modal_.style.display = "none";
 }

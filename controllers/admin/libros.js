@@ -164,15 +164,15 @@ const viewDetails = async (id) => {
         AbrirModalVista();
         MODAL_TITLE.textContent = 'Detalle de un libro';
         // Actualizar los elementos del modal con la información del libro
-        document.getElementById('tituloVista').innerText = ROW.titulo;
+        document.getElementById('tituloVista').innerText = ROW.titulo_libro;
         document.getElementById('vista').src = `${SERVER_URL}images/libros/${ROW.imagen}`;
         document.getElementById('precioVista').innerText = ROW.precio;
-        document.getElementById('descripcionVista').innerText = ROW.descripcion;
+        document.getElementById('descripcionVista').innerText = ROW.descripcion_libro;
         document.getElementById('existenciasVista').innerText = ROW.existencias;
-        fillSelect(GENERO_API, 'readAll', 'generoVista', ROW.id_genero);
-        fillSelect(EDITORIAL_API, 'readAll', 'editorialVista', ROW.id_editorial);
-        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacionVista', ROW.id_clasificacion);
-        fillSelect(AUTORES_API, 'readAll', 'autorVista', ROW.id_autor);
+        document.getElementById('autorVista').innerText = ROW.nombre_autor;
+        document.getElementById('clasificacionVista').innerText = ROW.nombre_clasificacion;
+        document.getElementById('editorialVista').innerText = ROW.nombre_editorial;
+        document.getElementById('generoVista').innerText = ROW.nombre_genero;
     } else {
         sweetAlert(2, DATA.error, false);
     }
