@@ -10,7 +10,7 @@ const SAVE_FORM = document.getElementById('saveForm'),
     id_pedido = document.getElementById('id_pedido'),
     usuario = document.getElementById('usuario'),
     direccion = document.getElementById('direccion'),
-    estadoProducto = document.getElementById('estadoProducto'),
+    estadoPedido = document.getElementById('estadoPedido'),
     fecha = document.getElementById('fecha'),
     Detalle = document.getElementById('detalle')
     ;
@@ -74,11 +74,11 @@ const fillTable = async (form = null) => {
                 <td>${row.nombre_usuario}</td>
                 <td>
                     <div>
-                        <i class="ri-hourglass-fill" style="color: orange;"></i> PENDIENTE
+                        <i class="ri-hourglass-fill" style="color: orange;"></i> ${row.estado}
                     </div>
                 </td>
                 <td class="action-icons">
-                    <a onclick="openUpdate(${row.id_pedido})">
+                    <a onclick="Vista(${row.id_pedido})">
                     <i class="ri-eye-fill"></i>
                     </a>
                     <a onclick="openUpdate(${row.id_pedido})">
@@ -94,4 +94,31 @@ const fillTable = async (form = null) => {
         sweetAlert(4, DATA.error, true);
     }
 
+}
+
+const openUpdate = async (id) => {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id_pedido', id);
+    // Petición para obtener los datos del registro solicitado.
+    const DATA = await fetchData(PEDIDO_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se inicializan los campos con los datos.
+        const ROW = DATA.dataset;
+        id_pedido.value = ROW.id_pedido;
+        usuario.value = ROW.nombre_usuario;
+        direccion.value = ROW.direccion_pedido;
+        fillSelect(PEDIDO_API, 'getEstados', 'estadoPedido', ROW.estado);
+        fecha.value = ROW.fecha_pedido;
+
+         // Deshabilitar campos que no se pueden editar
+         usuario.disabled = true;
+         fecha.disabled = true;
+         
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Actualizar un pedido';
+    } else {
+        sweetAlert(2, DATA.error, false);
+    }
 }

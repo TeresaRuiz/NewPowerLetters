@@ -16,10 +16,11 @@ if (isset($_GET['action'])) {
         'dataset' => null, // Datos resultantes de la operación.
         'error' => null, // Mensaje de error si ocurre un problema.
         'exception' => null,// Excepción del servidor de base de datos si es aplicable.
-        'fileStatus' => null);// Estado de archivo (si es necesario para alguna operación).
+        'fileStatus' => null
+    );// Estado de archivo (si es necesario para alguna operación).
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
-    if (isset($_SESSION['idAdministrador'])or true) {
+    if (isset($_SESSION['idAdministrador']) or true) {
         // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
         switch ($_GET['action']) {
             case 'searchRows':
@@ -33,27 +34,27 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-                case 'createRow': // Acción para crear un nuevo libro.
-                    $_POST = Validator::validateForm($_POST);
-    
-                    // Validar y establecer los campos necesarios para crear un libro.
-                    if (
-                        !$pedido->setId($_POST['id_pedido']) or
-                            !$pedido->setIdUsuario($_POST['usuario']) or
-                            !$pedido->setDireccion($_POST['direccion']) ||
-                            !$pedido->setEstado(isset($_POST['estadoProducto']) ? 1 : 0)||
-                            !$pedido->setFecha($_POST['fecha']) ||
-                            !$pedido->setIdDetalle($_POST['detalle'])
-                    ) {
-                        $result['error'] = $pedido->getDataError(); // Obtener mensaje de error si la validación falla.
-                    } elseif ($pedido->createRow()) { // Intentar crear un nuevo libro.
-                        $result['status'] = 1; // Indicar que la operación fue exitosa.
-                        $result['message'] = 'Pedido creado con éxito';
-                    } else {
-                        $result['error'] = 'Ocurrió un problema al crear el pedido'; // Mensaje de error si ocurre un problema.
-                    }
-                    break;
-                
+            case 'createRow': // Acción para crear un nuevo libro.
+                $_POST = Validator::validateForm($_POST);
+
+                // Validar y establecer los campos necesarios para crear un libro.
+                if (
+                    !$pedido->setId($_POST['id_pedido']) or
+                    !$pedido->setIdUsuario($_POST['usuario']) or
+                    !$pedido->setDireccion($_POST['direccion']) ||
+                    !$pedido->setEstado(isset($_POST['estadoProducto']) ? 1 : 0) ||
+                    !$pedido->setFecha($_POST['fecha']) ||
+                    !$pedido->setIdDetalle($_POST['detalle'])
+                ) {
+                    $result['error'] = $pedido->getDataError(); // Obtener mensaje de error si la validación falla.
+                } elseif ($pedido->createRow()) { // Intentar crear un nuevo libro.
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
+                    $result['message'] = 'Pedido creado con éxito';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al crear el pedido'; // Mensaje de error si ocurre un problema.
+                }
+                break;
+
             case 'readAll':
                 if ($result['dataset'] = $pedido->readAll()) {
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
@@ -62,36 +63,39 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No exiten pedidos registrados'; // Mensaje si no se encuentran autores.
                 }
                 break;
+            case 'readOne':
+                if (!$pedido->setId($_POST['id_pedido'])) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($result['dataset'] = $pedido->readOne()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'Pedido inexistente';
+                }
+                break;
 
-                case 'readOne':
-                    if (!$pedido->setId($_POST['id_pedido'])) {
-                        $result['error'] = $pedido->getDataError();
-                    } elseif ($result['dataset'] = $pedido->readOne()) {
-                        $result['status'] = 1;
-                    } else {
-                        $result['error'] = 'Pedido inexistente';
-                    }
-                    break;
-
-                    case 'updateRow':
-                        $_POST = Validator::validateForm($_POST);
-                        if (
-                            !$pedido->setId($_POST['id_pedido']) or
-                            !$pedido->setIdUsuario($_POST['usuario']) or
-                            !$pedido->setDireccion($_POST['direccion']) ||
-                            !$pedido->setEstado(isset($_POST['estadoProducto']) ? 1 : 0)||
-                            !$pedido->setFecha($_POST['fecha']) ||
-                            !$pedido->setIdDetalle($_POST['detalle'])
-                        ) {
-                            $result['error'] = $pedido->getDataError(); // Mensaje de error si la validación falla.
-                        } elseif ($pedido->updateRow()) { // Intentar actualizar la fila.
-                            $result['status'] = 1; // Indicar que la operación fue exitosa.
-                            $result['message'] = 'Pedido modificado correctamente'; // Mensaje de éxito.
-                        } else {
-                            $result['error'] = 'Ocurrió un problema al modificar el estado'; // Mensaje de error si ocurre un problema.
-                        }
-                        break;
-                        default: // Caso por defecto para manejar acciones desconocidas.
+            case 'updateRow':
+                $_POST = Validator::validateForm($_POST);
+                if (
+                    !$pedido->setId($_POST['id_pedido']) or
+                    !$pedido->setDireccion($_POST['direccion']) ||
+                    !$pedido->setEstado($_POST['estadoPedido'])
+                ) {
+                    $result['error'] = $pedido->getDataError(); // Mensaje de error si la validación falla.
+                } elseif ($pedido->updateRow()) { // Intentar actualizar la fila.
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
+                    $result['message'] = 'Pedido modificado correctamente'; // Mensaje de éxito.
+                } else {
+                    $result['error'] = 'Ocurrió un problema al modificar el estado'; // Mensaje de error si ocurre un problema.
+                }
+                break;
+            case 'getEstados':
+                if ($result['dataset'] = $pedido->getEstados()) {
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
+                } else {
+                    $result['error'] = 'No exiten estados disponibles'; // Mensaje si no se encuentran autores.
+                }
+                break;
+            default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
         }
 

@@ -62,13 +62,13 @@ class PedidoHandler
     p.estado,
     p.fecha_pedido,
     d.id_detalle
-FROM
+    FROM
     tb_pedidos AS p
-INNER JOIN
+    INNER JOIN
     tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
-INNER JOIN
+    INNER JOIN
     tb_usuarios AS u ON p.id_usuario = u.id_usuario
-ORDER BY
+    ORDER BY
     p.fecha_pedido;';
         return Database::getRows($sql);
     }
@@ -78,15 +78,18 @@ ORDER BY
         $sql = 'SELECT
         p.id_pedido,
         p.id_usuario,
+        u.nombre_usuario,
         p.direccion_pedido,
         p.estado,
         p.fecha_pedido,
         d.id_detalle
-    FROM
+        FROM
         tb_pedidos AS p
-    INNER JOIN
+        INNER JOIN
         tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
-    WHERE
+        INNER JOIN
+        tb_usuarios AS u ON p.id_usuario = u.id_usuario
+        WHERE
         p.id_pedido = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
@@ -99,5 +102,4 @@ ORDER BY
         $params = array($this->direccion, $this->estado, $this->id);
         return Database::executeRow($sql, $params);
     }
-
 }

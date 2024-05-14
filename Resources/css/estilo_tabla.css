@@ -139,8 +139,8 @@
   border-radius: 8px; /* Bordes redondeados */
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
   padding: 20px; /* Espaciado interno */
-  width: 500px; /* Ancho de la tarjeta */
-  height: 400px; /* Altura de la tarjeta */
+  width: 700px; /* Ancho de la tarjeta */
+  height: 500px; /* Altura de la tarjeta */
   z-index: 2; /* Asegura que esté por encima del fondo oscuro */
 }
 
@@ -169,7 +169,8 @@
 .genero__input,
 .clasificacion__input,
 .editorial__input,
-.autores__input{
+.autores__input,
+.libro__input{
   width: 100%;
   background-color: var(--container-color);
   border: 2px solid var(--border-color);

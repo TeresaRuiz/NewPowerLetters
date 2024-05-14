@@ -12,6 +12,7 @@ class PedidoData extends PedidoHandler
      *  Atributos adicionales.
      */
     private $data_error = null; // Variable para almacenar mensajes de error.
+    private $estados = array(array('PENDIENTE', 'PENDIENTE'), array('FINALIZADO', 'FINALIZADO'), array('ENTREGADO', 'ENTREGADO'), array('CANCELADO', 'CANCELADO'));
     /*
      * Métodos para validar y establecer los datos.
      */
@@ -56,7 +57,7 @@ class PedidoData extends PedidoHandler
 
     public function setEstado($value)
     {
-        if (Validator::validateBoolean($value)) {
+        if (in_array($value, array_column($this->estados, 0))) {
             $this->estado = $value;
             return true;
         } else {
@@ -95,5 +96,10 @@ class PedidoData extends PedidoHandler
     public function getDataError()
     {
         return $this->data_error;
+    }
+
+    public function getEstados()
+    {
+        return $this->estados;
     }
 }
