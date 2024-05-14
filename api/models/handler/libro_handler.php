@@ -102,9 +102,32 @@ class LibroHandler
 
     public function readOne()
     {
-        $sql = 'SELECT id_libro, titulo, descripcion, precio, existencias, imagen, id_autor, id_clasificacion, id_editorial, id_genero
-            FROM tb_libros
-            WHERE id_libro = ?';
+        $sql = 'SELECT
+        l.id_libro,
+        l.titulo AS titulo_libro,
+        l.descripcion AS descripcion_libro,
+        l.precio,
+        l.imagen,
+        a.id_autor,
+        a.nombre AS nombre_autor,
+        c.id_clasificacion,
+        c.nombre AS nombre_clasificacion,
+        e.id_editorial,
+        e.nombre AS nombre_editorial,
+        g.id_genero,
+        g.nombre AS nombre_genero,
+        l.existencias
+    FROM
+        tb_libros AS l
+    INNER JOIN
+        tb_autores AS a ON l.id_autor = a.id_autor
+    INNER JOIN
+        tb_clasificaciones AS c ON l.id_clasificacion = c.id_clasificacion
+    INNER JOIN
+        tb_editoriales AS e ON l.id_editorial = e.id_editorial
+    INNER JOIN
+        tb_generos AS g ON l.id_genero = g.id_genero
+    WHERE id_libro = ?';
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
