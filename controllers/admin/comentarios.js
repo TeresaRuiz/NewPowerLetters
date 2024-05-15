@@ -91,3 +91,30 @@ const fillTable = async (form = null) => {
     }
 
 }
+
+const openUpdate = async (id) => {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id_comentario', id);
+    // Petición para obtener los datos del registro solicitado.
+    const DATA = await fetchData(COMENTARIO_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se inicializan los campos con los datos.
+        const ROW = DATA.dataset;
+        id_pedido.value = ROW.id_pedido;
+        usuario.value = ROW.nombre_usuario;
+        direccion.value = ROW.direccion_pedido;
+        fillSelect(COMENTARIO_API, 'getEstados', 'estadoComentario', ROW.estado);
+        fecha.value = ROW.fecha_pedido;
+
+         // Deshabilitar campos que no se pueden editar
+         usuario.disabled = true;
+         fecha.disabled = true;
+         
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Actualizar un comentario';
+    } else {
+        sweetAlert(2, DATA.error, false);
+    }
+}
