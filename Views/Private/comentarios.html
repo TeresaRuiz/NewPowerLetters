@@ -51,6 +51,41 @@
             </table>
         </div>
 
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2>
+                    <br>
+                    <form id="saveForm">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" id="id_comentario" name="id_comentario" style=" display: none;">
+                        <div>
+                            <label class="genero__label">Comentario</label>
+                            <input type="text" name="comentario" id="comentario" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+                        <div>
+                            <label class="genero__label">Calificacion</label>
+                            <input type="text" name="calificacion" id="calificacion" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+
+                        <div>
+                            <label class="genero__label">Estado</label>
+                            <select name="estadoComentario" id="estadoComentario" class="libro__input" required>
+                            </select>
+                        </div>
+                        
+                        <br><br>
+                        <button type="submit" class="genero__button button">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
     </main>
     <script src="../../Resources/js/header_admin.js"></script>
     <script src="../../Resources/js/modals_.js"></script>
