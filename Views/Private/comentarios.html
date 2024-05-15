@@ -21,19 +21,22 @@
         <div class="container">
             <h1 class="section__title">Gestión de comentarios</h1>
             <!-- Formulario de búsqueda y botón de agregar -->
-            <div class="search-container">
-                <div class="search-form">
-                    <input type="text" class="search-input" placeholder="Buscar...">
-                    <button class="search-button"><i class="ri-search-line"></i></button>
+            <form id="searchForm" class="search-container">
+                <div class="search-form" id="search_generos">
+                    <input type="search" name="search" class="search-input" placeholder="Buscar...">
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
                 </div>
-                <div class="agregar">
-                    <button class="add-button"></i> Actualizar</button>
-                </div>
+            </form>
+            <div class="agregar">
+                <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Actualizar</button>
             </div>
 
             <!-- Tabla con estilo elegante -->
             <table class="table">
                 <thead>
+                    <tr>
+                        <td colspan="2" id="rowsFound"></td>
+                    </tr>
                     <tr>
                         <th>Comentario</th>
                         <th>Usuario</th>
@@ -42,39 +45,8 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Esta horrible</td>
-                        <td>Neymar</td>
-                        <td> <a href="#">
-                            <i class="ri-star-s-fill" style="color: gold;"></i>
-                            <i class="ri-star-s-fill" style="color: gold;"></i>
-                            <i class="ri-star-s-fill" style="color: gold;"></i>
-                            <i class="ri-star-s-fill" style="color: gold;"></i>
-                            <i class="ri-star-half-fill" style="color: lightgray;"></i>
-                    
-                        </td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-search-eye-line"></i></a>
-                            <a href="#"><i class="ri-eye-fill"></i></a>
-                            <a href="#"><i class="ri-eye-off-fill"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Muy bueno</td>
-                        <td>Lissandro Quezada</td>
-                        <td><div style="background-color: lightgray; width: 100px; height: 10px;">
-                            <div style="background-color: green; width: 70%; height: 100%;"></div>
-                          </div>
-                          <span>7/10</span></td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-search-eye-line"></i></a>
-                            <a href="#"><i class="ri-eye-fill"></i></a>
-                            <a href="#"><i class="ri-eye-off-fill"></i></a>
-                        </td>
-                    </tr>
+                <tbody id="tableBody">
+
                 </tbody>
             </table>
         </div>

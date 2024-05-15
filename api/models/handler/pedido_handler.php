@@ -33,7 +33,7 @@ class PedidoHandler
     INNER JOIN
         tb_detalle_pedidos AS d ON p.id_pedido = d.id_pedido
     LEFT JOIN
-        tb_resenias AS r ON d.id_resena = r.id_resena
+        tb_comentarios AS r ON d.id_comentario = r.id_comentario
     INNER JOIN
         tb_usuarios AS u ON p.id_usuario = u.id_usuario
     WHERE
@@ -96,7 +96,7 @@ class PedidoHandler
     INNER JOIN
         tb_libros AS l ON d.id_libro = l.id_libro
     LEFT JOIN
-        tb_resenias AS r ON d.id_resena = r.id_resena  
+        tb_comentarios AS r ON d.id_comentario = r.id_comentario  
     WHERE
         p.id_pedido = ?';
         $params = array($this->id);

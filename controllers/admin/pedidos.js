@@ -115,7 +115,7 @@ const openUpdate = async (id) => {
          // Deshabilitar campos que no se pueden editar
          usuario.disabled = true;
          fecha.disabled = true;
-         
+
         AbrirModal();
         MODAL_TITLE.textContent = 'Actualizar un pedido';
     } else {
