@@ -16,6 +16,7 @@ class ComentarioHandler
         $sql = 'SELECT
         c.id_comentario,
         c.comentario,
+        c.calificacion,
         c.estado_comentario
     FROM
         tb_comentarios AS c
@@ -30,15 +31,10 @@ class ComentarioHandler
 
     public function readAll()
     {
-        $sql = '';
-        return Database::getRows($sql);
-    }
-
-    public function readAll()
-    {
         $sql = 'SELECT
         c.id_comentario,
         c.comentario,
+        c.calificacion,
         c.estado_comentario
     FROM
         tb_comentarios AS c
@@ -52,6 +48,7 @@ class ComentarioHandler
         $sql = 'SELECT
         c.id_comentario,
         c.comentario,
+        c.calificacion,
         c.estado_comentario
     FROM
         tb_comentarios AS c
