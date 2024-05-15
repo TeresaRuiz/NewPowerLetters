@@ -104,12 +104,10 @@ const openUpdate = async (id) => {
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
         id_comentario.value = ROW.id_comentario;
-        usuario.value = ROW.nombre_usuario;
         calificacion.value = ROW.calificacion;
         fillSelect(COMENTARIO_API, 'getEstados', 'estadoComentario', ROW.estado_comentario);
 
          // Deshabilitar campos que no se pueden editar
-         usuario.disabled = true;
          calificacion.disabled = true;
          
         AbrirModal();
