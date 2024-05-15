@@ -65,18 +65,20 @@ CREATE TABLE tb_libros (
     CONSTRAINT fk_editorial FOREIGN KEY (id_editorial) REFERENCES tb_editoriales(id_editorial)
 );
 
-CREATE TABLE tb_resenias (
-    id_resena INT PRIMARY KEY AUTO_INCREMENT,
-    comentario VARCHAR(250) 
+CREATE TABLE tb_comentarios (
+    id_comentario INT PRIMARY KEY AUTO_INCREMENT,
+    comentario VARCHAR(250),
+    calificacion INT,
+    estado_comentario ENUM('ACTIVO', 'BLOQUEADO')
 );
 
 CREATE TABLE tb_detalle_pedidos (
     id_detalle INT PRIMARY KEY AUTO_INCREMENT,
     id_libro INT,
     cantidad INT,
-    id_resena INT,
+    id_comentario INT,
     CONSTRAINT fk_libro FOREIGN KEY (id_libro) REFERENCES tb_libros(id_libro),
-    CONSTRAINT fk_resenia FOREIGN KEY (id_resena) REFERENCES tb_resenias(id_resena)
+    CONSTRAINT fk_comentario FOREIGN KEY (id_comentario) REFERENCES tb_comentarios(id_comentario)
 );
 
 CREATE TABLE tb_pedidos (
@@ -90,4 +92,3 @@ CREATE TABLE tb_pedidos (
     CONSTRAINT fk_pedido FOREIGN KEY (id_detalle) REFERENCES tb_detalle_pedidos(id_detalle)
 );
  
-
