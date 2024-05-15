@@ -307,15 +307,35 @@ VALUES
   
   SELECT*FROM tb_libros;
   
-  INSERT INTO tb_resenias (comentario)
-values ('Me encanto'), ('Muy bueno'), ('Un poco alto el precio pero estubo bien'), ('lo adore'), ('No me gusto'), ('Compre dos me encanto'),
-('Muy caro el precio'), ('Mucho texto xd'), ('Un clasico'), ('me divirtio lo recomiendo'), ('El autor no me gusta'), ('Muy bueno lo recomiendo'), ('El nombre me encanto'), ('Muy interesante'), ('Me encanto el final'), ('Saquen una peli de este libro'),
-('Era mejor el anterior'), ('Mas texto xd'), ('la trilogia me encanto'), ('me emociono la gran batalla'),('Se me daño'), ('Mas bonito mejor'), ('Mas texto xd'), ('facinante'), ('final hermoso <3');
-
-SELECT*FROM tb_resenias;
+INSERT INTO tb_comentarios (id_comentario, comentario, calificacion, estado_comentario)
+VALUES (1, 'Me encanto', 5, 'ACTIVO'),
+       (2, 'Muy bueno', 4, 'ACTIVO'),
+       (3, 'Un poco alto el precio pero estuvo bien', 3, 'ACTIVO'),
+       (4, 'Lo adore', 5, 'ACTIVO'),
+       (5, 'No me gusto', 2, 'ACTIVO'),
+       (6, 'Compre dos me encanto', 5, 'ACTIVO'),
+       (7, 'Muy caro el precio', 2, 'ACTIVO'),
+       (8, 'Mucho texto xd', 3, 'ACTIVO'),
+       (9, 'Un clasico', 4, 'ACTIVO'),
+       (10, 'Me divirtio lo recomiendo', 4, 'ACTIVO'),
+       (11, 'El autor no me gusta', 2, 'ACTIVO'),
+       (12, 'Muy bueno lo recomiendo', 4, 'ACTIVO'),
+       (13, 'El nombre me encanto', 5, 'ACTIVO'),
+       (14, 'Muy interesante', 4, 'ACTIVO'),
+       (15, 'Me encanto el final', 5, 'ACTIVO'),
+       (16, 'Saquen una peli de este libro', 3, 'ACTIVO'),
+       (17, 'Era mejor el anterior', 3, 'ACTIVO'),
+       (18, 'Mas texto xd', 3, 'ACTIVO'),
+       (19, 'La trilogia me encanto', 5, 'ACTIVO'),
+       (20, 'Me emociono la gran batalla', 4, 'ACTIVO'),
+       (21, 'Se me daño', 1, 'ACTIVO'),
+       (22, 'Mas bonito mejor', 4, 'ACTIVO'),
+       (23, 'Mas texto xd', 2, 'ACTIVO'),
+       (24, 'Fascinante', 5, 'ACTIVO'),
+       (25, 'Final hermoso <3', 5, 'ACTIVO');
 
 -- Insertar datos en la tabla tb_detalle_pedidos
-INSERT INTO tb_detalle_pedidos (id_libro, cantidad, id_resena)
+INSERT INTO tb_detalle_pedidos (id_libro, cantidad, id_comentario)
 VALUES (1, 2, 1);
 -- Insertar datos en la tabla tb_pedidos
 INSERT INTO tb_pedidos (id_usuario, direccion_pedido, estado, fecha_pedido, id_detalle)
@@ -402,5 +422,27 @@ INNER JOIN
     tb_usuarios AS u ON p.id_usuario = u.id_usuario
 ORDER BY
     p.fecha_pedido;
-
     
+    
+    
+SELECT
+        c.id_comentario,
+        c.comentario,
+        c.calificacion,
+        c.estado_comentario
+    FROM
+        tb_comentarios AS c
+    ORDER BY
+        c.id_comentario; 
+        
+        
+        SELECT
+        c.id_comentario,
+        c.comentario,
+        c.calificacion,
+        c.estado_comentario
+    FROM
+        tb_comentarios AS c
+    WHERE
+        c.id_comentario = 10
+     

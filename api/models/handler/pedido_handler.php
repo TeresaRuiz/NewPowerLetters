@@ -102,6 +102,7 @@ class PedidoHandler
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
+    
     public function updateRow()
     {
         $sql = 'UPDATE tb_pedidos
