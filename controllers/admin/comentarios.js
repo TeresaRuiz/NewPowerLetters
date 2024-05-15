@@ -9,6 +9,7 @@ const ROWS_FOUND = document.getElementById('rowsFound');
 const SAVE_FORM = document.getElementById('saveForm'),
     id_comentario = document.getElementById('id_comentario'),
     comentario = document.getElementById('comentario'),
+    calificacion = document.getElementById('calificacion'),
     estadoComentario = document.getElementById('estadoComentario')
 ;
 // Método del evento para cuando el documento ha cargado.
@@ -102,15 +103,14 @@ const openUpdate = async (id) => {
     if (DATA.status) {
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
-        id_pedido.value = ROW.id_pedido;
+        id_comentario.value = ROW.id_comentario;
         usuario.value = ROW.nombre_usuario;
-        direccion.value = ROW.direccion_pedido;
-        fillSelect(COMENTARIO_API, 'getEstados', 'estadoComentario', ROW.estado);
-        fecha.value = ROW.fecha_pedido;
+        calificacion.value = ROW.calificacion;
+        fillSelect(COMENTARIO_API, 'getEstados', 'estadoComentario', ROW.estado_comentario);
 
          // Deshabilitar campos que no se pueden editar
          usuario.disabled = true;
-         fecha.disabled = true;
+         calificacion.disabled = true;
          
         AbrirModal();
         MODAL_TITLE.textContent = 'Actualizar un comentario';
