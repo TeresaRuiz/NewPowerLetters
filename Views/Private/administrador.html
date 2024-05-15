@@ -28,7 +28,7 @@
                 </div>
             </form>
 
-            
+
             <div class="agregar">
                 <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Agregar</button>
             </div>
@@ -56,25 +56,47 @@
             <div class="modal-background"></div>
             <div class="modal-content card">
                 <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
-
                 <div class="card-body">
                     <h2 id="modalTitle"></h2>
                     <br>
                     <form id="saveForm">
                         <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                        <input type="hidden" id="idEditorial" name="idEditorial" style=" display: none;">
+                        <input type="number" id="idGenero" name="idGenero" style=" display: none;">
                         <div>
-                            <label class="editoriales__label">Nombre de la editorial</label>
-                            <input type="text" name="editorial" id="editorial" placeholder="Escribe tu editorial"
-                                class="editorial__input">
+
+                            <label for="nombre" class="register__label">Nombre del administrador</label>
+                            <input type="text" name="nombreAdministrador" id="nombreAdministrador"
+                                placeholder="Escribe el nombre" class="register__input">
+
+                            <label for="nombre_usuario" class="register__label">Nombre de usuario</label>
+                            <input type="text" name="UsuarioAdministrador" id="UsuarioAdministrador"
+                                placeholder="Escribe el usuario" class="register__input">
+
+                            <label for="correo" class="register__label">Correo electrónico</label>
+                            <input type="email" name="correoAdministrador" id="correoAdministrador"
+                                placeholder="Escribe el correo" class="register__input">
+
+                            <label for="clave" class="register__label">Contraseña</label>
+                            <input type="password" name="claveAdministrador" id="claveAdministrador"
+                                placeholder="Escribe la contraseña" class="register__input">
+
+                            <label for="confirmarClave" class="register__label">Confirmar contraseña</label>
+                            <input type="password" name="confirmarClave" id="confirmarClave"
+                                placeholder="Confirma tu contraseña" class="register__input" required>
+
+                            <label for="telefono" class="register__label">Teléfono</label>
+                            <input type="number" name="telefono" id="telefono"
+                                placeholder="Escribe el numero de telefono" class="register__input">
+
+                            <label for="imagen" class="register__label">Imagen</label>
+                            <input type="file" name="imagen" id="imagen" accept="image/*" class="register__input">
+                            
+
                         </div>
                         <br><br>
-                        <button type="submit" class="login__button button">Guardar</button>
+                        <button type="submit" class="genero__button button">Guardar</button>
                     </form>
-
                 </div>
-
-
             </div>
         </div>
     </main>
