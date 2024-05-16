@@ -8,6 +8,24 @@
     <link rel="stylesheet" href="../../Resources/css/styles.css">
     <link rel="stylesheet" href="../../Resources/css/estilo_tabla.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .fa-star {
+            font-family: FontAwesome;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        .calificacion__input .fa-star {
+            font-family: FontAwesome;
+        }
+
+        .calificacion__input .checked {
+            color: orange;
+        }
+    </style>
     <!-- Agregamos la hoja de estilos de RemixIcon -->
 </head>
 
@@ -67,12 +85,12 @@
                             <input type="text" name="comentario" id="comentario" placeholder="Escribe tu género"
                                 class="genero__input">
                         </div>
+                        <br>
                         <div>
-                            <label class="genero__label">Calificacion</label>
-                            <input type="text" name="calificacion" id="calificacion" placeholder="Escribe tu género"
-                                class="genero__input">
+                            <label class="genero__label">Calificación</label>
+                            <div id="calificacionContainer" class="calificacion__input"></div>
                         </div>
-
+                        <br>
                         <div>
                             <label class="genero__label">Estado</label>
                             <select name="estadoComentario" id="estadoComentario" class="libro__input" required>
