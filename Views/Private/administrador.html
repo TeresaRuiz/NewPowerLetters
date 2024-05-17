@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>clasificación</title>
     <link rel="stylesheet" href="../../Resources/css/styles.css">
-    <link rel="stylesheet" href="../../Resources/css/estilo_tabla.css">
+    <link rel="stylesheet" href="../../Resources/css/estilo_libros.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
     <!-- Agregamos la hoja de estilos de RemixIcon -->
 </head>
@@ -64,36 +64,50 @@
 
                         <!-- Campo oculto para asignar el id del registro al momento de modificar -->
 
-                       
+
                         <input type="hidden" id="idAdministrador" name="idAdministrador" style=" display: none;">
-                        <div>
+                        <div class="libros__group grid">
 
-                            <label for="nombre" class="register__label">Nombre del administrador</label>
-                            <input type="text" name="nombreAdministrador" id="nombreAdministrador"
-                                placeholder="Escribe el nombre" class="register__input">
+                            <div>
+                                <label for="nombre" class="libro__label">Nombre del administrador</label>
+                                <input type="text" name="nombreAdministrador" id="nombreAdministrador"
+                                    placeholder="Escribe el nombre" class="libro__input">
+                            </div>
 
-                            <label for="nombre_usuario" class="register__label">Nombre de usuario</label>
-                            <input type="text" name="UsuarioAdministrador" id="UsuarioAdministrador"
-                                placeholder="Escribe el usuario" class="register__input">
+                            <div>
+                                <label for="nombre_usuario" class="libro__label">Nombre de usuario</label>
+                                <input type="text" name="UsuarioAdministrador" id="UsuarioAdministrador"
+                                    placeholder="Escribe el usuario" class="libro__input">
+                            </div>
 
-                            <label for="correo" class="register__label">Correo electrónico</label>
-                            <input type="email" name="correoAdministrador" id="correoAdministrador"
-                                placeholder="Escribe el correo" class="register__input">
+                            <div>
+                                <label for="correo" class="libro__label">Correo electrónico</label>
+                                <input type="email" name="correoAdministrador" id="correoAdministrador"
+                                    placeholder="Escribe el correo" class="libro__input">
+                            </div>
 
-                            <label for="clave" class="register__label">Contraseña</label>
-                            <input type="password" name="claveAdministrador" id="claveAdministrador"
-                                placeholder="Escribe la contraseña" class="register__input">
+                            <div>
+                                <label for="clave" class="libro__label">Contraseña</label>
+                                <input type="password" name="claveAdministrador" id="claveAdministrador"
+                                    placeholder="Escribe la contraseña" class="libro__input">
+                            </div>
 
-                            <label for="confirmarClave" class="register__label">Confirmar contraseña</label>
-                            <input type="password" name="confirmarClave" id="confirmarClave"
-                                placeholder="Confirma tu contraseña" class="register__input" required>
+                            <div>
+                                <label for="confirmarClave" class="libro__label">Confirmar contraseña</label>
+                                <input type="password" name="confirmarClave" id="confirmarClave"
+                                    placeholder="Confirma tu contraseña" class="libro__input" required>
+                            </div>
 
-                            <label for="telefono" class="register__label">Teléfono</label>
-                            <input type="number" name="telefono" id="telefono"
-                                placeholder="Escribe el numero de telefono" class="register__input">
+                            <div>
+                                <label for="telefono" class="libro__label">Teléfono</label>
+                                <input type="number" name="telefono" id="telefono"
+                                    placeholder="Escribe el numero de telefono" class="libro__input">
+                            </div>
 
-                            <label for="imagen" class="register__label">Imagen</label>
-                            <input type="file" name="imagen" id="imagen" accept="image/*" class="register__input">
+                            <div>
+                                <label for="imagen" class="libro__label">Imagen</label>
+                                <input type="file" name="imagen" id="imagen" accept="image/*" class="libro__input">
+                            </div>
 
 
                         </div>
