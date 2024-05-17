@@ -170,6 +170,7 @@
 .clasificacion__input,
 .editorial__input,
 .autores__input,
+.register__input,
 .libro__input{
   width: 100%;
   background-color: var(--container-color);
