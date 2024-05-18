@@ -33,7 +33,7 @@ class AdministradorHandler
         } elseif (password_verify($password, $data['clave_administrador'])) {
             $_SESSION['idAdministrador'] = $data['id_administrador'];
             $_SESSION['correoAdministrador'] = $data['correo_administrador'];
-            return $data['id_administrador']; // Devuelve el id_administrador
+            return true;
         } else {
             return false;
         }
@@ -56,7 +56,7 @@ class AdministradorHandler
 
     public function changePassword()
     {
-        $sql = 'UPDATE administrador
+        $sql = 'UPDATE tb_administradores
                 SET clave_administrador = ?
                 WHERE id_administrador = ?';
         $params = array($this->clave, $_SESSION['idAdministrador']);
@@ -67,7 +67,7 @@ class AdministradorHandler
 
     public function readProfile()
     {
-        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador
                 FROM tb_administradores
                 WHERE id_administrador = ?';
         $params = array($_SESSION['idAdministrador']);
@@ -78,11 +78,11 @@ class AdministradorHandler
     {
         // Sentencia SQL para actualizar el perfil del administrador.
         $sql = 'UPDATE tb_administradores
-            SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?, clave_administrador = ?, telefono_adm = ?, imagen = ?
+            SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?
             WHERE id_administrador = ?';
 
         // Parámetros para la consulta preparada.
-        $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->imagen, $_SESSION['idAdministrador']);
+        $params = array($this->nombre, $this->usuario, $this->correo, $_SESSION['idAdministrador']);
 
         // Ejecutar la consulta y retornar el resultado.
         return Database::executeRow($sql, $params);
@@ -123,7 +123,7 @@ class AdministradorHandler
     public function readAll()
     {
         // Consulta SQL para seleccionar todos los administradores.
-        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm, imagen
             FROM tb_administradores
             ORDER BY nombre_administrador';
 
@@ -134,7 +134,7 @@ class AdministradorHandler
     public function readOne()
     {
         // Consulta SQL para seleccionar un administrador por su ID.
-        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm, imagen
             FROM tb_administradores
             WHERE id_administrador = ?';
         // Parámetros para la consulta.
@@ -147,10 +147,10 @@ class AdministradorHandler
     {
         // Consulta SQL para actualizar los datos de un administrador.
         $sql = 'UPDATE tb_administradores
-            SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?, telefono_adm = ?
+            SET nombre_administrador = ?, user_administrador = ?, correo_administrador = ?
             WHERE id_administrador = ?';
         // Parámetros para la consulta.
-        $params = array($this->nombre, $this->usuario, $this->correo, $this->telefono, $this->id);
+        $params = array($this->nombre, $this->usuario, $this->correo, $this->id);
         // Ejecutar la consulta y retornar el resultado.
         return Database::executeRow($sql, $params);
     }
