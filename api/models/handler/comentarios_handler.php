@@ -75,16 +75,4 @@ class ComentarioHandler
         $params = array($this->estadoComentario, $this->id);
         return Database::executeRow($sql, $params);
     }
-
-    public function getStarRating($rating)
-    {
-        $maxStars = 5;
-        $fullStar = '<span class="fa fa-star checked"></span>';
-        $emptyStar = '<span class="fa fa-star"></span>';
-
-        $stars = str_repeat($fullStar, $rating);
-        $stars .= str_repeat($emptyStar, $maxStars - $rating);
-
-        return $stars;
-    }
 }

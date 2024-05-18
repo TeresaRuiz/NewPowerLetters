@@ -53,9 +53,6 @@ if (isset($_GET['action'])) {
                     break;
                     case 'readAll':
                         if ($result['dataset'] = $comentario->readAll()) {
-                            foreach ($result['dataset'] as &$row) {
-                                $row['calificacion'] = $comentario->getStarRating($row['calificacion']);
-                            }
                             $result['status'] = 1;
                             $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                         } else {
@@ -66,12 +63,12 @@ if (isset($_GET['action'])) {
                             if (!$comentario->setId($_POST['id_comentario'])) {
                                 $result['error'] = $comentario->getDataError();
                             } elseif ($result['dataset'] = $comentario->readOne()) {
-                                $result['dataset']['calificacion'] = $comentario->getStarRating($result['dataset']['calificacion']);
                                 $result['status'] = 1;
                             } else {
                                 $result['error'] = 'Comentario inexistente';
                             }
                             break;
+                        
         
                     case 'updateRow':
                         $_POST = Validator::validateForm($_POST);
