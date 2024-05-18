@@ -94,3 +94,28 @@ const openUpdate = async (id) => {
         sweetAlert(2, DATA.error, false);
     }
 }
+
+
+const viewDetails = async (id) => {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id_comentario', id);
+    // Petición para obtener los datos del registro solicitado.
+    const DATA = await fetchData(COMENTARIO_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se inicializan los campos con los datos.
+        const ROW = DATA.dataset;
+        AbrirModalVista();
+        MODAL_TITLE.textContent = 'Detalle del comentario';
+        // Actualizar los elementos del modal con la información del libro
+        document.getElementById('tituloVista').innerText = ROW.titulo;
+        document.getElementById('vista').src = `${SERVER_URL}images/libros/${ROW.imagen}`;
+        document.getElementById('Cliente').innerText = ROW.nombre_usuario;
+        document.getElementById('calificacionContainerView').innerHTML = getStarsHTML(ROW.calificacion);
+        document.getElementById('Comentario').innerText = ROW.comentario;
+        document.getElementById('Estado').innerText = ROW.estado_comentario;
+    } else {
+        sweetAlert(2, DATA.error, false);
+    }
+};

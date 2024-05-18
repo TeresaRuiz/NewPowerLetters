@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,92 +13,140 @@
         .fa-star {
             font-family: FontAwesome;
         }
+
         .checked {
             color: orange;
         }
+
         .calificacion__input .fa-star {
             font-family: FontAwesome;
         }
+
         .calificacion__input .checked {
             color: orange;
         }
     </style>
 </head>
+
 <body>
 
-<header class="header">
-    <!-- Código del encabezado omitido por brevedad -->
-</header>
+    <header class="header">
+        <!-- Código del encabezado omitido por brevedad -->
+    </header>
 
-<main class="main section">
-    <div class="container">
-        <h1 class="section__title">Gestión de comentarios</h1>
-        <form id="searchForm" class="search-container">
-            <div class="search-form" id="search_generos">
-                <input type="search" name="search" class="search-input" placeholder="Buscar...">
-                <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
+    <main class="main section">
+        <div class="container">
+            <h1 class="section__title">Gestión de comentarios</h1>
+            <form id="searchForm" class="search-container">
+                <div class="search-form" id="search_generos">
+                    <input type="search" name="search" class="search-input" placeholder="Buscar...">
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
+                </div>
+            </form>
+            <div class="agregar">
+                <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Actualizar</button>
             </div>
-        </form>
-        <div class="agregar">
-            <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Actualizar</button>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td colspan="2" id="rowsFound"></td>
+                    </tr>
+                    <tr>
+                        <th>Comentario</th>
+                        <th>Usuario</th>
+                        <th>Calificación</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+                </tbody>
+            </table>
         </div>
-        <table class="table">
-            <thead>
-                <tr>
-                    <td colspan="2" id="rowsFound"></td>
-                </tr>
-                <tr>
-                    <th>Comentario</th>
-                    <th>Usuario</th>
-                    <th>Calificación</th>
-                    <th>Estado</th>
-                    <th>Acciones</th>
-                </tr>
-            </thead>
-            <tbody id="tableBody">
-            </tbody>
-        </table>
-    </div>
 
-    <div id="myModal" class="modal">
-        <div class="modal-background"></div>
-        <div class="modal-content card">
-            <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
-            <div class="card-body">
-                <h2 id="modalTitle"></h2>
-                <br>
-                <form id="saveForm">
-                    <input type="number" id="id_comentario" name="id_comentario" style="display: none;">
-                    <div>
-                        <label class="genero__label">Comentario</label>
-                        <input type="text" name="comentario" id="comentario" placeholder="Escribe tu género" class="genero__input">
-                    </div>
+        <div id="myModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2>
                     <br>
-                    <div>
-                        <label class="genero__label">Calificación</label>
-                        <div id="calificacionContainer" class="calificacion__input"></div>
-                    </div>
-                    <br>
-                    <div>
-                        <label class="genero__label">Estado</label>
-                        <select name="estadoComentario" id="estadoComentario" class="libro__input" required>
-                        </select>
-                    </div>
-                    <br><br>
-                    <button type="submit" class="genero__button button">Guardar</button>
-                </form>
+                    <form id="saveForm">
+                        <input type="number" id="id_comentario" name="id_comentario" style="display: none;">
+                        <div>
+                            <label class="genero__label">Comentario</label>
+                            <input type="text" name="comentario" id="comentario" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+                        <br>
+                        <div>
+                            <label class="genero__label">Calificación</label>
+                            <div id="calificacionContainer" class="calificacion__input"></div>
+                        </div>
+                        <br>
+                        <div>
+                            <label class="genero__label">Estado</label>
+                            <select name="estadoComentario" id="estadoComentario" class="libro__input" required>
+                            </select>
+                        </div>
+                        <br><br>
+                        <button type="submit" class="genero__button button">Guardar</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</main>
 
-<script src="../../Resources/js/swiper-bundle.min.js"></script>
-<script src="../../Resources/js/scrollreveal.min.js"></script>
-<script src="../../Resources/js/header_admin.js"></script>
-<script src="../../Resources/js/modals_.js"></script>
-<script src="../../Resources/js/main.js"></script>
-<script src="../../Resources/js/sweetalert.min.js"></script>
-<script src="../../controllers/utils/components.js"></script>
-<script src="../../controllers/admin/comentarios.js"></script>
+        <div id="myModalView" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModalDetalles()" class="close"
+                    style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2><br>
+                    <div class="libros_group grid">
+                        <div>
+                            <h3 id="tituloVista"></h3>
+                            <br>
+                            <img id="vista" src="${SERVER_URL}images/libros/${row.imagen}" width="100">
+                        </div>
+                        <div>
+                            <div>
+                                <label for="Cliente" class="genero__label">Comentado por el cliente:</label>
+                                <p id="Cliente"></p>
+                            </div>
+                            <br>
+                            <div>
+                                <label class="genero__label">Calificación:</label>
+                                <div id="calificacionContainerView" class="calificacion__input"></div>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="Comentario" class="genero__label">Comentario:</label>
+                                <p id="Comentario"></p>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="Estado" class="genero__label">Estado:</label>
+                                <p id="Estado"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+    </main>
+
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../Resources/js/header_admin.js"></script>
+    <script src="../../Resources/js/modals_.js"></script>
+    <script src="../../Resources/js/main.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/admin/comentarios.js"></script>
 </body>
+
 </html>

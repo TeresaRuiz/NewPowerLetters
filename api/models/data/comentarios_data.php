@@ -14,7 +14,7 @@ class ComentarioData extends ComentarioHandler
      *  Atributos adicionales.
      */
     private $data_error = null; // Variable para almacenar mensajes de error.
-    private $estados = array(array('ACTIVO', 'ACTIVO'), array('BLOQUEADO', 'BLOQUEADO'));
+    private $estados_comentarios = array(array('ACTIVO', 'ACTIVO'), array('BLOQUEADO', 'BLOQUEADO'));
     /*
      * Métodos para validar y establecer los datos.
      */
@@ -48,7 +48,7 @@ class ComentarioData extends ComentarioHandler
 
     public function setEstado($value)
     {
-        if (in_array($value, array_column($this->estados, 0))) {
+        if (in_array($value, array_column($this->estados_comentarios, 0))) {
             $this->estado_comentario = $value;
             return true;
         } else {
@@ -68,6 +68,6 @@ class ComentarioData extends ComentarioHandler
 
     public function getEstados()
     {
-        return $this->estados;
+        return $this->estados_comentarios;
     }
 }
