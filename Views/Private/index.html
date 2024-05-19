@@ -34,138 +34,113 @@
     </div>
 
 
-        <div class="container_registro">
-            <!--==================== REGISTER ====================-->
-    
-         
-    
-            <form class="form">
-    
-                <h3 class="register__title">Registro de administradores</h3>
-    
-                <input type="number" id="idAdministrador" name="idAdministrador">
-    
-    
-                <div class="flex-column">
-                    <label for="nombre" class="register__label">Nombre</label>
-    
-                    <div class="inputForm">
-                        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD3UlEQVR4nO2ZW4iNURTHfzOOMy5RM4PcSsoTyotLHuWSwnjBm2tKjEFRCCmFNHlhvCiMB7nmQYoXShiX3IUHMSiMS2RmNEbM0c76arX7zvftfc53zkjnX7vz1d7/tdfae+2191oHSiihhKQwBlgDnAVuAM3Ad6AT+AI8Ak4Dm4BJQDn/AAYA24G3QMazvQF2AUO7Q/EqoEFWOJNn+yGyjMyiYGaWFf8IHAeWi4uMAPoAadmp8cBi4AjwIYT/CVhQaOX3AF3WxLeB+UAPDzkpoAa4GmJIg/Qnjv7WRO+AOQnInQO8tGSfA3qTMMqAC7IDxlWqE16cEyFGFGQn+hVCKH8XaKdlxH66ARVyH9wE2qWZe6FO+uKw0zJiHkXEcOBhRMh8IGPiduKkFd0qi6F8RYzyQbsvoTUK5ky8Upx9xTBgjXU51cnKVUrfD9W/2kFejRrf4XtjjwLWy68rbqkJjfI21ql+cyZccF1xzNlwQpmKyy/c9adNTRbms1Wqv9VRZo3ivHZ9AI5WpPceBrTGGFCdgwE95RAHvAkupFWKcMrDgJuKZ3w+yoWaPOQ2Kt5GF8JxRaj1mKjOOsRrxW2qRPnOHOUu9V3QJkWY7BlGHziE0XsOYVRjouKapCgW+mE1Ej8MlzgfpfwwT5mDrCd3LNoVoS/+SIuLNElkapXvWs+V1zurXTMW2ldzmTBppJU+P10InxXBZFLdjSqlz1cXwmNFMGlgFIyL7QWeAr8dDnDQzNhnQL2Dm45TPDNPLM4owpIY5Z96KJ2tPYkxYqoae97FgM2KcDhiXH0CymekGVnZYAoD16S2NMPFgElK8IeItO6ZGrfIs1BVLhWKjNqFxFAuRadAuHlQxT3e+uVZJGgjYexSws32heGuGrMhhznMuybg3yFhDLMSkLDySa3q/wVscbw3zMW0TTgZaSspABrUBC9lyzXSIYWpN5J4TAMGA72kme/pwG7LPTPAlRDD+8gCOR3aqAvkk5rohCQ79hv/Uh7R51JITdQEjYvS3yVV75yxwJowLK1LSY7b4qH4e+GkLFlmgQ6qcXkbYLtSYIS9E4gbzAYOSHLTIsl4hyh8Q/pmSaZlw9RWD1lzmbOSN1JS5tOCT4aciXwwBLhszdGYZaFyQu8QI5oj7gifO2eZlfdmxI18qt3OO2G7U0ZKH3OzuEVUKF0YksGZ0Lo1yZUPw7wsf1CYVTwqOaypHgyUcxGEUfNEWSE597cQfjMwhSKhUsp9+rLLtbUBOwrxf4ALhkpUsi8nl/ZcnhNFKdy6HMYJotApKfJ+lvQ0CKOmonBM3k1ju1vhEkr4X/AH8rEBQDZKgiIAAAAASUVORK5CYII="
-                            width="30px">
-                        <input type="text" class="input" name="nombreAdministrador" id="nombreAdministrador"
-                            placeholder="Escribe tu nombre" class="register__input">
-                    </div>
-    
-    
-                    <div class="flex-column">
-                        <label for="nombre_usuario" class="register__label">Nombre de usuario</label>
-    
-                        <div class="inputForm">
-                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD3UlEQVR4nO2ZW4iNURTHfzOOMy5RM4PcSsoTyotLHuWSwnjBm2tKjEFRCCmFNHlhvCiMB7nmQYoXShiX3IUHMSiMS2RmNEbM0c76arX7zvftfc53zkjnX7vz1d7/tdfae+2191oHSiihhKQwBlgDnAVuAM3Ad6AT+AI8Ak4Dm4BJQDn/AAYA24G3QMazvQF2AUO7Q/EqoEFWOJNn+yGyjMyiYGaWFf8IHAeWi4uMAPoAadmp8cBi4AjwIYT/CVhQaOX3AF3WxLeB+UAPDzkpoAa4GmJIg/Qnjv7WRO+AOQnInQO8tGSfA3qTMMqAC7IDxlWqE16cEyFGFGQn+hVCKH8XaKdlxH66ARVyH9wE2qWZe6FO+uKw0zJiHkXEcOBhRMh8IGPiduKkFd0qi6F8RYzyQbsvoTUK5ky8Upx9xTBgjXU51cnKVUrfD9W/2kFejRrf4XtjjwLWy68rbqkJjfI21ql+cyZccF1xzNlwQpmKyy/c9adNTRbms1Wqv9VRZo3ivHZ9AI5WpPceBrTGGFCdgwE95RAHvAkupFWKcMrDgJuKZ3w+yoWaPOQ2Kt5GF8JxRaj1mKjOOsRrxW2qRPnOHOUu9V3QJkWY7BlGHziE0XsOYVRjouKapCgW+mE1Ej8MlzgfpfwwT5mDrCd3LNoVoS/+SIuLNElkapXvWs+V1zurXTMW2ldzmTBppJU+P10InxXBZFLdjSqlz1cXwmNFMGlgFIyL7QWeAr8dDnDQzNhnQL2Dm45TPDNPLM4owpIY5Z96KJ2tPYkxYqoae97FgM2KcDhiXH0CymekGVnZYAoD16S2NMPFgElK8IeItO6ZGrfIs1BVLhWKjNqFxFAuRadAuHlQxT3e+uVZJGgjYexSws32heGuGrMhhznMuybg3yFhDLMSkLDySa3q/wVscbw3zMW0TTgZaSspABrUBC9lyzXSIYWpN5J4TAMGA72kme/pwG7LPTPAlRDD+8gCOR3aqAvkk5rohCQ79hv/Uh7R51JITdQEjYvS3yVV75yxwJowLK1LSY7b4qH4e+GkLFlmgQ6qcXkbYLtSYIS9E4gbzAYOSHLTIsl4hyh8Q/pmSaZlw9RWD1lzmbOSN1JS5tOCT4aciXwwBLhszdGYZaFyQu8QI5oj7gifO2eZlfdmxI18qt3OO2G7U0ZKH3OzuEVUKF0YksGZ0Lo1yZUPw7wsf1CYVTwqOaypHgyUcxGEUfNEWSE597cQfjMwhSKhUsp9+rLLtbUBOwrxf4ALhkpUsi8nl/ZcnhNFKdy6HMYJotApKfJ+lvQ0CKOmonBM3k1ju1vhEkr4X/AH8rEBQDZKgiIAAAAASUVORK5CYII="
-                                width="30px">
-                            <input type="text" class="input" name="UsuarioAdministrador" id="UsuarioAdministrador"
-                                placeholder="Elige un nombre de usuario" class="register__input">
-                        </div>
-    
-    
-                        <div class="flex-column">
-    
-                            <label for="correo" class="register__label">Correo electrónico</label>
-    
-                            <div class="inputForm">
-                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAACMUlEQVR4nO2YTWsVMRSGH62lSEHqyr1uBf9GW2mrrR/4jZQWuqo7l7oRXQhaiouKlturVdGN4F/QH1QQP9p7O+XAKRwOc8ebmWRUyAsHhuRM8j6ZTDIZyMrKysrKyvq3dRpYBu63GPeAS8BEDIBFoA8ULUdf+46iuy1D7AMrTQyfAB67sjstQfR1wKweAuMhAOe1sefAEVN+C+glNN/TgbJ6qnWTIQBLptEN4KipuwrsJTJ/2/QjA/fM1Ae9D6uu8ZcO4kpkiJ4+XWt+zeWsNgGQeOUgLkeC6AE3nfn1krzGABLbwIjJk7V6t6H5G878iwG5UQAk3gPHTO5CTQgxf920I093syI/GoDEBwchq9avAPMCPG/ul6fa+cM9UQEkPgKjNSDE/EVnvjvEfdEBJD45iCngZ0X+b+CCM/9myL6SAEh8AcaGgBDzc878dkA/yQD8yiSaBn6YnO9aRs3RL1IBvC0xf6hzWi+AZwfkjPzNKeRXIpk6n4HjFe2O6XvjV6CttgG6buRndI5L3VfgVEmbUvbNrEQeotsWwFaF+cPYAZ7oJjev1zsuJxQiCsA7Z34qcAMr242vud24kwpg033MNTUfCtEIIJX5IgAiCGDR3PjamZ+ObL6o+Ljr1D3QTA44A8yWvLAxY1c/0csg/EZYqXE9EVnzc4nNFxp7eliyEBv6o6G2Uk2bYsjpxP9kvhhwWqutkzov5XffI92UUscD/TNyJgZAVlZWVlZWFol0ABts7WDA1IfcAAAAAElFTkSuQmCC"
-                                    width="30px">
-    
-    
-                                <input type="email" class="input" name="correoAdministrador" id="correoAdministrador"
-                                    placeholder="Ingresa tu correo electrónico" class="register__input">
-    
-                            </div>
-    
-                            <div class="flex-column">
-    
-                                <label for="clave" class="register__label">Contraseña</label>
-    
-                            </div>
-                            <div class="inputForm">
-                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACqklEQVR4nO2aXUsUURjHf1eN0gsGZV0UeRl1W34CMSJDL00/gyR+C3OLogi67RO0+f4Jsug6V1sL3LopCxSsTPHEgWdh2GZnd84zZ2ZW/MMfBuaZ/3P+c17mvAwc4+jiLDACzADzQAX4CewJ7fWq3LMxw0APBUEAjAPLwAFgEtI+swiMiVbm6AamgK8OhW/GL8Ak0JWVidtANUUDjfwI3PJpwFb9E48GGvlSaj5VXADeZ2jCCN8BvWmZ6JPqNjlxXcqgwnkZRk3OrAIXXU105dScTEwzcxqinyuS7gIl4CZwUtgPPAR+KXSfugyxrsk+AVdjtK8BnxX6g+2a6FZ8J3ZDJq4DZWBHWBYT9Xu/FZ0/aMfIlOJtlUIF3Y64vx0y80iR534rE4Fy2nFDdMoxMa8kpl+Rp9aqVsYV4panRGcnJsbWisVpZa57cUaWleJ1pBVnYmiXA03XEwcdZGQfOBNlZEQpnAeHooyUClAwk5APoozMKdrqJdxhn11wzD0bJbjuKKYxUcdlx9yVKLEfjmJpwSX3tyihvQ408icrI3dkU6EmE9FMjGx5MFILxW16MPI9SmjNg5GNUNyGByOraQ6/cRgIxQ14MPI6SmjGgxEc4kwCTkcJDXsy8hZ448nIUJRQj+OkMS0kzfu32aTRYqmDjMzFiY110BRlNE4wkA9YEsEFKYjGxGLCnJvAiVbCk44dL0tOtPOGgoJskxrtdhByPmEKyMM2Pqz/4VkBCm4a+BgHBLJxbArClXY6eDOcK0h/qcphkwp9imVwGlwDrpASenNqZity2OTlMPQwIxMvfJ+9D3puahWXIdYVgWzth5eyWtppx0Ref0AEsis+L3uxSQu/L7PYUc3Qmjbs2uCubGPOynp6K/RTjb3+IMvTaVkU2aOFYxxJ/AOq5WXmKzq7uQAAAABJRU5ErkJggg=="
-                                    width="30px">
-    
-                                <input type="password" class="input" name="claveAdministrador" id="claveAdministrador"
-                                    placeholder="Ingresa tu contraseña" class="register__input">
-    
-                                <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"
-                                        width="30px">
-                                    </path>
-                                </svg>
-                            </div>
-    
-                            <div class="flex-column">
-    
-                                <label for="confirmarClave" class="register__label">Confirmar contraseña</label>
-    
-                            </div>
-                            <div class="inputForm">
-                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACqklEQVR4nO2aXUsUURjHf1eN0gsGZV0UeRl1W34CMSJDL00/gyR+C3OLogi67RO0+f4Jsug6V1sL3LopCxSsTPHEgWdh2GZnd84zZ2ZW/MMfBuaZ/3P+c17mvAwc4+jiLDACzADzQAX4CewJ7fWq3LMxw0APBUEAjAPLwAFgEtI+swiMiVbm6AamgK8OhW/GL8Ak0JWVidtANUUDjfwI3PJpwFb9E48GGvlSaj5VXADeZ2jCCN8BvWmZ6JPqNjlxXcqgwnkZRk3OrAIXXU105dScTEwzcxqinyuS7gIl4CZwUtgPPAR+KXSfugyxrsk+AVdjtK8BnxX6g+2a6FZ8J3ZDJq4DZWBHWBYT9Xu/FZ0/aMfIlOJtlUIF3Y64vx0y80iR534rE4Fy2nFDdMoxMa8kpl+Rp9aqVsYV4panRGcnJsbWisVpZa57cUaWleJ1pBVnYmiXA03XEwcdZGQfOBNlZEQpnAeHooyUClAwk5APoozMKdrqJdxhn11wzD0bJbjuKKYxUcdlx9yVKLEfjmJpwSX3tyihvQ408icrI3dkU6EmE9FMjGx5MFILxW16MPI9SmjNg5GNUNyGByOraQ6/cRgIxQ14MPI6SmjGgxEc4kwCTkcJDXsy8hZ448nIUJRQj+OkMS0kzfu32aTRYqmDjMzFiY110BRlNE4wkA9YEsEFKYjGxGLCnJvAiVbCk44dL0tOtPOGgoJskxrtdhByPmEKyMM2Pqz/4VkBCm4a+BgHBLJxbArClXY6eDOcK0h/qcphkwp9imVwGlwDrpASenNqZity2OTlMPQwIxMvfJ+9D3puahWXIdYVgWzth5eyWtppx0Ref0AEsis+L3uxSQu/L7PYUc3Qmjbs2uCubGPOynp6K/RTjb3+IMvTaVkU2aOFYxxJ/AOq5WXmKzq7uQAAAABJRU5ErkJggg=="
-                                    width="30px">
-                                <input id="confirmarClave" class="input" type="password" name="confirmarClave"
-                                    class="register__input" required>
-    
-                                <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg">
-                                    <path
-                                        d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM144 256a144 144 0 1 1 288 0 144 144 0 1 1 -288 0zm144-64c0 35.3-28.7 64-64 64c-7.1 0-13.9-1.2-20.3-3.3c-5.5-1.8-11.9 1.6-11.7 7.4c.3 6.9 1.3 13.8 3.2 20.7c13.7 51.2 66.4 81.6 117.6 67.9s81.6-66.4 67.9-117.6c-11.1-41.5-47.8-69.4-88.6-71.1c-5.8-.2-9.2 6.1-7.4 11.7c2.1 6.4 3.3 13.2 3.3 20.3z"
-                                        width="30px">
-                                    </path>
-                                </svg>
-                            </div>
-    
-                            <div class="flex-column">
-    
-                                <label for="telefono" class="register__label">Teléfono</label>
-    
-                            </div>
-                            <div class="inputForm">
-                                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA/UlEQVR4nO2ZQQ6CMBBFn+49gXgiXHoCr6JHQlwY3RgOJLofQ9IFCySpldKO85LZNCnwMuUzCeBPA0iv7mSKDFSWiIkkhmjuiATWC7gB29xF+nXUIiKxOhND5KpFpNUiInOJnIDii2t1e+qURIqA621SEgnFREKwjoxgRysEO1oj2NEKQfUHsXYP5Eu355ySiGgZGsVESKsjFbAeGMt91yWl1NoErIuJ/DB+i4E49V2XuTtiqYWlVjiWWmQQv7WlFmmNKKJlaKxs1mK+l/2hZWhsIqRWG0Nkr+WP1dLdaEqRkkis3M+dKSQORGYB7IDLhwDwqafrchlbwjD+hTcmCwGzBYe7yQAAAABJRU5ErkJggg=="
-                                    width="30px">
-                                <input type="text" class="input" name="telefono" id="telefono"
-                                    placeholder="Ingresa tu teléfono " class="register__input">
-    
-    
-                            </div>
-    
-    
-    
-                        </div>
-                        <div class="flex-column">
-    
-                            <label for="imagen" class="register__label">Imagen</label>
-    
-                        </div>
-    
-                        <div>
-    
-                            <input type="file" name="imagen" id="imagen" accept="image/*" class="register__input">
-                        </div>
-    
-                        <br><br>
-    
-                        <button class="button-submit">Registrarme</button>
-    
-                    </div>
+    <div class="container_registro">
+        <!--==================== REGISTER ====================-->
+
+
+
+        <form class="form" id="saveForm">
+
+            <h3 class="register__title">Registro de administradores</h3>
+
+            <input type="number" id="idAdministrador" name="idAdministrador">
+
+
+            <div class="flex-column">
+                <label for="nombre" class="register__label">Nombre</label>
+                <div class="inputForm">
+                    <i class="ri-account-circle-line"></i>
+                    <input type="text" class="input" name="nombreAdministrador" id="nombreAdministrador"
+                        placeholder="Escribe tu nombre" class="register__input">
                 </div>
-            </form>
-        </div>
-    
-    
+
+                <div class="flex-column">
+                    <label for="nombre_usuario" class="register__label">Nombre de usuario</label>
+                    <div class="inputForm">
+                        <i class="ri-account-circle-line"></i>
+                        <input type="text" class="input" name="UsuarioAdministrador" id="UsuarioAdministrador"
+                            placeholder="Elige un nombre de usuario" class="register__input">
+                    </div>
+
+                    <div class="flex-column">
+
+                        <label for="correo" class="register__label">Correo electrónico</label>
+                        <div class="inputForm">
+                            <i class="ri-mail-fill"></i>
+                            <input type="email" class="input" name="correoAdministrador" id="correoAdministrador"
+                                placeholder="Ingresa tu correo electrónico" class="register__input">
+
+                        </div>
+
+                        <div class="flex-column">
+                            <label for="clave" class="register__label">Contraseña</label>
+                        </div>
+                        <div class="inputForm">
+                            <i class="ri-lock-fill"></i>
+                            <input type="password" class="input" name="claveAdministrador" id="claveAdministrador"
+                                placeholder="Ingresa tu contraseña" class="register__input">
+
+                            <i class="ri-eye-fill"></i>
+                        </div>
+                        <div class="flex-column">
+                            <label for="confirmarClave" class="register__label">Confirmar contraseña</label>
+                        </div>
+                        <div class="inputForm">
+                            <i class="ri-lock-fill"></i>
+                            <input id="confirmarClave" class="input" type="password" name="confirmarClave"
+                                class="register__input" required>
+                            <i class="ri-eye-fill"></i>
+                        </div>
+
+                        <div class="flex-column">
+
+                            <label for="telefono" class="register__label">Teléfono</label>
+
+                        </div>
+                        <div class="inputForm">
+                            <i class="ri-phone-fill"></i>
+                            <input type="number" class="input" name="telefono" id="telefono"
+                                placeholder="Ingresa tu teléfono " class="register__input">
+
+
+                        </div>
+
+
+
+                    </div>
+                    <div class="flex-column">
+
+                        <label for="imagen" class="register__label">Imagen</label>
+
+                    </div>
+                    <div>
+                        <input type="file" name="imagen" id="imagen" accept="image/*" class="register__input">
+                    </div>
+
+                    <br><br>
+
+                    <button type="submit" class="button-submit">Registrarme</button>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+
 
     </form>
     </div>
-    <script type="text/javascript" src="../../Resources/js/sweetalert.min.js"></script>
-    <script src="../../controllers/admin/index.js"></script>
+    <!--=============== SWIPER JS ===============-->
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../Resources/js/header_admin.js"></script>
+    <!--<script src="../../Resources/js/footer.js"></script>-->
+    <script src="../../Resources/js/modals_.js"></script>
+    <script src="../../Resources/js/main.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
     <script src="../../controllers/utils/components.js"></script>
-    <script src="../../controllers/utils/admin.js"></script>
+    <script src="../../controllers/admin/administrador.js"></script>
 </body>
 
 </html>
