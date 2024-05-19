@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase del modelo.
-require_once ('../../models/data/comentario_data.php');
+require_once ('../../models/data/comentarios_data.php');
 
 if (isset($_GET['action'])) {
     // Iniciar una nueva sesión o reanudar la existente para utilizar variables de sesión.
@@ -34,64 +34,61 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-                case 'createRow': // Acción para crear un nuevo libro.
-                    $_POST = Validator::validateForm($_POST);
-    
-                    // Validar y establecer los campos necesarios para crear un libro.
-                    if (
-                        !$comentario->setId($_POST['id_comentario']) or
-                        !$comentario->setComentario($_POST['comentario']) or
-                        !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0)
-                    ) {
-                        $result['error'] = $comentario->getDataError(); // Obtener mensaje de error si la validación falla.
-                    } elseif ($comentario->createRow()) { // Intentar crear un nuevo libro.
-                        $result['status'] = 1; // Indicar que la operación fue exitosa.
-                        $result['message'] = 'Comentario creado con éxito';
-                    } else {
-                        $result['error'] = 'Ocurrió un problema al crear el comentario'; // Mensaje de error si ocurre un problema.
-                    }
-                    break;
-                    case 'readAll':
-                        if ($result['dataset'] = $comentario->readAll()) {
-                            $result['status'] = 1; // Indicar que la operación fue exitosa.
-                            $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
-                        } else {
-                            $result['error'] = 'No exiten comentarios registrados'; // Mensaje si no se encuentran autores.
-                        }
-                        break;
-                    case 'readOne':
-                        if (!$comentario->setId($_POST['id_comentario'])) {
-                            $result['error'] = $comentario->getDataError();
-                        } elseif ($result['dataset'] = $comentario->readOne()) {
-                            $result['status'] = 1;
-                        } else {
-                            $result['error'] = 'Comentario inexistente';
-                        }
-                        break;
-        
-                    case 'updateRow':
-                        $_POST = Validator::validateForm($_POST);
-                        if (
-                            !$comentario->setId($_POST['id_comentario']) or
-                            !$comentario->setEstado($_POST['estadoComentario'])
-                        ) {
-                            $result['error'] = $comentario->getDataError(); // Mensaje de error si la validación falla.
-                        } elseif ($comentario->updateRow()) { // Intentar actualizar la fila.
-                            $result['status'] = 1; // Indicar que la operación fue exitosa.
-                            $result['message'] = 'Comentario modificado correctamente'; // Mensaje de éxito.
-                        } else {
-                            $result['error'] = 'Ocurrió un problema al modificar el estado'; // Mensaje de error si ocurre un problema.
-                        }
-                        break;
-                    case 'getEstados':
-                        if ($result['dataset'] = $comentario->getEstados()) {
-                            $result['status'] = 1; // Indicar que la operación fue exitosa.
-                        } else {
-                            $result['error'] = 'No exiten estados disponibles'; // Mensaje si no se encuentran autores.
-                        }
-                        break;
-    
-                default: // Caso por defecto para manejar acciones desconocidas.
+            case 'createRow': // Acción para crear un nuevo libro.
+                $_POST = Validator::validateForm($_POST);
+
+                // Validar y establecer los campos necesarios para crear un libro.
+                if (
+                    !$comentario->setId($_POST['id_comentario']) or
+                    !$comentario->setComentario($_POST['comentario']) or
+                    !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0)
+                ) {
+                    $result['error'] = $comentario->getDataError(); // Obtener mensaje de error si la validación falla.
+                } elseif ($comentario->createRow()) { // Intentar crear un nuevo libro.
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
+                    $result['message'] = 'Comentario creado con éxito';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al crear el comentario'; // Mensaje de error si ocurre un problema.
+                }
+                break;
+            case 'readAll':
+                if ($result['dataset'] = $comentario->readAll()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                } else {
+                    $result['error'] = 'No existen comentarios registrados';
+                }
+                break;
+            case 'readOne':
+                if (!$comentario->setId($_POST['id_comentario'])) {
+                    $result['error'] = $comentario->getDataError();
+                } elseif ($result['dataset'] = $comentario->readOne()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'Comentario inexistente';
+                }
+                break;
+
+            case 'updateRow':
+                $_POST = Validator::validateForm($_POST);
+                if (!$comentario->setId($_POST['id_comentario']) || !$comentario->setEstado($_POST['estadoComentario'])) {
+                    $result['error'] = $comentario->getDataError();
+                } elseif ($comentario->updateRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Comentario modificado correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al modificar el estado';
+                }
+                break;
+            case 'getEstados':
+                if ($result['dataset'] = $comentario->getEstados()) {
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
+                } else {
+                    $result['error'] = 'No exiten estados disponibles'; // Mensaje si no se encuentran autores.
+                }
+                break;
+
+            default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
         }
 

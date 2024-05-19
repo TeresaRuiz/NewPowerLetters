@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>clasificación</title>
     <link rel="stylesheet" href="../../Resources/css/styles.css">
-    <link rel="stylesheet" href="../../Resources/css/estilo_tabla.css">
+    <link rel="stylesheet" href="../../Resources/css/estilo_libros.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
     <!-- Agregamos la hoja de estilos de RemixIcon -->
 </head>
@@ -19,7 +19,7 @@
 
     <main class="main section">
         <div class="container">
-            <h1 class="section__title">Administradores</h1>
+            <h1 class="section__title">Gestionar administradores</h1>
             <!-- Formulario de búsqueda y botón de agregar -->
             <form id="searchForm" class="search-container">
                 <div class="search-form" id="search_generos">
@@ -28,7 +28,7 @@
                 </div>
             </form>
 
-            
+
             <div class="agregar">
                 <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Agregar</button>
             </div>
@@ -44,6 +44,7 @@
                         <th>Nombre de usuario</th>
                         <th>Correo electronico</th>
                         <th>Imagen</th>
+                        <th>Telefono</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
@@ -56,25 +57,64 @@
             <div class="modal-background"></div>
             <div class="modal-content card">
                 <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
-
                 <div class="card-body">
                     <h2 id="modalTitle"></h2>
                     <br>
                     <form id="saveForm">
+
                         <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                        <input type="hidden" id="idEditorial" name="idEditorial" style=" display: none;">
-                        <div>
-                            <label class="editoriales__label">Nombre de la editorial</label>
-                            <input type="text" name="editorial" id="editorial" placeholder="Escribe tu editorial"
-                                class="editorial__input">
+
+
+                        <input type="hidden" id="idAdministrador" name="idAdministrador" style=" display: none;">
+
+                        <div class="libros__group grid">
+                            <div>
+                                <label for="nombre" class="libro__label">Nombre del administrador</label>
+                                <input type="text" name="nombreAdministrador" id="nombreAdministrador"
+                                    placeholder="Escribe el nombre" class="libro__input">
+                            </div>
+
+                            <div>
+                                <label for="nombre_usuario" class="libro__label">Nombre de usuario</label>
+                                <input type="text" name="UsuarioAdministrador" id="UsuarioAdministrador"
+                                    placeholder="Escribe el usuario" class="libro__input">
+                            </div>
+
+                            <div>
+                                <label for="correo" class="libro__label">Correo electrónico</label>
+                                <input type="email" name="correoAdministrador" id="correoAdministrador"
+                                    placeholder="Escribe el correo" class="libro__input">
+                            </div>
+
+                            <div>
+                                <label for="clave" class="libro__label">Contraseña</label>
+                                <input type="password" name="claveAdministrador" id="claveAdministrador"
+                                    placeholder="Escribe la contraseña" class="libro__input">
+                            </div>
+
+                            <div>
+                                <label for="confirmarClave" class="libro__label">Confirmar contraseña</label>
+                                <input type="password" name="confirmarClave" id="confirmarClave"
+                                    placeholder="Confirma tu contraseña" class="libro__input" required>
+                            </div>
+
+                            <div>
+                                <label for="telefono" class="libro__label">Teléfono</label>
+                                <input type="number" name="telefono" id="telefono"
+                                    placeholder="Escribe el numero de telefono" class="libro__input">
+                            </div>
+
+                            <div>
+                                <label for="imagen" class="libro__label">Imagen</label>
+                                <input type="file" name="imagen" id="imagen" accept="image/*" class="libro__input">
+                            </div>
+
+
                         </div>
                         <br><br>
-                        <button type="submit" class="login__button button">Guardar</button>
+                        <button type="submit" class="genero__button button">Guardar</button>
                     </form>
-
                 </div>
-
-
             </div>
         </div>
     </main>

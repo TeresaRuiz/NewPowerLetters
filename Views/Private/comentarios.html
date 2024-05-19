@@ -8,7 +8,24 @@
     <link rel="stylesheet" href="../../Resources/css/styles.css">
     <link rel="stylesheet" href="../../Resources/css/estilo_tabla.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-    <!-- Agregamos la hoja de estilos de RemixIcon -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .fa-star {
+            font-family: FontAwesome;
+        }
+
+        .checked {
+            color: orange;
+        }
+
+        .calificacion__input .fa-star {
+            font-family: FontAwesome;
+        }
+
+        .calificacion__input .checked {
+            color: orange;
+        }
+    </style>
 </head>
 
 <body>
@@ -20,22 +37,21 @@
     <main class="main section">
         <div class="container">
             <h1 class="section__title">Gestión de comentarios</h1>
-            <!-- Formulario de búsqueda y botón de agregar -->
-            <div class="search-container">
-                <div class="search-form">
-                    <input type="text" class="search-input" placeholder="Buscar...">
-                    <button class="search-button"><i class="ri-search-line"></i></button>
+            <form id="searchForm" class="search-container">
+                <div class="search-form" id="search_generos">
+                    <input type="search" name="search" class="search-input" placeholder="Buscar...">
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
                 </div>
-                <div class="agregar">
-                    <button class="add-button"></i> Actualizar</button>
-                </div>
+            </form>
+            <div class="agregar">
+                <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Actualizar</button>
             </div>
-
-            <!-- Tabla con estilo elegante -->
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <td colspan="2" id="rowsFound"></td>
+                    </tr>
+                    <tr>
                         <th>Comentario</th>
                         <th>Usuario</th>
                         <th>Calificación</th>
@@ -43,52 +59,93 @@
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Esta horrible</td>
-                        <td>Neymar</td>
-                        <td> <a href="#">
-                            <i class="ri-star-s-fill" style="color: gold;"></i>
-                            <i class="ri-star-s-fill" style="color: gold;"></i>
-                            <i class="ri-star-s-fill" style="color: gold;"></i>
-                            <i class="ri-star-s-fill" style="color: gold;"></i>
-                            <i class="ri-star-half-fill" style="color: lightgray;"></i>
-                    
-                        </td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-search-eye-line"></i></a>
-                            <a href="#"><i class="ri-eye-fill"></i></a>
-                            <a href="#"><i class="ri-eye-off-fill"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Muy bueno</td>
-                        <td>Lissandro Quezada</td>
-                        <td><div style="background-color: lightgray; width: 100px; height: 10px;">
-                            <div style="background-color: green; width: 70%; height: 100%;"></div>
-                          </div>
-                          <span>7/10</span></td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-search-eye-line"></i></a>
-                            <a href="#"><i class="ri-eye-fill"></i></a>
-                            <a href="#"><i class="ri-eye-off-fill"></i></a>
-                        </td>
-                    </tr>
+                <tbody id="tableBody">
                 </tbody>
             </table>
         </div>
 
+        <div id="myModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2>
+                    <br>
+                    <form id="saveForm">
+                        <input type="number" id="id_comentario" name="id_comentario" style="display: none;">
+                        <div>
+                            <label class="genero__label">Comentario</label>
+                            <input type="text" name="comentario" id="comentario" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+                        <br>
+                        <div>
+                            <label class="genero__label">Calificación</label>
+                            <div id="calificacionContainer" class="calificacion__input"></div>
+                        </div>
+                        <br>
+                        <div>
+                            <label class="genero__label">Estado</label>
+                            <select name="estadoComentario" id="estadoComentario" class="libro__input" required>
+                            </select>
+                        </div>
+                        <br><br>
+                        <button type="submit" class="genero__button button">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div id="myModalView" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModalDetalles()" class="close"
+                    style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2><br>
+                    <div class="libros_group grid">
+                        <div>
+                            <h3 id="tituloVista"></h3>
+                            <br>
+                            <img id="vista" src="${SERVER_URL}images/libros/${row.imagen}" width="100">
+                        </div>
+                        <div>
+                            <div>
+                                <label for="Cliente" class="genero__label">Comentado por el cliente:</label>
+                                <p id="Cliente"></p>
+                            </div>
+                            <br>
+                            <div>
+                                <label class="genero__label">Calificación:</label>
+                                <div id="calificacionContainerView" class="calificacion__input"></div>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="Comentario" class="genero__label">Comentario:</label>
+                                <p id="Comentario"></p>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="Estado" class="genero__label">Estado:</label>
+                                <p id="Estado"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </main>
+
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
     <script src="../../Resources/js/header_admin.js"></script>
     <script src="../../Resources/js/modals_.js"></script>
-    <!--=============== SWIPER JS ===============-->
-    <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="../../Resources/js/scrollreveal.min.js"></script>
     <script src="../../Resources/js/main.js"></script>
-    <script src="../../Resources/js/footer.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
     <script src="../../controllers/admin/comentarios.js"></script>
 </body>
 
