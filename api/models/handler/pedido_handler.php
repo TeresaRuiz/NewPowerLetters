@@ -22,34 +22,27 @@ class PedidoHandler
         $sql = 'SELECT
         p.id_pedido,
         p.id_usuario,
+        u.nombre_usuario,
         p.direccion_pedido,
         p.estado,
         p.fecha_pedido,
-        d.id_detalle,
-        r.comentario AS comentario_resena,
-        u.nombre_usuario
+        p.id_detalle
     FROM
         tb_pedidos AS p
-    INNER JOIN
-        tb_detalle_pedidos AS d ON p.id_pedido = d.id_pedido
-    LEFT JOIN
-        tb_comentarios AS r ON d.id_comentario = r.id_comentario
     INNER JOIN
         tb_usuarios AS u ON p.id_usuario = u.id_usuario
     WHERE
         p.id_pedido LIKE ? OR
-        p.id_usuario LIKE ? OR
+        CAST(p.id_usuario AS CHAR) LIKE ? OR
         u.nombre_usuario LIKE ? OR
         p.direccion_pedido LIKE ? OR
         p.estado LIKE ? OR
-        p.fecha_pedido LIKE ? OR
-        r.comentario LIKE ?
+        p.fecha_pedido LIKE ?
     ORDER BY
         p.fecha_pedido;';
-        $params = array($value, $value, $value, $value, $value, $value, $value);
+        $params = array($value, $value, $value, $value, $value, $value);
         return Database::getRows($sql, $params);
     }
-
 
 
     public function readAll()
@@ -102,7 +95,7 @@ class PedidoHandler
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-    
+
     public function updateRow()
     {
         $sql = 'UPDATE tb_pedidos
