@@ -34,7 +34,7 @@ class Database
     }
 
     /*
-     *   Método para obtener el valor de la llave primaria del último registro insertado.
+     *   Método para obtener el valor de la llave primaria del último registro que se ha insertado.
      *   Parámetros: $query (sentencia SQL) y $values (arreglo con los valores para la sentencia SQL).
      *   Retorno: numérico entero (último valor de la llave primaria si la sentencia se ejecuta satisfactoriamente o 0 en caso contrario).
      */
