@@ -63,7 +63,6 @@ header.innerHTML = `
                     <li><a href="../Private/autores.html">Autores</a></li>
                      <li><a href="../Private/clasificacion.html">Clasificaciones</a></li>
                      <li><a href="../Private/editoriales.html">Editoriales</a></li>
-                     <li><a href="../Private/administrador.html">Administradores</a></li>
                     </ul>
                 </li>
                 

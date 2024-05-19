@@ -1,140 +1,131 @@
 <!DOCTYPE html>
+<!-- Declaración del idioma para el documento -->
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
+    <!-- Título del documento -->
+    <title></title>
+    <!-- Metadatos de la página web -->
+    <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administradores</title>
-    <link rel="stylesheet" href="../../Resources/css/styles.css">
-    <link rel="stylesheet" href="../../Resources/css/estilo_libros.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-    <!-- Agregamos la hoja de estilos de RemixIcon -->
+    <!-- IMPORTACIÓN DE RECURSOS EXTERNOS -->
+    <!-- Llamada a las hojas de estilos del framework e iconos -->
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css">
+    <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap-icons.min.css">
 </head>
 
 <body>
-
-    <header class="header">
-        <!-- Código del encabezado omitido por brevedad -->
-    </header>
-
-    <main class="main section">
-        <div class="container">
-            <h1 class="section__title">Gestionar administradores</h1>
-            <!-- Formulario de búsqueda y botón de agregar -->
-            <form id="searchForm" class="search-container">
-                <div class="search-form" id="search_generos">
-                    <input type="search" name="search" class="search-input" placeholder="Buscar...">
-                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
+    <!-- Contenido principal del documento -->
+    <main>
+        <!-- Título del contenido principal -->
+        <h3 id="mainTitle"></h3>
+        <div class="row">
+            <!-- Formulario de búsqueda -->
+            <form class="col-sm-12 col-md-6" id="searchForm">
+                <div class="row">
+                    <div class="col-6">
+                        <input type="search" class="form-control" name="search" placeholder="Buscar" required>
+                    </div>
+                    <div class="col-6">
+                        <button type="submit" class="btn btn-success">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        <button type="reset" class="btn btn-secondary" onclick="fillTable()">
+                            <i class="bi bi-x-square-fill"></i>
+                        </button>
+                    </div>
                 </div>
             </form>
-
-
-            <div class="agregar">
-                <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Agregar</button>
+            <div class="col-sm-12 col-md-6 text-end">
+                <!-- Botón para abrir una caja de diálogo al momento de crear un nuevo registro -->
+                <button type="button" class="btn btn-primary" onclick="openCreate()">
+                    <i class="bi bi-plus-square-fill"></i>
+                </button>
             </div>
-
-            <!-- Tabla con estilo elegante -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td colspan="2" id="rowsFound"></td>
-                    </tr>
-                    <tr>
-                        <th>Imagen</th>
-                        <th>Nombre</th>
-                        <th>Nombre de usuario</th>
-                        <th>Correo electronico</th>
-                        <th>Telefono</th>
-                        <th>Fecha</th>
-                        <th>Estado</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
-                </tbody>
-            </table>
         </div>
-        <!-- Modal -->
-        <div id="myModal" class="modal">
-            <div class="modal-background"></div>
-            <div class="modal-content card">
-                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
-                <div class="card-body">
-                    <h2 id="modalTitle"></h2>
-                    <br>
+
+        <!-- Tabla para mostrar los registros existentes -->
+        <table class="table table-hover">
+            <!-- Encabezado de la tabla para mostrar la cantidad de registros y los títulos de las columnas -->
+            <thead>
+                <tr>
+                    <td colspan="5" id="rowsFound"></td>
+                </tr>
+                <tr>
+                    <th>APELLIDO</th>
+                    <th>NOMBRE</th>
+                    <th>CORREO</th>
+                    <th>ALIAS</th>
+                    <th>ACCIONES</th>
+                </tr>
+            </thead>
+            <!-- Cuerpo de la tabla para mostrar un registro por fila -->
+            <tbody id="tableBody"></tbody>
+        </table>
+
+        <!-- Componente Modal para guardar un registro -->
+        <div class="modal fade" id="saveModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="modalTitle" aria-hidden="true">
+            <div class="modal-dialog modal-lg modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="modalTitle"></h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <!-- Formulario para guardar un registro -->
                     <form id="saveForm">
-
-                        <!-- Campo oculto para asignar el id del registro al momento de modificar o hacer algun cambio -->
-
-                        <input type="number" id="idAdministrador" name="idAdministrador" style=" display: none;">
-
-                        <div class="libros__group grid">
-                            <div>
-                                <label for="nombre" class="libro__label">Nombre del administrador</label>
-                                <input type="text" name="nombreAdministrador" id="nombreAdministrador"
-                                    placeholder="Escribe el nombre" class="libro__input">
+                        <div class="modal-body row g-3">
+                            <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                            <input type="number" class="d-none" id="idAdministrador" name="idAdministrador">
+                            <div class="col-sm-12 col-md-6">
+                                <label for="nombreAdministrador" class="form-label">Nombre</label>
+                                <input id="nombreAdministrador" type="text" name="nombreAdministrador"
+                                    class="form-control" required>
                             </div>
-
-                            <div>
-                                <label for="nombre_usuario" class="libro__label">Nombre de usuario</label>
-                                <input type="text" name="UsuarioAdministrador" id="UsuarioAdministrador"
-                                    placeholder="Escribe el usuario" class="libro__input">
+                            <div class="col-sm-12 col-md-6">
+                                <label for="apellidoAdministrador" class="form-label">Apellido</label>
+                                <input id="apellidoAdministrador" type="text" name="apellidoAdministrador"
+                                    class="form-control" required>
                             </div>
-
-                            <div>
-                                <label for="correo" class="libro__label">Correo electrónico</label>
-                                <input type="email" name="correoAdministrador" id="correoAdministrador"
-                                    placeholder="Escribe el correo" class="libro__input">
+                            <div class="col-sm-12 col-md-6">
+                                <label for="correoAdministrador" class="form-label">Correo</label>
+                                <input id="correoAdministrador" type="email" name="correoAdministrador"
+                                    class="form-control" required>
                             </div>
-
-                            <div>
-                                <label for="clave" class="libro__label">Contraseña</label>
-                                <input type="password" name="claveAdministrador" id="claveAdministrador"
-                                    placeholder="Escribe la contraseña" class="libro__input">
+                            <div class="col-sm-12 col-md-6">
+                                <label for="aliasAdministrador" class="form-label">Alias</label>
+                                <input id="aliasAdministrador" type="text" name="aliasAdministrador"
+                                    class="form-control" required>
                             </div>
-
-                            <div>
-                                <label for="confirmarClave" class="libro__label">Confirmar contraseña</label>
-                                <input type="password" name="confirmarClave" id="confirmarClave"
-                                    placeholder="Confirma tu contraseña" class="libro__input" required>
+                            <div class="col-sm-12 col-md-6">
+                                <label for="claveAdministrador" class="form-label">Contraseña</label>
+                                <input id="claveAdministrador" type="password" name="claveAdministrador"
+                                    class="form-control" required>
                             </div>
-
-                            <div>
-                                <label for="telefono" class="libro__label">Teléfono</label>
-                                <input type="number" name="telefono" id="telefono"
-                                    placeholder="Escribe el numero de telefono" class="libro__input">
+                            <div class="col-sm-12 col-md-6">
+                                <label for="confirmarClave" class="form-label">Confirmar contraseña</label>
+                                <input id="confirmarClave" type="password" name="confirmarClave" class="form-control"
+                                    required>
                             </div>
-
-                            <div>
-                                <label for="imagen" class="libro__label">Imagen</label>
-                                <input type="file" name="imagen" id="imagen" accept="image/*" class="libro__input">
-                            </div>
-
-                            <div>
-                                <label for="estado_admin" class="genero__label">Estado</label>
-                                <select id="estado_admin" name="estado_admin" class="libro__input">
-                                    <option value="1">Activo</option>
-                                    <option value="0">Inactivo</option>
-                                </select>
-                            </div>
-
                         </div>
-                        <br><br>
-                        <button type="submit" class="genero__button button">Guardar</button>
+                        <div class="modal-footer">
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
                     </form>
                 </div>
             </div>
         </div>
     </main>
-    <!--=============== SWIPER JS ===============-->
-    <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="../../Resources/js/scrollreveal.min.js"></script>
-    <script src="../../Resources/js/header_admin.js"></script>
-    <script src="../../Resources/js/modals_.js"></script>
-    <script src="../../Resources/js/main.js"></script>
-    <script src="../../Resources/js/sweetalert.min.js"></script>
-    <script src="../../controllers/utils/components.js"></script>
-    <script src="../../controllers/admin/administrador.js"></script>
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+    <!-- Llamada al framework y librería de mensajes -->
+    <script type="text/javascript" src="../../resources/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
+    <!-- Llamada al controlador general de la aplicación -->
+    <script type="text/javascript" src="../../controllers/utils/components.js"></script>
+    <!-- Llamada al controlador del sitio privado -->
+    <script type="text/javascript" src="../../controllers/utils/admin.js"></script>
+    <!-- Llamada al controlador de la página web -->
+    <script type="text/javascript" src="../../controllers/admin/administrador.js"></script>
 </body>
 
 </html>

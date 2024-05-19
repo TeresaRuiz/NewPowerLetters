@@ -11,7 +11,7 @@ if (isset($_GET['action'])) {
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'dataset' => null, 'error' => null, 'exception' => null, 'username' => null);
     // Se verifica si existe una sesión iniciada como administrador, de lo contrario se finaliza el script con un mensaje de error.
-    if (isset($_SESSION['idAdministrador'])or true) {
+    if (isset($_SESSION['idAdministrador'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
@@ -29,11 +29,10 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
-                    !$administrador->setUsuario($_POST['UsuarioAdministrador']) or
+                    !$administrador->setApellido($_POST['apellidoAdministrador']) or
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
-                    !$administrador->setClave($_POST['claveAdministrador']) or
-                    !$administrador->setTelefono($_POST['telefono']) or
-                    !$libros->setImagen($_FILES['imagen'])
+                    !$administrador->setAlias($_POST['aliasAdministrador']) or
+                    !$administrador->setClave($_POST['claveAdministrador'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($_POST['claveAdministrador'] != $_POST['confirmarClave']) {
@@ -65,12 +64,10 @@ if (isset($_GET['action'])) {
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
+                    !$administrador->setId($_POST['idAdministrador']) or
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
-                    !$administrador->setUsuario($_POST['UsuarioAdministrador']) or
-                    !$administrador->setCorreo($_POST['correoAdministrador']) or
-                    !$administrador->setClave($_POST['claveAdministrador']) or
-                    !$administrador->setTelefono($_POST['telefono']) or
-                    !$libros->setImagen($_FILES['imagen'])
+                    !$administrador->setApellido($_POST['apellidoAdministrador']) or
+                    !$administrador->setCorreo($_POST['correoAdministrador'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($administrador->updateRow()) {
@@ -93,11 +90,11 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'getUser':
-                if (isset($_SESSION['UsuarioAdministrador'])) {
+                if (isset($_SESSION['aliasAdministrador'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['UsuarioAdministrador'];
+                    $result['username'] = $_SESSION['aliasAdministrador'];
                 } else {
-                    $result['error'] = 'Usuario de administrador indefinido';
+                    $result['error'] = 'Alias de administrador indefinido';
                 }
                 break;
             case 'logOut':
@@ -119,17 +116,15 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
-                    !$administrador->setUsuario($_POST['UsuarioAdministrador']) or
+                    !$administrador->setApellido($_POST['apellidoAdministrador']) or
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
-                    !$administrador->setClave($_POST['claveAdministrador']) or
-                    !$administrador->setTelefono($_POST['telefono']) or
-                    !$libros->setImagen($_FILES['imagen'])
+                    !$administrador->setAlias($_POST['aliasAdministrador'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($administrador->editProfile()) {
                     $result['status'] = 1;
                     $result['message'] = 'Perfil modificado correctamente';
-                    $_SESSION['UsuarioAdministrador'] = $_POST['UsuarioAdministrador'];
+                    $_SESSION['aliasAdministrador'] = $_POST['aliasAdministrador'];
                 } else {
                     $result['error'] = 'Ocurrió un problema al modificar el perfil';
                 }
@@ -167,11 +162,10 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
-                    !$administrador->setUsuario($_POST['UsuarioAdministrador']) or
+                    !$administrador->setApellido($_POST['apellidoAdministrador']) or
                     !$administrador->setCorreo($_POST['correoAdministrador']) or
-                    !$administrador->setClave($_POST['claveAdministrador']) or
-                    !$administrador->setTelefono($_POST['telefono']) or
-                    !$libros->setImagen($_FILES['imagen'])
+                    !$administrador->setAlias($_POST['aliasAdministrador']) or
+                    !$administrador->setClave($_POST['claveAdministrador'])
                 ) {
                     $result['error'] = $administrador->getDataError();
                 } elseif ($_POST['claveAdministrador'] != $_POST['confirmarClave']) {
@@ -185,7 +179,7 @@ if (isset($_GET['action'])) {
                 break;
             case 'logIn':
                 $_POST = Validator::validateForm($_POST);
-                if ($administrador->checkUser($_POST['usuario'], $_POST['clave'])) {
+                if ($administrador->checkUser($_POST['alias'], $_POST['clave'])) {
                     $result['status'] = 1;
                     $result['message'] = 'Autenticación correcta';
                 } else {
