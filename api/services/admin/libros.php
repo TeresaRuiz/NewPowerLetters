@@ -98,6 +98,7 @@ if (isset($_GET['action'])) {
                 } elseif ($libros->updateRow()) { // Intentar actualizar la fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Libro modificado correctamente'; // Mensaje de éxito.
+                    $result['fileStatus'] = Validator::saveFile($_FILES['imagen'], $libros::RUTA_IMAGEN);
                 } else {
                     $result['error'] = 'Ocurrió un problema al modificar el libro'; // Mensaje de error si ocurre un problema.
                 }
