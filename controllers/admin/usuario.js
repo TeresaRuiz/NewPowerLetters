@@ -3,6 +3,9 @@ const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer el contenido de la tabla.
 const TABLE_BODY = document.getElementById('tableBody');
 const ROWS_FOUND = document.getElementById('rowsFound');
+const SAVE_FORM = document.getElementById('saveForm'),
+    ID_USUARIO = document.getElementById('id_usuario'),
+    ESTADO_CLIENTE = document.getElementById('estado_cliente');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -19,6 +22,22 @@ SEARCH_FORM.addEventListener('submit', (event) => {
     // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     fillTable(FORM);
 });
+
+SAVE_FORM.addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const FORM = new FormData(SAVE_FORM);
+    const DATA = await fetchData(USUARIO_API, 'updateRow', FORM);
+    
+    if (DATA.status) {
+        closeModal();
+        sweetAlert(1, DATA.message, true);
+        fillTable();
+    } else {
+        console.error("Error: ", DATA.error);
+        sweetAlert(2, DATA.error, false);
+    }
+});
+
 
 
 /*
@@ -56,7 +75,7 @@ const fillTable = async (form = null) => {
                 <td>${estadoIcono}</td>
                 <td>${row.fecha_registro}</td>
                 <td class="action-icons">
-                    <a onclick="openUpdate(${row.id_libro})">
+                    <a onclick="openUpdate(${row.id_usuario})">
                         <i class="ri-edit-line"></i>
                     </a>
                 </td>
@@ -68,6 +87,22 @@ const fillTable = async (form = null) => {
     } else {
         sweetAlert(4, DATA.error, true);
     }
-
 }
+
+const openUpdate = async (id) => {
+    const FORM = new FormData();
+    FORM.append('id_usuario', id);
+    const DATA = await fetchData(USUARIO_API, 'readOne', FORM);
+    
+    if (DATA.status) {
+        const ROW = DATA.dataset;
+        ID_USUARIO.value = ROW.id_usuario;
+        ESTADO_CLIENTE.value = ROW.estado_cliente;
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Actualizar estado del usuario';
+    } else {
+        sweetAlert(2, DATA.exception, false);
+    }
+};
+
 

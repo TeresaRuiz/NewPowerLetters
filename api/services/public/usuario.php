@@ -1,6 +1,6 @@
 <?php
 // Importar la clase que gestiona los datos relacionados con 'género'.
-require_once('../../models/data/usuario_data.php');
+require_once ('../../models/data/usuario_data.php');
 
 // Verificar si se ha recibido una acción mediante el parámetro 'action' en la URL.
 if (isset($_GET['action'])) {
@@ -21,7 +21,7 @@ if (isset($_GET['action'])) {
     );
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
-    if (isset($_SESSION['idUsuario']) or true) { // 'true' para permitir el acceso durante el desarrollo, cambiar a solo 'isset($_SESSION['idAdministrador'])' en producción.
+    if (isset($_SESSION['id_usuario']) or true) { // 'true' para permitir el acceso durante el desarrollo, cambiar a solo 'isset($_SESSION['idAdministrador'])' en producción.
 
         // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
         switch ($_GET['action']) {
@@ -48,7 +48,7 @@ if (isset($_GET['action'])) {
 
             case 'readOne': // Acción para leer una fila específica por ID.
                 // Validar e ingresar el ID del género.
-                if (!$Usuario->setId($_POST['idUsuario'])) {
+                if (!$Usuario->setId($_POST['id_usuario'])) {
                     $result['error'] = $Usuario->getDataError(); // Mensaje de error si el ID es inválido.
                 } elseif ($result['dataset'] = $Usuario->readOne()) { // Leer el género específico.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
@@ -57,15 +57,12 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'updateRow': // Acción para actualizar una fila existente.
+            case 'updateRow':
                 // Validar y sanitizar los datos del formulario.
                 $_POST = Validator::validateForm($_POST);
 
-                // Verificar y establecer el ID y el nombre del género a actualizar.
-                if (
-                    !$Usuario->setId($_POST['idUsuario']) ||
-                    !$Usuario->setEstado($_POST['estadoUsuario'])
-                ) {
+                // Verificar y establecer el ID y el estado del usuario a actualizar.
+                if (!$Usuario->setId($_POST['id_usuario']) || !$Usuario->setEstado($_POST['estado_cliente'])) {
                     $result['error'] = $Usuario->getDataError(); // Mensaje de error si la validación falla.
                 } elseif ($Usuario->updateRow()) { // Intentar actualizar la fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
@@ -74,6 +71,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el usuario'; // Mensaje de error si ocurre un problema.
                 }
                 break;
+
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
         }
@@ -85,12 +83,12 @@ if (isset($_GET['action'])) {
         header('Content-type: application/json; charset=utf-8');
 
         // Convertir el resultado a formato JSON y enviarlo como respuesta.
-        print(json_encode($result));
+        print (json_encode($result));
     } else {
         // Si no hay una sesión válida, se devuelve un mensaje de acceso denegado.
-        print(json_encode('Acceso denegado'));
+        print (json_encode('Acceso denegado'));
     }
 } else {
     // Si no se recibe una acción, se devuelve un mensaje de recurso no disponible.
-    print(json_encode('Recurso no disponible'));
+    print (json_encode('Recurso no disponible'));
 }

@@ -51,19 +51,45 @@
                 </tbody>
             </table>
         </div>
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2>
+                    <br>
+                    <form id="saveForm">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" id="id_usuario" name="id_usuario" style=" display: none;">
+                        <div>
+                            <label for="estado_cliente" class="genero__label">Estado</label>
+                            <select id="estado_cliente" name="estado_cliente" class="genero__input">
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </div>
+                        <br><br>
+                        <button type="submit" class="genero__button button">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
     </main>
 
-      <!--=============== SWIPER JS ===============-->
-      <script src="../../Resources/js/swiper-bundle.min.js"></script>
-      <!--=============== SCROLLREVEAL ===============-->
-      <script src="../../Resources/js/scrollreveal.min.js"></script>
-      <script src="../../Resources/js/header_admin.js"></script>
-      <!--<script src="../../Resources/js/footer.js"></script>-->
-      <script src="../../Resources/js/modals_.js"></script>
-      <script src="../../Resources/js/main.js"></script>
-      <script src="../../Resources/js/sweetalert.min.js"></script>
-      <script src="../../controllers/utils/components.js"></script>
-      <script src="../../controllers/admin/usuario.js"></script>
+    <!--=============== SWIPER JS ===============-->
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../Resources/js/header_admin.js"></script>
+    <!--<script src="../../Resources/js/footer.js"></script>-->
+    <script src="../../Resources/js/modals_.js"></script>
+    <script src="../../Resources/js/main.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/admin/usuario.js"></script>
 </body>
 
 </html>
