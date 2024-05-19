@@ -15,17 +15,16 @@ CREATE TABLE tb_usuarios (
 	 fecha_registro DATE NOT NULL
 );
  
-CREATE TABLE tb_administradores (
-    id_administrador INT PRIMARY KEY AUTO_INCREMENT,
-    nombre_administrador VARCHAR(50),
-    user_administrador VARCHAR(50),
-    correo_administrador VARCHAR(50),
-    clave_administrador VARCHAR(50),
-    telefono_adm VARCHAR(20),
-    fecha_registro DATETIME,
-    imagen VARCHAR(25)
+CREATE TABLE administrador (
+	id_administrador INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
+	nombre_administrador VARCHAR(50) NOT NULL,
+ 	apellido_administrador VARCHAR(50) NOT NULL,
+	correo_administrador VARCHAR(100) NOT NULL,
+	alias_administrador VARCHAR(25) NOT NULL,
+	clave_administrador VARCHAR(100) NOT NULL,
+	fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (id_administrador)
 );
-
 
 CREATE TABLE tb_generos (
     id_genero INT PRIMARY KEY AUTO_INCREMENT,
@@ -73,6 +72,7 @@ CREATE TABLE tb_comentarios (
     calificacion INT,
     estado_comentario ENUM('ACTIVO', 'BLOQUEADO')
 );
+
 
 CREATE TABLE tb_detalle_pedidos (
     id_detalle INT PRIMARY KEY AUTO_INCREMENT,

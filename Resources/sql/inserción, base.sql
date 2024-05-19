@@ -78,85 +78,49 @@ VALUES ('Pablo Ortega', 'portega', 'portega@gmail.com', 'clave5678', 'Avenida Fu
 
 SELECT * FROM tb_usuarios;
 
+INSERT INTO administrador (
+    nombre_administrador,
+    apellido_administrador,
+    correo_administrador,
+    alias_administrador,
+    clave_administrador
+) VALUES (
+    'Juan',
+    'Pérez',
+    'juan.perez@example.com',
+    'juanp',
+    'clave123'
+);
 
+INSERT INTO administrador (
+    nombre_administrador,
+    apellido_administrador,
+    correo_administrador,
+    alias_administrador,
+    clave_administrador
+) VALUES (
+    'Ana',
+    'García',
+    'ana.garcia@example.com',
+    'anag',
+    'clave456'
+);
 
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Lionel Messi', 'lmessi', 'lmessi@gmail.com', 'messi123', '555-1234', '2024-03-06 10:00:00', 'imagen1.jpg');
+INSERT INTO administrador (
+    nombre_administrador,
+    apellido_administrador,
+    correo_administrador,
+    alias_administrador,
+    clave_administrador
+) VALUES (
+    'Luis',
+    'Martínez',
+    'luis.martinez@example.com',
+    'luism',
+    'clave789'
+);
 
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Gerard Piqué', 'gpique', 'gpique@gmail.com', 'pique456', '555-5678', '2024-03-06 10:15:00', 'imagen2.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Sergio Busquets', 'sbusquets', 'sbusquets@gmail.com', 'busquets789', '555-9012', '2024-03-06 10:30:00', 'imagen3.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Jordi Alba', 'jalba', 'jalba@gmail.com', 'alba234', '555-3456', '2024-03-06 10:45:00', 'imagen4.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Ansu Fati', 'afati', 'afati@gmail.com', 'fati5678', '555-6789', '2024-03-06 11:00:00','imagen5.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Frenkie de Jong', 'fdejong', 'fdejong@gmail.com', 'dejong890', '555-7890', '2024-03-06 11:15:00', 'imagen6.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Ousmane Dembélé', 'odembele', 'odembele@gmail.com', 'dembele456', '555-2345', '2024-03-06 11:30:00', 'imagen7.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Ronald Araújo', 'raraujo', 'raraujo@gmail.com', 'araujo789', '555-9012', '2024-03-06 11:45:00', 'imagen8.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Pedri González', 'pgonzalez', 'pgonzalez@gmail.com', 'pedri123', '555-6789', '2024-03-06 12:00:00', 'imagen9.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Memphis Depay', 'mdepay', 'mdepay@gmail.com', 'depay456', '555-3456', '2024-03-06 12:15:00', 'imagen10.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Eric García', 'egarcia', 'egarcia@gmail.com', 'garcia789', '555-9012', '2024-03-06 12:30:00', 'imagen11.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Sergi Roberto', 'sroberto', 'sroberto@gmail.com', 'roberto123', '555-1234', '2024-03-06 12:45:00', 'imagen12.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Riqui Puig', 'rpuig', 'rpuig@gmail.com', 'puig456', '555-5678', '2024-03-06 13:00:00', 'imagen13.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Samuel Umtiti', 'sumtiti', 'sumtiti@gmail.com', 'umtiti789', '555-9012', '2024-03-06 13:15:00', 'imagen14.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Oscar Mingueza', 'omingueza', 'omingueza@gmail.com', 'mingueza234', '555-3456', '2024-03-06 13:30:00', 'imagen15.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Alex Collado', 'acollado', 'acollado@gmail.com', 'collado5678', '555-6789', '2024-03-06 13:45:00','imagen16.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Ilaix Moriba', 'imoriba', 'imoriba@gmail.com', 'moriba123', '555-2345', '2024-03-06 14:00:00', 'imagen17.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Konrad de la Fuente', 'kdelafuente', 'kdelafuente@gmail.com', 'fuente456', '555-5678', '2024-03-06 14:15:00', 'imagen18.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Matheus Fernandes', 'mfernandes', 'mfernandes@gmail.com', 'fernandes789', '555-9012', '2024-03-06 14:30:00', 'imagen19.jpg');
-
--- Continúa agregando los datos restantes de manera similar
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Ricard Puig Martí', 'rpuigmarti', 'rpuigmarti@gmail.com', 'puigmarti234', '555-3456', '2024-03-06 14:45:00', 'imagen20.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Arnau Tenas Ureña', 'atenasurena', 'atenasurena@gmail.com', 'tenasurena5678', '555-6789','2024-03-06 15:00:00','imagen21.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Iñaki Peña', 'ipena', 'ipena@gmail.com', 'pena123', '555-7890', '2024-03-06 15:15:00', 'imagen22.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Álex Balde', 'abalde', 'abalde@gmail.com', 'balde456', '555-2345', '2024-03-06 15:30:00', 'imagen23.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Sergiño Dest', 'sdest', 'sdest@gmail.com', 'dest789', '555-9012', '2024-03-06 15:45:00', 'imagen24.jpg');
-
-INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, fecha_registro, imagen)
-VALUES ('Rafinha Alcántara', 'ralcantara', 'ralcantara@gmail.com', 'alcantara234', '555-3456', '2024-03-06 16:00:00','imagen25.jpg');
-
-SELECT*FROM tb_administradores;
+SELECT * FROM administrador;
 
 
 INSERT INTO tb_generos (nombre)
@@ -458,4 +422,4 @@ SELECT
     WHERE
         c.id_comentario = 10
         
- 
+        
