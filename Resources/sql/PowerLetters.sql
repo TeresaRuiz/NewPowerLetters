@@ -10,7 +10,9 @@ CREATE TABLE tb_usuarios (
     clave VARCHAR(100),
     direccion VARCHAR(100),
     telefono VARCHAR(20),
-    imagen VARCHAR(25)
+    imagen VARCHAR(25),
+	 estado_cliente TINYINT(1) NOT NULL DEFAULT 1,
+	 fecha_registro DATE NOT NULL
 );
  
 CREATE TABLE tb_administradores (
@@ -91,4 +93,15 @@ CREATE TABLE tb_pedidos (
     CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario),
     CONSTRAINT fk_pedido FOREIGN KEY (id_detalle) REFERENCES tb_detalle_pedidos(id_detalle)
 );
+
+DELIMITER //
+
+CREATE TRIGGER before_insert_tb_usuarios
+BEFORE INSERT ON tb_usuarios
+FOR EACH ROW
+BEGIN
+  SET NEW.fecha_registro = CURDATE();
+END//
+
+DELIMITER ;
  

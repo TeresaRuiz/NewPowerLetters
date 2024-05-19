@@ -26,7 +26,6 @@
             color: orange;
         }
     </style>
-    <!-- Agregamos la hoja de estilos de RemixIcon -->
 </head>
 
 <body>
@@ -38,7 +37,6 @@
     <main class="main section">
         <div class="container">
             <h1 class="section__title">Gestión de comentarios</h1>
-            <!-- Formulario de búsqueda y botón de agregar -->
             <form id="searchForm" class="search-container">
                 <div class="search-form" id="search_generos">
                     <input type="search" name="search" class="search-input" placeholder="Buscar...">
@@ -48,8 +46,6 @@
             <div class="agregar">
                 <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Actualizar</button>
             </div>
-
-            <!-- Tabla con estilo elegante -->
             <table class="table">
                 <thead>
                     <tr>
@@ -64,12 +60,10 @@
                     </tr>
                 </thead>
                 <tbody id="tableBody">
-
                 </tbody>
             </table>
         </div>
 
-        <!-- Modal -->
         <div id="myModal" class="modal">
             <div class="modal-background"></div>
             <div class="modal-content card">
@@ -78,8 +72,7 @@
                     <h2 id="modalTitle"></h2>
                     <br>
                     <form id="saveForm">
-                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                        <input type="number" id="id_comentario" name="id_comentario" style=" display: none;">
+                        <input type="number" id="id_comentario" name="id_comentario" style="display: none;">
                         <div>
                             <label class="genero__label">Comentario</label>
                             <input type="text" name="comentario" id="comentario" placeholder="Escribe tu género"
@@ -96,7 +89,6 @@
                             <select name="estadoComentario" id="estadoComentario" class="libro__input" required>
                             </select>
                         </div>
-
                         <br><br>
                         <button type="submit" class="genero__button button">Guardar</button>
                     </form>
@@ -104,13 +96,52 @@
             </div>
         </div>
 
+        <div id="myModalView" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModalDetalles()" class="close"
+                    style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2><br>
+                    <div class="libros_group grid">
+                        <div>
+                            <h3 id="tituloVista"></h3>
+                            <br>
+                            <img id="vista" src="${SERVER_URL}images/libros/${row.imagen}" width="100">
+                        </div>
+                        <div>
+                            <div>
+                                <label for="Cliente" class="genero__label">Comentado por el cliente:</label>
+                                <p id="Cliente"></p>
+                            </div>
+                            <br>
+                            <div>
+                                <label class="genero__label">Calificación:</label>
+                                <div id="calificacionContainerView" class="calificacion__input"></div>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="Comentario" class="genero__label">Comentario:</label>
+                                <p id="Comentario"></p>
+                            </div>
+                            <br>
+                            <div>
+                                <label for="Estado" class="genero__label">Estado:</label>
+                                <p id="Estado"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
     </main>
-    <!--=============== SWIPER JS ===============-->
+
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
     <script src="../../Resources/js/scrollreveal.min.js"></script>
     <script src="../../Resources/js/header_admin.js"></script>
-    <!--<script src="../../Resources/js/footer.js"></script>-->
     <script src="../../Resources/js/modals_.js"></script>
     <script src="../../Resources/js/main.js"></script>
     <script src="../../Resources/js/sweetalert.min.js"></script>

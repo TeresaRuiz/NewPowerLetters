@@ -1,9 +1,9 @@
-// Crea el elemento footer
+// Creamos el elemento footer
 const footer = document.createElement('footer');
 footer.classList.add('footer');
 footer.id = 'footer';
 
-// Agrega el contenido del footer
+// Agrega el contenido del footer para que se vea más estético
 footer.innerHTML = `
 <footer class="footer">
          

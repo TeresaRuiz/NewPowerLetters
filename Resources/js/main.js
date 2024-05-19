@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    // Código que manipula elementos del DOM
+    // Código que se usa para manipular los elementos del DOM
 });
 
 
-/*=============== SEARCH ===============*/
+/*=============== search ===============*/
 
 
 
