@@ -12,22 +12,22 @@
 }
 
 .table th {
-  background-color: var(--first-color); /* Cambia al color que desees */
-  color: var(--white-color); /* Cambia al color que desees */
+  background-color: var(--first-color); /* Cambia al color que deseemos */
+  color: var(--white-color); /* Cambia al color al que deseemos */
   font-weight: bold;
   text-transform: uppercase;
 }
 
 .table tbody tr:nth-child(even) {
-  background-color: var(--container-color); /* Cambia al color que desees */
+  background-color: var(--container-color); /* Cambia al color que deseemos */
 }
 
 .table tbody tr:hover {
-  background-color: var(--body-color); /* Cambia al color que desees */
+  background-color: var(--body-color); /* Cambia al color que deseemos */
 }
 
 .table td {
-  border-bottom: 1px solid var(--border-color); /* Cambia al color que desees */
+  border-bottom: 1px solid var(--border-color); /* Cambia al color que deseemos */
 }
 
 /* Estilo para los íconos de acciones */
@@ -37,7 +37,7 @@
 }
 
 .action-icons a {
-  color: var(--first-color); /* Cambia al color que desees */
+  color: var(--first-color); /* Cambia al color que deseemos */
   font-size: 1.9rem;
   cursor: pointer;
 }
@@ -81,7 +81,7 @@ flex: 1; /* El campo de entrada se expande para ocupar el espacio disponible */
 
 .add-button {
 padding: 7px 16px;
-background-color: var(--first-color); /* Cambia al color que desees */
+background-color: var(--first-color); /* Cambia al color que deseemos */
 color: #fff;
 border: none;
 border-radius: 5px;
@@ -90,7 +90,7 @@ transition: background-color 0.3s;
 }
 
 .add-button:hover {
-background-color: #218838; /* Cambia al color que desees */
+background-color: #218838; /* Cambia al color que deseemos */
 }
 
 .search-container {
