@@ -19,6 +19,8 @@ class UsuarioHandler
     protected $imagen = null;
     protected $estado = null;
     protected $fecha = null;
+    // Constante para establecer la ruta de las imágenes.
+    const RUTA_IMAGEN = '../../images/usuarios/';
 
     /*
      * Métodos para gestionar la cuenta del cliente.
@@ -134,6 +136,15 @@ class UsuarioHandler
             FROM tb_usuarios
             WHERE correo = ?';
         $params = array($value);
+        return Database::getRow($sql, $params);
+    }
+
+    public function readFilename()
+    {
+        $sql = 'SELECT imagen
+            FROM tb_usuarios
+            WHERE id_usuario = ?';
+        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 }
