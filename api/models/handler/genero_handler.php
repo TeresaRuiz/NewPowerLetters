@@ -29,7 +29,7 @@ class generoHandler
         return Database::getRows($sql, $params);
     }
 
-    // Para crear una nueva fila en tb_generos
+    // Para crear una nueva fila en "tb_generos"
     public function createRow()
     {
         // Cambiar el nombre de las columnas y sus valores
