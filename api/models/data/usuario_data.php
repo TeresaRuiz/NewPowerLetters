@@ -84,7 +84,7 @@ class UsuarioData extends UsuarioHandler
     public function setDireccion($value, $min = 2, $max = 250)
     {
         if (!Validator::validateString($value)) {
-            $this->data_error = 'La dirección contiene caracteres prohibidos';
+            $this->data_error = 'La dirección contiene carácteres prohibidos';
             return false;
         } elseif(Validator::validateLength($value, $min, $max)) {
             $this->direccion = $value;
