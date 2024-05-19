@@ -34,113 +34,113 @@
     </div>
 
 
-    <div class="container_registro">
-        <!--==================== REGISTER ====================-->
-
-
-
-        <form class="form" id="saveForm">
-
-            <h3 class="register__title">Registro de administradores</h3>
-
-            <input type="number" id="idAdministrador" name="idAdministrador">
-
-
-            <div class="flex-column">
-                <label for="nombre" class="register__label">Nombre</label>
-                <div class="inputForm">
-                    <i class="ri-account-circle-line"></i>
-                    <input type="text" class="input" name="nombreAdministrador" id="nombreAdministrador"
-                        placeholder="Escribe tu nombre" class="register__input">
-                </div>
-
+        <div class="container_registro">
+            <!--==================== REGISTER ====================-->
+    
+         
+    
+            <form class="form" id="saveForm">
+    
+                <h3 class="register__title">Registro de administradores</h3>
+    
+                <input type="number" id="idAdministrador" name="idAdministrador">
+    
+    
                 <div class="flex-column">
-                    <label for="nombre_usuario" class="register__label">Nombre de usuario</label>
+                    <label for="nombre" class="register__label">Nombre</label>
                     <div class="inputForm">
                         <i class="ri-account-circle-line"></i>
-                        <input type="text" class="input" name="UsuarioAdministrador" id="UsuarioAdministrador"
-                            placeholder="Elige un nombre de usuario" class="register__input">
+                        <input type="text" class="input" name="nombreAdministrador" id="nombreAdministrador"
+                            placeholder="Escribe tu nombre" class="register__input">
                     </div>
 
                     <div class="flex-column">
-
-                        <label for="correo" class="register__label">Correo electrónico</label>
+                        <label for="nombre_usuario" class="register__label">Nombre de usuario</label>
                         <div class="inputForm">
-                            <i class="ri-mail-fill"></i>
-                            <input type="email" class="input" name="correoAdministrador" id="correoAdministrador"
-                                placeholder="Ingresa tu correo electrónico" class="register__input">
-
+                            <i class="ri-account-circle-line"></i>
+                            <input type="text" class="input" name="UsuarioAdministrador" id="UsuarioAdministrador"
+                                placeholder="Elige un nombre de usuario" class="register__input">
                         </div>
-
+    
                         <div class="flex-column">
-                            <label for="clave" class="register__label">Contraseña</label>
-                        </div>
-                        <div class="inputForm">
-                            <i class="ri-lock-fill"></i>
-                            <input type="password" class="input" name="claveAdministrador" id="claveAdministrador"
-                                placeholder="Ingresa tu contraseña" class="register__input">
-
-                            <i class="ri-eye-fill"></i>
+    
+                            <label for="correo" class="register__label">Correo electrónico</label>
+                            <div class="inputForm">
+                                <i class="ri-mail-fill"></i>
+                                <input type="email" class="input" name="correoAdministrador" id="correoAdministrador"
+                                    placeholder="Ingresa tu correo electrónico" class="register__input">
+    
+                            </div>
+    
+                            <div class="flex-column">
+                                <label for="clave" class="register__label">Contraseña</label>
+                            </div>
+                            <div class="inputForm">
+                                <i class="ri-lock-fill"></i>
+                                <input type="password" class="input" name="claveAdministrador" id="claveAdministrador"
+                                    placeholder="Ingresa tu contraseña" class="register__input">
+    
+                                    <i class="ri-eye-fill"></i>
+                            </div>
+                            <div class="flex-column">
+                                <label for="confirmarClave" class="register__label">Confirmar contraseña</label>
+                            </div>
+                            <div class="inputForm">
+                                <i class="ri-lock-fill"></i>
+                                <input id="confirmarClave" class="input" type="password" name="confirmarClave"
+                                    class="register__input" required>
+                                    <i class="ri-eye-fill"></i>
+                            </div>
+    
+                            <div class="flex-column">
+    
+                                <label for="telefono" class="register__label">Teléfono</label>
+    
+                            </div>
+                            <div class="inputForm">
+                                <i class="ri-phone-fill"></i>
+                                <input type="text" class="input" name="telefono" id="telefono"
+                                    placeholder="Ingresa tu teléfono " class="register__input">
+    
+    
+                            </div>
+    
+    
+    
                         </div>
                         <div class="flex-column">
-                            <label for="confirmarClave" class="register__label">Confirmar contraseña</label>
+    
+                            <label for="imagen" class="register__label">Imagen</label>
+    
                         </div>
-                        <div class="inputForm">
-                            <i class="ri-lock-fill"></i>
-                            <input id="confirmarClave" class="input" type="password" name="confirmarClave"
-                                class="register__input" required>
-                            <i class="ri-eye-fill"></i>
+                        <div>
+                            <input type="file" name="imagen" id="imagen" accept="image/*" class="register__input">
                         </div>
-
-                        <div class="flex-column">
-
-                            <label for="telefono" class="register__label">Teléfono</label>
-
-                        </div>
-                        <div class="inputForm">
-                            <i class="ri-phone-fill"></i>
-                            <input type="number" class="input" name="telefono" id="telefono"
-                                placeholder="Ingresa tu teléfono " class="register__input">
-
-
-                        </div>
-
-
-
+    
+                        <br><br>
+    
+                        <button type="submit" class="button-submit">Registrarme</button>
+    
                     </div>
-                    <div class="flex-column">
-
-                        <label for="imagen" class="register__label">Imagen</label>
-
-                    </div>
-                    <div>
-                        <input type="file" name="imagen" id="imagen" accept="image/*" class="register__input">
-                    </div>
-
-                    <br><br>
-
-                    <button type="submit" class="button-submit">Registrarme</button>
-
                 </div>
-            </div>
-        </form>
-    </div>
-
-
+            </form>
+        </div>
+    
+    
 
     </form>
     </div>
-    <!--=============== SWIPER JS ===============-->
-    <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="../../Resources/js/scrollreveal.min.js"></script>
-    <script src="../../Resources/js/header_admin.js"></script>
-    <!--<script src="../../Resources/js/footer.js"></script>-->
-    <script src="../../Resources/js/modals_.js"></script>
-    <script src="../../Resources/js/main.js"></script>
-    <script src="../../Resources/js/sweetalert.min.js"></script>
-    <script src="../../controllers/utils/components.js"></script>
-    <script src="../../controllers/admin/administrador.js"></script>
+     <!--=============== SWIPER JS ===============-->
+     <script src="../../Resources/js/swiper-bundle.min.js"></script>
+     <!--=============== SCROLLREVEAL ===============-->
+     <script src="../../Resources/js/scrollreveal.min.js"></script>
+     <script src="../../Resources/js/header_admin.js"></script>
+     <!--<script src="../../Resources/js/footer.js"></script>-->
+     <script src="../../Resources/js/modals_.js"></script>
+     <script src="../../Resources/js/main.js"></script>
+     <script src="../../Resources/js/sweetalert.min.js"></script>
+     <script src="../../controllers/utils/components.js"></script>
+     <script src="../../controllers/admin/administrador.js"></script>
 </body>
 
 </html>
