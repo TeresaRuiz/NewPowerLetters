@@ -1,125 +1,94 @@
 <?php
-// Se incluye la clase del modelo.
+// Importar la clase que gestiona los datos relacionados con 'género'.
 require_once ('../../models/data/usuario_data.php');
 
-// Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
+// Verificar si se ha recibido una acción mediante el parámetro 'action' en la URL.
 if (isset($_GET['action'])) {
-    // Se crea una sesión o se reanuda la actual para poder utilizar variables de sesión en el script.
+    // Iniciar una nueva sesión o reanudar la existente para utilizar variables de sesión.
     session_start();
-    // Se instancia la clase correspondiente.
+
+    // Crear una instancia de la clase 'UsuarioData' para interactuar con los datos relacionados con 'género'.
     $Usuario = new UsuarioData;
-    // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'recaptcha' => 0, 'message' => null, 'error' => null, 'exception' => null, 'fileStatus' => null, 'username' => null);
-    // Se verifica si existe una sesión iniciada como usua$Usuario para realizar las acciones correspondientes.
-    if (isset($_SESSION['idusua$Usuario'])) {
-        $result['session'] = 1;
-        // Se compara la acción a realizar cuando un usua$Usuario ha iniciado sesión.
-        switch ($_GET['action']) {
-            case 'getUser':
-                if (isset($_SESSION['correoUsuario'])) {
-                    $result['status'] = 1;
-                    $result['username'] = $_SESSION['correoUsuario'];
-                } else {
-                    $result['error'] = 'Correo de usuario indefinido';
-                }
-                break;
-            case 'logOut':
-                if (session_destroy()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Sesión eliminada correctamente';
-                } else {
-                    $result['error'] = 'Ocurrió un problema al cerrar la sesión';
-                }
-                break;
-            default:
-                $result['error'] = 'Acción no disponible dentro de la sesión';
-        }
-    } else {
-        // Se compara la acción a realizar cuando el usua$Usuario no ha iniciado sesión.
-        switch ($_GET['action']) {
-            case 'signUp':
-                $_POST = Validator::validateForm($_POST);
-                // Se establece la clave secreta para el reCAPTCHA de acuerdo con la cuenta de Google.
-                $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
-                // Se establece la dirección IP del servidor.
-                $ip = $_SERVER['REMOTE_ADDR'];
-                // Se establecen los datos del raCAPTCHA.
-                $data = array('secret' => $secretKey, 'response' => $_POST['gRecaptchaResponse'], 'remoteip' => $ip);
-                // Se establecen las opciones del reCAPTCHA.
-                $options = array(
-                    'http' => array('header' => 'Content-type: application/x-www-form-urlencoded\r\n', 'method' => 'POST', 'content' => http_build_query($data)),
-                    'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
-                );
 
-                $url = 'https://www.google.com/recaptcha/api/siteverify';
-                $context = stream_context_create($options);
-                $response = file_get_contents($url, false, $context);
-                $captcha = json_decode($response, true);
+    // Inicializar un arreglo para almacenar el resultado de las operaciones de la API.
+    $result = array(
+        'status' => 0, // Indicador del estado de la operación, 0 para fallo, 1 para éxito.
+        'message' => null, // Mensaje descriptivo del resultado.
+        'dataset' => null, // Datos resultantes de la operación, como una lista de géneros.
+        'error' => null, // Mensaje de error si ocurre un problema.
+        'exception' => null, // Excepción del servidor de base de datos si es aplicable.
+        'fileStatus' => null // Estado de archivo (si es necesario para alguna operación).
+    );
 
-                if (!$captcha['success']) {
-                    $result['recaptcha'] = 1;
-                    $result['error'] = 'No eres humano';
-                } elseif (!isset($_POST['condicion'])) {
-                    $result['error'] = 'Debe marcar la aceptación de términos y condiciones';
-                } elseif (
-                    !$Usuario->setNombre($_POST['nombreUsuario']) or
-                    !$Usuario->setNombreUsuario($_POST['usuario']) or
-                    !$Usuario->setCorreo($_POST['correoUsuario']) or
-                    !$Usuario->setClave($_POST['claveUsuario']) or
-                    !$Usuario->setDireccion($_POST['direccionUsuario']) or
-                    !$Usuario->setTelefono($_POST['telefonoUsuario']) or
-                    !$Usuario->setImagen($_FILES['imagen']) ||
-                    !$Usuario->setFecha($_POST['fechaUsuario'])
-                ) {
-                    $result['error'] = $Usuario->getDataError();
-                } elseif ($_POST['claveUsuario'] != $_POST['confirmarClave']) {
-                    $result['error'] = 'Contraseñas diferentes';
-                } elseif ($Usuario->createRow()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Cuenta registrada correctamente';
+    // Verificar si el usuario tiene una sesión iniciada como administrador.
+    if (isset($_SESSION['id_usuario']) or true) { // 'true' para permitir el acceso durante el desarrollo, cambiar a solo 'isset($_SESSION['idAdministrador'])' en producción.
+
+        // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
+        switch ($_GET['action']) {
+            case 'searchRows': // Acción para buscar filas (géneros) según un término de búsqueda.
+                // Validar el término de búsqueda usando una clase de validación.
+                if (!Validator::validateSearch($_POST['search'])) {
+                    $result['error'] = Validator::getSearchError(); // Mensaje de error si la validación falla.
+                } elseif ($result['dataset'] = $Usuario->searchRows()) { // Buscar filas en la base de datos.
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias'; // Mensaje con la cantidad de coincidencias encontradas.
                 } else {
-                    $result['error'] = 'Ocurrió un problema al registrar la cuenta';
+                    $result['error'] = 'No hay coincidencias'; // Mensaje si no se encontraron resultados.
                 }
                 break;
-            case 'logIn':
-                $_POST = Validator::validateForm($_POST);
-                if (!$Usuario->checkUser($_POST['correo'], $_POST['clave'])) {
-                    $result['error'] = 'Datos incorrectos';
-                } elseif ($Usuario->checkStatus()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Autenticación correcta';
-                } else {
-                    $result['error'] = 'La cuenta ha sido desactivada';
-                }
-                break;
-            case 'readAll':
-                if ($result['dataset'] = $Usuario->readAll()) {
+
+            case 'readAll': // Acción para leer todas las filas (géneros).
+                if ($result['dataset'] = $Usuario->readAll()) { // Leer todos los géneros de la base de datos.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
                 } else {
-                    $result['error'] = 'No exiten usuarios registrados'; // Mensaje si no se encuentran autores.
+                    $result['error'] = 'No existen usuarios registrados'; // Mensaje si no se encuentran géneros.
                 }
                 break;
 
-            case 'readOne':
-                if (!$libros->setId($_POST['id_usuario'])) {
-                    $result['error'] = $libros->getDataError();
-                } elseif ($result['dataset'] = $libros->readOne()) {
-                    $result['status'] = 1;
+            case 'readOne': // Acción para leer una fila específica por ID.
+                // Validar e ingresar el ID del género.
+                if (!$Usuario->setId($_POST['id_usuario'])) {
+                    $result['error'] = $Usuario->getDataError(); // Mensaje de error si el ID es inválido.
+                } elseif ($result['dataset'] = $Usuario->readOne()) { // Leer el género específico.
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
                 } else {
-                    $result['error'] = 'Usuario inexistente';
+                    $result['error'] = 'Usuario inexistente'; // Mensaje de error si no se encuentra el género.
                 }
                 break;
-            default:
-                $result['error'] = 'Acción no disponible fuera de la sesión';
+
+            case 'updateRow':
+                // Validar y sanitizar los datos del formulario.
+                $_POST = Validator::validateForm($_POST);
+
+                // Verificar y establecer el ID y el estado del usuario a actualizar.
+                if (!$Usuario->setId($_POST['id_usuario']) || !$Usuario->setEstado($_POST['estado_cliente'])) {
+                    $result['error'] = $Usuario->getDataError(); // Mensaje de error si la validación falla.
+                } elseif ($Usuario->updateRow()) { // Intentar actualizar la fila.
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
+                    $result['message'] = 'Usuario modificado correctamente'; // Mensaje de éxito.
+                } else {
+                    $result['error'] = 'Ocurrió un problema al modificar el usuario'; // Mensaje de error si ocurre un problema.
+                }
+                break;
+
+            default: // Caso por defecto para manejar acciones desconocidas.
+                $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
         }
+
+        // Capturar cualquier excepción de la base de datos.
+        $result['exception'] = Database::getException();
+
+        // Configurar el tipo de contenido para la respuesta y la codificación de caracteres.
+        header('Content-type: application/json; charset=utf-8');
+
+        // Convertir el resultado a formato JSON y enviarlo como respuesta.
+        print (json_encode($result));
+    } else {
+        // Si no hay una sesión válida, se devuelve un mensaje de acceso denegado.
+        print (json_encode('Acceso denegado'));
     }
-    // Se obtiene la excepción del servidor de base de datos por si ocurrió un problema.
-    $result['exception'] = Database::getException();
-    // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
-    header('Content-type: application/json; charset=utf-8');
-    // Se imprime el resultado en formato JSON y se retorna al controlador.
-    print (json_encode($result));
 } else {
+    // Si no se recibe una acción, se devuelve un mensaje de recurso no disponible.
     print (json_encode('Recurso no disponible'));
 }

@@ -19,6 +19,8 @@ class UsuarioHandler
     protected $imagen = null;
     protected $estado = null;
     protected $fecha = null;
+    // Constante para establecer la ruta de las imágenes.
+    const RUTA_IMAGEN = '../../images/usuarios/';
 
     /*
      * Métodos para gestionar la cuenta del cliente.
@@ -114,11 +116,12 @@ class UsuarioHandler
     public function updateRow()
     {
         $sql = 'UPDATE tb_usuarios
-            SET nombre = ?, nombre_usuario = ?, correo = ?, telefono = ?, direccion = ?, estado_cliente = ?, fecha_registro = ?
-            WHERE id_usuario = ?';
-        $params = array($this->nombre, $this->nombreUser, $this->correo, $this->telefono, $this->direccion, $this->estado, $this->fecha, $this->id);
+        SET estado_cliente = ?
+        WHERE id_usuario = ?';
+        $params = array($this->estado, $this->id);
         return Database::executeRow($sql, $params);
     }
+
 
     public function deleteRow()
     {
@@ -134,6 +137,15 @@ class UsuarioHandler
             FROM tb_usuarios
             WHERE correo = ?';
         $params = array($value);
+        return Database::getRow($sql, $params);
+    }
+
+    public function readFilename()
+    {
+        $sql = 'SELECT imagen
+            FROM tb_usuarios
+            WHERE id_usuario = ?';
+        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 }

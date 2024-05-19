@@ -21,92 +21,75 @@
         <div class="container">
             <h1 class="section__title">Gestión de usuarios</h1>
             <!-- Formulario de búsqueda y botón de agregar -->
-            <div class="search-container">
-                <div class="search-form">
-                    <input type="text" class="search-input" placeholder="Buscar...">
-                    <button class="search-button"><i class="ri-search-line"></i></button>
+            <form id="searchForm" class="search-container">
+                <div class="search-form" id="search_generos">
+                    <input type="search" name="search" class="search-input" placeholder="Buscar...">
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
                 </div>
-                <div class="agregar">
-                    <button class="add-button">Actualizar</button>
-                </div>
-            </div>
+            </form>
 
             <!-- Tabla con información de usuarios -->
             <table class="table">
                 <thead>
                     <tr>
-                        <th>#</th>
+                        <td colspan="2" id="rowsFound"></td>
+                    </tr>
+                    <tr>
+                        <th>Imagen</th>
                         <th>Nombre</th>
                         <th>Usuario</th>
-                        <th>Correo Electrónico</th>
+                        <th>Correo electrónico</th>
                         <th>Dirección</th>
                         <th>Teléfono</th>
                         <th>Estado</th>
+                        <th>Nacimiento</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Taylor Swift</td>
-                        <td>tswift</td>
-                        <td>taylor@gmail.com</td>
-                        <td>USA</td>
-                        <td>123-456-7890</td>
-                        <td><i class="fa fa-times-circle" style="color: red;"></i> Inactivo</td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>Lisandro Quezada</td>
-                        <td>lquezada</td>
-                        <td>lisandro@gmail.com</td>
-                        <td>ESA</td>
-                        <td>987-654-3210</td>
-                        <td><i class="fa fa-check-circle" style="color: green;"></i> Activo</td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>3</td>
-                        <td>Lionel Messi</td>
-                        <td>lmessi</td>
-                        <td>lionel@gmail.com</td>
-                        <td>ARGENTINA</td>
-                        <td>555-123-4567</td>
-                        <td><i class="fa fa-times-circle" style="color: red;"></i> Inactivo</td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td>Luis Suarez</td>
-                        <td>lsuarez</td>
-                        <td>luis@gmail.com</td>
-                        <td>ARGENTINA</td>
-                        <td>444-555-6666</td>
-                        <td><i class="fa fa-check-circle" style="color: green;"></i> Activo</td>
-                        <td class="action-icons">
-                            <a href="#"><i class="ri-edit-line"></i></a>
-                        </td>
-                    </tr>
+                <tbody id="tableBody">
+
                 </tbody>
             </table>
         </div>
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2>
+                    <br>
+                    <form id="saveForm">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" id="id_usuario" name="id_usuario" style=" display: none;">
+                        <div>
+                            <label for="estado_cliente" class="genero__label">Estado</label>
+                            <select id="estado_cliente" name="estado_cliente" class="genero__input">
+                                <option value="1">Activo</option>
+                                <option value="0">Inactivo</option>
+                            </select>
+                        </div>
+                        <br><br>
+                        <button type="submit" class="genero__button button">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
     </main>
 
-    <script src="../../Resources/js/header_admin.js"></script>
-    <script src="../../Resources/js/modals_.js"></script>
     <!--=============== SWIPER JS ===============-->
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
     <!--=============== SCROLLREVEAL ===============-->
     <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../Resources/js/header_admin.js"></script>
+    <!--<script src="../../Resources/js/footer.js"></script>-->
+    <script src="../../Resources/js/modals_.js"></script>
     <script src="../../Resources/js/main.js"></script>
-    <script src="../../Resources/js/footer.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/admin/usuario.js"></script>
 </body>
 
 </html>
