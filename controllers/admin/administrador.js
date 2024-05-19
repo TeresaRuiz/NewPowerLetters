@@ -16,8 +16,9 @@ const SAVE_FORM = document.getElementById('saveForm'),
     CONFIRMAR_CLAVE = document.getElementById('confirmarClave');
     TELEFONO_ADMINISTRADOR = document.getElementById('telefono'),
     IMG_ADMINISTRADOR = document.getElementById('imagen');
+    ESTADO_ADMIN = document.getElementById('estado_admin');
 // Se establece el título de la página web.
-document.querySelector('title').textContent = 'Clasificación de libros';
+document.querySelector('title').textContent = 'Administrador de libros';
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -76,24 +77,20 @@ const fillTable = async (form = null) => {
     if (DATA.status) {
         // Se recorre el conjunto de registros fila por fila.
         DATA.dataset.forEach(row => {
+            // Determinar el icono y el color según el estado del usuario.
+            const estadoIcono = row.estado_admin == 1
+                ? '<i class="ri-checkbox-circle-fill" style="color: green"></i> Activo'
+                : '<i class="ri-close-circle-fill" style="color: red"></i> Inactivo';
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-
-                     <td>${row.id_administrador}</td>
+                <td><img src="${SERVER_URL}images/usuarios/default.png" width="50"></td>
                     <td>${row.nombre_administrador}</td>
                     <td>${row.user_administrador}</td>
                     <td>${row.correo_administrador}</td>
                     <td>${row.telefono_adm}</td>
-                    <td>${row.imagen}</td>
-                    <td>
-                        <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_administrador})">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_administrador})">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </td>
+                    <td>${row.fecha_registro}</td>
+                    <td>${estadoIcono}</td>
                 </tr>
             `;
         });
@@ -113,7 +110,7 @@ const openCreate = () => {
     // Se muestra la caja de diálogo con su título.
     //SAVE_MODAL.show();
     modal.style.display = "block";
-    MODAL_TITLE.textContent = 'Agregar un nuevo autor';
+    MODAL_TITLE.textContent = 'Agregar un administrador';
     // Se prepara el formulario.
     SAVE_FORM.reset();
 }
@@ -132,12 +129,12 @@ const openUpdate = async (id) => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
 
-         // Se prepara el formulario.
-         SAVE_FORM.reset();
-         USUARIO_ADMINISTRADOR.disabled = true;
-         CLAVE_ADMINISTRADOR.disabled = true;
-         CONFIRMAR_CLAVE.disabled = true;
-        
+        // Se prepara el formulario.
+        SAVE_FORM.reset();
+        USUARIO_ADMINISTRADOR.disabled = true;
+        CLAVE_ADMINISTRADOR.disabled = true;
+        CONFIRMAR_CLAVE.disabled = true;
+
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
         ID_ADMINISTRADOR.value = ROW.id_administrador;
@@ -145,7 +142,7 @@ const openUpdate = async (id) => {
         USUARIO_ADMINISTRADOR.value = ROW.user_administrador;
         CORREO_ADMINISTRADOR.value = ROW.correo_administrador;
         CLAVE_ADMINISTRADOR.value = ROW.clave_administrador;
-        TELEFONO_ADMINISTRADOR.value = ROW.telefono_adm; 
+        TELEFONO_ADMINISTRADOR.value = ROW.telefono_adm;
         IMG_ADMINISTRADOR.value = ROW.imagen;
         AbrirModal();
         MODAL_TITLE.textContent = 'Actualizar autor';

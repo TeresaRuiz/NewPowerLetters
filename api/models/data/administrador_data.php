@@ -112,6 +112,28 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
+    public function setFecha($value)
+    {
+        if (Validator::validateDate($value)) {
+            $this->fecha = $value;
+            return true;
+        } else {
+            $this->data_error = 'La fecha de registro es incorrecta';
+            return false;
+        }
+    }
+
+    public function setFilename()
+    {
+        if ($data = $this->readFilename()) {
+            $this->filename = $data['imagen'];
+            return true;
+        } else {
+            $this->data_error = 'Imagen de administrador';
+            return false;
+        }
+    }
+
     // Método para obtener el error de los datos.
     public function getDataError()
     {

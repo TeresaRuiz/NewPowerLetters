@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>clasificación</title>
+    <title>Administradores</title>
     <link rel="stylesheet" href="../../Resources/css/styles.css">
     <link rel="stylesheet" href="../../Resources/css/estilo_libros.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
@@ -40,12 +40,13 @@
                         <td colspan="2" id="rowsFound"></td>
                     </tr>
                     <tr>
+                        <th>Imagen</th>
                         <th>Nombre</th>
                         <th>Nombre de usuario</th>
                         <th>Correo electronico</th>
-                        <th>Imagen</th>
                         <th>Telefono</th>
-                        <th>Acciones</th>
+                        <th>Fecha</th>
+                        <th>Estado</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -64,8 +65,7 @@
 
                         <!-- Campo oculto para asignar el id del registro al momento de modificar o hacer algun cambio -->
 
-
-                        <input type="hidden" id="idAdministrador" name="idAdministrador" style=" display: none;">
+                        <input type="number" id="idAdministrador" name="idAdministrador" style=" display: none;">
 
                         <div class="libros__group grid">
                             <div>
@@ -109,6 +109,13 @@
                                 <input type="file" name="imagen" id="imagen" accept="image/*" class="libro__input">
                             </div>
 
+                            <div>
+                                <label for="estado_admin" class="genero__label">Estado</label>
+                                <select id="estado_admin" name="estado_admin" class="genero__input">
+                                    <option value="1">Activo</option>
+                                    <option value="0">Inactivo</option>
+                                </select>
+                            </div>
 
                         </div>
                         <br><br>

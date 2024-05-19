@@ -17,10 +17,13 @@ class AdministradorHandler
     protected $clave = null;
     protected $telefono = null;
     protected $imagen = null;
+    protected $estado = null;
 
     /*
      *  Métodos para gestionar la cuenta del administrador.
      */
+
+    const RUTA_IMAGEN = '../../images/administradores/';
 
     public function checkUser($username, $password)
     {
@@ -63,7 +66,7 @@ class AdministradorHandler
         return Database::executeRow($sql, $params);
     }
 
-    
+
 
     public function readProfile()
     {
@@ -95,11 +98,11 @@ class AdministradorHandler
         // Obtener el valor de búsqueda y formatearlo adecuadamente.
         $value = '%' . Validator::getSearchValue() . '%';
 
-        // Consulta SQL para buscar administradores por nombre o apellido.
-        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador
-            FROM tb_administradores
-            WHERE nombre_administrador LIKE ? OR user_administrador LIKE ?
-            ORDER BY nombre_administrador';
+        // Consulta SQL para buscar administradores por nombre o nombre de usuario.
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm, fecha_registro, estado_admin
+        FROM tb_administradores
+        WHERE nombre_administrador LIKE ? OR user_administrador LIKE ?
+        ORDER BY nombre_administrador';
 
         // Parámetros para la consulta preparada.
         $params = array($value, $value);
@@ -107,23 +110,23 @@ class AdministradorHandler
         // Ejecutar la consulta y retornar los resultados.
         return Database::getRows($sql, $params);
     }
+
     public function createRow()
     {
         // Consulta SQL para insertar un nuevo administrador.
-        $sql = 'INSERT INTO tb_administradores(nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, imagen)
-            VALUES(?, ?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO tb_administradores (nombre_administrador, user_administrador, correo_administrador, clave_administrador, telefono_adm, imagen, fecha_registro, estado_admin)
+        VALUES (?, ?, ?, ?, ?, ?, NOW(), 1)';
 
         // Parámetros para la consulta preparada.
-        $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->imagen);
+        $params = array($this->nombre, $this->usuario, $this->correo, $this->clave, $this->telefono, $this->imagen, $this->estado);
 
         // Ejecutar la consulta y retornar el resultado.
         return Database::executeRow($sql, $params);
     }
-
     public function readAll()
     {
         // Consulta SQL para seleccionar todos los administradores.
-        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm, imagen
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm, imagen, fecha_registro, estado_admin
             FROM tb_administradores
             ORDER BY nombre_administrador';
 
@@ -134,14 +137,17 @@ class AdministradorHandler
     public function readOne()
     {
         // Consulta SQL para seleccionar un administrador por su ID.
-        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm, imagen
+        $sql = 'SELECT id_administrador, nombre_administrador, user_administrador, correo_administrador, telefono_adm, fecha_registro, imagen, estado_admin
             FROM tb_administradores
             WHERE id_administrador = ?';
+
         // Parámetros para la consulta.
         $params = array($this->id);
+
         // Obtener y retornar el resultado de la consulta.
         return Database::getRow($sql, $params);
     }
+
 
     public function updateRow()
     {
@@ -164,5 +170,14 @@ class AdministradorHandler
         $params = array($this->id);
         // Ejecutar la consulta y retornar el resultado.
         return Database::executeRow($sql, $params);
+    }
+
+    public function readFilename()
+    {
+        $sql = 'SELECT imagen
+            FROM tb_administradores
+            WHERE id_administrador = ?';
+        $params = array($this->id);
+        return Database::getRow($sql, $params);
     }
 }
