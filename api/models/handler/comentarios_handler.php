@@ -17,15 +17,23 @@ class ComentarioHandler
         c.id_comentario,
         c.comentario,
         c.calificacion,
-        c.estado_comentario
+        c.estado_comentario,
+        u.nombre_usuario
     FROM
         tb_comentarios AS c
+    JOIN
+        tb_detalle_pedidos AS dp ON c.id_comentario = dp.id_comentario
+    JOIN
+        tb_pedidos AS p ON dp.id_detalle = p.id_detalle
+    JOIN
+        tb_usuarios AS u ON p.id_usuario = u.id_usuario
     WHERE
         c.comentario LIKE ? OR
-        c.estado_comentario LIKE ?
+        c.estado_comentario LIKE ? OR
+        u.nombre_usuario LIKE ?
     ORDER BY
         c.id_comentario;';
-        $params = array($value, $value, $value, $value, $value, $value, $value);
+        $params = array($value, $value, $value);
         return Database::getRows($sql, $params);
     }
 
