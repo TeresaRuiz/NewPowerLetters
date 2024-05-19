@@ -14,7 +14,7 @@ class clasificacionData extends clasificacionHandler
     private $data_error = null; // Variable para almacenar mensajes de error.
 
     /*
-     *  Métodos para validar y establecer los datos.
+     *  Métodos para validar y establecer los datos usados.
      */
     public function setId($value)
     {
