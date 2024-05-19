@@ -11,8 +11,6 @@ class AdministradorData extends AdministradorHandler
     // Atributo genérico para manejo de errores.
     private $data_error = null;
 
-    private $filename = null;
-
     /*
      *  Métodos para validar y asignar valores de los atributos.
      */
@@ -41,16 +39,16 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    public function setUsuario($value, $min = 2, $max = 50)
+    public function setApellido($value, $min = 2, $max = 50)
     {
         if (!Validator::validateAlphabetic($value)) {
-            $this->data_error = 'El usuario debe ser un valor alfabético';
+            $this->data_error = 'El apellido debe ser un valor alfabético';
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
-            $this->usuario = $value;
+            $this->apellido = $value;
             return true;
         } else {
-            $this->data_error = 'El usuario debe tener una longitud entre ' . $min . ' y ' . $max;
+            $this->data_error = 'El apellido debe tener una longitud entre ' . $min . ' y ' . $max;
             return false;
         }
     }
@@ -69,6 +67,20 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
+    public function setAlias($value, $min = 6, $max = 25)
+    {
+        if (!Validator::validateAlphanumeric($value)) {
+            $this->data_error = 'El alias debe ser un valor alfanumérico';
+            return false;
+        } elseif (Validator::validateLength($value, $min, $max)) {
+            $this->alias = $value;
+            return true;
+        } else {
+            $this->data_error = 'El alias debe tener una longitud entre ' . $min . ' y ' . $max;
+            return false;
+        }
+    }
+
     public function setClave($value)
     {
         if (Validator::validatePassword($value)) {
@@ -80,46 +92,9 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
-    public function setTelefono($value, $min = 7, $max = 20)
-    {
-        if (!Validator::validatePhone($value)) {
-            $this->data_error = 'El teléfono no es válido';
-            return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
-            $this->telefono = $value;
-            return true;
-        } else {
-            $this->data_error = 'El teléfono debe tener una longitud entre ' . $min . ' y ' . $max;
-            return false;
-        }
-    }
-
-
-    public function setImagen($file, $filename = null)
-    {
-        if (Validator::validateImageFile($file, 1000)) {
-            $this->imagen = Validator::getFileName();
-            return true;
-        } elseif (Validator::getFileError()) {
-            $this->data_error = Validator::getFileError();
-            return false;
-        } elseif ($filename) {
-            $this->imagen = $filename;
-            return true;
-        } else {
-            $this->imagen = 'default.png';
-            return true;
-        }
-    }
-
     // Método para obtener el error de los datos.
     public function getDataError()
     {
         return $this->data_error;
-    }
-
-    public function getFilename()
-    {
-        return $this->filename;
     }
 }

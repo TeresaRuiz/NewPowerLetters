@@ -69,7 +69,7 @@ class editorialesHandler
     {
         // Cambiar la consulta SQL para eliminar por id
         $sql = 'DELETE FROM tb_editoriales WHERE id_editorial = ?';
-        $params = array($this->id); // Parámetro para la eliminación
+        $params = array($this->id); // Parámetro para la eliminación de datos
         return Database::executeRow($sql, $params);
     }
 }
