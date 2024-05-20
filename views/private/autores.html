@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <!-- Metadatos y enlaces a hojas de estilo y scripts -->
+    <meta charset="UTF-8"> <!-- Codificación del documento -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Escala inicial para dispositivos -->
+    <title>Autores</title> <!-- Título de la página -->
+    <link rel="stylesheet" href="../../Resources/css/styles.css"> <!-- Hoja de estilo local -->
+    <link rel="stylesheet" href="../../Resources/css/estilo_tabla.css"> <!-- Hoja de estilo local -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <!-- Hoja de estilo externa para RemixIcon -->
+</head>
+
+<body>
+
+    <header class="header">
+        <!-- Código del encabezado omitido por brevedad -->
+    </header>
+
+    <main class="main section">
+        <!-- Contenedor principal de la sección -->
+        <div class="container">
+            <!-- Título de la sección -->
+            <h1 class="section__title">Autores</h1>
+
+            <!-- Formulario de búsqueda -->
+            <form id="searchForm" class="search-container">
+                <div class="search-form" id="search_generos">
+                    <!-- Campo de búsqueda -->
+                    <input type="search" name="search" class="search-input" placeholder="Buscar...">
+                    <!-- Botón de búsqueda -->
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
+                </div>
+            </form>
+
+            <!-- Botón para agregar un autor -->
+            <div class="agregar">
+                <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Agregar</button>
+            </div>
+
+            <!-- Tabla para mostrar autores -->
+            <table class="table">
+                <!-- Cabecera de la tabla -->
+                <thead>
+                    <tr>
+                        <!-- Celda para mostrar el número de filas encontradas -->
+                        <td colspan="2" id="rowsFound"></td>
+                    </tr>
+                    <!-- Fila de encabezados -->
+                    <tr>
+                        <!-- Columna con el nombre del autor -->
+                        <th>Nombre del autor</th>
+                        <!-- Columna con la biografía del autor -->
+                        <th>biografía</th>
+                        <!-- Columna con acciones para el autor -->
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <!-- Cuerpo de la tabla -->
+                <tbody id="tableBody">
+                    <!-- Contenido de la tabla generado dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+        <!-- Modal para agregar/editar autores -->
+        <div id="myModal" class="modal">
+            <!-- Fondo del modal -->
+            <div class="modal-background"></div>
+            <!-- Contenido del modal -->
+            <div class="modal-content card">
+                <!-- Botón para cerrar el modal -->
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+
+                <!-- Cuerpo del modal -->
+                <div class="card-body">
+                    <!-- Título del modal -->
+                    <h2 id="modalTitle"></h2>
+                    <br>
+
+                    <!-- Formulario para guardar información del autor -->
+                    <form id="saveForm">
+                        <!-- Campo oculto para almacenar el ID del autor -->
+                        <input type="hidden" id="idAutor" name="idAutor" style=" display: none;">
+
+                        <!-- Campo para ingresar el nombre del autor -->
+                        <div>
+                            <label for="nombre" class="autores__label">Nombre del autor</label>
+                            <input type="text" name="autor" id="autor" placeholder="Escribe el autor"
+                                class="autores__input">
+                        </div>
+                        <br>
+
+                        <!-- Campo para ingresar la biografía del autor -->
+                        <div>
+                            <label for="nombre" class="autores__label">Biografía del autor</label>
+                            <input type="text" name="autorbio" id="autorbio" placeholder="Escribe la biografía"
+                                class="autores__input">
+                        </div>
+                        <br>
+
+                        <!-- Botón para guardar los cambios -->
+                        <button type="submit" class="genero__button button">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!--=============== SWIPER JS ===============-->
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../Resources/js/header_admin.js"></script>
+    <script src="../../Resources/js/modals_.js"></script>
+    <script src="../../Resources/js/main.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/admin/autores.js"></script>
+</body>
+
+</html>

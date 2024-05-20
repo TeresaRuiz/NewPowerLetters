@@ -31,7 +31,7 @@ class editorialData extends editorialesHandler
     public function setNombre($value, $min = 2, $max = 50)
     {
         // Valida que el nombre sea alfanumérico.
-        if (!Validator::validateAlphanumeric($value)) {
+        if (!Validator::validateAlphabetic($value)) {
             $this->data_error = 'El nombre debe ser un valor alfanumérico'; // Almacena mensaje de error.
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {

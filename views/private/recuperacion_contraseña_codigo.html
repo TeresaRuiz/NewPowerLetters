@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--=============== FAVICON ===============-->
+    <link rel="shortcut icon" href="./assets/img/favicon (1).png" type="image/x-icon">
+
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+
+    <!--=============== SWIPER CSS ===============-->
+    <link rel="stylesheet" href="../../Resources/css/swiper-bundle.min.css">
+
+    <!--=============== CSS ===============-->
+    <link rel="stylesheet" href="../../Resources/css/styles.css">
+
+    <title>Power Letters - Verificar código</title>
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f4f4f4;
+        }
+
+        .verification__form {
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 400px;
+        }
+
+        .verification__group {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+        }
+
+        .verification__label {
+            margin-bottom: 5px;
+        }
+
+        .verification__input {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        .verification__button {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+
+    <form action="" class="verification__form grid">
+
+        <h3 class="verification__title">Verificar código</h3>
+
+        <div class="verification__group grid">
+
+            <div>
+                <label for="verification-code" class="verification__label">Ingrese el código recibido por correo
+                    electrónico</label>
+                <input type="text" id="verification-code" class="verification__input">
+            </div>
+
+        </div>
+
+        <div>
+            <button type="submit" class="verification__button button">Verificar</button>
+        </div>
+
+    </form>
+
+</body>
+
+</html>

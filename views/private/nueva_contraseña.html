@@ -17,7 +17,7 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="../../Resources/css/styles.css">
 
-    <title>Power Letters - Verificar código</title>
+    <title>Power Letters - Nueva Contraseña</title>
 
     <style>
         body {
@@ -29,7 +29,7 @@
             background-color: #f4f4f4;
         }
 
-        .verification__form {
+        .new-password__form {
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
@@ -37,24 +37,24 @@
             max-width: 400px;
         }
 
-        .verification__group {
+        .new-password__group {
             display: flex;
             flex-direction: column;
             margin-bottom: 20px;
         }
 
-        .verification__label {
+        .new-password__label {
             margin-bottom: 5px;
         }
 
-        .verification__input {
+        .new-password__input {
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
             font-size: 16px;
         }
 
-        .verification__button {
+        .new-password__button {
             width: 100%;
         }
     </style>
@@ -62,21 +62,26 @@
 
 <body>
 
-    <form action="" class="verification__form grid">
+    <form action="" class="new-password__form grid">
 
-        <h3 class="verification__title">Verificar código</h3>
+        <h3 class="new-password__title">Nueva Contraseña</h3>
 
-        <div class="verification__group grid">
+        <div class="new-password__group grid">
 
             <div>
-                <label for="verification-code" class="verification__label">Ingrese el código recibido por correo electrónico</label>
-                <input type="text" id="verification-code" class="verification__input">
+                <label for="new-password" class="new-password__label">Ingrese su nueva contraseña</label>
+                <input type="password" id="new-password" class="new-password__input">
+            </div>
+
+            <div>
+                <label for="confirm-password" class="new-password__label">Confirme su nueva contraseña</label>
+                <input type="password" id="confirm-password" class="new-password__input">
             </div>
 
         </div>
 
         <div>
-            <button type="submit" class="verification__button button">Verificar</button>
+            <button type="submit" class="new-password__button button">Guardar Contraseña</button>
         </div>
 
     </form>

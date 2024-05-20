@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../../Resources/css/styles.css">
     <link rel="stylesheet" href="../../Resources/css/estilo_tabla.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-    <!-- Agregado de la hoja de estilos de RemixIcon -->
+    <!-- Agregamos la hoja de estilos de RemixIcon -->
 </head>
 
 <body>
@@ -19,7 +19,7 @@
 
     <main class="main section">
         <div class="container">
-            <h1 class="section__title">Autores</h1>
+            <h1 class="section__title">Editoriales</h1>
             <!-- Formulario de búsqueda y botón de agregar -->
             <form id="searchForm" class="search-container">
                 <div class="search-form" id="search_generos">
@@ -27,6 +27,8 @@
                     <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
                 </div>
             </form>
+
+
             <div class="agregar">
                 <button class="add-button" onclick="openCreate()"><i class="ri-add-line"></i> Agregar</button>
             </div>
@@ -38,15 +40,13 @@
                         <td colspan="2" id="rowsFound"></td>
                     </tr>
                     <tr>
-                        <th>Nombre del autor</th>
-                        <th>biografía</th>
+                        <th>Nombre</th>
                         <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody id="tableBody">
                 </tbody>
             </table>
-        </div>
         </div>
         <!-- Modal -->
         <div id="myModal" class="modal">
@@ -57,29 +57,23 @@
                 <div class="card-body">
                     <h2 id="modalTitle"></h2>
                     <br>
-
                     <form id="saveForm">
-                        <input type="hidden" id="idAutor" name="idAutor" style=" display: none;">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar algun dato -->
+                        <input type="hidden" id="idEditorial" name="idEditorial" style=" display: none;">
                         <div>
-                            <label for="nombre" class="autores__label">Nombre del autor</label>
-                            <input type="text" name="autor" id="autor" placeholder="Escribe el autor"
-                                class="autores__input">
+                            <label class="editoriales__label">Nombre de la editorial</label>
+                            <input type="text" name="editorial" id="editorial" placeholder="Escribe tu editorial"
+                                class="editorial__input">
                         </div>
-                        <br>
-                        <div>
-                            <label for="nombre" class="autores__label">Biografía del autor</label>
-                            <input type="text" name="autorbio" id="autorbio" placeholder="Escribe la biografía"
-                                class="autores__input">
-                        </div>
-                        <br>
-                        <button type="submit" class="genero__button button">Guardar</button>
-
+                        <br><br>
+                        <button type="submit" class="login__button button">Guardar</button>
                     </form>
 
                 </div>
+
+
             </div>
         </div>
-
     </main>
     <!--=============== SWIPER JS ===============-->
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
@@ -90,7 +84,7 @@
     <script src="../../Resources/js/main.js"></script>
     <script src="../../Resources/js/sweetalert.min.js"></script>
     <script src="../../controllers/utils/components.js"></script>
-    <script src="../../controllers/admin/autores.js"></script>
+    <script src="../../controllers/admin/editoriales.js"></script>
 </body>
 
 </html>

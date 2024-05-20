@@ -17,7 +17,7 @@
     <!--=============== CSS ===============-->
     <link rel="stylesheet" href="../../Resources/css/styles.css">
 
-    <title>Power Letters - Nueva Contraseña</title>
+    <title>Power Letters</title>
 
     <style>
         body {
@@ -27,61 +27,52 @@
             height: 100vh;
             margin: 0;
             background-color: #f4f4f4;
+            /* Cambia el color de fondo según tu preferencia */
         }
 
-        .new-password__form {
+        .login__form {
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            /* Añade sombra al formulario */
             width: 100%;
             max-width: 400px;
-        }
-
-        .new-password__group {
-            display: flex;
-            flex-direction: column;
-            margin-bottom: 20px;
-        }
-
-        .new-password__label {
-            margin-bottom: 5px;
-        }
-
-        .new-password__input {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        .new-password__button {
-            width: 100%;
+            /* Ajusta el ancho máximo del formulario según tu preferencia */
         }
     </style>
 </head>
 
 <body>
 
-    <form action="" class="new-password__form grid">
+    <!--==================== LOGIN ====================-->
 
-        <h3 class="new-password__title">Nueva Contraseña</h3>
+    <form action="" class="login__form grid">
 
-        <div class="new-password__group grid">
+        <h3 class="login__title">Recuperación de contraseña</h3>
+
+        <div class="login__group grid">
 
             <div>
-                <label for="new-password" class="new-password__label">Ingrese su nueva contraseña</label>
-                <input type="password" id="new-password" class="new-password__input">
+                <label for="login-email" class="login__label">Ingrese su correo electrónico</label>
+                <input type="email" placeholder="ejemplo1234@gmail.com" id="login-email" class="login__input">
             </div>
 
+            <!-- Agrega un campo para confirmar el correo electrónico -->
             <div>
-                <label for="confirm-password" class="new-password__label">Confirme su nueva contraseña</label>
-                <input type="password" id="confirm-password" class="new-password__input">
+                <label for="confirm-email" class="login__label">Confirmar correo electrónico</label>
+                <input type="email" placeholder="Repite tu correo electrónico" id="confirm-email" class="login__input">
             </div>
 
         </div>
 
         <div>
-            <button type="submit" class="new-password__button button">Guardar Contraseña</button>
+            <!-- Agrega un enlace para volver -->
+            <a href="#" class="login__forget">
+                Volver
+            </a>
+
+            <!-- Cambia el texto del botón de "Siguiente" por "Enviar" -->
+            <button type="submit" class="login__button button">Enviar</button>
         </div>
 
     </form>

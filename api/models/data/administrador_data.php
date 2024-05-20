@@ -25,6 +25,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
+    /***Validaciones de nombre de administrador*****/
     public function setNombre($value, $min = 2, $max = 50)
     {
         if (!Validator::validateAlphabetic($value)) {
@@ -39,6 +40,8 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
+    
+    /***Validaciones de apellido de administrador*****/
     public function setApellido($value, $min = 2, $max = 50)
     {
         if (!Validator::validateAlphabetic($value)) {
@@ -52,6 +55,8 @@ class AdministradorData extends AdministradorHandler
             return false;
         }
     }
+    
+    /***Validaciones de correo  de administrador*****/
 
     public function setCorreo($value, $min = 8, $max = 100)
     {
@@ -67,6 +72,8 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
+    
+    /***Validaciones de alias de administrador*****/
     public function setAlias($value, $min = 6, $max = 25)
     {
         if (!Validator::validateAlphanumeric($value)) {
@@ -81,6 +88,8 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
+    
+    /***Validaciones de clave de administrador*****/
     public function setClave($value)
     {
         if (Validator::validatePassword($value)) {

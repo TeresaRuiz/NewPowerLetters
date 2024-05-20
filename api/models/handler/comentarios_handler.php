@@ -8,7 +8,7 @@ class ComentarioHandler
 {
     protected $id = null;
     protected $comentario = null;
-    protected $estadoComentario = null;
+    protected $estado = null;
 
     public function searchRows()
     {
@@ -82,7 +82,7 @@ class ComentarioHandler
         $sql = 'UPDATE tb_comentarios
                 SET estado_comentario = ?
                 WHERE id_comentario = ?';
-        $params = array($this->estadoComentario, $this->id);
+        $params = array($this->estado, $this->id);
         return Database::executeRow($sql, $params);
     }
 
