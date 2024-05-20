@@ -260,3 +260,98 @@
    margin: 0;
    /* Elimina el margen de los párrafos */
  }
+
+ /* Estilo específico para la tabla */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+}
+
+.table th {
+  background-color: var(--first-color);
+  color: var(--white-color);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.table tbody tr:nth-child(even) {
+  background-color: var(--container-color);
+}
+
+.table tbody tr:hover {
+  background-color: var(--body-color);
+}
+
+.table td {
+  border-bottom: 1px solid var(--border-color);
+}
+
+/* Estilos responsive para dispositivos móviles */
+@media only screen and (max-width: 600px) {
+  .table th,
+  .table td {
+    padding: 8px;
+  }
+
+  .action-icons {
+    gap: 20px;
+  }
+
+  .action-icons a {
+    font-size: 1.5rem;
+  }
+
+  .search-form {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .search-input {
+    padding-block: 0.5rem;
+  }
+
+  .add-button {
+    padding: 5px 12px;
+  }
+
+  .search-container {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .agregar {
+    margin-left: 0;
+    margin-top: 10px;
+  }
+
+  .card {
+    width: 90%;
+    height: auto;
+    padding: 10px;
+  }
+
+  .libros__group {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+
+  .libro__image {
+    max-width: 150px;
+  }
+
+  .libros_group {
+    grid-template-columns: 1fr;
+  }
+
+  .libros_group div {
+    grid-template-columns: 1fr;
+    grid-gap: 20px;
+  }
+}
