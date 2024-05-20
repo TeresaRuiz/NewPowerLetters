@@ -55,14 +55,7 @@ class autoresHandler
         $params = array($this->id); // Id para filtrar
         return Database::getRow($sql, $params);
     }
-  // Para eliminar una fila específica por id
-  public function deleteRow()
-  {
-      // Cambiar la consulta SQL para eliminar por id
-      $sql = 'DELETE FROM tb_autores WHERE id_autor = ?';
-      $params = array($this->id); // Parámetro para la eliminación
-      return Database::executeRow($sql, $params);
-  }
+
     // Para actualizar una fila específica por id
     public function updateRow()
     {
@@ -72,6 +65,13 @@ class autoresHandler
         return Database::executeRow($sql, $params);
     }
 
-  
+    // Para eliminar una fila específica por id
+    public function deleteRow()
+    {
+        // Cambiar la consulta SQL para eliminar por id
+        $sql = 'DELETE FROM tb_autores WHERE id_autor = ?';
+        $params = array($this->id); // Parámetro para la eliminación
+        return Database::executeRow($sql, $params);
+    }
 }
 ;
