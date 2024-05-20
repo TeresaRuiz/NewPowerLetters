@@ -25,6 +25,7 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
+    /***Validaciones de nombre de administrador*****/
     public function setNombre($value, $min = 2, $max = 50)
     {
         if (!Validator::validateAlphabetic($value)) {
