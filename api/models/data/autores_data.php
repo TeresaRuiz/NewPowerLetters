@@ -31,7 +31,7 @@ class autoresData extends autoresHandler
     public function setNombre($value, $min = 2, $max = 50)
     {
         // Valida que el nombre sea alfanumérico.
-        if (!Validator::validateAlphanumeric($value)) {
+        if (!Validator::validateAlphabetic($value)) {
             $this->data_error = 'El nombre debe ser un valor alfanumérico'; // Almacena mensaje de error.
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
@@ -46,7 +46,7 @@ class autoresData extends autoresHandler
     public function setBiografia($value, $min = 2, $max = 50)
     {
         // Valida que el nombre sea alfanumérico.
-        if (!Validator::validateAlphanumeric($value)) {
+        if (!Validator::validateAlphabetic($value)) {
             $this->data_error = 'La biografia debe ser un valor alfanumérico'; // Almacena mensaje de error.
             return false;
         } elseif (Validator::validateLength($value, $min, $max)) {
