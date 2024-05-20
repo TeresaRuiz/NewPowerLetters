@@ -71,7 +71,8 @@ if (isset($_GET['action'])) {
 
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
-                if (!$comentario->setId($_POST['id_comentario']) || !$comentario->setEstado($_POST['estadoComentario'])) {
+                if (!$comentario->setId($_POST['id_comentario']) || 
+                !$comentario->setEstado($_POST['estadoComentario'])) {
                     $result['error'] = $comentario->getDataError();
                 } elseif ($comentario->updateRow()) {
                     $result['status'] = 1;

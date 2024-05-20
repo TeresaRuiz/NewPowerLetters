@@ -12,20 +12,33 @@ document.addEventListener('DOMContentLoaded', () => {
     fillTable();
 });
 
+// Método del evento para cuando se envía el formulario de buscar.
 SEARCH_FORM.addEventListener('submit', (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SEARCH_FORM);
+    // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
     fillTable(FORM);
 });
 
+// Método del evento para cuando se envía el formulario de guardar.
 SAVE_FORM.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    const action = id_comentario.value ? 'updateRow' : 'createRow';
+    // Se verifica la acción a realizar.
+    (id_comentario.value) ? action = 'updateRow' : action = 'createRow';
+    // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
+    // Petición para guardar los datos del formulario.
     const DATA = await fetchData(COMENTARIO_API, action, FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
+        // Se cierra la caja de diálogo.
         closeModal();
+        // Se muestra un mensaje de éxito.
         sweetAlert(1, DATA.message, true);
+        // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
     } else {
         sweetAlert(2, DATA.error, false);
@@ -33,12 +46,18 @@ SAVE_FORM.addEventListener('submit', async (event) => {
 });
 
 const fillTable = async (form = null) => {
+    // Se inicializa el contenido de la tabla.
     ROWS_FOUND.textContent = '';
     TABLE_BODY.innerHTML = '';
-    const action = form ? 'searchRows' : 'readAll';
+    // Se verifica la acción a realizar.
+    (form) ? action = 'searchRows' : action = 'readAll';
+    // Petición para obtener los registros disponibles.
     const DATA = await fetchData(COMENTARIO_API, action, form);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
+        // Se recorre el conjunto de registros fila por fila.
         DATA.dataset.forEach(row => {
+            // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
             <tr>
                 <td>${row.comentario}</td>
@@ -60,6 +79,7 @@ const fillTable = async (form = null) => {
             </tr>
             `;
         });
+        // Se muestra un mensaje de acuerdo con el resultado.
         ROWS_FOUND.textContent = DATA.message;
     } else {
         sweetAlert(4, DATA.error, true);
