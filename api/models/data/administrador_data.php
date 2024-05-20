@@ -88,6 +88,8 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
+    
+    /***Validaciones de clave de administrador*****/
     public function setClave($value)
     {
         if (Validator::validatePassword($value)) {
