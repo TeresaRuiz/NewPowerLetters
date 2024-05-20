@@ -56,7 +56,7 @@
                         <th>Telefono</th>
                         <th>Imagen</th>
                         <th>Acciones</th>
-                        
+
                     </tr>
                 </thead>
                 <tbody id="tableBody">
@@ -94,61 +94,52 @@
                     </div>
                     <!-- Formulario para guardar un registro -->
                     <form id="saveForm">
-<<<<<<< HEAD
-<<<<<<< HEAD
-                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-=======
+                       
+                            <input type="hidden" id="idAdministrador" name="idAdministrador" style=" display: none;">
 
-                        <!-- Campo oculto para asignar el id del registro al momento de modificar o hacer algun cambio -->
-
-
->>>>>>> 87eb5b7a42b292bcd6c68af6fb013c866b99ef47
-                        <input type="hidden" id="idAdministrador" name="idAdministrador" style=" display: none;">
-
-                        <div class="libros__group grid">
-                            <div>
-                                <label for="nombre" class="libro__label">Nombre del administrador</label>
-                                <input type="text" name="nombreAdministrador" id="nombreAdministrador"
-                                    placeholder="Escribe el nombre" class="libro__input">
-=======
-                        <div class="modal-body row g-3">
-                            <!-- Campo oculto para asignar el id del registro al momento de modificar -->
-                            <input type="number" class="d-none" id="idAdministrador" name="idAdministrador">
-                            <div class="col-sm-12 col-md-6">
-                                <label for="nombreAdministrador" class="form-label">Nombre</label>
-                                <input id="nombreAdministrador" type="text" name="nombreAdministrador"
-                                    class="form-control" required>
->>>>>>> 57ab56809bfac062b84e3da5c26d49f7937b6162
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <label for="apellidoAdministrador" class="form-label">Apellido</label>
-                                <input id="apellidoAdministrador" type="text" name="apellidoAdministrador"
-                                    class="form-control" required>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <label for="correoAdministrador" class="form-label">Correo</label>
-                                <input id="correoAdministrador" type="email" name="correoAdministrador"
-                                    class="form-control" required>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <label for="aliasAdministrador" class="form-label">Alias</label>
-                                <input id="aliasAdministrador" type="text" name="aliasAdministrador"
-                                    class="form-control" required>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <label for="claveAdministrador" class="form-label">Contraseña</label>
-                                <input id="claveAdministrador" type="password" name="claveAdministrador"
-                                    class="form-control" required>
-                            </div>
-                            <div class="col-sm-12 col-md-6">
-                                <label for="confirmarClave" class="form-label">Confirmar contraseña</label>
-                                <input id="confirmarClave" type="password" name="confirmarClave" class="form-control"
-                                    required>
-                            </div>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary">Guardar</button>
-                        </div>
+                            <div class="libros__group grid">
+                                <div>
+                                    <label for="nombre" class="libro__label">Nombre del administrador</label>
+                                    <input type="text" name="nombreAdministrador" id="nombreAdministrador"
+                                        placeholder="Escribe el nombre" class="libro__input">
+                                    
+                                    <div class="modal-body row g-3">
+                                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                                        <input type="number" class="d-none" id="idAdministrador" name="idAdministrador">
+                                        <div class="col-sm-12 col-md-6">
+                                            <label for="nombreAdministrador" class="form-label">Nombre</label>
+                                            <input id="nombreAdministrador" type="text" name="nombreAdministrador"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <label for="apellidoAdministrador" class="form-label">Apellido</label>
+                                            <input id="apellidoAdministrador" type="text" name="apellidoAdministrador"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <label for="correoAdministrador" class="form-label">Correo</label>
+                                            <input id="correoAdministrador" type="email" name="correoAdministrador"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <label for="aliasAdministrador" class="form-label">Alias</label>
+                                            <input id="aliasAdministrador" type="text" name="aliasAdministrador"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <label for="claveAdministrador" class="form-label">Contraseña</label>
+                                            <input id="claveAdministrador" type="password" name="claveAdministrador"
+                                                class="form-control" required>
+                                        </div>
+                                        <div class="col-sm-12 col-md-6">
+                                            <label for="confirmarClave" class="form-label">Confirmar contraseña</label>
+                                            <input id="confirmarClave" type="password" name="confirmarClave"
+                                                class="form-control" required>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="submit" class="btn btn-primary">Guardar</button>
+                                    </div>
                     </form>
                 </div>
             </div>
