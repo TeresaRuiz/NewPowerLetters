@@ -114,6 +114,7 @@ const openUpdate = async (id) => {
 
          // Deshabilitar campos que no se pueden editar
          usuario.disabled = true;
+         direccion.disabled = true;
          fecha.disabled = true;
 
         AbrirModal();
