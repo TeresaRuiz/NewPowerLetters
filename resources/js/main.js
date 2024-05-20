@@ -212,7 +212,7 @@ window.addEventListener('scroll', scrollActive)
 
 
 function loader() {
-    // document.querySelector('.loader__container').classList.add('active-load');
+    document.querySelector('.loader__container').classList.add('active-load');
 }
 
 function fadeout() {
