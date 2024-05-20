@@ -23,7 +23,7 @@ class AutoresData extends AutoresHandler
             $this->id = $value; // Asigna el valor del identificador.
             return true;
         } else {
-            $this->data_error = 'El identificador de la clasificación es incorrecto'; // Almacena mensaje de error.
+            $this->data_error = 'El identificador del autor es incorrecto'; // Almacena mensaje de error.
             return false;
         }
     }
