@@ -8,7 +8,7 @@ modal.style.display = "none";
 // Ocultar el modal al cargar la página
 modal_.style.display = "none";
 
-// Abrir el modal al hacer clic en el botón de añadir
+// Abrir el modal al hacer click en el botón de añadir
 function  AbrirModal() {
     modal.style.display = "block";
 };
