@@ -55,6 +55,8 @@ class AdministradorData extends AdministradorHandler
             return false;
         }
     }
+    
+    /***Validaciones de correo  de administrador*****/
 
     public function setCorreo($value, $min = 8, $max = 100)
     {
