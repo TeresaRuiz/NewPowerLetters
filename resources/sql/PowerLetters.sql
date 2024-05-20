@@ -1,4 +1,4 @@
-<!-- Base de datos solo para tenerla a la mano -->
+-- Base de datos solo para tenerla a la mano --
 DROP DATABASE IF EXISTS powerletters;
 CREATE DATABASE powerletters;
 USE powerletters;
