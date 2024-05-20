@@ -60,7 +60,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
                 } else {
-                    $result['error'] = 'No exiten pedidos registrados'; // Mensaje si no se encuentran autores.
+                    $result['error'] = 'No existen pedidos registrados'; // Mensaje si no se encuentran autores.
                 }
                 break;
             case 'readOne':
