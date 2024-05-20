@@ -6,7 +6,7 @@ require_once('../../models/handler/editoriales_handler.php');
 /*
  *  Clase para manejar el encapsulamiento de los datos de la tabla CATEGORIA.
  */
-class editorialData extends editorialesHandler
+class EditorialData extends EditorialesHandler
 {
     /*
      *  Atributos adicionales.
