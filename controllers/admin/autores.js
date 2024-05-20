@@ -11,7 +11,7 @@ const SAVE_FORM = document.getElementById('saveForm'),
     NOMBRE_autor = document.getElementById('autor'),
     biografia_autor = document.getElementById('autorbio');
 // Se establece el título de la página web.
-document.querySelector('title').textContent = 'Clasificación de libros';
+document.querySelector('title').textContent = 'Autores de libros';
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
