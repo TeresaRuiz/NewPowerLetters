@@ -28,14 +28,14 @@ header.innerHTML = `
                 </li>
                 <li class="nav__item">
                     <a href="../Private/generos.html" class="nav__link">
-                        <i class="ri-book-3-line"></i>
+                    <i class="ri-book-mark-line"></i>
                         <span>Géneros</span>
                     </a>
                 </li>
                
                 <li class="nav__item">
                     <a href="../Private/pedidos.html"  class="nav__link">
-                        <i class="ri-book-3-line"></i>
+                    <i class="ri-shopping-cart-line"></i>
                         <span>Pedidos</span>
                     </a>
                 </li>
@@ -48,7 +48,7 @@ header.innerHTML = `
 
                 <li class="nav__item">
                 <a href="../Private/usuarios.html"  class="nav__link">
-                    <i class="ri-message-3-line"></i>
+                <i class="ri-user-line"></i>
                     <span>Usuarios</span>
                 </a>
             </li>
