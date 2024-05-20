@@ -111,10 +111,9 @@ const openUpdate = async (id) => {
         fillSelect(PEDIDO_API, 'getEstados', 'estadoPedido', ROW.estado);
         fecha.value = ROW.fecha_pedido;
 
-         // Deshabilitar campos que no se pueden editar
-         usuario.disabled = true;
-         direccion.disabled = true;
-         fecha.disabled = true;
+        // Deshabilitar campos que no se pueden editar
+        usuario.disabled = true;
+        fecha.disabled = true;
 
         AbrirModal();
         MODAL_TITLE.textContent = 'Actualizar un pedido';

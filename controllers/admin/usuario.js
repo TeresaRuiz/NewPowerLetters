@@ -27,7 +27,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     event.preventDefault();
     const FORM = new FormData(SAVE_FORM);
     const DATA = await fetchData(USUARIO_API, 'updateRow', FORM);
-    
+
     if (DATA.status) {
         closeModal();
         sweetAlert(1, DATA.message, true);
@@ -93,7 +93,7 @@ const openUpdate = async (id) => {
     const FORM = new FormData();
     FORM.append('id_usuario', id);
     const DATA = await fetchData(USUARIO_API, 'readOne', FORM);
-    
+
     if (DATA.status) {
         const ROW = DATA.dataset;
         ID_USUARIO.value = ROW.id_usuario;

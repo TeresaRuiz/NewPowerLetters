@@ -119,7 +119,7 @@ const openUpdate = async (id) => {
     const DATA = await fetchData(AUTORES_API, 'readOne', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        
+
         // Se inicializan los campos con los datos.
         const ROW = DATA.dataset;
         ID_autor.value = ROW.id_autor;

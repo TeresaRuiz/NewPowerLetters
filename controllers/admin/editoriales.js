@@ -98,7 +98,7 @@ const fillTable = async (form = null) => {
 const openCreate = () => {
     // Se muestra la caja de diálogo con su título.
     //SAVE_MODAL.show();
-    
+
     modal.style.display = "block";
     MODAL_TITLE.textContent = 'Agregar una nueva editorial de libros';
     // Se prepara el formulario.
