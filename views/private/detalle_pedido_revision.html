@@ -34,80 +34,80 @@
         <h1 id="tit">Detalle del pedido</h1>
     </div>
 
-<!-- Divs para detalles del pedido -->
-        
-        <div class="titulo">
+    <!-- Divs para detalles del pedido -->
 
-            <h1>Nombre del usuario solicitante de este libro</h1>
+    <div class="titulo">
 
-            <p>‎</p>
-            <h1>Samantha Rivera</h1>
+        <h1>Nombre del usuario solicitante de este libro</h1>
 
-            <p>‎</p>
-            <h1>Más parametros acerca del pedido</h1>
-        </div>
+        <p>‎</p>
+        <h1>Samantha Rivera</h1>
+
+        <p>‎</p>
+        <h1>Más parametros acerca del pedido</h1>
+    </div>
 
 
-        <!-- Realizamos una clase para ingresar los datos que llevara la tarjeta -->
-        <div class="container-card">
+    <!-- Realizamos una clase para ingresar los datos que llevara la tarjeta -->
+    <div class="container-card">
 
-            <div class="card">
+        <div class="card">
 
-                <div class="contenido-card">
+            <div class="contenido-card">
 
-                    <div class="imagen">
-                        <img src="../../Resources/img/rivers.jpg" alt="">
-                    </div>
-
-                    <div class="datosCard">
-
-                        <h3>Correo del usuario:</h3>
-                        <h3>RiversPioSamy1306@gmail.com</h3>
-                       
-                        <h3>Teléfono:</h3>
-                        <h3>+503 7022 5826</h3>
-                        <h3>Tipo de pago:</h3>
-                        <h3>Efectivo</h3>
-                        <h3>Cantidad solicitada:</h3>
-                        <h3>5</h3>
-                        <h3>Fecha de pedido:</h3>
-                        <h3>31/01/24</h3>
-                    </div>
-
+                <div class="imagen">
+                    <img src="../../Resources/img/rivers.jpg" alt="">
                 </div>
+
+                <div class="datosCard">
+
+                    <h3>Correo del usuario:</h3>
+                    <h3>RiversPioSamy1306@gmail.com</h3>
+
+                    <h3>Teléfono:</h3>
+                    <h3>+503 7022 5826</h3>
+                    <h3>Tipo de pago:</h3>
+                    <h3>Efectivo</h3>
+                    <h3>Cantidad solicitada:</h3>
+                    <h3>5</h3>
+                    <h3>Fecha de pedido:</h3>
+                    <h3>31/01/24</h3>
+                </div>
+
             </div>
         </div>
-        ‎
-        <div class="totalidad">
-            <p>‎</p>
+    </div>
+    ‎
+    <div class="totalidad">
+        <p>‎</p>
 
-            <H5>TOTAL: $299.76USD</H5>
-            <H5>METODO DE PAGO: Con tarjeta</H5>
+        <H5>TOTAL: $299.76USD</H5>
+        <H5>METODO DE PAGO: Con tarjeta</H5>
 
+    </div>
+
+
+    <!--Hacemos una clase para añadir los botones a los cuales les damos una funciòn-->
+
+    <div class="button-container">
+        <div class="finalizado">
+            <button onclick="AlertF()">Finalizado</button>
         </div>
 
-
-        <!--Hacemos una clase para añadir los botones a los cuales les damos una funciòn-->
-
-        <div class="button-container">
-            <div class="finalizado">
-                <button onclick="AlertF()">Finalizado</button>
-            </div>
-
-            <div class="entregado">
-                <button onclick="AlertE()">Entregado</button>
-            </div>
-
-            <div class="pendiente">
-                <button onclick="AlertP()">Pendiente</button>
-            </div>
-
-            <div class="cancelado">
-                <button onclick="AlertC()">Cancelado</button>
-            </div>
+        <div class="entregado">
+            <button onclick="AlertE()">Entregado</button>
         </div>
 
-        <br><br><br><br><br><br>
+        <div class="pendiente">
+            <button onclick="AlertP()">Pendiente</button>
+        </div>
+
+        <div class="cancelado">
+            <button onclick="AlertC()">Cancelado</button>
+        </div>
+    </div>
+
+    <br><br><br><br><br><br>
 
 
 
@@ -116,7 +116,7 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-    
+
     <script src="../../Resources/js/header.js"></script>
 </body>
 
