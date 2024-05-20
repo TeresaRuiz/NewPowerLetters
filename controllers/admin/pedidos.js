@@ -12,8 +12,7 @@ const SAVE_FORM = document.getElementById('saveForm'),
     direccion = document.getElementById('direccion'),
     estadoPedido = document.getElementById('estadoPedido'),
     fecha = document.getElementById('fecha'),
-    Detalle = document.getElementById('detalle')
-    ;
+    Detalle = document.getElementById('detalle');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -114,6 +113,7 @@ const openUpdate = async (id) => {
 
          // Deshabilitar campos que no se pueden editar
          usuario.disabled = true;
+         direccion.disabled = true;
          fecha.disabled = true;
 
         AbrirModal();

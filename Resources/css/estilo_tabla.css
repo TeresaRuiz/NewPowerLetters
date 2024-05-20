@@ -1,4 +1,21 @@
- /* Estilo específico para la tabla */
+.fa-star {
+  font-family: FontAwesome;
+}
+
+.checked {
+  color: orange;
+}
+
+.calificacion__input .fa-star {
+  font-family: FontAwesome;
+}
+
+.calificacion__input .checked {
+  color: orange;
+}
+
+
+/* Estilo específico para la tabla */
  .table {
   width: 100%;
   border-collapse: collapse;

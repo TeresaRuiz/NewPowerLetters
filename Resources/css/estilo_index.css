@@ -1,0 +1,28 @@
+body {
+    background-color: hsl(230, 100%, 96%);
+}
+
+.main-container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+}
+
+.form-container {
+    margin-top: 20px;
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.imgR img {
+    display: block;
+    max-width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+.text-center button {
+    margin: 10px;
+}

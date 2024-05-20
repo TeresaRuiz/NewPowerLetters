@@ -99,7 +99,7 @@ const fillTable = async (form = null) => {
 const openCreate = () => {
     // Se muestra la caja de diálogo con su título.
     modal.style.display = "block";
-    MODAL_TITLE.textContent = 'Agregar un nuevo género de zapatos';
+    MODAL_TITLE.textContent = 'Agregar un nuevo género';
     // Se prepara el formulario.
     SAVE_FORM.reset();
 }
@@ -122,7 +122,7 @@ const openUpdate = async (id) => {
         ID_GENERO.value = ROW.id_genero;
         NOMBRE_Gen.value = ROW.nombre;
         AbrirModal();
-        MODAL_TITLE.textContent = 'Actualizar un género de zapatos';
+        MODAL_TITLE.textContent = 'Actualizar un género';
     } else {
         sweetAlert(2, DATA.error, false);
     }
