@@ -40,6 +40,8 @@ class AdministradorData extends AdministradorHandler
         }
     }
 
+    
+    /***Validaciones de apellido de administrador*****/
     public function setApellido($value, $min = 2, $max = 50)
     {
         if (!Validator::validateAlphabetic($value)) {
