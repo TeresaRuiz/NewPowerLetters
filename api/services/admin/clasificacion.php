@@ -8,7 +8,7 @@ if (isset($_GET['action'])) {
     session_start();
 
     // Crear una instancia de la clase 'generoData' para interactuar con los datos relacionados con 'género'.
-    $clasificacion = new clasificacionData;
+    $clasificacion = new ClasificacionData;
 
     // Inicializar un arreglo para almacenar el resultado de las operaciones de la API.
     $result = array(

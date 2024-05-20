@@ -6,7 +6,7 @@ require_once('../../models/handler/clasificacion_handler.php');
 /*
  *  Clase para manejar el encapsulamiento de los datos de la tabla CATEGORIA.
  */
-class clasificacionData extends clasificacionHandler
+class ClasificacionData extends ClasificacionHandler
 {
     /*
      *  Atributos adicionales.
