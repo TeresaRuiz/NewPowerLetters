@@ -6,7 +6,7 @@ require_once('../../models/handler/autores_handler.php');
 /*
  *  Clase para manejar el encapsulamiento de los datos de la tabla CATEGORIA.
  */
-class autoresData extends autoresHandler
+class AutoresData extends AutoresHandler
 {
     /*
      *  Atributos adicionales.
