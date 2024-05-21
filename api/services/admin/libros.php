@@ -19,7 +19,7 @@ if (isset($_GET['action'])) {
         'fileStatus' => null);// Estado de archivo (si es necesario para alguna operación).
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
-    if (isset($_SESSION['idAdministrador'])or true) {
+    if (isset($_SESSION['idAdministrador'])) {
         // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
         switch ($_GET['action']) {
             case 'searchRows':
