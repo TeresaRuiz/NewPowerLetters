@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase del modelo.
-require_once('../../models/data/administrador_data.php');
+require_once ('../../models/data/administrador_data.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -16,6 +16,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'searchRows':
+                // Implementación del caso searchRows
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
                 } elseif ($result['dataset'] = $administrador->searchRows()) {
@@ -26,6 +27,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'createRow':
+                // Implementación del caso createRow
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
@@ -45,6 +47,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readAll':
+                // Implementación del caso readAll
                 if ($result['dataset'] = $administrador->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
@@ -53,6 +56,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
+                // Implementación del caso readOne
                 if (!$administrador->setId($_POST['idAdministrador'])) {
                     $result['error'] = 'Administrador incorrecto';
                 } elseif ($result['dataset'] = $administrador->readOne()) {
@@ -62,6 +66,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'updateRow':
+                // Implementación del caso updateRow
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$administrador->setId($_POST['idAdministrador']) or
@@ -78,6 +83,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'deleteRow':
+                // Implementación del caso deleteRow
                 if ($_POST['idAdministrador'] == $_SESSION['idAdministrador']) {
                     $result['error'] = 'No se puede eliminar a sí mismo';
                 } elseif (!$administrador->setId($_POST['idAdministrador'])) {
@@ -90,6 +96,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'getUser':
+                // Implementación del caso getUser
                 if (isset($_SESSION['aliasAdministrador'])) {
                     $result['status'] = 1;
                     $result['username'] = $_SESSION['aliasAdministrador'];
@@ -98,6 +105,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'logOut':
+                // Implementación del caso logOut
                 if (session_destroy()) {
                     $result['status'] = 1;
                     $result['message'] = 'Sesión eliminada correctamente';
@@ -106,6 +114,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readProfile':
+                // Implementación del caso readProfile
                 if ($result['dataset'] = $administrador->readProfile()) {
                     $result['status'] = 1;
                 } else {
@@ -113,6 +122,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'editProfile':
+                // Implementación del caso editProfile
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
@@ -130,6 +140,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'changePassword':
+                // Implementación del caso changePassword
                 $_POST = Validator::validateForm($_POST);
                 if (!$administrador->checkPassword($_POST['claveActual'])) {
                     $result['error'] = 'Contraseña actual incorrecta';
@@ -151,6 +162,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando el administrador no ha iniciado sesión.
         switch ($_GET['action']) {
             case 'readUsers':
+                // Implementación del caso readUsers
                 if ($administrador->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Debe autenticarse para ingresar';
@@ -159,6 +171,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'signUp':
+                // Implementación del caso signUp
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$administrador->setNombre($_POST['nombreAdministrador']) or
@@ -178,6 +191,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'logIn':
+                // Implementación del caso logIn
                 $_POST = Validator::validateForm($_POST);
                 if ($administrador->checkUser($_POST['alias'], $_POST['clave'])) {
                     $result['status'] = 1;
@@ -195,10 +209,9 @@ if (isset($_GET['action'])) {
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
     header('Content-type: application/json; charset=utf-8');
     // Se imprime el resultado en formato JSON y se retorna al controlador.
-    print(json_encode($result));
+    print (json_encode($result));
 } else {
-    print(json_encode('Recurso no disponible'));
+    print (json_encode('Recurso no disponible'));
 }
 
 
-   

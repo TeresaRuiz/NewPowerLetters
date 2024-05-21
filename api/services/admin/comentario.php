@@ -6,7 +6,7 @@ if (isset($_GET['action'])) {
     // Iniciar una nueva sesión o reanudar la existente para utilizar variables de sesión.
     session_start();
 
-    // Crear una instancia de la clase 'LibroData' para interactuar con los datos relacionados con 'libros'.
+    // Crear una instancia de la clase 'LibroData' para interactuar con los datos relacionados con 'comentarios'.
     $comentario = new ComentarioData;
 
     // Inicializar un arreglo para almacenar el resultado de las operaciones de la API.
@@ -34,17 +34,17 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'createRow': // Acción para crear un nuevo libro.
+            case 'createRow': // Acción para crear un nuevo comentario.
                 $_POST = Validator::validateForm($_POST);
 
-                // Validar y establecer los campos necesarios para crear un libro.
+                // Validar y establecer los campos necesarios para crear un comentario.
                 if (
                     !$comentario->setId($_POST['id_comentario']) or
                     !$comentario->setComentario($_POST['comentario']) or
                     !$comentario->setEstado(isset($_POST['estadoComentario']) ? 1 : 0)
                 ) {
                     $result['error'] = $comentario->getDataError(); // Obtener mensaje de error si la validación falla.
-                } elseif ($comentario->createRow()) { // Intentar crear un nuevo libro.
+                } elseif ($comentario->createRow()) { // Intentar crear un nuevo comentario.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Comentario creado con éxito';
                 } else {
@@ -71,8 +71,10 @@ if (isset($_GET['action'])) {
 
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
-                if (!$comentario->setId($_POST['id_comentario']) || 
-                !$comentario->setEstado($_POST['estadoComentario'])) {
+                if (
+                    !$comentario->setId($_POST['id_comentario']) ||
+                    !$comentario->setEstado($_POST['estadoComentario'])
+                ) {
                     $result['error'] = $comentario->getDataError();
                 } elseif ($comentario->updateRow()) {
                     $result['status'] = 1;

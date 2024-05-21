@@ -1,15 +1,14 @@
 <?php
-// Importar la clase que gestiona los datos relacionados con 'género'.
-require_once('../../models/data/autores_data.php');
+// Importar la clase que gestiona los datos relacionados con 'autores'.
+require_once ('../../models/data/autores_data.php');
 
 // Verificar si se ha recibido una acción mediante el parámetro 'action' en la URL.
 if (isset($_GET['action'])) {
     // Iniciar una nueva sesión o reanudar la existente para utilizar variables de sesión.
     session_start();
 
-    // Crear una instancia de la clase 'generoData' para interactuar con los datos relacionados con 'género'.
+    // Crear una instancia de la clase 'generoData' para interactuar con los datos relacionados con 'autores'.
     $autores = new AutoresData;
-
 
     // Inicializar un arreglo para almacenar el resultado de las operaciones de la API.
     $result = array(
@@ -38,17 +37,16 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'createRow': // Acción para crear una nueva fila (género).
+            case 'createRow': // Acción para crear una nueva fila (autor).
                 // Validar los datos del formulario.
                 $_POST = Validator::validateForm($_POST);
 
                 // Establecer el nombre del nuevo género.
                 if (
-                    !$autores->setNombre($_POST['autor'])or
+                    !$autores->setNombre($_POST['autor']) or
                     !$autores->setBiografia($_POST['autorbio'])
-                
-                )
-                 {
+
+                ) {
                     $result['error'] = $autores->getDataError(); // Obtener mensaje de error si la validación falla.
                 } elseif ($autores->createRow()) { // Intentar crear una nueva fila.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
@@ -84,8 +82,8 @@ if (isset($_GET['action'])) {
 
                 // Verificar y establecer el ID y el nombre del género a actualizar.
                 if (
-                    !$autores->setId($_POST['idAutor'])or
-                    !$autores->setNombre($_POST['autor'])or
+                    !$autores->setId($_POST['idAutor']) or
+                    !$autores->setNombre($_POST['autor']) or
                     !$autores->setBiografia($_POST['autorbio'])
                 ) {
                     $result['error'] = $autores->getDataError(); // Mensaje de error si la validación falla.
@@ -120,12 +118,12 @@ if (isset($_GET['action'])) {
         header('Content-type: application/json; charset=utf-8');
 
         // Convertir el resultado a formato JSON y enviarlo como respuesta.
-        print(json_encode($result));
+        print (json_encode($result));
     } else {
         // Si no hay una sesión válida, se devuelve un mensaje de acceso denegado.
-        print(json_encode('Acceso denegado'));
+        print (json_encode('Acceso denegado'));
     }
 } else {
     // Si no se recibe una acción, se devuelve un mensaje de recurso no disponible.
-    print(json_encode('Recurso no disponible'));
+    print (json_encode('Recurso no disponible'));
 }

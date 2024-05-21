@@ -6,7 +6,7 @@ if (isset($_GET['action'])) {
     // Iniciar una nueva sesión o reanudar la existente para utilizar variables de sesión.
     session_start();
 
-    // Crear una instancia de la clase 'LibroData' para interactuar con los datos relacionados con 'libros'.
+    // Crear una instancia de la clase 'PedidoData' para interactuar con los datos relacionados con 'Pedido'.
     $pedido = new PedidoData;
 
     // Inicializar un arreglo para almacenar el resultado de las operaciones de la API.
@@ -34,10 +34,10 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'createRow': // Acción para crear un nuevo libro.
+            case 'createRow': // Acción para crear un nuevo pedido.
                 $_POST = Validator::validateForm($_POST);
 
-                // Validar y establecer los campos necesarios para crear un libro.
+                // Validar y establecer los campos necesarios para crear un pedido.
                 if (
                     !$pedido->setId($_POST['id_pedido']) or
                     !$pedido->setIdUsuario($_POST['usuario']) or
@@ -47,7 +47,7 @@ if (isset($_GET['action'])) {
                     !$pedido->setIdDetalle($_POST['detalle'])
                 ) {
                     $result['error'] = $pedido->getDataError(); // Obtener mensaje de error si la validación falla.
-                } elseif ($pedido->createRow()) { // Intentar crear un nuevo libro.
+                } elseif ($pedido->createRow()) { // Intentar crear un nuevo pedido.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Pedido creado con éxito';
                 } else {
@@ -56,6 +56,7 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'readAll':
+                // Implementación del caso readAll
                 if ($result['dataset'] = $pedido->readAll()) {
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
@@ -64,6 +65,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
+                // Implementación del caso readOne
                 if (!$pedido->setId($_POST['id_pedido'])) {
                     $result['error'] = $pedido->getDataError();
                 } elseif ($result['dataset'] = $pedido->readOne()) {
@@ -74,6 +76,7 @@ if (isset($_GET['action'])) {
                 break;
 
             case 'updateRow':
+                // Implementación del caso updateRow
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$pedido->setId($_POST['id_pedido']) or

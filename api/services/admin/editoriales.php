@@ -15,6 +15,7 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un administrador ha iniciado sesión.
         switch ($_GET['action']) {
             case 'searchRows':
+                // Implementación del caso searchRows
                 if (!Validator::validateSearch($_POST['search'])) {
                     $result['error'] = Validator::getSearchError();
                 } elseif ($result['dataset'] = $editorial->searchRows()) {
@@ -25,6 +26,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'createRow':
+                // Implementación del caso createRow
                 $_POST = Validator::validateForm($_POST);
                 if (!$editorial->setNombre($_POST['editorial'])) {
                     $result['error'] = $editorial->getDataError();
@@ -36,6 +38,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readAll':
+                // Implementación del caso readAll
                 if ($result['dataset'] = $editorial->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
@@ -44,6 +47,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
+                // Implementación del caso readOne
                 if (!$editorial->setId($_POST['idEditorial'])) {
                     $result['error'] = $editorial->getDataError();
                 } elseif ($result['dataset'] = $editorial->readOne()) {
@@ -53,6 +57,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'updateRow':
+                // Implementación del caso updateRow
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$editorial->setId($_POST['idEditorial']) or
@@ -68,6 +73,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'deleteRow':
+                // Implementación del caso deleteRow
                 if (!$editorial->setId($_POST['idEditorial'])) {
                     $result['error'] = $editorial->getDataError();
                 } elseif ($editorial->deleteRow()) {

@@ -33,7 +33,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
 
-            case 'createRow': // Acción para crear un nuevo libro.
+            case 'createRow': // Implementación del caso createRow
                 $_POST = Validator::validateForm($_POST);
 
                 // Validar y establecer los campos necesarios para crear un libro.
@@ -52,7 +52,7 @@ if (isset($_GET['action'])) {
                 } elseif ($libros->createRow()) { // Intentar crear un nuevo libro.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Libro creado con éxito';
-                    $result['fileStatus'] = Validator::saveFile($_FILES['imagen'], $libros::RUTA_IMAGEN); // Mensaje de éxito.
+                    $result['fileStatus'] = Validator::saveFile($_FILES['imagen'], $libros::RUTA_IMAGEN);
                 } else {
                     $result['error'] = 'Ocurrió un problema al crear el libro'; // Mensaje de error si ocurre un problema.
                 }
