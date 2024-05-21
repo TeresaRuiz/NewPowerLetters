@@ -34,7 +34,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (ID_GENERO.value) ? action = 'updateRow' : action = 'createRow';
+    const action = (ID_GENERO.value) ? 'updateRow' : 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
@@ -48,6 +48,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se carga nuevamente la tabla para visualizar los cambios.
         fillTable();
     } else {
+        // Se muestra un mensaje de error.
         sweetAlert(2, DATA.error, false);
     }
 });
@@ -62,7 +63,7 @@ const fillTable = async (form = null) => {
     ROWS_FOUND.textContent = '';
     TABLE_BODY.innerHTML = '';
     // Se verifica la acción a realizar.
-    (form) ? action = 'searchRows' : action = 'readAll';
+    const action = (form) ? 'searchRows' : 'readAll';
     // Petición para obtener los registros disponibles.
     const DATA = await fetchData(GENERO_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -87,6 +88,7 @@ const fillTable = async (form = null) => {
         // Se muestra un mensaje de acuerdo con el resultado.
         ROWS_FOUND.textContent = DATA.message;
     } else {
+        // Se muestra un mensaje de error.
         sweetAlert(4, DATA.error, true);
     }
 }
@@ -124,10 +126,10 @@ const openUpdate = async (id) => {
         AbrirModal();
         MODAL_TITLE.textContent = 'Actualizar un género';
     } else {
+        // Se muestra un mensaje de error.
         sweetAlert(2, DATA.error, false);
     }
 }
-
 
 /*
 *   Función asíncrona para eliminar un registro.
