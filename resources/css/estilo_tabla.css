@@ -231,3 +231,7 @@ color: var(--text-color);
   padding: 18px; /* Ajusta el espaciado interno de la tarjeta modal */
 }
 }
+
+.prueba{
+  text-align: center;
+} 
