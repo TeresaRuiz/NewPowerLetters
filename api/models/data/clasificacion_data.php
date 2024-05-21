@@ -1,10 +1,11 @@
 <?php
 // Se incluye la clase para validar los datos de entrada.
-require_once('../../helpers/validator.php');
+require_once ('../../helpers/validator.php');
 // Se incluye la clase padre.
-require_once('../../models/handler/clasificacion_handler.php');
+require_once ('../../models/handler/clasificacion_handler.php');
+
 /*
- *  Clase para manejar el encapsulamiento de los datos de la tabla CATEGORIA.
+ *  Clase para manejar el encapsulamiento de los datos de la tabla CLASIFICACIÓN.
  */
 class ClasificacionData extends ClasificacionHandler
 {
@@ -16,6 +17,8 @@ class ClasificacionData extends ClasificacionHandler
     /*
      *  Métodos para validar y establecer los datos usados.
      */
+
+    // Método para establecer el ID de la clasificación.
     public function setId($value)
     {
         // Valida que el identificador sea un número natural.
@@ -28,13 +31,14 @@ class ClasificacionData extends ClasificacionHandler
         }
     }
 
+    // Método para establecer el nombre de la clasificación.
     public function setNombre($value, $min = 2, $max = 50)
     {
         // Valida que el nombre sea alfanumérico.
         if (!Validator::validateAlphanumeric($value)) {
             $this->data_error = 'El nombre debe ser un valor alfanumérico'; // Almacena mensaje de error.
             return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
+        } elseif (Validator::validateLength($value, $min, $max)) { // Valida la longitud del nombre.
             $this->nombre = $value; // Asigna el valor del nombre.
             return true;
         } else {
@@ -43,14 +47,15 @@ class ClasificacionData extends ClasificacionHandler
         }
     }
 
+    // Método para establecer la descripción de la clasificación.
     public function setDescripcion($value, $min = 2, $max = 50)
     {
-        // Valida que el nombre sea alfanumérico.
+        // Valida que la descripción sea alfanumérica.
         if (!Validator::validateAlphanumeric($value)) {
             $this->data_error = 'La descripción debe ser un valor alfanumérico'; // Almacena mensaje de error.
             return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
-            $this->descripcion = $value; // Asigna el valor del nombre.
+        } elseif (Validator::validateLength($value, $min, $max)) { // Valida la longitud de la descripción.
+            $this->descripcion = $value; // Asigna el valor de la descripción.
             return true;
         } else {
             $this->data_error = 'La descripcion debe tener una longitud entre ' . $min . ' y ' . $max; // Almacena mensaje de error.
@@ -61,6 +66,8 @@ class ClasificacionData extends ClasificacionHandler
     /*
      *  Métodos para obtener los atributos adicionales.
      */
+
+    // Método para obtener el mensaje de error.
     public function getDataError()
     {
         return $this->data_error; // Devuelve el mensaje de error.

@@ -1,10 +1,11 @@
 <?php
 // Se incluye la clase para validar los datos de entrada.
-require_once('../../helpers/validator.php');
+require_once ('../../helpers/validator.php');
 // Se incluye la clase padre.
-require_once('../../models/handler/genero_handler.php');
+require_once ('../../models/handler/genero_handler.php');
+
 /*
- *  Clase para manejar el encapsulamiento de los datos de la tabla CATEGORIA.
+ *  Clase para manejar el encapsulamiento de los datos de la tabla GÉNERO.
  */
 class GeneroData extends GeneroHandler
 {
@@ -16,6 +17,8 @@ class GeneroData extends GeneroHandler
     /*
      *  Métodos para validar y establecer los datos.
      */
+
+    // Método para establecer el ID del género.
     public function setId($value)
     {
         // Valida que el identificador sea un número natural.
@@ -28,13 +31,14 @@ class GeneroData extends GeneroHandler
         }
     }
 
+    // Método para establecer el nombre del género.
     public function setNombre($value, $min = 2, $max = 50)
     {
-        // Valida que el nombre sea alfanumérico.
+        // Valida que el nombre sea alfabético.
         if (!Validator::validateAlphabetic($value)) {
-            $this->data_error = 'El nombre debe ser un valor alfanumérico'; // Almacena mensaje de error.
+            $this->data_error = 'El nombre debe ser un valor alfabético'; // Almacena mensaje de error.
             return false;
-        } elseif (Validator::validateLength($value, $min, $max)) {
+        } elseif (Validator::validateLength($value, $min, $max)) { // Valida la longitud del nombre.
             $this->nombre = $value; // Asigna el valor del nombre.
             return true;
         } else {
@@ -43,11 +47,11 @@ class GeneroData extends GeneroHandler
         }
     }
 
-   
-
     /*
      *  Métodos para obtener los atributos adicionales.
      */
+
+    // Método para obtener el mensaje de error.
     public function getDataError()
     {
         return $this->data_error; // Devuelve el mensaje de error.
