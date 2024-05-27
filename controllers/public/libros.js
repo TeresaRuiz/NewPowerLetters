@@ -20,7 +20,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             LIBROS.innerHTML += `
                 <article class="featured__card  swiper-slide">
-                    <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo}">
+                    <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo_libro}">
                     <h2 class="featured__title">${row.titulo_libro}</h2>
                     <div class="featured__prices">
                         <span class="featured__discount"> ${row.precio}</span>
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div class="featured__actions">
                         <button><i class="ri-search-line"></i></button>
                         <button><i class="ri-heart-3-line"></i></button>
-                        <button><i class="ri-eye-line"></i></button>
+                        <a href="detalle_libro.html"><button><i class="ri-eye-line"></i></button></a>
                     </div>
                 </article>
             `;
