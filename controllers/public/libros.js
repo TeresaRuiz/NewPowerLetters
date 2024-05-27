@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                     <div class="featured__prices">
                         <span class="featured__discount"> ${row.precio}</span>
                     </div>
-                    <buttton class="button">Add To Cart</buttton>
+                    <buttton class="button">Añadir al carrito</buttton>
                     <div class="featured__actions">
                         <button><i class="ri-search-line"></i></button>
                         <button><i class="ri-heart-3-line"></i></button>
