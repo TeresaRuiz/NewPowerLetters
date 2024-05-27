@@ -208,7 +208,7 @@ window.addEventListener('scroll', scrollActive)
 
 
 
-/*=============== LOADING IMSGE ===============*/
+/*=============== LOADING IMSGE ===============
 
 
 function loader() {
@@ -219,7 +219,7 @@ function fadeout() {
     setTimeout(loader, 3500);
 }
 
-fadeout();
+fadeout();*/
 
 
 
