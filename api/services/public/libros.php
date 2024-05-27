@@ -11,12 +11,10 @@ if (isset($_GET['action'])) {
     // Se compara la acción a realizar según la petición del controlador.
     switch ($_GET['action']) {
         case 'readLibrosGeneros':
-            if (!$libro->setCategoria($_POST['id_libro'])) {
-                $result['error'] = $libro->getDataError();
-            } elseif ($result['dataset'] = $libro->readLibrosGeneros()) {
+            if ($result['dataset'] = $libro->readAll()) {
                 $result['status'] = 1;
             } else {
-                $result['error'] = 'No existen productos para mostrar';
+                $result['error'] = 'No existen libros para mostrar';
             }
             break;
         case 'readOne':

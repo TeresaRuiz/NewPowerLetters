@@ -2,46 +2,40 @@
 const LIBROS_API = 'services/public/libros.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
-const PRODUCTOS = document.getElementById('libros');
+const LIBROS = document.getElementById('libros');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
-    // Llamada a la función para mostrar el encabezado y pie del documento.
-    loadTemplate();
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
-    FORM.append('id_libro', PARAMS.get('id'));
+    FORM.append('idClas', PARAMS.get('id'));
     // Petición para solicitar los productos de la categoría seleccionada.
-    const DATA = await fetchData(LIBROS_API, 'readLibrosCategoria', FORM);
+    const DATA = await fetchData(LIBROS_API, 'readLibrosGeneros', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        // Se asigna como título principal la categoría de los productos.
-        MAIN_TITLE.textContent = `Libros: ${PARAMS.get('nombre')}`;
         // Se inicializa el contenedor de productos.
         LIBROS.innerHTML = '';
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             LIBROS.innerHTML += `
-                <div class="col-sm-12 col-md-6 col-lg-3">
-                    <div class="card mb-3">
-                        <img src="${SERVER_URL}images/productos/${row.imagen}" class="card-img-top" alt="${row.titulo}">
-                        <div class="card-body">
-                            <h5 class="card-title">${row.titulo}</h5>
-                        </div>
-                        <ul class="list-group list-group-flush">
-                            <li class="list-group-item">Precio unitario (US$) ${row.precio}</li>
-                            <li class="list-group-item">Existencias ${row.existencias}</li>
-                        </ul>
-                        <div class="card-body text-center">
-                            <a href="detail.html?id=${row.id_libro}" class="btn btn-primary">Ver detalle</a>
-                        </div>
+                <article class="featured__card  swiper-slide">
+                    <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo}">
+                    <h2 class="featured__title">${row.titulo_libro}</h2>
+                    <div class="featured__prices">
+                        <span class="featured__discount"> ${row.precio}</span>
                     </div>
-                </div>
+                    <buttton class="button">Add To Cart</buttton>
+                    <div class="featured__actions">
+                        <button><i class="ri-search-line"></i></button>
+                        <button><i class="ri-heart-3-line"></i></button>
+                        <button><i class="ri-eye-line"></i></button>
+                    </div>
+                </article>
             `;
         });
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
-        MAIN_TITLE.textContent = DATA.error;
+        console.log (DATA.error);
     }
 });
