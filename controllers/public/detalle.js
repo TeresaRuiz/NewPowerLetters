@@ -15,13 +15,13 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
             // Actualizar los elementos del HTML con la información del libro
-            document.getElementById('tituloVista').innerText = DATA.dataset.titulo_libro;
+            document.getElementById('tituloVista').textContent = DATA.dataset.titulo_libro;
             document.querySelector('.book-detail__img').src = `../../resources/img/${DATA.dataset.imagen}`;
-            document.getElementById('precioVista').innerText = `$${DATA.dataset.precio}`;
-            document.getElementById('descripcionVista').innerText = DATA.dataset.descripcion_libro;
-            document.getElementById('autorVista').innerText = DATA.dataset.nombre_autor;
-            document.getElementById('clasificacionVista').innerText = DATA.dataset.nombre_clasificacion;
-            document.getElementById('editorialVista').innerText = DATA.dataset.nombre_editorial;
+            document.getElementById('precioVista').textContent = `$${DATA.dataset.precio}`;
+            document.getElementById('descripcionVista').textContent = DATA.dataset.descripcion_libro;
+            document.getElementById('autorVista').textContent = DATA.dataset.nombre_autor;
+            document.getElementById('clasificacionVista').textContent = DATA.dataset.nombre_clasificacion;
+            document.getElementById('editorialVista').textContent = DATA.dataset.nombre_editorial;
         }
      else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
