@@ -39,28 +39,3 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log (DATA.error);
     }
 });
-
-const viewDetails = async (id) => {
-    // Se define una constante tipo objeto con los datos del registro seleccionado.
-    const FORM = new FormData();
-    FORM.append('idClas', id);
-    // Petición para obtener los datos del registro solicitado.
-    const DATA = await fetchData(LIBROS_API, 'readOne', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (DATA.status) {
-        // Se inicializan los campos con los datos.
-        const ROW = DATA.dataset;
-        // Actualizar los elementos del modal con la información del libro
-        document.getElementById('tituloVista').innerText = ROW.titulo_libro;
-        document.getElementById('vista').src = `${SERVER_URL}images/libros/${ROW.imagen}`;
-        document.getElementById('precioVista').innerText = ROW.precio;
-        document.getElementById('descripcionVista').innerText = ROW.descripcion_libro;
-        document.getElementById('existenciasVista').innerText = ROW.existencias;
-        document.getElementById('autorVista').innerText = ROW.nombre_autor;
-        document.getElementById('clasificacionVista').innerText = ROW.nombre_clasificacion;
-        document.getElementById('editorialVista').innerText = ROW.nombre_editorial;
-        document.getElementById('generoVista').innerText = ROW.nombre_genero;
-    } else {
-        sweetAlert(2, DATA.error, false);
-    }
-};
