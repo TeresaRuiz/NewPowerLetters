@@ -132,7 +132,7 @@ header.innerHTML = `
          <div>
 
             <span class="login__signup">
-               ¿No tienes una cuenta? <a href="#"> Registraté acá</a>
+               ¿No tienes una cuenta? <a href="registro_c.html"> Registraté acá</a>
             </span>
 
             <a href="#" class="login__forget">

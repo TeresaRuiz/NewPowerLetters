@@ -53,7 +53,7 @@ const loadTemplate = async () => {
                                 <li class="nav__item">
                                     <a href="../Private/usuarios.html" class="nav__link">
                                         <i class="ri-user-line"></i>
-                                        <span>Usuarios</span>
+                                        <span>Clientes</span>
                                     </a>
                                 </li>
                                 <li class="nav__item nav__item-dropdown">
