@@ -1,5 +1,5 @@
 // Constante para completar la ruta de la API.
-const ADMINISTRADOR_API = 'services/admin/administrador.php';
+const USUARIO_API = 'services/admin/administrador.php';
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('searchForm');
 // Constantes para establecer los elementos de la tabla.
@@ -12,11 +12,14 @@ const SAVE_MODAL = new bootstrap.Modal('#saveModal'),
 const SAVE_FORM = document.getElementById('saveForm'),
     ID_USUARIO = document.getElementById('id_usuario'),
     NOMBRE_CLIENTE = document.getElementById('nombreCliente'),
-    APELLIDO_CLIENTE = document.getElementById('apellidoCliente'),
-    CORREO_CLIENTE = document.getElementById('correoAdministrador'),
+    USUARIO_CLIENTE = document.getElementById('usuarioCliente'),
+    CORREO_CLIENTE = document.getElementById('correoCliente'),
     DIRECCION_CLIENTE = document.getElementById('direccionCliente'),
+    TELEFONO_CLIENTE = document.getElementById('telefonoCliente');
     CLAVE_CLIENTE = document.getElementById('claveAdministrador'),
     CONFIRMAR_CLAVE = document.getElementById('confirmarClave');
+    
+
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -81,10 +84,10 @@ const fillTable = async (form = null) => {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td>${row.apellido_administrador}</td>
-                    <td>${row.nombre_administrador}</td>
-                    <td>${row.correo_administrador}</td>
-                    <td>${row.alias_administrador}</td>
+                    <td>${row.usuario_cliente}</td>
+                    <td>${row.nombre_cliente}</td>
+                    <td>${row.correo_cliente}</td>
+                    <td>${row.alias_cliente}</td>
                     <td>
                         <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_administrador})">
                             <i class="bi bi-pencil-fill"></i>
