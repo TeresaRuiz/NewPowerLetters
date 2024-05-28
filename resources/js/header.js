@@ -26,28 +26,18 @@ header.innerHTML = `
 
 
                <li class="nav__item">
-                  <a href="../Public/libros_recomendados.html" class="nav__link">
-                     <i class="ri-book-3-line"></i>
-                     <span>Recomendados</span>
-                  </a>
-               </li>
-
-
-               <li class="nav__item">
-                  <a href="../Public/descuento.html" class="nav__link">
-                     <i class="ri-price-tag-3-line"></i>
-                     <span>Descuentos</span>
-                  </a>
-               </li>
-
-
-               <li class="nav__item">
                   <a href="../Public/descuento.html" class="nav__link">
                      <i class="ri-bookmark-line"></i>
                      <span>Nuevos Libros</span>
                   </a>
                </li>
 
+               <li class="nav__item">
+                  <a href="../Public/libros_recomendados.html" class="nav__link">
+                     <i class="ri-book-3-line"></i>
+                     <span>Recomendados</span>
+                  </a>
+               </li>
 
                <li class="nav__item">
                   <a href="../Public/comentarios.html" class="nav__link">

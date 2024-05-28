@@ -18,12 +18,12 @@ if (isset($_GET['action'])) {
             }
             break;
         case 'readOne':
-            if (!$libro->setId($_POST['id_libro '])) {
+            if (!$libro->setId($_POST['idLibro'])) {
                 $result['error'] = $libro->getDataError();
             } elseif ($result['dataset'] = $libro->readOne()) {
                 $result['status'] = 1;
             } else {
-                $result['error'] = 'Producto inexistente';
+                $result['error'] = 'Libro inexistente';
             }
             break;
         default:
