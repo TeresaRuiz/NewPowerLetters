@@ -688,7 +688,6 @@ body.dark-theme {
   display: inline-flex;
   flex-direction: column;
   row-gap: .75rem;
-  position: absolute;
   top: 2rem;
   right: -1.5rem;
   transition: right .4s;
