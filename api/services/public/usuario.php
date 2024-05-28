@@ -102,19 +102,17 @@ if (isset($_GET['action'])) {
                     } elseif(!isset($_POST['condicion'])) {
                         $result['error'] = 'Debe marcar la aceptación de términos y condiciones';
                     } elseif (
-                        !$cliente->setNombre($_POST['nombreCliente']) or
-                        !$cliente->setApellido($_POST['apellidoCliente']) or
-                        !$cliente->setCorreo($_POST['correoCliente']) or
-                        !$cliente->setDireccion($_POST['direccionCliente']) or
-                        !$cliente->setDUI($_POST['duiCliente']) or
-                        !$cliente->setNacimiento($_POST['nacimientoCliente']) or
-                        !$cliente->setTelefono($_POST['telefonoCliente']) or
-                        !$cliente->setClave($_POST['claveCliente'])
+                        !$Usuario->setNombre($_POST['nombreCliente']) or
+                        !$Usuario->setUsuario($_POST['usuarioCliente']) or
+                        !$Usuario->setCorreo($_POST['correoCliente']) or
+                        !$Usuario->setDireccion($_POST['direccionCliente']) or
+                        !$Usuario->setTelefono($_POST['telefonoCliente']) or
+                        !$Usuario->setClave($_POST['claveCliente'])
                     ) {
-                        $result['error'] = $cliente->getDataError();
+                        $result['error'] = $Usuario->getDataError();
                     } elseif ($_POST['claveCliente'] != $_POST['confirmarClave']) {
                         $result['error'] = 'Contraseñas diferentes';
-                    } elseif ($cliente->createRow()) {
+                    } elseif ($Usuario->createRow()) {
                         $result['status'] = 1;
                         $result['message'] = 'Cuenta registrada correctamente';
                     } else {
@@ -123,9 +121,9 @@ if (isset($_GET['action'])) {
                     break;
                 case 'logIn':
                     $_POST = Validator::validateForm($_POST);
-                    if (!$cliente->checkUser($_POST['correo'], $_POST['clave'])) {
+                    if (!$Usuario->checkUser($_POST['correo'], $_POST['clave'])) {
                         $result['error'] = 'Datos incorrectos';
-                    } elseif ($cliente->checkStatus()) {
+                    } elseif ($Usuario->checkStatus()) {
                         $result['status'] = 1;
                         $result['message'] = 'Autenticación correcta';
                     } else {
