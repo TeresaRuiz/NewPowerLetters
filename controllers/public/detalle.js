@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             document.getElementById('autorDetalle').textContent = DATA.dataset.nombre_autor;
             document.getElementById('clasificacionDetalle').textContent = DATA.dataset.nombre_clasificacion;
             document.getElementById('editorialDetalle').textContent = DATA.dataset.nombre_editorial;
+            document.getElementById('existenciasProducto').textContent = DATA.dataset.existencias;
         }
      else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
