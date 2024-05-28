@@ -20,24 +20,29 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             LIBROSN.innerHTML += `
 
-            <article class="featured__card  swiper-slide">
-            <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo_libro}">
-            <h2 class="featured__title">${row.titulo_libro}</h2>
-            <div class="featured__prices">
-                <span class="featured__discount"> ${row.precio}</span>
-            </div>
+                
+                    <article class="featured__card  swiper-slide">
 
-            <div class="featured__prices">
-                <span class="featured__discount"> ${row.nombre_autor}</span>
-            </div>
+                       <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo_libro}">
+                       <h2 class="featured__title">${row.titulo_libro}</h2>
+                       <div class="featured__prices">
+                          <span class="featured__discount"> ${row.precio}</span>
 
-            <buttton class="button">Añadir al carrito</buttton>
-            <div class="featured__actions">
-                <button><i class="ri-search-line"></i></button>
-                <button><i class="ri-heart-3-line"></i></button>
-                <a href="detalle_libro.html"><button><i class="ri-eye-line"></i></button></a>
-            </div>
-        </article>
+                       </div>
+
+                       <div class="featured__prices">
+                          <span class="featured__discount"> ${row.nombre_autor}</span>
+                       </div>
+
+                        <buttton class="button">Añadir al carrito</buttton>
+                        <div class="featured__actions">
+                         <button><i class="ri-search-line"></i></button>
+                         <button><i class="ri-heart-3-line"></i></button>
+                         <a href="detalle_libro.html"><button><i class="ri-eye-line"></i></button></a>
+                        </div>
+                    
+                    </article>
+            
             `;
         });
     } else {
