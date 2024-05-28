@@ -61,6 +61,10 @@ header.innerHTML = `
 
             <i class="ri-user-line login-button" id="login-button"></i>
 
+            <!-- Carrito button  -->
+               
+            <i class="ri-shopping-cart-fill carrito-button" id="carrito-button"></i>
+
               <!-- theame button  -->
 
               <i class="ri-moon-line change-theme" id="theme-button"></i>
