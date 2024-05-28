@@ -182,7 +182,7 @@ class UsuarioData extends UsuarioHandler
             return false;
         }
     }
-
+  
     /*
      *   Métodos para obtener el valor de los atributos adicionales.
      */
