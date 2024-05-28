@@ -23,16 +23,17 @@
                 <div class="section__title">Detalle del Libro</div>
                 <div class="book-detail">
                     <div class="book-detail__img-wrapper">
-                        <img src="../../resources/img/book-1.png" alt="Portada del libro" class="book-detail__img">
+                        <img src="../../resources/img/book-1.png" alt="Portada del libro" class="book-detail__img"
+                            id="ImagenDetalle">
                     </div>
-                    <div class="book-detail__content">
-                        <h2 class="book-detail__title" id="tituloVista">Título del Libro</h2>
-                        <p class="book-detail__author" id="autorVista">Autor del Libro</p>
-                        <p class="book-detail__author" id="editorialVista">Editorial</p>
+                    <div class="book-detail__content" id="libros">
+                        <h2 class="book-detail__title" id="tituloDetalle">Título del Libro</h2>
+                        <p class="book-detail__author" id="autorDetalle">Autor del Libro</p>
+                        <p class="book-detail__author" id="editorialDetalle">Editorial</p>
                         <label for="clasificacion" class="libro__label">Clasificación:</label>
-                        <p class="book-detail__author" id="clasificacionVista">Clasificación</p>
-                        <p class="book-detail__price" id="precioVista">$XX.XX</p>
-                        <p class="book-detail__description" id="descripcionVista">Lorem ipsum dolor sit amet,
+                        <p class="book-detail__author" id="clasificacionDetalle">Clasificación</p>
+                        <p class="book-detail__price" id="precioDetalle">$XX.XX</p>
+                        <p class="book-detail__description" id="descripcionDetalle">Lorem ipsum dolor sit amet,
                             consectetur adipiscing elit. Quisque sit amet accumsan tortor. Integer vel libero nec erat
                             scelerisque suscipit.</p>
                         <div class="book-detail__buttons">
@@ -44,15 +45,15 @@
             </div>
         </section>
     </main>
+    <script src="../../Resources/js/header.js"></script>
+    <!--=============== SWIPER JS ===============-->
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/public.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/public/detalle.js"></script>
 </body>
-<script src="../../Resources/js/header.js"></script>
-<!--=============== SWIPER JS ===============-->
-<script src="../../Resources/js/swiper-bundle.min.js"></script>
-<!--=============== SCROLLREVEAL ===============-->
-<script src="../../Resources/js/scrollreveal.min.js"></script>
-<script src="../../Resources/js/main.js"></script>
-<script src="../../Resources/js/sweetalert.min.js"></script>
-<script src="../../controllers/utils/public.js"></script>
-<script src="../../controllers/public/detalle.js"></script>
 
 </html>
