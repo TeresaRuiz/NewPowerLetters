@@ -38,7 +38,7 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <div class="featured__actions">
                          <button><i class="ri-search-line"></i></button>
                          <button><i class="ri-heart-3-line"></i></button>
-                         <a href="detalle_libro.html"><button><i class="ri-eye-line"></i></button></a>
+                         <a href="detalle_libro.html?id=${row.id_libro}"><button><i class="ri-eye-line"></i></button></a>
                         </div>
                     
                     </article>
