@@ -74,6 +74,65 @@ if (isset($_GET['action'])) {
 
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
+        } 
+            // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
+            switch ($_GET['action']) {
+                case 'signUp':
+                    $_POST = Validator::validateForm($_POST);
+                    // Se establece la clave secreta para el reCAPTCHA de acuerdo con la cuenta de Google.
+                    $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
+                    // Se establece la dirección IP del servidor.
+                    $ip = $_SERVER['REMOTE_ADDR'];
+                    // Se establecen los datos del raCAPTCHA.
+                    $data = array('secret' => $secretKey, 'response' => $_POST['gRecaptchaResponse'], 'remoteip' => $ip);
+                    // Se establecen las opciones del reCAPTCHA.
+                    $options = array(
+                        'http' => array('header' => 'Content-type: application/x-www-form-urlencoded\r\n', 'method' => 'POST', 'content' => http_build_query($data)),
+                        'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
+                    );
+    
+                    $url = 'https://www.google.com/recaptcha/api/siteverify';
+                    $context = stream_context_create($options);
+                    $response = file_get_contents($url, false, $context);
+                    $captcha = json_decode($response, true);
+    
+                    if (!$captcha['success']) {
+                        $result['recaptcha'] = 1;
+                        $result['error'] = 'No eres humano';
+                    } elseif(!isset($_POST['condicion'])) {
+                        $result['error'] = 'Debe marcar la aceptación de términos y condiciones';
+                    } elseif (
+                        !$Usuario->setNombre($_POST['nombreCliente']) or
+                        !$Usuario->setUsuario($_POST['usuarioCliente']) or
+                        !$Usuario->setCorreo($_POST['correoCliente']) or
+                        !$Usuario->setDireccion($_POST['direccionCliente']) or
+                        !$Usuario->setTelefono($_POST['telefonoCliente']) or
+                        !$Usuario->setClave($_POST['claveCliente'])
+                    ) {
+                        $result['error'] = $Usuario->getDataError();
+                    } elseif ($_POST['claveCliente'] != $_POST['confirmarClave']) {
+                        $result['error'] = 'Contraseñas diferentes';
+                    } elseif ($Usuario->createRow()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Cuenta registrada correctamente';
+                    } else {
+                        $result['error'] = 'Ocurrió un problema al registrar la cuenta';
+                    }
+                    break;
+                case 'logIn':
+                    $_POST = Validator::validateForm($_POST);
+                    if (!$Usuario->checkUser($_POST['correo'], $_POST['clave'])) {
+                        $result['error'] = 'Datos incorrectos';
+                    } elseif ($Usuario->checkStatus()) {
+                        $result['status'] = 1;
+                        $result['message'] = 'Autenticación correcta';
+                    } else {
+                        $result['error'] = 'La cuenta ha sido desactivada';
+                    }
+                    break;
+                default:
+                    $result['error'] = 'Acción no disponible fuera de la sesión';
+            }
         }
 
         // Capturar cualquier excepción de la base de datos.
@@ -88,7 +147,7 @@ if (isset($_GET['action'])) {
         // Si no hay una sesión válida, se devuelve un mensaje de acceso denegado.
         print (json_encode('Acceso denegado'));
     }
-} else {
+    {
     // Si no se recibe una acción, se devuelve un mensaje de recurso no disponible.
     print (json_encode('Recurso no disponible'));
 }
