@@ -9,7 +9,7 @@ if (isset($_GET['action'])) {
 
     // Crear una instancia de la clase 'UsuarioData' para interactuar con los datos relacionados con 'género'.
     $Usuario = new UsuarioData;
-
+ 
     // Inicializar un arreglo para almacenar el resultado de las operaciones de la API.
     $result = array(
         'status' => 0, // Indicador del estado de la operación, 0 para fallo, 1 para éxito.
