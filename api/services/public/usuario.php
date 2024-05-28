@@ -74,7 +74,7 @@ if (isset($_GET['action'])) {
 
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
-        } else {
+        } 
             // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
             switch ($_GET['action']) {
                 case 'signUp':
@@ -147,7 +147,7 @@ if (isset($_GET['action'])) {
         // Si no hay una sesión válida, se devuelve un mensaje de acceso denegado.
         print (json_encode('Acceso denegado'));
     }
-} else {
+    {
     // Si no se recibe una acción, se devuelve un mensaje de recurso no disponible.
     print (json_encode('Recurso no disponible'));
 }
