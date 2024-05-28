@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
     loadTemplate();
     // Se establece el título del contenido principal.
-    MAIN_TITLE.textContent = 'Gestionar administradores';
+    MAIN_TITLE.textContent = 'Gestionar usuarios';
     // Llamada a la función para llenar la tabla con los registros existentes.
     fillTable();
 });
@@ -46,11 +46,11 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
     // Se verifica la acción a realizar.
-    (ID_ADMINISTRADOR.value) ? action = 'updateRow' : action = 'createRow';
+    (ID_USUARIO.value) ? action = 'updateRow' : action = 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
-    const DATA = await fetchData(ADMINISTRADOR_API, action, FORM);
+    const DATA = await fetchData(USUARIO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se cierra la caja de diálogo.
@@ -64,47 +64,6 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     }
 });
 
-/*
-*   Función asíncrona para llenar la tabla con los registros disponibles.
-*   Parámetros: form (objeto opcional con los datos de búsqueda).
-*   Retorno: ninguno.
-*/
-const fillTable = async (form = null) => {
-    // Se inicializa el contenido de la tabla.
-    ROWS_FOUND.textContent = '';
-    TABLE_BODY.innerHTML = '';
-    // Se verifica la acción a realizar.
-    (form) ? action = 'searchRows' : action = 'readAll';
-    // Petición para obtener los registros disponibles.
-    const DATA = await fetchData(ADMINISTRADOR_API, action, form);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (DATA.status) {
-        // Se recorre el conjunto de registros fila por fila.
-        DATA.dataset.forEach(row => {
-            // Se crean y concatenan las filas de la tabla con los datos de cada registro.
-            TABLE_BODY.innerHTML += `
-                <tr>
-                    <td>${row.usuario_cliente}</td>
-                    <td>${row.nombre_cliente}</td>
-                    <td>${row.correo_cliente}</td>
-                    <td>${row.alias_cliente}</td>
-                    <td>
-                        <button type="button" class="btn btn-info" onclick="openUpdate(${row.id_administrador})">
-                            <i class="bi bi-pencil-fill"></i>
-                        </button>
-                        <button type="button" class="btn btn-danger" onclick="openDelete(${row.id_administrador})">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </td>
-                </tr>
-            `;
-        });
-        // Se muestra un mensaje de acuerdo con el resultado.
-        ROWS_FOUND.textContent = DATA.message;
-    } else {
-        sweetAlert(4, DATA.error, true);
-    }
-}
 
 /*
 *   Función para preparar el formulario al momento de insertar un registro.
