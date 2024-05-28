@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" /> <!-- Establece la codificación de caracteres del documento -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" /> <!-- Define la compatibilidad con IE -->
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" /> <!-- Establece la escala inicial y el ancho del viewport -->
+		<title>Tienda</title> <!-- Título de la página -->
+		<link rel="stylesheet" href="../../resources/css/carrito.css" /> <!-- Enlaza la hoja de estilos externa -->
+	</head>
+	<body>
+		<header>
+			<h1>Tienda</h1> <!-- Encabezado principal de la página -->
+
+			<div class="container-icon">
+				<div class="container-cart-icon">
+					<!-- Icono de carrito de compra -->
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="icon-cart"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z"
+						/>
+					</svg>
+					<!-- Contador de productos en el carrito -->
+					<div class="count-products">
+						<span id="contador-productos">0</span>
+					</div>
+				</div>
+
+				<!-- Contenedor de productos en el carrito -->
+				<div class="container-cart-products hidden-cart">
+					<!-- Producto en el carrito -->
+					<div class="row-product hidden">
+						<div class="cart-product">
+							<div class="info-cart-product">
+								<!-- Información del producto en el carrito -->
+								<span class="cantidad-producto-carrito">1</span>
+								<p class="titulo-producto-carrito">Zapatos Nike</p>
+								<span class="precio-producto-carrito">$80</span>
+							</div>
+							<!-- Icono para eliminar el producto del carrito -->
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								fill="none"
+								viewBox="0 0 24 24"
+								stroke-width="1.5"
+								stroke="currentColor"
+								class="icon-close"
+							>
+								<path
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									d="M6 18L18 6M6 6l12 12"
+								/>
+							</svg>
+						</div>
+					</div>
+
+					<!-- Total a pagar por los productos en el carrito -->
+					<div class="cart-total hidden">
+						<h3>Total:</h3>
+						<span class="total-pagar">$200</span>
+					</div>
+					<!-- Mensaje si el carrito está vacío -->
+					<p class="cart-empty">El carrito está vacío</p>
+				</div>
+			</div>
+		</header>
+
+		<!-- Contenedor de los productos disponibles -->
+		<div class="container-items">
+			<!-- Producto 1 -->
+			<div class="item">
+				<figure>
+					<img
+						src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
+						alt="producto"
+					/>
+				</figure>
+				<div class="info-product">
+					<h2>Zapatos Nike</h2>
+					<p class="price">$80</p>
+					<!-- Botón para añadir el producto al carrito -->
+					<button class="btn-add-cart">Añadir al carrito</button>
+				</div>
+			</div>
+			<!-- Resto de productos con la misma estructura -->
+		</div>
+
+		<!-- Script para manejar la funcionalidad de la página -->
+		<script src="../../resources/js/carrito.js"></script>
+	</body>
+</html>
