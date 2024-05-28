@@ -69,9 +69,6 @@ header.innerHTML = `
 
               <i class="ri-moon-line change-theme" id="theme-button"></i>
                
-
-
-
          </div>
 
       </nav>
