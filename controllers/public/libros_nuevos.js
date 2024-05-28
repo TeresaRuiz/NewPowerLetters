@@ -20,7 +20,9 @@ document.addEventListener('DOMContentLoaded', async () => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             LIBROSN.innerHTML += `
 
+                
                     <article class="featured__card  swiper-slide">
+
                        <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo_libro}">
                        <h2 class="featured__title">${row.titulo_libro}</h2>
                        <div class="featured__prices">
