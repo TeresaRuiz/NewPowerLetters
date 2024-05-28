@@ -142,7 +142,7 @@ class UsuarioHandler
         // Ejecutar la consulta y devolver el resultado
         return Database::getRow($sql, $params);
     }
-
+ 
     public function updateRow()
     {
         // Definir la consulta SQL para actualizar el estado de un usuario por su id

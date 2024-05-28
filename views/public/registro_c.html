@@ -47,7 +47,7 @@
                         width="30px">
 
 
-                    <input type="email" class="input" name="email" id="correoAdministrador"
+                    <input type="email" class="input" name="email" id="correoCliente"
                         placeholder="Ingresa tu correo electrónico" class="register__input">
 
                 </div>
@@ -61,7 +61,7 @@
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACqklEQVR4nO2aXUsUURjHf1eN0gsGZV0UeRl1W34CMSJDL00/gyR+C3OLogi67RO0+f4Jsug6V1sL3LopCxSsTPHEgWdh2GZnd84zZ2ZW/MMfBuaZ/3P+c17mvAwc4+jiLDACzADzQAX4CewJ7fWq3LMxw0APBUEAjAPLwAFgEtI+swiMiVbm6AamgK8OhW/GL8Ak0JWVidtANUUDjfwI3PJpwFb9E48GGvlSaj5VXADeZ2jCCN8BvWmZ6JPqNjlxXcqgwnkZRk3OrAIXXU105dScTEwzcxqinyuS7gIl4CZwUtgPPAR+KXSfugyxrsk+AVdjtK8BnxX6g+2a6FZ8J3ZDJq4DZWBHWBYT9Xu/FZ0/aMfIlOJtlUIF3Y64vx0y80iR534rE4Fy2nFDdMoxMa8kpl+Rp9aqVsYV4panRGcnJsbWisVpZa57cUaWleJ1pBVnYmiXA03XEwcdZGQfOBNlZEQpnAeHooyUClAwk5APoozMKdrqJdxhn11wzD0bJbjuKKYxUcdlx9yVKLEfjmJpwSX3tyihvQ408icrI3dkU6EmE9FMjGx5MFILxW16MPI9SmjNg5GNUNyGByOraQ6/cRgIxQ14MPI6SmjGgxEc4kwCTkcJDXsy8hZ448nIUJRQj+OkMS0kzfu32aTRYqmDjMzFiY110BRlNE4wkA9YEsEFKYjGxGLCnJvAiVbCk44dL0tOtPOGgoJskxrtdhByPmEKyMM2Pqz/4VkBCm4a+BgHBLJxbArClXY6eDOcK0h/qcphkwp9imVwGlwDrpASenNqZity2OTlMPQwIxMvfJ+9D3puahWXIdYVgWzth5eyWtppx0Ref0AEsis+L3uxSQu/L7PYUc3Qmjbs2uCubGPOynp6K/RTjb3+IMvTaVkU2aOFYxxJ/AOq5WXmKzq7uQAAAABJRU5ErkJggg=="
                         width="30px">
 
-                    <input type="password" class="input" name="clave" id="claveAdministrador"
+                    <input type="password" class="input" name="clave" id="claveCliente"
                         placeholder="Ingresa tu contraseña" class="register__input">
 
                     <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg">
@@ -80,7 +80,7 @@
 
             <h3 class="register__title">Registro de usuarios</h3>
 
-            <input type="number" id="idAdministrador" name="idAdministrador">
+            <input type="number" id="id_usuario" name="id_usuario">
 
 
             <div class="flex-column">
@@ -89,7 +89,7 @@
                 <div class="inputForm">
                     <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD3UlEQVR4nO2ZW4iNURTHfzOOMy5RM4PcSsoTyotLHuWSwnjBm2tKjEFRCCmFNHlhvCiMB7nmQYoXShiX3IUHMSiMS2RmNEbM0c76arX7zvftfc53zkjnX7vz1d7/tdfae+2191oHSiihhKQwBlgDnAVuAM3Ad6AT+AI8Ak4Dm4BJQDn/AAYA24G3QMazvQF2AUO7Q/EqoEFWOJNn+yGyjMyiYGaWFf8IHAeWi4uMAPoAadmp8cBi4AjwIYT/CVhQaOX3AF3WxLeB+UAPDzkpoAa4GmJIg/Qnjv7WRO+AOQnInQO8tGSfA3qTMMqAC7IDxlWqE16cEyFGFGQn+hVCKH8XaKdlxH66ARVyH9wE2qWZe6FO+uKw0zJiHkXEcOBhRMh8IGPiduKkFd0qi6F8RYzyQbsvoTUK5ky8Upx9xTBgjXU51cnKVUrfD9W/2kFejRrf4XtjjwLWy68rbqkJjfI21ql+cyZccF1xzNlwQpmKyy/c9adNTRbms1Wqv9VRZo3ivHZ9AI5WpPceBrTGGFCdgwE95RAHvAkupFWKcMrDgJuKZ3w+yoWaPOQ2Kt5GF8JxRaj1mKjOOsRrxW2qRPnOHOUu9V3QJkWY7BlGHziE0XsOYVRjouKapCgW+mE1Ej8MlzgfpfwwT5mDrCd3LNoVoS/+SIuLNElkapXvWs+V1zurXTMW2ldzmTBppJU+P10InxXBZFLdjSqlz1cXwmNFMGlgFIyL7QWeAr8dDnDQzNhnQL2Dm45TPDNPLM4owpIY5Z96KJ2tPYkxYqoae97FgM2KcDhiXH0CymekGVnZYAoD16S2NMPFgElK8IeItO6ZGrfIs1BVLhWKjNqFxFAuRadAuHlQxT3e+uVZJGgjYexSws32heGuGrMhhznMuybg3yFhDLMSkLDySa3q/wVscbw3zMW0TTgZaSspABrUBC9lyzXSIYWpN5J4TAMGA72kme/pwG7LPTPAlRDD+8gCOR3aqAvkk5rohCQ79hv/Uh7R51JITdQEjYvS3yVV75yxwJowLK1LSY7b4qH4e+GkLFlmgQ6qcXkbYLtSYIS9E4gbzAYOSHLTIsl4hyh8Q/pmSaZlw9RWD1lzmbOSN1JS5tOCT4aciXwwBLhszdGYZaFyQu8QI5oj7gifO2eZlfdmxI18qt3OO2G7U0ZKH3OzuEVUKF0YksGZ0Lo1yZUPw7wsf1CYVTwqOaypHgyUcxGEUfNEWSE597cQfjMwhSKhUsp9+rLLtbUBOwrxf4ALhkpUsi8nl/ZcnhNFKdy6HMYJotApKfJ+lvQ0CKOmonBM3k1ju1vhEkr4X/AH8rEBQDZKgiIAAAAASUVORK5CYII="
                         width="30px">
-                    <input type="text" class="input" name="nombreAdministrador" id="nombreAdministrador"
+                    <input type="text" class="input" name="nombreCliente" id="nombreCliente"
                         placeholder="Escribe tu nombre" class="register__input">
                 </div>
 
@@ -100,7 +100,7 @@
                     <div class="inputForm">
                         <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADAAAAAwCAYAAABXAvmHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAD3UlEQVR4nO2ZW4iNURTHfzOOMy5RM4PcSsoTyotLHuWSwnjBm2tKjEFRCCmFNHlhvCiMB7nmQYoXShiX3IUHMSiMS2RmNEbM0c76arX7zvftfc53zkjnX7vz1d7/tdfae+2191oHSiihhKQwBlgDnAVuAM3Ad6AT+AI8Ak4Dm4BJQDn/AAYA24G3QMazvQF2AUO7Q/EqoEFWOJNn+yGyjMyiYGaWFf8IHAeWi4uMAPoAadmp8cBi4AjwIYT/CVhQaOX3AF3WxLeB+UAPDzkpoAa4GmJIg/Qnjv7WRO+AOQnInQO8tGSfA3qTMMqAC7IDxlWqE16cEyFGFGQn+hVCKH8XaKdlxH66ARVyH9wE2qWZe6FO+uKw0zJiHkXEcOBhRMh8IGPiduKkFd0qi6F8RYzyQbsvoTUK5ky8Upx9xTBgjXU51cnKVUrfD9W/2kFejRrf4XtjjwLWy68rbqkJjfI21ql+cyZccF1xzNlwQpmKyy/c9adNTRbms1Wqv9VRZo3ivHZ9AI5WpPceBrTGGFCdgwE95RAHvAkupFWKcMrDgJuKZ3w+yoWaPOQ2Kt5GF8JxRaj1mKjOOsRrxW2qRPnOHOUu9V3QJkWY7BlGHziE0XsOYVRjouKapCgW+mE1Ej8MlzgfpfwwT5mDrCd3LNoVoS/+SIuLNElkapXvWs+V1zurXTMW2ldzmTBppJU+P10InxXBZFLdjSqlz1cXwmNFMGlgFIyL7QWeAr8dDnDQzNhnQL2Dm45TPDNPLM4owpIY5Z96KJ2tPYkxYqoae97FgM2KcDhiXH0CymekGVnZYAoD16S2NMPFgElK8IeItO6ZGrfIs1BVLhWKjNqFxFAuRadAuHlQxT3e+uVZJGgjYexSws32heGuGrMhhznMuybg3yFhDLMSkLDySa3q/wVscbw3zMW0TTgZaSspABrUBC9lyzXSIYWpN5J4TAMGA72kme/pwG7LPTPAlRDD+8gCOR3aqAvkk5rohCQ79hv/Uh7R51JITdQEjYvS3yVV75yxwJowLK1LSY7b4qH4e+GkLFlmgQ6qcXkbYLtSYIS9E4gbzAYOSHLTIsl4hyh8Q/pmSaZlw9RWD1lzmbOSN1JS5tOCT4aciXwwBLhszdGYZaFyQu8QI5oj7gifO2eZlfdmxI18qt3OO2G7U0ZKH3OzuEVUKF0YksGZ0Lo1yZUPw7wsf1CYVTwqOaypHgyUcxGEUfNEWSE597cQfjMwhSKhUsp9+rLLtbUBOwrxf4ALhkpUsi8nl/ZcnhNFKdy6HMYJotApKfJ+lvQ0CKOmonBM3k1ju1vhEkr4X/AH8rEBQDZKgiIAAAAASUVORK5CYII="
                             width="30px">
-                        <input type="text" class="input" name="UsuarioAdministrador" id="UsuarioAdministrador"
+                        <input type="text" class="input" name="usuarioCliente" id="usuarioCliente"
                             placeholder="Elige un nombre de usuario" class="register__input">
                     </div>
 
@@ -114,7 +114,7 @@
                                 width="30px">
 
 
-                            <input type="email" class="input" name="correoAdministrador" id="correoAdministrador"
+                            <input type="email" class="input" name="correoCliente" id="correoCliente"
                                 placeholder="Ingresa tu correo electrónico" class="register__input">
 
                         </div>
@@ -128,7 +128,7 @@
                             <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADIAAAAyCAYAAAAeP4ixAAAACXBIWXMAAAsTAAALEwEAmpwYAAACqklEQVR4nO2aXUsUURjHf1eN0gsGZV0UeRl1W34CMSJDL00/gyR+C3OLogi67RO0+f4Jsug6V1sL3LopCxSsTPHEgWdh2GZnd84zZ2ZW/MMfBuaZ/3P+c17mvAwc4+jiLDACzADzQAX4CewJ7fWq3LMxw0APBUEAjAPLwAFgEtI+swiMiVbm6AamgK8OhW/GL8Ak0JWVidtANUUDjfwI3PJpwFb9E48GGvlSaj5VXADeZ2jCCN8BvWmZ6JPqNjlxXcqgwnkZRk3OrAIXXU105dScTEwzcxqinyuS7gIl4CZwUtgPPAR+KXSfugyxrsk+AVdjtK8BnxX6g+2a6FZ8J3ZDJq4DZWBHWBYT9Xu/FZ0/aMfIlOJtlUIF3Y64vx0y80iR534rE4Fy2nFDdMoxMa8kpl+Rp9aqVsYV4panRGcnJsbWisVpZa57cUaWleJ1pBVnYmiXA03XEwcdZGQfOBNlZEQpnAeHooyUClAwk5APoozMKdrqJdxhn11wzD0bJbjuKKYxUcdlx9yVKLEfjmJpwSX3tyihvQ408icrI3dkU6EmE9FMjGx5MFILxW16MPI9SmjNg5GNUNyGByOraQ6/cRgIxQ14MPI6SmjGgxEc4kwCTkcJDXsy8hZ448nIUJRQj+OkMS0kzfu32aTRYqmDjMzFiY110BRlNE4wkA9YEsEFKYjGxGLCnJvAiVbCk44dL0tOtPOGgoJskxrtdhByPmEKyMM2Pqz/4VkBCm4a+BgHBLJxbArClXY6eDOcK0h/qcphkwp9imVwGlwDrpASenNqZity2OTlMPQwIxMvfJ+9D3puahWXIdYVgWzth5eyWtppx0Ref0AEsis+L3uxSQu/L7PYUc3Qmjbs2uCubGPOynp6K/RTjb3+IMvTaVkU2aOFYxxJ/AOq5WXmKzq7uQAAAABJRU5ErkJggg=="
                                 width="30px">
 
-                            <input type="password" class="input" name="claveAdministrador" id="claveAdministrador"
+                            <input type="password" class="input" name="claveCliente" id="claveCliente"
                                 placeholder="Ingresa tu contraseña" class="register__input">
 
                             <svg viewBox="0 0 576 512" height="1em" xmlns="http://www.w3.org/2000/svg">
