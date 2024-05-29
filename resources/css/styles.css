@@ -656,6 +656,7 @@ body.dark-theme {
 .featured__img {
   width: 150px;
   margin: 0 auto .75rem;
+  height: 200px;
 }
 
 .featured__title {
