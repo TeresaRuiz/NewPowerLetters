@@ -22,7 +22,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             LIBROSN.innerHTML += `
 
                 
-                    <article class="featured__card">
+            <article class="featured__card">
 
                        <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo_libro}">
                        <h2 class="featured__title">${row.titulo_libro}</h2>
