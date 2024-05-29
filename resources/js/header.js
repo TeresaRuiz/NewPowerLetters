@@ -28,7 +28,7 @@ header.innerHTML = `
                <li class="nav__item">
                   <a href="../Public/descuento.html" class="nav__link">
                      <i class="ri-bookmark-line"></i>
-                     <span>Nuevos Libros</span>
+                     <span>Libros nuevos</span>
                   </a>
                </li>
 
