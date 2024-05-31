@@ -71,15 +71,20 @@
         <!--==================== Filtrador ====================-->
 
         <br><br><br><br><br><br><br><br><br>
+         <!-- Formulario de búsqueda y botón de agregar -->
+        
         <link href="https://fonts.googleapis.com/css2?
         family=Poppins:wght@400;500&display=swap" rel="stylesheet" />
     
         <div class="wrapper">
-            <div id="search-container">
-                <input type="search" id="search-input" placeholder="Busca tus libros...">
-    
-                <button id="search">Buscar</button>
-            </div>
+            <form id="searchForm" class="search-container">
+                <div id="search-container">
+                    <input type="search" id="search-input" placeholder="Busca tus libros...">
+        
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
+                </div>
+            </form>
+            
             <div id="buttons">
                 <button class="button-value" onclick="filterProducts('genero')">Genero</button>
                 <button class="button-value"  onclick="filterProducts('Clasificación')">Clasificación</button>
@@ -98,6 +103,15 @@
         </div>
 
 
+        <form id="searchForm">
+            <input type="text" name="search" placeholder="Buscar libro">
+            <button type="submit">Buscar</button>
+          </form>
+          
+          <div id="LIBROSN" class="contenedor">
+            <!-- Aquí se insertarán las tarjetas -->
+          </div>
+          
 
 
         <br><br><br><br><br><br>
