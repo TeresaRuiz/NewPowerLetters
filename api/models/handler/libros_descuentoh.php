@@ -5,7 +5,7 @@ require_once ('../../helpers/database.php');
 /*
  * Clase para manejar el comportamiento de los datos de la tabla PRODUCTO.
  */
-class LibroNuevoHandler
+class LibroDescuentoHandler
 {
     /*
      * Métodos para realizar las operaciones CRUD (crear, leer, actualizar y eliminar).
