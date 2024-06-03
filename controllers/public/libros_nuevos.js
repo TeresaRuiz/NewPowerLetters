@@ -1,4 +1,8 @@
 
+const AUTORES_API = 'services/admin/autores.php';
+const CLASIFICACION_API = 'services/admin/clasificacion.php';
+const EDITORIAL_API = 'services/admin/editoriales.php';
+const GENERO_API = 'services/admin/genero.php';
 // Constante para completar la ruta de la API.
 const LIBROS_API = 'services/public/libros.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
@@ -7,6 +11,8 @@ const LIBROSN = document.getElementById('librosNuevos');
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
+
+    comboBox();
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
     FORM.append('idClas', PARAMS.get('id'));
@@ -51,6 +57,25 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log(DATA.error);
     }
 });
+
+
+
+const comboBox = () => {
+   
+   
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+   
+        
+        fillSelect(GENERO_API, 'readAll', 'nombreGEN');
+        fillSelect(EDITORIAL_API, 'readAll', 'editorial');
+        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion');
+        fillSelect(AUTORES_API, 'readAll', 'autor');
+    
+};
+
+
+
+
 
 const viewDetails = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.

@@ -17,6 +17,14 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'No existen libros para mostrar';
             }
             break;
+        case 'readAll':
+            if ($result['dataset'] = $libro->readAll()) {
+                $result['status'] = 1; // Indicar que la operación fue exitosa.
+                $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
+            } else {
+                $result['error'] = 'No existen libros registrados'; // Mensaje si no se encuentran autores.
+            }
+            break;
         case 'readOne':
             if (!$libro->setId($_POST['idLibro'])) {
                 $result['error'] = $libro->getDataError();
