@@ -90,6 +90,15 @@ class PedidoHandler
         return Database::executeRow($sql, $params);
     }
 
+    // Método para actualizar la cantidad de un producto agregado al carrito de compras.
+    public function updateDetail()
+    {
+        $sql = 'UPDATE tb_detalle_pedidos
+            SET cantidad = ?
+            WHERE id_detalle = ? AND id_pedido = ?';
+        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idPedido']);
+        return Database::executeRow($sql, $params);
+    }
     public function searchRows()
     {
         // Obtener el valor de búsqueda y envolverlo con comodines para usar con LIKE
