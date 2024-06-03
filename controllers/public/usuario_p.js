@@ -23,7 +23,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     const FORM = new FormData(SAVE_FORM);
     // Petición para guardar los datos del formulario.
     try {
-        const DATA = await fetchData(USUARIO_API, 'createRow', FORM);
+        const DATA = await fetchData(USUARIO_API, 'signUp', FORM);
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (DATA.status) {
             // Se cierra la caja de diálogo.
