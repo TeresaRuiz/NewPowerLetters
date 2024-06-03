@@ -24,6 +24,7 @@ class UsuarioHandler
     // Constante para establecer la ruta de las imágenes.
     const RUTA_IMAGEN = '../../images/usuarios/';
 
+    
     /*
      * Método para verificar las credenciales del usuario.
      */
