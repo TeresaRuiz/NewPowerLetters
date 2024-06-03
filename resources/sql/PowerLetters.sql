@@ -67,32 +67,32 @@ CREATE TABLE tb_libros (
     CONSTRAINT fk_editorial FOREIGN KEY (id_editorial) REFERENCES tb_editoriales(id_editorial)
 );
 
-CREATE TABLE tb_comentarios (
-    id_comentario INT PRIMARY KEY AUTO_INCREMENT,
-    comentario VARCHAR(250),
-    calificacion INT,
-    estado_comentario ENUM('ACTIVO', 'BLOQUEADO')
-);
-
-
-CREATE TABLE tb_detalle_pedidos (
-    id_detalle INT PRIMARY KEY AUTO_INCREMENT,
-    id_libro INT,
-    cantidad INT,
-    id_comentario INT,
-    CONSTRAINT fk_libro FOREIGN KEY (id_libro) REFERENCES tb_libros(id_libro),
-    CONSTRAINT fk_comentario FOREIGN KEY (id_comentario) REFERENCES tb_comentarios(id_comentario)
-);
-
 CREATE TABLE tb_pedidos (
     id_pedido INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT,
     direccion_pedido varchar(250) NOT NULL,
     estado ENUM('FINALIZADO', 'PENDIENTE', 'ENTREGADO', 'CANCELADO'),
     fecha_pedido DATETIME,
-    id_detalle INT, 
-    CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario),
-    CONSTRAINT fk_pedido FOREIGN KEY (id_detalle) REFERENCES tb_detalle_pedidos(id_detalle)
+    CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario)
+);
+
+CREATE TABLE tb_detalle_pedidos (
+    id_detalle INT PRIMARY KEY AUTO_INCREMENT,
+    id_libro INT,
+    cantidad INT,
+    id_pedido INT,
+    precio DECIMAL(10, 2),
+    CONSTRAINT fk_libro FOREIGN KEY (id_libro) REFERENCES tb_libros(id_libro),
+    CONSTRAINT fk_pedido FOREIGN KEY (id_pedido) REFERENCES tb_pedidos(id_pedido)
+);
+
+CREATE TABLE tb_comentarios (
+    id_comentario INT PRIMARY KEY AUTO_INCREMENT,
+    comentario VARCHAR(250),
+    calificacion INT,
+    estado_comentario ENUM('ACTIVO', 'BLOQUEADO'), 
+    id_detalle INT,
+    CONSTRAINT fk_comentario_detalle FOREIGN KEY (id_detalle) REFERENCES tb_detalle_pedidos(id_detalle)
 );
 
 DELIMITER //
