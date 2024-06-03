@@ -80,3 +80,63 @@ async function readDetail() {
         sweetAlert(4, DATA.error, false, 'index.html');
     }
 }
+
+/*
+*   Función para abrir la caja de diálogo con el formulario de cambiar cantidad de producto.
+*   Parámetros: id (identificador del producto) y quantity (cantidad actual del producto).
+*   Retorno: ninguno.
+*/
+function openUpdate(id, quantity) {
+    // Se abre la caja de diálogo que contiene el formulario.
+    ITEM_MODAL.show();
+    // Se inicializan los campos del formulario con los datos del registro seleccionado.
+    document.getElementById('idDetalle').value = id;
+    document.getElementById('cantidadProducto').value = quantity;
+}
+
+/*
+*   Función asíncrona para mostrar un mensaje de confirmación al momento de finalizar el pedido.
+*   Parámetros: ninguno.
+*   Retorno: ninguno.
+*/
+async function finishOrder() {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        // Petición para finalizar el pedido en proceso.
+        const DATA = await fetchData(PEDIDO_API, 'finishOrder');
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (DATA.status) {
+            sweetAlert(1, DATA.message, true, 'index.html');
+        } else {
+            sweetAlert(2, DATA.error, false);
+        }
+    }
+}
+
+/*
+*   Función asíncrona para mostrar un mensaje de confirmación al momento de eliminar un producto del carrito.
+*   Parámetros: id (identificador del producto).
+*   Retorno: ninguno.
+*/
+async function openDelete(id) {
+    // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
+    const RESPONSE = await confirmAction('¿Está seguro de remover el producto?');
+    // Se verifica la respuesta del mensaje.
+    if (RESPONSE) {
+        // Se define un objeto con los datos del producto seleccionado.
+        const FORM = new FormData();
+        FORM.append('idDetalle', id);
+        // Petición para eliminar un producto del carrito de compras.
+        const DATA = await fetchData(PEDIDO_API, 'deleteDetail', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (DATA.status) {
+            await sweetAlert(1, DATA.message, true);
+            // Se carga nuevamente la tabla para visualizar los cambios.
+            readDetail();
+        } else {
+            sweetAlert(2, DATA.error, false);
+        }
+    }
+}
