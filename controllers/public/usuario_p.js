@@ -8,7 +8,7 @@ const SAVE_FORM = document.getElementById('signupForm'),
     CORREO_CLIENTE = document.getElementById('correoCliente'),
     DIRECCION_CLIENTE = document.getElementById('direccionCliente'),
     TELEFONO_CLIENTE = document.getElementById('telefonoCliente');
-CLAVE_CLIENTE = document.getElementById('claveAdministrador'),
+    CLAVE_CLIENTE = document.getElementById('claveAdministrador'),
     CONFIRMAR_CLAVE = document.getElementById('confirmarClave');
 
 
