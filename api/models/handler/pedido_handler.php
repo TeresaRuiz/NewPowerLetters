@@ -45,7 +45,7 @@ class PedidoHandler
     } else {
         $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_usuario)
                 VALUES((SELECT direccion_cliente FROM tb_usuarios WHERE id_usuario = ?), ?)';
-        $params = array($_SESSION['idCliente'], $_SESSION['idCliente']);
+        $params = array($_SESSION['id_usuario'], $_SESSION['id_usuario']);
         // Se obtiene el ultimo valor insertado de la llave primaria en la tabla tb_pedidos.
         if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
             return true;
