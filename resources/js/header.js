@@ -63,7 +63,7 @@ header.innerHTML = `
 
             <!-- Carrito button  -->
                
-            <i class="ri-shopping-cart-fill carrito-button" id="carrito-button"></i>
+            <a href="carrito.html"><i class="ri-shopping-cart-fill carrito-button" id="carrito-button"></i></a>
 
               <!-- theame button  -->
 

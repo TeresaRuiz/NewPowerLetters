@@ -2,51 +2,69 @@
 <html lang="es">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carrito de compras</title>
-    <link rel="stylesheet" href="../../Resources/css/styles.css">
-    <link rel="stylesheet" href="../../Resources/css/estilo_tabla.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-    <!-- Agregamos la hoja de estilos de RemixIcon -->
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Carrito de compras</title>
+	<link rel="stylesheet" href="../../Resources/css/styles.css">
+	<link rel="stylesheet" href="../../Resources/css/estilo_tabla.css">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+	<!-- Agregamos la hoja de estilos de RemixIcon -->
 </head>
 
 <body>
 
-    <header class="header">
-        <!-- Código del encabezado omitido por brevedad -->
-    </header>
+	<header class="header">
+		<!-- Código del encabezado omitido por brevedad -->
+	</header>
 
-    <main class="main section">
-        <div class="container">
-            <h1 class="section__title">Carrito de compras</h1>
-            <!-- Formulario de búsqueda y botón de agregar -->
-            <!-- Tabla con estilo elegante -->
-            <table class="table">
-                <thead>
-                    <tr>
-                        <td colspan="2" id="rowsFound"></td>
-                    </tr>
-                    <tr>
-                        <th>LIBRO</th>
-                        <th>PRECIO (US$)</th>
+	<main class="main section">
+		<div class="container">
+			<h1 class="section__title">Carrito de compras</h1>
+			<!-- Formulario de búsqueda y botón de agregar -->
+			<!-- Tabla con estilo elegante -->
+			<table class="table">
+				<thead>
+					<tr>
+						<td colspan="2" id="rowsFound"></td>
+					</tr>
+					<tr>
+						<th>LIBRO</th>
+						<th>PRECIO (US$)</th>
 						<th>CANTIDAD</th>
 						<th>SUBTOTAL (US$)</th>
 						<th>ACCIONES</th>
-                    </tr>
-                </thead>
-                <tbody id="tableBody">
-                </tbody>
-            </table>
-        </div>
-       
-    </main>
-    <!--=============== SWIPER JS ===============-->
-    <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="../../Resources/js/scrollreveal.min.js"></script>
-    <script src="../../Resources/js/main.js"></script>
-    <script src="../../Resources/js/sweetalert.min.js"></script>
+					</tr>
+				</thead>
+				<tbody id="tableBody">
+				</tbody>
+			</table>
+		</div>
+		<!-- Párrafo para mostrar el monto total a pagar -->
+		<p style="text-align: right;">TOTAL A PAGAR (US$) <b id="pago"></b></p>
+
+		<!-- Párrafo para mostrar un botón que finaliza el pedido -->
+		<p style="text-align: right;">
+			<button type="button"
+				style="background-color: blue; color: white; padding: 5px 10px; border: none; border-radius: 4px; cursor: pointer;"
+				onclick="finishOrder()">
+				<i class="ri ri-credit-card-fill"></i> Finalizar pedido
+			</button>
+		</p>
+
+		<!-- Párrafo para mostrar un enlace a la página web principal -->
+		<p style="text-align: right;">
+			<a href="index.html"
+				style="background-color: green; color: white; padding: 8px 16px; border: none; border-radius: 4px; text-decoration: none;">
+				<i class="ri ri-cart-fill"></i> Seguir comprando
+			</a>
+		</p>
+	</main>
+	<!--=============== SWIPER JS ===============-->
+	<script src="../../Resources/js/swiper-bundle.min.js"></script>
+	<!--=============== SCROLLREVEAL ===============-->
+	<script src="../../Resources/js/scrollreveal.min.js"></script>
+	<script src="../../Resources/js/main.js"></script>
+	<script src="../../Resources/js/sweetalert.min.js"></script>
 	<script src="../../Resources/js/header.js"></script>
 </body>
 
