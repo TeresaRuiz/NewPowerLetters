@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 
 /*
  * Clase para manejar el comportamiento de los datos de la tabla COMENTARIOS.
@@ -32,9 +32,9 @@ class ComentarioHandler
                 FROM
                     tb_comentarios AS c
                 JOIN
-                    tb_detalle_pedidos AS dp ON c.id_comentario = dp.id_comentario
+                    tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
                 JOIN
-                    tb_pedidos AS p ON dp.id_detalle = p.id_detalle
+                    tb_pedidos AS p ON dp.id_pedido = p.id_pedido
                 JOIN
                     tb_usuarios AS u ON p.id_usuario = u.id_usuario
                 WHERE
