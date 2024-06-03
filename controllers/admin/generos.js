@@ -10,6 +10,7 @@ const SAVE_FORM = document.getElementById('saveForm'),
     ID_GENERO = document.getElementById('idGenero'),
     NOMBRE_Gen = document.getElementById('nombreGEN'),
     IMAGEN_Gen = document.getElementById('nombreIMG');
+    
 // Se establece el título de la página web.
 document.querySelector('title').textContent = 'Género de libros';
 
