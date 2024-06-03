@@ -24,6 +24,7 @@ class UsuarioHandler
     // Constante para establecer la ruta de las imágenes.
     const RUTA_IMAGEN = '../../images/usuarios/';
 
+
     /*
      * Método para verificar las credenciales del usuario.
      */
@@ -108,11 +109,11 @@ class UsuarioHandler
     public function createRow()
     {
         // Definir la consulta SQL para insertar un nuevo usuario
-        $sql = 'INSERT INTO tb_usuarios(nombre, nombre_usuario, correo, telefono, direccion, clave, estado_cliente, fecha_registro)
-            VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
+        $sql = 'INSERT INTO tb_usuarios(nombre, nombre_usuario, correo, telefono, direccion, clave,  fecha_registro)
+            VALUES(?, ?, ?, ?, ?, ?, ?)';
 
         // Establecer los parámetros para la consulta (datos del nuevo usuario)
-        $params = array($this->nombre, $this->nombreUser, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->estado, $this->fecha);
+        $params = array($this->nombre, $this->nombreUser, $this->correo, $this->telefono, $this->direccion, $this->clave, $this->fecha);
 
         // Ejecutar la consulta y devolver el resultado
         return Database::executeRow($sql, $params);

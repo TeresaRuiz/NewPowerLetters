@@ -273,151 +273,31 @@ VALUES
   ('Demian',25,14.75,'Desarrollo personal y dualidad interna del protagonista Emil Sinclair','imagen25.jpg',25,25,30,25);
   SELECT*FROM tb_libros;
   
-INSERT INTO tb_comentarios (id_comentario, comentario, calificacion, estado_comentario)
-VALUES (1, 'Me encanto', 4, 'ACTIVO'),
-       (2, 'Muy bueno', 4, 'ACTIVO'),
-       (3, 'Un poco alto el precio pero estuvo bien', 3, 'ACTIVO'),
-       (4, 'Lo adore', 5, 'ACTIVO'),
-       (5, 'No me gusto', 2, 'ACTIVO'),
-       (6, 'Compre dos me encanto', 5, 'ACTIVO'),
-       (7, 'Muy caro el precio', 2, 'ACTIVO'),
-       (8, 'Mucho texto xd', 3, 'ACTIVO'),
-       (9, 'Un clasico', 4, 'ACTIVO'),
-       (10, 'Me divirtio lo recomiendo', 4, 'ACTIVO'),
-       (11, 'El autor no me gusta', 2, 'ACTIVO'),
-       (12, 'Muy bueno lo recomiendo', 4, 'ACTIVO'),
-       (13, 'El nombre me encanto', 5, 'ACTIVO'),
-       (14, 'Muy interesante', 4, 'ACTIVO'),
-       (15, 'Me encanto el final', 5, 'ACTIVO'),
-       (16, 'Saquen una peli de este libro', 3, 'ACTIVO'),
-       (17, 'Era mejor el anterior', 3, 'ACTIVO'),
-       (18, 'Mas texto xd', 3, 'ACTIVO'),
-       (19, 'La trilogia me encanto', 5, 'ACTIVO'),
-       (20, 'Me emociono la gran batalla', 4, 'ACTIVO'),
-       (21, 'Se me daño', 1, 'ACTIVO'),
-       (22, 'Mas bonito mejor', 4, 'ACTIVO'),
-       (23, 'Mas texto xd', 2, 'ACTIVO'),
-       (24, 'Fascinante', 5, 'ACTIVO'),
-       (25, 'Final hermoso <3', 5, 'ACTIVO');
+  -- Insertar datos en la tabla tb_pedidos
+INSERT INTO tb_pedidos (id_usuario, direccion_pedido, estado, fecha_pedido) VALUES 
+    (1, 'Calle Principal 123', 'PENDIENTE', NOW()),
+    (2, 'Avenida Central 456', 'ENTREGADO', NOW()),
+    (3, 'Plaza Mayor 789', 'FINALIZADO', NOW()),
+    (4, 'Calle Secundaria 456', 'CANCELADO', NOW()),
+    (5, 'Avenida Principal 789', 'PENDIENTE', NOW());
 
 -- Insertar datos en la tabla tb_detalle_pedidos
-INSERT INTO tb_detalle_pedidos (id_libro, cantidad, id_comentario) VALUES (1, 2, 1);
-INSERT INTO tb_detalle_pedidos (id_libro, cantidad, id_comentario) VALUES (2, 1, 2);
-INSERT INTO tb_detalle_pedidos (id_libro, cantidad, id_comentario) VALUES (3, 3, 3);
-INSERT INTO tb_detalle_pedidos (id_libro, cantidad, id_comentario) VALUES (4, 1, 4);
-INSERT INTO tb_detalle_pedidos (id_libro, cantidad, id_comentario) VALUES (5, 2, 5);
+INSERT INTO tb_detalle_pedidos (id_libro, cantidad, id_pedido, precio) VALUES 
+    (1, 2, 1, 19.99),
+    (2, 1, 2, 24.99),
+    (3, 3, 3, 14.99),
+    (4, 1, 4, 29.99),
+    (5, 2, 5, 12.99);
 
--- Insertar datos en la tabla tb_pedidos
-INSERT INTO tb_pedidos (id_usuario, direccion_pedido, estado, fecha_pedido, id_detalle) VALUES (1, 'Calle Principal 123', 'PENDIENTE', NOW(), 1);
-INSERT INTO tb_pedidos (id_usuario, direccion_pedido, estado, fecha_pedido, id_detalle) VALUES (2, 'Avenida Central 456', 'ENTREGADO', NOW(), 2);
-INSERT INTO tb_pedidos (id_usuario, direccion_pedido, estado, fecha_pedido, id_detalle) VALUES (3, 'Plaza Mayor 789', 'FINALIZADO', NOW(), 3);
-INSERT INTO tb_pedidos (id_usuario, direccion_pedido, estado, fecha_pedido, id_detalle) VALUES (4, 'Calle Secundaria 456', 'CANCELADO', NOW(), 4);
-INSERT INTO tb_pedidos (id_usuario, direccion_pedido, estado, fecha_pedido, id_detalle) VALUES (5, 'Avenida Principal 789', 'PENDIENTE', NOW(), 5);
-
-
-
-
+-- Insertar datos en la tabla tb_comentarios
+INSERT INTO tb_comentarios (comentario, calificacion, estado_comentario, id_detalle) VALUES 
+    ('Me encanto', 4, 'ACTIVO', 1),
+    ('Muy bueno', 4, 'ACTIVO', 2),
+    ('Un poco alto el precio pero estuvo bien', 3, 'ACTIVO', 3),
+    ('Lo adore', 5, 'ACTIVO', 4),
+    ('No me gusto', 2, 'ACTIVO', 5);
+    
+    
 SELECT*FROM tb_pedidos;
 SELECT*FROM tb_detalle_pedidos;
-
-SELECT
-    l.id_libro,
-    l.titulo AS titulo_libro,
-    l.descripcion AS descripcion_libro,
-    l.precio,
-    l.imagen,
-    a.id_autor,
-    a.nombre AS nombre_autor,
-    c.id_clasificacion,
-    c.nombre AS nombre_clasificacion,
-    e.id_editorial,
-    e.nombre AS nombre_editorial,
-    g.id_genero,
-    g.nombre AS nombre_genero,
-    l.existencias
-FROM
-    tb_libros AS l
-INNER JOIN
-    tb_autores AS a ON l.id_autor = a.id_autor
-INNER JOIN
-    tb_clasificaciones AS c ON l.id_clasificacion = c.id_clasificacion
-INNER JOIN
-    tb_editoriales AS e ON l.id_editorial = e.id_editorial
-INNER JOIN
-    tb_generos AS g ON l.id_genero = g.id_genero
-ORDER BY
-    l.titulo;
-
-
-SELECT
-        p.id_pedido,
-        p.id_usuario,
-        p.direccion_pedido,
-        p.estado,
-        p.fecha_pedido,
-        d.id_detalle
-    FROM
-        tb_pedidos AS p
-    INNER JOIN
-        tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
-    ORDER BY
-        p.fecha_pedido;
-        
-
-SELECT
-    p.id_pedido,
-    p.id_usuario AS nombre,
-    p.direccion_pedido,
-    p.estado,
-    p.fecha_pedido,
-    d.id_detalle
-FROM
-    tb_pedidos AS p
-INNER JOIN
-    tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
-ORDER BY
-    p.fecha_pedido;
-    
-    
-    
-    SELECT
-    p.id_pedido,
-    p.id_usuario,
-    u.nombre_usuario,
-    p.direccion_pedido,
-    p.estado,
-    p.fecha_pedido,
-    d.id_detalle
-FROM
-    tb_pedidos AS p
-INNER JOIN
-    tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
-INNER JOIN
-    tb_usuarios AS u ON p.id_usuario = u.id_usuario
-ORDER BY
-    p.fecha_pedido;
-    
-    
-    
-SELECT
-        c.id_comentario,
-        c.comentario,
-        c.calificacion,
-        c.estado_comentario
-    FROM
-        tb_comentarios AS c
-    ORDER BY
-        c.id_comentario; 
-        
-        
-        SELECT
-        c.id_comentario,
-        c.comentario,
-        c.calificacion,
-        c.estado_comentario
-    FROM
-        tb_comentarios AS c
-    WHERE
-        c.id_comentario = 10
-        
-        
+SELECT*FROM tb_comentarios;

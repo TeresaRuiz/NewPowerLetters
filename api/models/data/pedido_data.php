@@ -97,6 +97,29 @@ class PedidoData extends PedidoHandler
         }
     }
 
+    public function setLibro($value)
+    {
+        // Valida que el identificador sea un número natural.
+        if (Validator::validateNaturalNumber($value)) {
+            $this->id = $value; // Asigna el valor del identificador.
+            return true;
+        } else {
+            $this->data_error = 'El libro del pedido es incorrecto'; // Almacena mensaje de error.
+            return false;
+        }
+    }
+
+    public function setCantidad($value)
+    {
+        if (Validator::validateNaturalNumber($value)) {
+            $this->cantidad = $value;
+            return true;
+        } else {
+            $this->data_error = 'La cantidad del producto debe ser mayor o igual a 1';
+            return false;
+        }
+    }
+
     /*
      * Métodos para obtener el valor de los atributos adicionales.
      */

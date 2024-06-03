@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 
 /*
  * Clase para manejar el comportamiento de los datos de la tabla COMENTARIOS.
@@ -32,9 +32,9 @@ class ComentarioHandler
                 FROM
                     tb_comentarios AS c
                 JOIN
-                    tb_detalle_pedidos AS dp ON c.id_comentario = dp.id_comentario
+                    tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
                 JOIN
-                    tb_pedidos AS p ON dp.id_detalle = p.id_detalle
+                    tb_pedidos AS p ON dp.id_pedido = p.id_pedido
                 JOIN
                     tb_usuarios AS u ON p.id_usuario = u.id_usuario
                 WHERE
@@ -66,9 +66,9 @@ class ComentarioHandler
                 FROM
                     tb_comentarios AS c
                 JOIN
-                    tb_detalle_pedidos AS dp ON c.id_comentario = dp.id_comentario
+                    tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
                 JOIN
-                    tb_pedidos AS p ON dp.id_detalle = p.id_detalle
+                    tb_pedidos AS p ON dp.id_pedido = p.id_pedido
                 JOIN
                     tb_usuarios AS u ON p.id_usuario = u.id_usuario
                 ORDER BY
@@ -77,7 +77,6 @@ class ComentarioHandler
         // Ejecutar la consulta y devolver las filas resultantes
         return Database::getRows($sql);
     }
-
     /*
      * Método para leer una fila específica de la tabla tb_comentarios por id.
      */
@@ -85,25 +84,29 @@ class ComentarioHandler
     {
         // Definir la consulta SQL para obtener un registro específico por id
         $sql = 'SELECT
-                    c.id_comentario,
-                    c.comentario,
-                    c.calificacion,
-                    c.estado_comentario,
-                    u.nombre_usuario,
-                    l.titulo,
-                    l.imagen
-                FROM
-                    tb_comentarios AS c
-                JOIN
-                    tb_detalle_pedidos AS dp ON c.id_comentario = dp.id_comentario
-                JOIN
-                    tb_pedidos AS p ON dp.id_detalle = p.id_detalle
-                JOIN
-                    tb_usuarios AS u ON p.id_usuario = u.id_usuario
-                JOIN
-                    tb_libros AS l ON dp.id_libro = l.id_libro
-                WHERE
-                    c.id_comentario = ?';
+                c.id_comentario,
+                c.comentario,
+                c.calificacion,
+                c.estado_comentario,
+                u.nombre_usuario,
+                dp.id_detalle,
+                dp.id_libro,
+                dp.cantidad,
+                dp.precio,
+                l.titulo,
+                l.imagen
+            FROM
+                tb_comentarios AS c
+            JOIN
+                tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
+            JOIN
+                tb_pedidos AS p ON dp.id_pedido = p.id_pedido
+            JOIN
+                tb_usuarios AS u ON p.id_usuario = u.id_usuario
+            JOIN
+                tb_libros AS l ON dp.id_libro = l.id_libro
+            WHERE
+                c.id_comentario = ?';
 
         // Establecer los parámetros para la consulta (id)
         $params = array($this->id);
