@@ -90,7 +90,7 @@
   box-sizing: border-box;
   outline: none;
   border: none;
-  font-family: "Poppins", sans-serif;
+ 
 }
 
 .wrapper{
@@ -131,3 +131,60 @@
   color: #ffffff;
 }
 
+#clasificacionbtn{
+  margin-left: 150px;
+}
+
+#editorialbtn{
+  margin-left: 150px;
+}
+
+#autorbtn{
+  margin-left: 150px;
+}
+
+
+  /****************************DISEÑO DEL BOTONES DESPLEGABLES*************************************/
+
+  .menu-horizontal{
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+  }
+  .menu-horizontal > li > a{
+    display: block;
+    padding: 15px 20px;
+    color: white;
+    text-decoration: none;
+  }
+  .menu-horizontal > li:hover{
+    background-color: red;
+  }
+  .menu-vertical{
+    position: absolute;
+    display: none;
+    list-style: none;
+    width: 200px;
+    background-color: rgba(0, 0, 0, .5);
+  }
+  .menu-horizontal li:hover .menu-vertical{
+    display: block;
+  }
+  .menu-vertical li:hover{
+    background-color: black;
+  }
+  
+  .menu-vertical li a{
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 15px 15px 15px 20px;
+  }
+  
+  #html{
+    margin: auto;
+    padding: 20px;
+    max-width: 900px;
+    background: white;
+  
+  }
