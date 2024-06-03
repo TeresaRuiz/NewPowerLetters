@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 
 /*
  * Clase para manejar el comportamiento de los datos de la tabla PRODUCTO.
@@ -25,7 +25,7 @@ class PedidoHandler
         // Obtener el valor de búsqueda y envolverlo con comodines para usar con LIKE
         $value = '%' . Validator::getSearchValue() . '%';
 
-        // Definir la consulta SQL para buscar coincidencias en la tabla tb_pedidos
+        // Definir la consulta SQL para buscar coincidencias en las tablas tb_pedidos, tb_detalle_pedidos y tb_comentarios
         $sql = 'SELECT
                 p.id_pedido,
                 p.id_usuario,
@@ -33,55 +33,84 @@ class PedidoHandler
                 p.direccion_pedido,
                 p.estado,
                 p.fecha_pedido,
-                p.id_detalle
+                dp.id_detalle,
+                dp.id_libro,
+                dp.cantidad,
+                dp.precio,
+                c.id_comentario,
+                c.comentario,
+                c.calificacion,
+                c.estado_comentario
             FROM
                 tb_pedidos AS p
             INNER JOIN
                 tb_usuarios AS u ON p.id_usuario = u.id_usuario
+            LEFT JOIN
+                tb_detalle_pedidos AS dp ON p.id_pedido = dp.id_pedido
+            LEFT JOIN
+                tb_comentarios AS c ON dp.id_detalle = c.id_detalle
             WHERE
                 p.id_pedido LIKE ? OR
                 CAST(p.id_usuario AS CHAR) LIKE ? OR
                 u.nombre_usuario LIKE ? OR
                 p.direccion_pedido LIKE ? OR
                 p.estado LIKE ? OR
-                p.fecha_pedido LIKE ?
+                p.fecha_pedido LIKE ? OR
+                dp.id_detalle LIKE ? OR
+                dp.id_libro LIKE ? OR
+                dp.cantidad LIKE ? OR
+                dp.precio LIKE ? OR
+                c.id_comentario LIKE ? OR
+                c.comentario LIKE ? OR
+                c.calificacion LIKE ? OR
+                c.estado_comentario LIKE ?
             ORDER BY
                 p.fecha_pedido;';
 
         // Establecer los parámetros para la consulta (el término de búsqueda)
-        $params = array($value, $value, $value, $value, $value, $value);
+        $params = array(
+            $value,$value,$value,$value,$value, $value,$value,$value,$value,$value,$value, $value,$value,$value
+        );
 
         // Ejecutar la consulta y devolver las filas resultantes
         return Database::getRows($sql, $params);
     }
 
-
     /*
      * Método para leer todos los registros de la tabla tb_pedidos.
      */
     public function readAll()
-    {
-        // Definir la consulta SQL para obtener todos los registros
-        $sql = 'SELECT
-                    p.id_pedido,
-                    p.id_usuario,
-                    u.nombre_usuario,
-                    p.direccion_pedido,
-                    p.estado,
-                    p.fecha_pedido,
-                    d.id_detalle
-                FROM
-                    tb_pedidos AS p
-                INNER JOIN
-                    tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
-                INNER JOIN
-                    tb_usuarios AS u ON p.id_usuario = u.id_usuario
-                ORDER BY
-                    p.fecha_pedido;';
+{
+    // Definir la consulta SQL para obtener todos los registros
+    $sql = 'SELECT
+                p.id_pedido,
+                p.id_usuario,
+                u.nombre_usuario,
+                p.direccion_pedido,
+                p.estado,
+                p.fecha_pedido,
+                dp.id_detalle,
+                dp.id_libro,
+                dp.cantidad,
+                dp.precio,
+                c.id_comentario,
+                c.comentario,
+                c.calificacion,
+                c.estado_comentario
+            FROM
+                tb_pedidos AS p
+            INNER JOIN
+                tb_usuarios AS u ON p.id_usuario = u.id_usuario
+            LEFT JOIN
+                tb_detalle_pedidos AS dp ON p.id_pedido = dp.id_pedido
+            LEFT JOIN
+                tb_comentarios AS c ON dp.id_detalle = c.id_detalle
+            ORDER BY
+                p.fecha_pedido;';
 
-        // Ejecutar la consulta y devolver las filas resultantes
-        return Database::getRows($sql);
-    }
+    // Ejecutar la consulta y devolver las filas resultantes
+    return Database::getRows($sql);
+}
 
     /*
      * Método para leer un registro específico de la tabla tb_pedidos por su id.
