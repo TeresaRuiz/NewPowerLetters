@@ -80,6 +80,16 @@ class PedidoHandler
     }
 
 
+    public function finishOrder()
+    {
+        $this->estado = 'FINALIZADO';
+        $sql = 'UPDATE tb_pedidos
+            SET estado = ?
+            WHERE id_pedido = ?';
+        $params = array($this->estado, $_SESSION['idPedido']);
+        return Database::executeRow($sql, $params);
+    }
+
     public function searchRows()
     {
         // Obtener el valor de búsqueda y envolverlo con comodines para usar con LIKE
