@@ -10,6 +10,15 @@
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
 	<!-- Agregamos la hoja de estilos de RemixIcon -->
 </head>
+<style>
+	.libro__input {
+		width: 100%;
+		background-color: var(--container-color);
+		border: 2px solid var(--border-color);
+		padding: 1rem;
+		color: var(--text-color);
+	}
+</style>
 
 <body>
 
@@ -62,14 +71,41 @@
 				</a>
 			</p>
 		</div>
+
+		<!-- Modal -->
+		<div id="myModal" class="modal">
+			<div class="modal-background"></div>
+			<div class="modal-content card">
+				<span onclick="closeModal()" class="close">&times;</span>
+				<div class="card-body">
+					<h2>Cambiar cantidad</h2>
+					<br>
+					<form id="saveForm">
+						<!-- Campo oculto para asignar el id del registro al momento de modificar -->
+						<input type="number" id="idDetalle" name="idDetalle" style=" display: none;">
+						<div>
+							<label class="genero__label">Cantidad</label>
+							<input id="cantidadProducto" type="number" name="cantidadProducto" min="1"
+								class="libro__input" required>
+						</div>
+						<br><br>
+						<button type="submit" class="genero__button button">Guardar</button>
+					</form>
+				</div>
+			</div>
+		</div>
 	</main>
 	<!--=============== SWIPER JS ===============-->
 	<script src="../../Resources/js/swiper-bundle.min.js"></script>
 	<!--=============== SCROLLREVEAL ===============-->
 	<script src="../../Resources/js/scrollreveal.min.js"></script>
 	<script src="../../Resources/js/main.js"></script>
-	<script src="../../Resources/js/sweetalert.min.js"></script>
 	<script src="../../Resources/js/header.js"></script>
+	<script src="../../Resources/js/modals_.js"></script>
+	<script src="../../Resources/js/sweetalert.min.js"></script>
+	<script type="text/javascript" src="../../controllers/utils/components.js"></script>
+	<script type="text/javascript" src="../../controllers/utils/public.js"></script>
+	<script type="text/javascript" src="../../controllers/public/carrito.js"></script>
 </body>
 
 </html>
