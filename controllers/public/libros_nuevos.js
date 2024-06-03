@@ -60,7 +60,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
 
-const comboBox = () => {
+function comboBox(){
    
    
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
@@ -71,10 +71,7 @@ const comboBox = () => {
         fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion');
         fillSelect(AUTORES_API, 'readAll', 'autor');
     
-};
-
-
-
+}
 
 
 const viewDetails = async (id) => {
