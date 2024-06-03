@@ -125,31 +125,35 @@ class PedidoHandler
                     p.direccion_pedido,
                     p.estado,
                     p.fecha_pedido,
-                    d.id_detalle,
+                    dp.id_detalle,
+                    dp.id_libro,
+                    dp.cantidad,
+                    dp.precio,
                     l.titulo,
                     l.imagen AS imagen_libro,
-                    d.cantidad,
-                    r.comentario
+                    c.id_comentario,
+                    c.comentario,
+                    c.calificacion,
+                    c.estado_comentario
                 FROM
                     tb_pedidos AS p
                 INNER JOIN
-                    tb_detalle_pedidos AS d ON p.id_detalle = d.id_detalle
-                INNER JOIN
                     tb_usuarios AS u ON p.id_usuario = u.id_usuario
-                INNER JOIN
-                    tb_libros AS l ON d.id_libro = l.id_libro
                 LEFT JOIN
-                    tb_comentarios AS r ON d.id_comentario = r.id_comentario  
+                    tb_detalle_pedidos AS dp ON p.id_pedido = dp.id_pedido
+                LEFT JOIN
+                    tb_libros AS l ON dp.id_libro = l.id_libro
+                LEFT JOIN
+                    tb_comentarios AS c ON dp.id_detalle = c.id_detalle
                 WHERE
                     p.id_pedido = ?';
-
+    
         // Establecer los parámetros para la consulta (id)
         $params = array($this->id);
-
+    
         // Ejecutar la consulta y devolver el resultado
         return Database::getRow($sql, $params);
     }
-
     /*
      * Método para actualizar un registro específico de la tabla tb_pedidos por su id.
      */
