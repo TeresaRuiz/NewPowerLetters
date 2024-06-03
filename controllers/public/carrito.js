@@ -59,7 +59,7 @@ async function readDetail() {
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td>${row.nombre_producto}</td>
+                    <td>${row.titulo_libro}</td>
                     <td>${row.precio_producto}</td>
                     <td>${row.cantidad_producto}</td>
                     <td>${subtotal.toFixed(2)}</td>
