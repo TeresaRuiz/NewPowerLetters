@@ -20,6 +20,23 @@ class PedidoHandler
     /*
      * Método para buscar registros en la tabla tb_pedidos.
      */
+
+
+    public function getOrder()
+    {
+        $this->estado = 'PENDIENTE';
+        $sql = 'SELECT p.id_pedido
+                FROM tb_pedidos AS p
+                JOIN tb_usuarios AS u ON p.id_usuario = u.id_usuario
+                WHERE p.estado = ? AND u.id_usuario = ?';
+        $params = array($this->estado, $_SESSION['idCliente']);
+        if ($data = Database::getRow($sql, $params)) {
+            $_SESSION['idPedido'] = $data['id_pedido'];
+            return true;
+        } else {
+            return false;
+        }
+    }
     public function searchRows()
     {
         // Obtener el valor de búsqueda y envolverlo con comodines para usar con LIKE
@@ -69,7 +86,20 @@ class PedidoHandler
 
         // Establecer los parámetros para la consulta (el término de búsqueda)
         $params = array(
-            $value,$value,$value,$value,$value, $value,$value,$value,$value,$value,$value, $value,$value,$value
+            $value,
+            $value,
+            $value,
+            $value,
+            $value,
+            $value,
+            $value,
+            $value,
+            $value,
+            $value,
+            $value,
+            $value,
+            $value,
+            $value
         );
 
         // Ejecutar la consulta y devolver las filas resultantes
@@ -80,9 +110,9 @@ class PedidoHandler
      * Método para leer todos los registros de la tabla tb_pedidos.
      */
     public function readAll()
-{
-    // Definir la consulta SQL para obtener todos los registros
-    $sql = 'SELECT
+    {
+        // Definir la consulta SQL para obtener todos los registros
+        $sql = 'SELECT
                 p.id_pedido,
                 p.id_usuario,
                 u.nombre_usuario,
@@ -108,9 +138,9 @@ class PedidoHandler
             ORDER BY
                 p.fecha_pedido;';
 
-    // Ejecutar la consulta y devolver las filas resultantes
-    return Database::getRows($sql);
-}
+        // Ejecutar la consulta y devolver las filas resultantes
+        return Database::getRows($sql);
+    }
 
     /*
      * Método para leer un registro específico de la tabla tb_pedidos por su id.
@@ -147,10 +177,10 @@ class PedidoHandler
                     tb_comentarios AS c ON dp.id_detalle = c.id_detalle
                 WHERE
                     p.id_pedido = ?';
-    
+
         // Establecer los parámetros para la consulta (id)
         $params = array($this->id);
-    
+
         // Ejecutar la consulta y devolver el resultado
         return Database::getRow($sql, $params);
     }
