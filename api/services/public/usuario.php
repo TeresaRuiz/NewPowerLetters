@@ -1,6 +1,6 @@
 <?php
 // Importar la clase que gestiona los datos relacionados con 'género'.
-require_once ('../../models/data/usuario_data.php');
+require_once('../../models/data/usuario_data.php');
 
 // Verificar si se ha recibido una acción mediante el parámetro 'action' en la URL.
 if (isset($_GET['action'])) {
@@ -9,7 +9,7 @@ if (isset($_GET['action'])) {
 
     // Crear una instancia de la clase 'UsuarioData' para interactuar con los datos relacionados con 'género'.
     $Usuario = new UsuarioData;
- 
+
     // Inicializar un arreglo para almacenar el resultado de las operaciones de la API.
     $result = array(
         'status' => 0, // Indicador del estado de la operación, 0 para fallo, 1 para éxito.
@@ -22,7 +22,6 @@ if (isset($_GET['action'])) {
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
     if (isset($_SESSION['id_usuario'])) { // 'true' para permitir el acceso durante el desarrollo, cambiar a solo 'isset($_SESSION['idAdministrador'])' en producción.
-
         // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
         switch ($_GET['action']) {
             case 'searchRows': // Acción para buscar filas (géneros) según un término de búsqueda.
@@ -74,81 +73,76 @@ if (isset($_GET['action'])) {
 
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
-        } else {
-            // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
-            switch ($_GET['action']) {
-                case 'signUp':
-                    $_POST = Validator::validateForm($_POST);
-                    // Se establece la clave secreta para el reCAPTCHA de acuerdo con la cuenta de Google.
-                    $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
-                    // Se establece la dirección IP del servidor.
-                    $ip = $_SERVER['REMOTE_ADDR'];
-                    // Se establecen los datos del raCAPTCHA.
-                    $data = array('secret' => $secretKey, 'response' => $_POST['gRecaptchaResponse'], 'remoteip' => $ip);
-                    // Se establecen las opciones del reCAPTCHA.
-                    $options = array(
-                        'http' => array('header' => 'Content-type: application/x-www-form-urlencoded\r\n', 'method' => 'POST', 'content' => http_build_query($data)),
-                        'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
-                    );
-    
-                    $url = 'https://www.google.com/recaptcha/api/siteverify';
-                    $context = stream_context_create($options);
-                    $response = file_get_contents($url, false, $context);
-                    $captcha = json_decode($response, true);
-    
-                    if (!$captcha['success']) {
-                        $result['recaptcha'] = 1;
-                        $result['error'] = 'No eres humano';
-                    } elseif(!isset($_POST['condicion'])) {
-                        $result['error'] = 'Debe marcar la aceptación de términos y condiciones';
-                    } elseif (
-                        !$Usuario->setNombre($_POST['nombreCliente']) or
-                        !$Usuario->setUsuario($_POST['usuarioCliente']) or
-                        !$Usuario->setCorreo($_POST['correoCliente']) or
-                        !$Usuario->setDireccion($_POST['direccionCliente']) or
-                        !$Usuario->setTelefono($_POST['telefonoCliente']) or
-                        !$Usuario->setClave($_POST['claveCliente'])
-                    ) {
-                        $result['error'] = $Usuario->getDataError();
-                    } elseif ($_POST['claveCliente'] != $_POST['confirmarClave']) {
-                        $result['error'] = 'Contraseñas diferentes';
-                    } elseif ($Usuario->createRow()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Cuenta registrada correctamente';
-                    } else {
-                        $result['error'] = 'Ocurrió un problema al registrar la cuenta';
-                    }
-                    break;
-                case 'logIn':
-                    $_POST = Validator::validateForm($_POST);
-                    if (!$Usuario->checkUser($_POST['correo'], $_POST['clave'])) {
-                        $result['error'] = 'Datos incorrectos';
-                    } elseif ($Usuario->checkStatus()) {
-                        $result['status'] = 1;
-                        $result['message'] = 'Autenticación correcta';
-                    } else {
-                        $result['error'] = 'La cuenta ha sido desactivada';
-                    }
-                    break;
-                default:
-                    $result['error'] = 'Acción no disponible fuera de la sesión';
-                }
-            }
         }
-
-        // Capturar cualquier excepción de la base de datos.
-        $result['exception'] = Database::getException();
-
-        // Configurar el tipo de contenido para la respuesta y la codificación de caracteres.
-        header('Content-type: application/json; charset=utf-8');
-
-        // Convertir el resultado a formato JSON y enviarlo como respuesta.
-        print (json_encode($result));
     } else {
-        // Si no hay una sesión válida, se devuelve un mensaje de acceso denegado.
-        print (json_encode('Acceso denegado'));
+        // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
+        switch ($_GET['action']) {
+            case 'signUp':
+                $_POST = Validator::validateForm($_POST);
+                // Se establece la clave secreta para el reCAPTCHA de acuerdo con la cuenta de Google.
+                $secretKey = '6LdBzLQUAAAAAL6oP4xpgMao-SmEkmRCpoLBLri-';
+                // Se establece la dirección IP del servidor.
+                $ip = $_SERVER['REMOTE_ADDR'];
+                // Se establecen los datos del raCAPTCHA.
+                $data = array('secret' => $secretKey, 'response' => $_POST['gRecaptchaResponse'], 'remoteip' => $ip);
+                // Se establecen las opciones del reCAPTCHA.
+                $options = array(
+                    'http' => array('header' => 'Content-type: application/x-www-form-urlencoded\r\n', 'method' => 'POST', 'content' => http_build_query($data)),
+                    'ssl' => array('verify_peer' => false, 'verify_peer_name' => false)
+                );
+
+                $url = 'https://www.google.com/recaptcha/api/siteverify';
+                $context = stream_context_create($options);
+                $response = file_get_contents($url, false, $context);
+                $captcha = json_decode($response, true);
+
+                if (!$captcha['success']) {
+                    $result['recaptcha'] = 1;
+                    $result['error'] = 'No eres humano';
+                } elseif (!isset($_POST['condicion'])) {
+                    $result['error'] = 'Debe marcar la aceptación de términos y condiciones';
+                } elseif (
+                    
+                    !$Usuario->setNombre($_POST['nombreCliente']) or
+                    !$Usuario->setNombreUsuario($_POST['usuarioCliente']) or
+                    !$Usuario->setCorreo($_POST['correoCliente']) or
+                    !$Usuario->setDireccion($_POST['direccionCliente']) or
+                    !$Usuario->setTelefono($_POST['telefonoCliente']) or
+                    !$Usuario->setClave($_POST['claveCliente'])
+                ) {
+                    $result['error'] = $Usuario->getDataError();
+                } elseif ($_POST['claveCliente'] != $_POST['confirmarClave']) {
+                    $result['error'] = 'Contraseñas diferentes';
+                } elseif ($Usuario->createRow()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Cuenta registrada correctamente';
+                } else {
+                    $result['error'] = 'Ocurrió un problema al registrar la cuenta';
+                }
+                break;
+            case 'logIn':
+                $_POST = Validator::validateForm($_POST);
+                if (!$Usuario->checkUser($_POST['correo'], $_POST['clave'])) {
+                    $result['error'] = 'Datos incorrectos';
+                } elseif ($Usuario->checkStatus()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Autenticación correcta';
+                } else {
+                    $result['error'] = 'La cuenta ha sido desactivada';
+                }
+                break;
+            default:
+                $result['error'] = 'Acción no disponible fuera de la sesión';
+        }
     }
-    {
+
+    // Capturar cualquier excepción de la base de datos.
+    $result['exception'] = Database::getException();
+    // Configurar el tipo de contenido para la respuesta y la codificación de caracteres.
+    header('Content-type: application/json; charset=utf-8');
+    // Convertir el resultado a formato JSON y enviarlo como respuesta.
+    print(json_encode($result));
+} else {
     // Si no se recibe una acción, se devuelve un mensaje de recurso no disponible.
-    print (json_encode('Recurso no disponible'));
+    print(json_encode('Recurso no disponible'));
 }
