@@ -37,6 +37,23 @@ class PedidoHandler
             return false;
         }
     }
+
+    public function startOrder()
+{
+    if ($this->getOrder()) {
+        return true;
+    } else {
+        $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_usuario)
+                VALUES((SELECT direccion_cliente FROM tb_usuarios WHERE id_usuario = ?), ?)';
+        $params = array($_SESSION['idCliente'], $_SESSION['idCliente']);
+        // Se obtiene el ultimo valor insertado de la llave primaria en la tabla tb_pedidos.
+        if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+}
     public function searchRows()
     {
         // Obtener el valor de búsqueda y envolverlo con comodines para usar con LIKE
