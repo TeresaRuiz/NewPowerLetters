@@ -40,28 +40,28 @@
 			</table>
 		</div>
 
-		<!-- Párrafo para mostrar el monto total a pagar -->
-		<p style="text-align: right;">TOTAL A PAGAR (US$) <b id="pago"></b></p>
+		<div style="display: flex; flex-direction: column; align-items: center;">
+			<!-- Párrafo para mostrar el monto total a pagar -->
+			<p style="text-align: center; width: 100%;">TOTAL A PAGAR (US$) <b id="pago"></b></p>
 
-		<!-- Párrafo para mostrar un botón que finaliza el pedido -->
-		<p style="text-align: right;">
-			<button type="button" style="background-color: blue; 
-			color:white; 
-			padding: 5px 10px; 
-			border: none; 
-				 border-radius: 4px; 
-				 cursor: pointer;" onclick="finishOrder()">
-				<i class="ri ri-credit-card-fill"></i> Finalizar pedido
-			</button>
-		</p>
+			<!-- Párrafo para mostrar un botón que finaliza el pedido -->
+			<p style="text-align: center; width: 100%;">
+				<button type="button"
+					style="background-color: #000000; color: white; padding: 8px 16px; border: none; border-radius: 4px; cursor: pointer;"
+					onclick="finishOrder()">
+					<i class="ri ri-credit-card-fill"></i> Finalizar pedido
+				</button>
+			</p>
+			<br>
 
-		<!-- Párrafo para mostrar un enlace a la página web principal -->
-		<p style="text-align: right;">
-			<a href="index.html"
-				style="background-color: green; color: white; padding: 8px 16px; border: none; border-radius: 4px; text-decoration: none;">
-				<i class="ri ri-cart-fill"></i> Seguir comprando
-			</a>
-		</p>
+			<!-- Párrafo para mostrar un enlace a la página web principal -->
+			<p style="text-align: center; width: 100%;">
+				<a href="index.html"
+					style="background-color: #000000; color: white; padding: 8px 16px; border: none; border-radius: 4px; text-decoration: none;">
+					<i class="ri ri-cart-fill"></i> Seguir comprando
+				</a>
+			</p>
+		</div>
 	</main>
 	<!--=============== SWIPER JS ===============-->
 	<script src="../../Resources/js/swiper-bundle.min.js"></script>
