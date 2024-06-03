@@ -69,15 +69,15 @@ class PedidoHandler
 
     // Método para obtener los productos que se encuentran en el carrito de compras.
     public function readDetail()
-    {
-        $sql = 'SELECT dp.id_detalle, l.titulo AS nombre_producto, dp.precio, dp.cantidad
+{
+    $sql = 'SELECT dp.id_detalle, l.titulo AS nombre_producto, dp.precio, dp.cantidad
             FROM tb_detalle_pedidos AS dp
             INNER JOIN tb_pedidos AS p ON dp.id_pedido = p.id_pedido
             INNER JOIN tb_libros AS l ON dp.id_libro = l.id_libro
             WHERE p.id_pedido = ?';
-        $params = array($_SESSION['idPedido']);
-        return Database::getRows($sql, $params);
-    }
+    $params = array($_SESSION['idPedido']);
+    return Database::getRows($sql, $params);
+}
 
 
     public function finishOrder()

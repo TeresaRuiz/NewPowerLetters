@@ -54,17 +54,17 @@ async function readDetail() {
         let total = 0;
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
-            subtotal = row.precio_producto * row.cantidad_producto;
+            subtotal = row.precio * row.cantidad;
             total += subtotal;
             // Se crean y concatenan las filas de la tabla con los datos de cada registro.
             TABLE_BODY.innerHTML += `
                 <tr>
-                    <td>${row.titulo_libro}</td>
-                    <td>${row.precio_producto}</td>
-                    <td>${row.cantidad_producto}</td>
+                    <td>${row.nombre_producto}</td>
+                    <td>${row.precio}</td>
+                    <td>${row.cantidad}</td>
                     <td>${subtotal.toFixed(2)}</td>
                     <td>
-                        <button type="button" onclick="openUpdate(${row.id_detalle}, ${row.cantidad_producto})" class="btn btn-info">
+                        <button type="button" onclick="openUpdate(${row.id_detalle}, ${row.cantidad})" class="btn btn-info">
                             <i class="bi bi-plus-slash-minus"></i>
                         </button>
                         <button type="button" onclick="openDelete(${row.id_detalle})" class="btn btn-danger">
@@ -91,7 +91,7 @@ function openUpdate(id, quantity) {
     ITEM_MODAL.show();
     // Se inicializan los campos del formulario con los datos del registro seleccionado.
     document.getElementById('idDetalle').value = id;
-    document.getElementById('cantidadProducto').value = quantity;
+    document.getElementById('cantidadLibro').value = quantity;
 }
 
 /*
@@ -122,7 +122,7 @@ async function finishOrder() {
 */
 async function openDelete(id) {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
-    const RESPONSE = await confirmAction('¿Está seguro de remover el producto?');
+    const RESPONSE = await confirmAction('¿Está seguro de remover el libro?');
     // Se verifica la respuesta del mensaje.
     if (RESPONSE) {
         // Se define un objeto con los datos del producto seleccionado.
