@@ -15,6 +15,9 @@ class PedidoHandler
     protected $direccion = null;
     protected $estado = null;
     protected $fecha = null;
+    protected $libro = null;
+
+    protected $cantidad = null;
     protected $id_detalle = null;
 
     /*
@@ -39,21 +42,31 @@ class PedidoHandler
     }
 
     public function startOrder()
-{
-    if ($this->getOrder()) {
-        return true;
-    } else {
-        $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_usuario)
-                VALUES((SELECT direccion_cliente FROM tb_usuarios WHERE id_usuario = ?), ?)';
-        $params = array($_SESSION['id_usuario'], $_SESSION['id_usuario']);
-        // Se obtiene el ultimo valor insertado de la llave primaria en la tabla tb_pedidos.
-        if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
+    {
+        if ($this->getOrder()) {
             return true;
         } else {
-            return false;
+            $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_usuario)
+                VALUES((SELECT direccion_cliente FROM tb_usuarios WHERE id_usuario = ?), ?)';
+            $params = array($_SESSION['id_usuario'], $_SESSION['id_usuario']);
+            // Se obtiene el ultimo valor insertado de la llave primaria en la tabla tb_pedidos.
+            if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
+                return true;
+            } else {
+                return false;
+            }
         }
     }
-}
+
+    public function createDetail()
+    {
+        // Se realiza una subconsulta para obtener el precio del producto.
+        $sql = 'INSERT INTO tb_detalle_pedidos(id_libro, cantidad, precio, id_pedido)
+            VALUES(?, ?, (SELECT precio FROM tb_libros WHERE id_libro = ?), ?)';
+        $params = array($this->libro, $this->cantidad, $this->libro, $_SESSION['idPedido']);
+        return Database::executeRow($sql, $params);
+    }
+
     public function searchRows()
     {
         // Obtener el valor de búsqueda y envolverlo con comodines para usar con LIKE
