@@ -21,25 +21,25 @@ if (isset($_GET['action'])) {
                 if (!$pedido->startOrder()) {
                     $result['error'] = 'Ocurrió un problema al iniciar el pedido';
                 } elseif (
-                    !$pedido->setLibro($_POST['idProducto']) or
-                    !$pedido->setCantidad($_POST['cantidadProducto'])
+                    !$pedido->setLibro($_POST['idLibro']) or
+                    !$pedido->setCantidad($_POST['cantidadLibro'])
                 ) {
                     $result['error'] = $pedido->getDataError();
                 } elseif ($pedido->createDetail()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto agregado correctamente';
+                    $result['message'] = 'Libro agregado correctamente';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al agregar el producto';
+                    $result['error'] = 'Ocurrió un problema al agregar el libro';
                 }
                 break;
             // Acción para obtener los productos agregados en el carrito de compras.
             case 'readDetail':
                 if (!$pedido->getOrder()) {
-                    $result['error'] = 'No ha agregado productos al carrito';
+                    $result['error'] = 'No ha agregado libros al carrito';
                 } elseif ($result['dataset'] = $pedido->readDetail()) {
                     $result['status'] = 1;
                 } else {
-                    $result['error'] = 'No existen productos en el carrito';
+                    $result['error'] = 'No existen libros en el carrito';
                 }
                 break;
             // Acción para actualizar la cantidad de un producto en el carrito de compras.
@@ -47,7 +47,7 @@ if (isset($_GET['action'])) {
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$pedido->setIdDetalle($_POST['idDetalle']) or
-                    !$pedido->setCantidad($_POST['cantidadProducto'])
+                    !$pedido->setCantidad($_POST['cantidadLibro'])
                 ) {
                     $result['error'] = $pedido->getDataError();
                 } elseif ($pedido->updateDetail()) {
