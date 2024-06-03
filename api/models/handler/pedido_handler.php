@@ -262,4 +262,12 @@ class PedidoHandler
         // Ejecutar la consulta y devolver el resultado
         return Database::executeRow($sql, $params);
     }
+
+    public function deleteDetail()
+    {
+        $sql = 'DELETE FROM tb_detalle_pedidos
+            WHERE id_detalle = ? AND id_pedido = ?';
+        $params = array($this->id_detalle, $_SESSION['idPedido']);
+        return Database::executeRow($sql, $params);
+    }
 }
