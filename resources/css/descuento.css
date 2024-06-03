@@ -134,24 +134,23 @@
 .hidden {
   display: none;
 }
+#generobtn{
+  margin-right: 20px;
+}
+
+#clasificacionbtn{
+  margin-left: 20px;
+}
+
+#editorialbtn{
+  margin-left: 20px;
+}
+
+#autorbtn{
+  margin-left: 15px;
+  margin-top: 60px;
+}
 
 
 
   /****************************DISEÑO DEL BOTONES DESPLEGABLES*************************************/
-
-  
-  .dropdown-content {
-    display: none;
-    position: absolute;
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    margin-top: 5px;
-  }
- 
-  .show {
-    display: block;
-  }
-  
-  

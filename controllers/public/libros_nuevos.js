@@ -70,9 +70,38 @@ function comboBox(){
         fillSelect(EDITORIAL_API, 'readAll', 'editorial');
         fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion');
         fillSelect(AUTORES_API, 'readAll', 'autor');
+        
     
 }
 
+
+// Llamar a la función para llenar el select
+llenarSelect('nombreGEN', comboBox);
+llenarSelect('editorial', comboBox);
+llenarSelect('clasificacion', comboBox);
+llenarSelect('autor', comboBox);
+
+
+function toggleDropdown(dropdownId) {
+    
+    const dropdown = document.getElementById(dropdownId);
+    dropdown.classList.toggle('show');
+    
+  }
+  
+  // Cierra el dropdown si se hace clic fuera de él
+  window.onclick = function(event) {
+    if (!event.target.matches('.button-value')) {
+      const dropdowns = document.getElementsByClassName('dropdown-content');
+      for (let i = 0; i < dropdowns.length; i++) {
+        const openDropdown = dropdowns[i];
+        if (openDropdown.classList.contains('show')) {
+          openDropdown.classList.remove('show');
+        }
+      }
+    }
+
+  };
 
 const viewDetails = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
