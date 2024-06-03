@@ -1,5 +1,6 @@
 // Constante para completar la ruta de la API.
 const LIBROS_API = 'services/public/libros.php';
+const PEDIDO_API = 'services/public/pedido.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 const LIBROS = document.getElementById('libros');
@@ -42,6 +43,7 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
     const FORM = new FormData(SHOPPING_FORM);
     // Petición para guardar los datos del formulario.
     const DATA = await fetchData(PEDIDO_API, 'createDetail', FORM);
+    console.log(error);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
     if (DATA.status) {
         sweetAlert(1, DATA.message, false, 'carrito.html');
