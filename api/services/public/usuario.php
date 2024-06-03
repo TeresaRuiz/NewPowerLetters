@@ -74,7 +74,7 @@ if (isset($_GET['action'])) {
 
             default: // Caso por defecto para manejar acciones desconocidas.
                 $result['error'] = 'Acción no disponible dentro de la sesión'; // Mensaje si la acción no es válida.
-        } 
+        } else {
             // Se compara la acción a realizar cuando el cliente no ha iniciado sesión.
             switch ($_GET['action']) {
                 case 'signUp':
@@ -132,6 +132,7 @@ if (isset($_GET['action'])) {
                     break;
                 default:
                     $result['error'] = 'Acción no disponible fuera de la sesión';
+                }
             }
         }
 
