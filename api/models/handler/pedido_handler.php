@@ -16,7 +16,6 @@ class PedidoHandler
     protected $estado = null;
     protected $fecha = null;
     protected $libro = null;
-
     protected $cantidad = null;
     protected $id_detalle = null;
 
