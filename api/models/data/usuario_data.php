@@ -115,12 +115,11 @@ class UsuarioData extends UsuarioHandler
 
     public function setTelefono($value)
     {
-        // Valida que el teléfono tenga el formato adecuado.
         if (Validator::validatePhone($value)) {
-            $this->telefono = $value; // Asigna el valor del teléfono si es válido.
+            $this->telefono = $value;
             return true;
         } else {
-            $this->data_error = 'El teléfono debe tener el formato (2, 6, 7)###-####'; // Almacena mensaje de error si es inválido.
+            $this->data_error = 'El teléfono debe tener el formato (2, 6, 7)###-####';
             return false;
         }
     }
