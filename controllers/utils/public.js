@@ -4,7 +4,7 @@
 */
 
 // Constante para completar la ruta de la API.
-const USER_API = 'services/public/cliente.php';
+const USER_API = 'services/public/usuario.php';
 // Constante para establecer el elemento del contenido principal.
 const MAIN = document.querySelector('main');
 
@@ -191,4 +191,6 @@ const loadTemplate = async () => {
 
     // Se agrega el pie de la página web después del contenido principal.
     MAIN.insertAdjacentHTML('afterend', `
-        <
+    `);
+}
+
