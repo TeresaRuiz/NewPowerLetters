@@ -152,5 +152,12 @@
 }
 
 
+  /****************************DISEÑO DE LOS SELECT*************************************/
+.libro__input {
+   width: 10px;
+   background-color: hsl(230, 12%, 8%);
+   padding: 1rem;
+   color: var(--text-color);
 
-  /****************************DISEÑO DEL BOTONES DESPLEGABLES*************************************/
+ }
+
