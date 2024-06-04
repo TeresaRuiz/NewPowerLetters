@@ -4,7 +4,7 @@ const CLASIFICACION_API = 'services/admin/clasificacion.php';
 const EDITORIAL_API = 'services/admin/editoriales.php';
 const GENERO_API = 'services/admin/genero.php';
 // Constante para completar la ruta de la API.
-const LIBROS_API = 'services/public/libros.php';
+const LIBROS_API = 'services/public/libros_descuentos.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 const LIBROSN = document.getElementById('librosNuevos');
@@ -42,13 +42,10 @@ SEARCH_FORM.addEventListener('submit', (event) => {
 
 const muestraLibros = async (form = null) => {
   
-    // Se define un objeto con los datos de la categoría seleccionada.
-    const FORM = new FormData();
-    FORM.append('idClas', PARAMS.get('id'));
+   
     
-
     (form) ? action = 'searchRows' : action = 'readAll';
-    const DATA = await fetchData(LIBROS_API, 'readLibrosGeneros', FORM);
+    const DATA = await fetchData(LIBROS_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se inicializa el contenedor de productos.
@@ -84,8 +81,9 @@ const muestraLibros = async (form = null) => {
             `;
         });
     } else {
-        // Se presenta un mensaje de error cuando no existen datos para mostrar.
-        console.log(DATA.error);
+      
+      sweetAlert(4, DATA.error, true);
+
     }
 
 }
@@ -107,11 +105,6 @@ function comboBox(){
 }
 
 
-// Llamar a la función para llenar el select
-llenarSelect('nombreGEN', comboBox);
-llenarSelect('editorial', comboBox);
-llenarSelect('clasificacion', comboBox);
-llenarSelect('autor', comboBox);
 
 
 const viewDetails = async (id) => {
