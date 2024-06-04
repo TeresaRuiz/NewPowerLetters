@@ -27,6 +27,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     comboBox();
     muestraLibros();
+    filtro();
 
   });
 
@@ -100,13 +101,15 @@ function comboBox(){
    
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
    
-        
         fillSelect(GENERO_API, 'readAll', 'nombreGEN');
         fillSelect(EDITORIAL_API, 'readAll', 'editorial');
         fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion');
         fillSelect(AUTORES_API, 'readAll', 'autor');
         
-    
+}
+
+function filtro(){
+
 }
 
 
