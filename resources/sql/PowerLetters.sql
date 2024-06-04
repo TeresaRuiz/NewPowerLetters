@@ -12,8 +12,8 @@ CREATE TABLE tb_usuarios (
     direccion VARCHAR(100),
     telefono VARCHAR(20),
     imagen VARCHAR(25),
-	 estado_cliente TINYINT(1) NOT NULL DEFAULT 1,
-	 fecha_registro DATE NOT NULL
+	estado_cliente TINYINT(1) NOT NULL DEFAULT 1,
+	fecha_registro DATE NOT NULL
 );
  
 CREATE TABLE administrador (
