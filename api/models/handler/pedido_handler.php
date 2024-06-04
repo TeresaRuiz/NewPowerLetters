@@ -31,7 +31,7 @@ class PedidoHandler
                 FROM tb_pedidos AS p
                 JOIN tb_usuarios AS u ON p.id_usuario = u.id_usuario
                 WHERE p.estado = ? AND u.id_usuario = ?';
-        $params = array($this->estado, $_SESSION['idCliente']);
+        $params = array($this->estado, $_SESSION['idUsuario']);
         if ($data = Database::getRow($sql, $params)) {
             $_SESSION['idPedido'] = $data['id_pedido'];
             return true;
@@ -47,7 +47,7 @@ class PedidoHandler
         } else {
             $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_usuario)
                 VALUES((SELECT direccion_cliente FROM tb_usuarios WHERE id_usuario = ?), ?)';
-            $params = array($_SESSION['id_usuario'], $_SESSION['id_usuario']);
+            $params = array($_SESSION['id_usuario'], $_SESSION['idUsuario']);
             // Se obtiene el ultimo valor insertado de la llave primaria en la tabla tb_pedidos.
             if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
                 return true;
