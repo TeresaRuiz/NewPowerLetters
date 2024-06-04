@@ -18,8 +18,8 @@ if (isset($_GET['action'])) {
         'exception' => null, // Excepción del servidor de base de datos si es aplicable.
         'fileStatus' => null
     ); // Estado de archivo (si es necesario para alguna operación).
-// Verificar si el usuario tiene una sesión iniciada como administrador.
-    if (isset($_SESSION['idUsuario'])) {
+    // Verificar si el usuario tiene una sesión iniciada como administrador.
+
     // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
     switch ($_GET['action']) {
         case 'searchRows':
@@ -52,8 +52,6 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'Libro inexistente';
             }
             break;
-
     }
-    print (json_encode($result));
-}}
-
+    print(json_encode($result));
+}
