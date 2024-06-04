@@ -8,15 +8,46 @@ const LIBROS_API = 'services/public/libros.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 const LIBROSN = document.getElementById('librosNuevos');
+// Constante para establecer el formulario de buscar.
+const SEARCH_FORM = document.getElementById('searchForm');
+id_libro_descuento = document.getElementById('id_libro_descuento'),
+titulo = document.getElementById('titulo'),
+precio = document.getElementById('precio'),
+descripcion = document.getElementById('descripcion'),
+existencias = document.getElementById('existencias');
+
+// script.js
+const LIBROSNS = document.get
+
+
 
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
 
     comboBox();
+    muestraLibros();
+
+  });
+
+  // Método del evento para cuando se envía el formulario de buscar.
+SEARCH_FORM.addEventListener('submit', (event) => {
+  // Se evita recargar la página web después de enviar el formulario.
+  event.preventDefault();
+  // Constante tipo objeto con los datos del formulario.
+  const FORM = new FormData(SEARCH_FORM);
+  // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
+  muestraLibros(FORM);
+});
+
+
+const muestraLibros = async (form = null) => {
+  
     // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
     FORM.append('idClas', PARAMS.get('id'));
-    // Petición para solicitar los productos de la categoría seleccionada.
+    
+
+    (form) ? action = 'searchRows' : action = 'readAll';
     const DATA = await fetchData(LIBROS_API, 'readLibrosGeneros', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
@@ -56,7 +87,8 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         console.log(DATA.error);
     }
-});
+
+}
 
 
 
@@ -81,27 +113,6 @@ llenarSelect('editorial', comboBox);
 llenarSelect('clasificacion', comboBox);
 llenarSelect('autor', comboBox);
 
-
-function toggleDropdown(dropdownId) {
-    
-    const dropdown = document.getElementById(dropdownId);
-    dropdown.classList.toggle('show');
-    
-  }
-  
-  // Cierra el dropdown si se hace clic fuera de él
-  window.onclick = function(event) {
-    if (!event.target.matches('.button-value')) {
-      const dropdowns = document.getElementsByClassName('dropdown-content');
-      for (let i = 0; i < dropdowns.length; i++) {
-        const openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
-        }
-      }
-    }
-
-  };
 
 const viewDetails = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
