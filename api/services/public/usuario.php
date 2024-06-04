@@ -65,7 +65,7 @@ if (isset($_GET['action'])) {
                     !$usuario->setNombre($_POST['nombre_usuario']) or
                     !$usuario->setApellido($_POST['apellido_usuario']) or
                     !$usuario->setCorreo($_POST['correo_usuario']) or
-                    !$usuario->setDireccion($_POST['telefono_usuario']) or
+                    !$usuario->setDireccion($_POST['direccion_usuario']) or
                     !$usuario->setDUI($_POST['dui_usuario']) or
                     !$usuario->setNacimiento($_POST['nacimiento_usuario']) or
                     !$usuario->setTelefono($_POST['telefono_usuario']) or
