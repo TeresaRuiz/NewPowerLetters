@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Actualizar los elementos del HTML con la información del libro
+        document.getElementById('idLibro').value = DATA.dataset.id_libro;
         document.getElementById('tituloDetalle').textContent = DATA.dataset.titulo_libro;
         document.querySelector('#ImagenDetalle').src = `${SERVER_URL}images/libros/${DATA.dataset.imagen}`;
         document.getElementById('precioDetalle').textContent = `$${DATA.dataset.precio}`;
@@ -43,7 +44,6 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
     const FORM = new FormData(SHOPPING_FORM);
     // Petición para guardar los datos del formulario.
     const DATA = await fetchData(PEDIDO_API, 'createDetail', FORM);
-    console.log(error);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
     if (DATA.status) {
         sweetAlert(1, DATA.message, false, 'carrito.html');
