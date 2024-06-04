@@ -69,7 +69,8 @@ if (isset($_GET['action'])) {
                     !$usuario->setDUI($_POST['dui_usuario']) or
                     !$usuario->setNacimiento($_POST['nacimiento_usuario']) or
                     !$usuario->setTelefono($_POST['telefono_usuario']) or
-                    !$usuario->setClave($_POST['clave_usuario'])
+                    !$usuario->setImagen($_FILES['imagen']) ||
+                    !$usuario->setClave($_POST['clave_usuario']) 
                 ) {
                     $result['error'] = $usuario->getDataError();
                 } elseif ($_POST['clave_usuario'] != $_POST['confirmarClave']) {

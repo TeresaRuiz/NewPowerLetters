@@ -19,6 +19,11 @@ class UsuarioHandler
     protected $direccion = null;
     protected $clave = null;
     protected $estado = null;
+    protected $imagen = null;
+
+
+
+    const RUTA_IMAGEN = '../../images/usuarios/';
 
     /*
     *   Métodos para gestionar la cuenta del usuario.
@@ -94,15 +99,15 @@ class UsuarioHandler
 
     public function createRow()
     {
-        $sql = 'INSERT INTO tb_usuarios(nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, telefono_usuario, nacimiento_usuario, direccion_usuario, clave_usuario)
-                VALUES(?, ?, ?, ?, ?, ?, ?, ?)';
-        $params = array($this->nombre, $this->apellido, $this->correo, $this->dui, $this->telefono, $this->nacimiento, $this->direccion, $this->clave);
+        $sql = 'INSERT INTO tb_usuarios(nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, telefono_usuario, nacimiento_usuario, direccion_usuario, clave_usuario, imagen)
+                VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)';
+        $params = array($this->nombre, $this->apellido, $this->correo, $this->dui, $this->telefono, $this->nacimiento, $this->direccion, $this->clave, $this->imagen);
         return Database::executeRow($sql, $params);
     }
 
     public function readAll()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, estado_cliente
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, estado_cliente, imagen
                 FROM tb_usuarios
                 ORDER BY apellido_usuario';
         return Database::getRows($sql);
@@ -110,7 +115,7 @@ class UsuarioHandler
 
     public function readOne()
     {
-        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, telefono_usuario, nacimiento_usuario, direccion_usuario, estado_cliente
+        $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, telefono_usuario, nacimiento_usuario, direccion_usuario, estado_cliente, imagen
                 FROM tb_usuarios
                 WHERE id_usuario = ?';
         $params = array($this->id);
@@ -120,9 +125,9 @@ class UsuarioHandler
     public function updateRow()
     {
         $sql = 'UPDATE tb_usuarios
-                SET nombre_usuario = ?, apellido_usuario = ?, dui_usuario = ?, estado_cliente = ?, telefono_usuario = ?, nacimiento_usuario = ?, direccion_usuario = ?
+                SET nombre_usuario = ?, apellido_usuario = ?, dui_usuario = ?, estado_cliente = ?, telefono_usuario = ?, nacimiento_usuario = ?, direccion_usuario = ?, imagen = ?
                 WHERE id_usuario = ?';
-        $params = array($this->nombre, $this->apellido, $this->dui, $this->estado, $this->telefono, $this->nacimiento, $this->direccion, $this->id);
+        $params = array($this->nombre, $this->apellido, $this->dui, $this->estado, $this->telefono, $this->nacimiento, $this->direccion, $this->id, $this->imagen);
         return Database::executeRow($sql, $params);
     }
 
@@ -140,6 +145,13 @@ class UsuarioHandler
                 FROM tb_usuarios
                 WHERE dui_usuario = ? OR correo_usuario = ?';
         $params = array($value, $value);
+        return Database::getRow($sql, $params);
+    }
+
+    public function readFilename()
+    {
+        $sql = 'SELECT imagen FROM tb_usuarios WHERE id_usuario = ?';
+        $params = array($this->id);
         return Database::getRow($sql, $params);
     }
 }
