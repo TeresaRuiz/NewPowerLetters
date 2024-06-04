@@ -55,5 +55,5 @@ if (isset($_GET['action'])) {
 
     }
     print (json_encode($result));
-}
+}}
 
