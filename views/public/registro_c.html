@@ -15,6 +15,7 @@
     <!-- Llamada a las hojas de estilos del framework e iconos -->
     <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="../../Resources/css/styles.css">
 </head>
 
 <body>
@@ -22,6 +23,7 @@
     <main>
         <!-- Título del contenido principal -->
         <h4 id="mainTitle"></h4>
+        <br> <br> <br> <br> <br>
         <!-- Formulario para crear cuenta -->
         <form class="row g-3" id="signupForm">
             <!-- Campo oculto para asignar el token del reCAPTCHA -->
@@ -58,6 +60,10 @@
                 <input type="password" id="clave_usuario" name="clave_usuario" class="form-control" required>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4">
+                <label for="imagen" class="form-label">Imagen</label>
+                <input type="file" name="imagen" id="imagen" accept=".png, .jpg" class="form-control">
+            </div>
+            <div class="col-sm-12 col-lg-8 offset-lg-2">
                 <label for="confirmarClave" class="form-label">Confirmar contraseña</label>
                 <input type="password" id="confirmarClave" name="confirmarClave" class="form-control" required>
             </div>

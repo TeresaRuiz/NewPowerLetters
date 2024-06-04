@@ -10,6 +10,7 @@ class UsuarioData extends UsuarioHandler
 {
     // Atributo genérico para manejo de errores.
     private $data_error = null;
+    private $filename = null; // Nombre del archivo de imagen.
 
     /*
     *   Métodos para validar y establecer los datos.
@@ -142,9 +143,42 @@ class UsuarioData extends UsuarioHandler
         }
     }
 
+    public function setImagen($file, $filename = null)
+    {
+        // Valida el archivo de imagen y su tamaño.
+        if (Validator::validateImageFile($file, 500)) {
+            $this->imagen = Validator::getFileName(); // Asigna el nombre de archivo de imagen generado.
+            return true;
+        } elseif (Validator::getFileError()) {
+            $this->data_error = Validator::getFileError(); // Almacena mensaje de error si hay algún error en el archivo.
+            return false;
+        } elseif ($filename) {
+            $this->imagen = $filename; // Utiliza el nombre de archivo proporcionado.
+            return true;
+        } else {
+            $this->imagen = 'default.png'; // Utiliza una imagen predeterminada si no se proporciona ninguna.
+            return true;
+        }
+    }
+
+    public function setFilename()
+    {
+        // Lee el nombre de archivo del libro.
+        if ($data = $this->readFilename()) {
+            $this->filename = $data['imagen']; // Asigna el nombre de archivo obtenido.
+            return true;
+        } else {
+            $this->data_error = 'Usuario inexistente';
+            return false;
+        }
+    }
     // Método para obtener el error de los datos.
     public function getDataError()
     {
         return $this->data_error;
+    }
+    public function getFilename()
+    {
+        return $this->filename;
     }
 }
