@@ -17,8 +17,6 @@ precio = document.getElementById('precio'),
 descripcion = document.getElementById('descripcion'),
 existencias = document.getElementById('existencias');
 
-// script.js
-const LIBROSNS = document.get
 
 
 
@@ -49,6 +47,7 @@ searchInput.addEventListener('input', () => {
     }
   });
 
+  
 const muestraLibros = async (form = null) => {
     (form) ? action = 'searchRows' : action = 'readAll';
     const DATA = await fetchData(LIBROS_API, action, form);
@@ -94,11 +93,15 @@ const muestraLibros = async (form = null) => {
 
 }
 
+function filtro(){
+
+
+
+}
+
 
 
 function comboBox(){
-   
-   
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
    
         fillSelect(GENERO_API, 'readAll', 'nombreGEN');
@@ -107,13 +110,6 @@ function comboBox(){
         fillSelect(AUTORES_API, 'readAll', 'autor');
         
 }
-
-function filtro(){
-
-}
-
-
-
 
 const viewDetails = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
