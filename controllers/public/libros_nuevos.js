@@ -10,6 +10,7 @@ const PARAMS = new URLSearchParams(location.search);
 const LIBROSN = document.getElementById('librosNuevos');
 // Constante para establecer el formulario de buscar.
 const SEARCH_FORM = document.getElementById('searchForm');
+const searchInput = document.getElementById('search-input2');
 id_libro_descuento = document.getElementById('id_libro_descuento'),
 titulo = document.getElementById('titulo'),
 precio = document.getElementById('precio'),
@@ -40,10 +41,14 @@ SEARCH_FORM.addEventListener('submit', (event) => {
 });
 
 
+searchInput.addEventListener('input', () => {
+    // Si el input está vacío y se hace clic en la "X" predeterminada
+    if (searchInput.value === '') {
+      location.reload();
+    }
+  });
+
 const muestraLibros = async (form = null) => {
-  
-   
-    
     (form) ? action = 'searchRows' : action = 'readAll';
     const DATA = await fetchData(LIBROS_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
