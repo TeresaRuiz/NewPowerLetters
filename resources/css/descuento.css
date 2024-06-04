@@ -153,18 +153,14 @@
 
 
   /****************************DISEÑO DE LOS SELECT*************************************/
-
-
 .libro__input {
-  
    width: 10px;
    background-color:transparent;
    padding: 1rem;
    color: var(--text-color);
+ 
 
  }
-
- 
 
  
 
