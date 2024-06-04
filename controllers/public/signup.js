@@ -2,12 +2,12 @@
 const SIGNUP_FORM = document.getElementById('signupForm');
 // Llamada a la función para establecer la mascara del campo teléfono.
 vanillaTextMask.maskInput({
-    inputElement: document.getElementById('telefonoCliente'),
+    inputElement: document.getElementById('telefono_usuario'),
     mask: [/\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/]
 });
 // Llamada a la función para establecer la mascara del campo DUI.
 vanillaTextMask.maskInput({
-    inputElement: document.getElementById('duiCliente'),
+    inputElement: document.getElementById('dui_usuario'),
     mask: [/\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/]
 });
 
@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Se declara e inicializa una variable para establecer el formato de la fecha.
     const DATE = `${year}-${month}-${day}`;
     // Se asigna la fecha como valor máximo en el campo del formulario.
-    document.getElementById('nacimientoCliente').max = DATE;
+    document.getElementById('nacimiento_usuario').max = DATE;
 });
 
 // Método del evento para cuando se envía el formulario de registrar cliente.
@@ -43,9 +43,9 @@ SIGNUP_FORM.addEventListener('submit', async (event) => {
     const DATA = await fetchData(USER_API, 'signUp', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        sweetAlert(1, DATA.message, true, 'login.html');
+        sweetAlert(1, DATA.message, true, 'index.html');
     } else if (DATA.recaptcha) {
-        sweetAlert(2, DATA.error, false, 'index.html');
+        sweetAlert(2, DATA.error, false, 'registro_c.html');
     } else {
         sweetAlert(2, DATA.error, false);
         // Se genera un nuevo token cuando ocurre un problema.

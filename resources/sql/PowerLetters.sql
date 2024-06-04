@@ -15,7 +15,7 @@ CREATE TABLE tb_usuarios (
 	estado_cliente TINYINT(1) NOT NULL DEFAULT 1,
 	fecha_registro DATE NOT NULL
 );
- 
+
 CREATE TABLE administrador (
 	id_administrador INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
 	nombre_administrador VARCHAR(50) NOT NULL,
