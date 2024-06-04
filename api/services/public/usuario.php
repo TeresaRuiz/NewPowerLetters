@@ -21,7 +21,7 @@ if (isset($_GET['action'])) {
     );
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
-    if (isset($_SESSION['id_usuario'])) { // 'true' para permitir el acceso durante el desarrollo, cambiar a solo 'isset($_SESSION['idAdministrador'])' en producción.
+    if (isset($_SESSION['idUsuario'])) {  // 'true' para permitir el acceso durante el desarrollo, cambiar a solo 'isset($_SESSION['idAdministrador'])' en producción.
         // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
         switch ($_GET['action']) {
             case 'searchRows': // Acción para buscar filas (géneros) según un término de búsqueda.
