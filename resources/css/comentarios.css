@@ -1,0 +1,39 @@
+
+.comentT{
+    text-align: center;
+    font-size: 40px
+}
+
+.libro__input {
+    margin: 0 auto; /* Centra el input horizontalmente */
+    background-color: var(--container-color);
+    border: 2px solid var(--border-color);
+    padding: 1rem;
+    color: var(--text-color);
+    text-align: center; /* Alinea el texto al centro */
+    display: block; /* Hace que el input sea un bloque */
+    width: 70%;
+}
+
+/* Contenedor de los botones */
+.botones-container {
+    display: flex; /* Utiliza flexbox */
+    justify-content: center; /* Centra los botones horizontalmente */
+    margin-top: 1em; /* Añade un margen arriba para separarlos de otros elementos */
+}
+
+/* Estilos de los botones */
+.comentario-button, .cancelar-button {
+    padding: 1em 2em;
+    background-color: #6759ff;
+    color: #ffffff;
+    border-radius: 10px;
+    margin: 0.5em; /* Margen entre los botones */
+}
+
+
+
+  
+ 
+
+ 
