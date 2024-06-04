@@ -2,10 +2,7 @@
 const PEDIDO_API = 'services/public/pedido.php';
 // Constante para establecer el cuerpo de la tabla.
 const TABLE_BODY = document.getElementById('tableBody');
-// Constante para establecer la caja de diálogo de cambiar producto.
-const ITEM_MODAL = new bootstrap.Modal('#itemModal');
-// Constante para establecer el formulario de cambiar producto.
-const ITEM_FORM = document.getElementById('itemForm');
+
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -91,7 +88,7 @@ function openUpdate(id, quantity) {
     ITEM_MODAL.show();
     // Se inicializan los campos del formulario con los datos del registro seleccionado.
     document.getElementById('idDetalle').value = id;
-    document.getElementById('cantidadLibro').value = quantity;
+    document.getElementById('cantidadLibro').value = cantidad;
 }
 
 /*
