@@ -15,8 +15,6 @@ vanillaTextMask.maskInput({
 document.addEventListener('DOMContentLoaded', () => {
     // Llamada a la función para mostrar el encabezado y pie del documento.
     loadTemplate();
-    // Se asigna como título la categoría de los productos.
-    MAIN_TITLE.textContent = 'Crear cuenta';
     // LLamada a la función para asignar el token del reCAPTCHA al formulario.
     reCAPTCHA();
     // Constante tipo objeto para obtener la fecha y hora actual.
