@@ -156,13 +156,13 @@ const loadTemplate = async () => {
                                 <input type="email" placeholder="Escribe tu correo electrónico" id="login-email" class="login__input">
                             </div>
                             <div>
-                                <label for="login-pass" class="login__label">Password</label>
-                                <input type="password" placeholder="Enter your password" id="login-pass" class="login__input">
+                                <label for="login-pass" class="login__label">Contraseña</label>
+                                <input type="password" placeholder="Escribe tu contraseña" id="login-pass" class="login__input">
                             </div>
                         </div>
                         <div>
-                            <span class="login__signup">You do not have an account? <a href="#">Sign up</a></span>
-                            <a href="#" class="login__forget">You forgot your password</a>
+                            <span class="login__signup">¿No tienes una cuenta? <a href="registro_c.html">Registrate acá</a></span>
+                            <a href="#" class="login__forget">¿No encuentras tu contraseña?</a>
                             <button type="submit" class="login__button button">Log In</button>
                         </div>
                     </form>
