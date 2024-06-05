@@ -1,57 +1,64 @@
 <!DOCTYPE html>
-<!-- Declaración del idioma para el documento -->
 <html lang="es">
-
 <head>
-    <!-- Título del documento -->
-    <title></title>
-    <!-- Metadatos de la página web -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- IMPORTACIÓN DE RECURSOS EXTERNOS -->
-    <!-- Llamada al icono de la página web -->
+    <title>Página de Inicio de Sesión</title>
     <link type="image/png" rel="icon" href="../../resources/img/icon.png">
-    <!-- Llamada a las hojas de estilos del framework e iconos -->
     <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap-icons.min.css">
     <link type="text/css" rel="stylesheet" href="../../resources/css/styles.css">
+ 
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f8f9fa;
+            margin: 0;
+        }
+        #loginForm {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+        #loginForm h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+        }
+        .btn-primary {
+            width: 100%;
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Contenido principal del documento -->
-    <main>
-        <!-- Título del contenido principal -->
-        <h4 id="mainTitle"></h4>
-        <!-- Formulario para iniciar sesión -->
-        <form class="row g-3" id="sessionForm">
-            <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
-                <label for="correo" class="form-label">Correo electrónico</label>
+    <div id="loginForm">
+        <h2>Log In</h2>
+        <form id="sessionForm">
+            <div class="mb-3">
+                <label for="correo" class="form-label">Correo</label>
                 <input type="email" id="correo" name="correo" class="form-control" required>
             </div>
-            <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <div class="mb-3">
                 <label for="clave" class="form-label">Contraseña</label>
                 <input type="password" id="clave" name="clave" class="form-control" required>
             </div>
-            <div class="text-center">
-                <button type="submit" class="btn btn-primary"><i class="bi bi-send-fill"></i> Enviar</button>
-            </div>
+            <button type="submit" class="btn btn-primary">Log In</button>
         </form>
-        <div class="text-center p-3">
-            <!-- Enlace para crear una cuenta de usuario -->
-            <a href="signup.html" class="btn btn-secondary"><i class="bi bi-person-fill"></i> Registrarme</a>
+        <div class="mt-3 text-center">
+            <a href="registro_c.html" class="text-secondary">¿No tienes una cuenta? Regístrate acá</a><br>
+            <a href="#" class="text-secondary">¿No encuentras tu contraseña?</a>
         </div>
-    </main>
-    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
-    <!-- Llamada al framework y librería de mensajes -->
+    </div>
+ 
     <script type="text/javascript" src="../../resources/js/bootstrap.bundle.min.js"></script>
     <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
-    <!-- Llamada al controlador general de la aplicación -->
     <script type="text/javascript" src="../../controllers/utils/components.js"></script>
-    <!-- Llamada al controlador del sitio público -->
     <script type="text/javascript" src="../../controllers/utils/public.js"></script>
-    <!-- Llamada al controlador de la página web -->
     <script type="text/javascript" src="../../controllers/public/login.js"></script>
-    
 </body>
-
 </html>
