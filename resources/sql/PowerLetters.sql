@@ -5,16 +5,17 @@ USE powerletters;
  
 CREATE TABLE tb_usuarios (
     id_usuario INT PRIMARY KEY AUTO_INCREMENT,
-    nombre VARCHAR(100),
-    nombre_usuario VARCHAR(100),
-    correo VARCHAR(100),
-    clave VARCHAR(100),
-    direccion VARCHAR(100),
-    telefono VARCHAR(20),
-    imagen VARCHAR(25),
-	estado_cliente TINYINT(1) NOT NULL DEFAULT 1,
-	fecha_registro DATE NOT NULL
-);
+    nombre_usuario varchar(50) NOT NULL,
+  apellido_usuario varchar(50) NOT NULL,
+  dui_usuario varchar(10) NOT NULL,
+  correo_usuario varchar(100) NOT NULL,
+  telefono_usuario varchar(9) NOT NULL,
+  direccion_usuario varchar(250) NOT NULL,
+  nacimiento_usuario date NOT NULL,
+  clave_usuario varchar(100) NOT NULL,
+  estado_cliente tinyint(1) NOT NULL DEFAULT 1,
+  fecha_registro date NOT NULL DEFAULT current_timestamp()
+)
 
 CREATE TABLE administrador (
 	id_administrador INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,

@@ -153,13 +153,22 @@
         <i class="ri-arrow-up-line"></i>
     </a>
 
-     <!--=============== SWIPER JS ===============-->
-     <script src="../../Resources/js/swiper-bundle.min.js"></script>
-     <!--=============== SCROLLREVEAL ===============-->
-     <script src="../../Resources/js/scrollreveal.min.js"></script>
-     <script src="../../Resources/js/header.js"></script>
-     <script src="../../Resources/js/main.js"></script>
-     <script src="../../Resources/js/footer.js"></script>
+    <!-- Bibliotecas externas -->
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+
+    <!-- Tus propios scripts -->
+    <script src="../../Resources/js/main.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script src="../../controllers/utils/public.js"></script>
+    <script src="../../Resources/js/footer.js"></script>
+
+    <!-- Llamada a la función loadTemplate -->
+    <script>
+        // Llamada a la función loadTemplate para cargar el encabezado y pie de la página
+        loadTemplate();
+    </script>
+
 
 </body>
 
