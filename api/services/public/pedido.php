@@ -13,6 +13,7 @@ if (isset($_GET['action'])) {
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
     
     if (isset($_SESSION['idUsuario'])) {
+        $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
             // Acción para agregar un producto al carrito de compras.
