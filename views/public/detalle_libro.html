@@ -13,9 +13,9 @@
     <link rel="stylesheet" href="../../Resources/css/swiper-bundle.min.css">
 
     <link rel="stylesheet" href="../../Resources/css/comentarios.css">
-    
+
     <link rel="stylesheet" href="../../Resources/css/comentarios.css">
-    
+
     <link rel="stylesheet" href="../../Resources/css/styles.css">
 </head>
 
@@ -23,9 +23,15 @@
     <header class="header" id="header">
         <!--Prueba -->
     </header>
+
     <main class="main">
         <section class="section">
             <div class="container">
+
+ <!--==================== BOTONDE REDIRECCIONAR ====================-->
+
+                <button id="redirectButton" class="btnFlecha"><i class="ri-arrow-left-circle-line"></i></button>
+
                 <div class="section__title">Detalle del Libro</div>
                 <div class="book-detail">
                     <div class="book-detail__img-wrapper">
@@ -65,7 +71,7 @@
         </section>
     </main>
 
-     <!--==================== APARTADO DE COMENTARIOS ====================-->
+    <!--==================== APARTADO DE COMENTARIOS ====================-->
     <h2 class="comentT">Comentarios</h2>
 
 
@@ -73,13 +79,13 @@
     <div class="comentarios">
 
         <div>
-            <label for="titulo" class="libro__label"></label>
-            <input type="text" name="titulo" id="titulo" placeholder="Agrega un comentario..." class="libro__input"
+            <label for="comentario" class="libro__label"></label>
+            <input type="text" name="titulo" id="comentario" placeholder="Agrega un comentario..." class="libro__input"
                 required>
-                <div class="botones-container">
-                    <button class="comentario-button">Comentar</button>
-                    <button class="cancelar-button">Cancelar</button>
-                </div>
+            <div class="botones-container">
+                <button class="comentario-button">Comentar</button>
+                <button class="cancelar-button">Cancelar</button>
+            </div>
 
 
         </div>
@@ -89,7 +95,7 @@
 
 
     <br>
-     <!--==================== CARTAS DE COMENTARIOS ====================-->
+    <!--==================== CARTAS DE COMENTARIOS ====================-->
 
     <main class="main">
 
@@ -110,7 +116,8 @@
 
                         <article class="testimonial__card swiper-slide">
 
-                            <img src="../../Resources/img/testimonial-perfil-1.png" alt="image" class="testimonial__img">
+                            <img src="../../Resources/img/testimonial-perfil-1.png" alt="image"
+                                class="testimonial__img">
 
                             <h2 class="testimonial__title">Rial Loz</h2>
                             <p class="testimonial__description">
@@ -134,7 +141,8 @@
 
                         <article class="testimonial__card swiper-slide">
 
-                            <img src="../../Resources/img/testimonial-perfil-2.png" alt="image" class="testimonial__img">
+                            <img src="../../Resources/img/testimonial-perfil-2.png" alt="image"
+                                class="testimonial__img">
 
                             <h2 class="testimonial__title">Dan Raphel</h2>
                             <p class="testimonial__description">
@@ -159,7 +167,8 @@
 
                         <article class="testimonial__card swiper-slide">
 
-                            <img src="../../Resources/img/testimonial-perfil-3.png" alt="image" class="testimonial__img">
+                            <img src="../../Resources/img/testimonial-perfil-3.png" alt="image"
+                                class="testimonial__img">
 
                             <h2 class="testimonial__title">Prial Lopez</h2>
                             <p class="testimonial__description">
@@ -183,7 +192,8 @@
 
                         <article class="testimonial__card swiper-slide">
 
-                            <img src="../../Resources/img/testimonial-perfil-4.png" alt="image" class="testimonial__img">
+                            <img src="../../Resources/img/testimonial-perfil-4.png" alt="image"
+                                class="testimonial__img">
 
                             <h2 class="testimonial__title">Alex Rodes</h2>
                             <p class="testimonial__description">
@@ -210,19 +220,19 @@
 
 
 
-    <br><br><br><br><br><br><br><br><br>
+            <br><br><br><br><br><br><br><br><br>
 
 
-    <script src="../../Resources/js/header.js"></script>
-    <!--=============== SWIPER JS ===============-->
-    <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="../../Resources/js/scrollreveal.min.js"></script>
-    <script src="../../Resources/js/main.js"></script>
-    <script src="../../Resources/js/sweetalert.min.js"></script>
-    <script src="../../controllers/utils/components.js"></script>
-    <script src="../../controllers/utils/public.js"></script>
-    <script src="../../controllers/public/detalle.js"></script>
+            <script src="../../Resources/js/header.js"></script>
+            <!--=============== SWIPER JS ===============-->
+            <script src="../../Resources/js/swiper-bundle.min.js"></script>
+            <!--=============== SCROLLREVEAL ===============-->
+            <script src="../../Resources/js/scrollreveal.min.js"></script>
+            <script src="../../Resources/js/main.js"></script>
+            <script src="../../Resources/js/sweetalert.min.js"></script>
+            <script src="../../controllers/utils/components.js"></script>
+            <script src="../../controllers/utils/public.js"></script>
+            <script src="../../controllers/public/detalle.js"></script>
 </body>
 
 </html>
