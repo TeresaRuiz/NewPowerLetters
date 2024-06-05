@@ -136,7 +136,7 @@ const loadTemplate = async () => {
                 <!-- theme button  -->
                 <i class="ri-moon-line change-theme" id="theme-button"></i>
                 <!-- login link -->
-                <a href="index.html"><i class="ri-user-line login-button" id="login-button"></i> Iniciar sesión</a>
+               <i class="ri-user-line login-button" id="login-button">    Iniciar sesión</i> 
             </div>
                 <!--==================== SEARCH ====================-->
                 <div class="search" id="search-content">
@@ -191,31 +191,51 @@ const loadTemplate = async () => {
         });
     }
 
-     // Configurar el cambio de tema
-     const themeButton = document.getElementById('theme-button');
-     const darkTheme = 'dark-theme';
-     const iconTheme = 'ri-sun-line';
+    // Configurar el cambio de tema
+    const themeButton = document.getElementById('theme-button');
+    const darkTheme = 'dark-theme';
+    const iconTheme = 'ri-sun-line';
 
-     // Obtiene el tema e icono seleccionados previamente
-     const selectedTheme = localStorage.getItem('selected-theme');
-     const selectedIcon = localStorage.getItem('selected-icon');
+    // Obtiene el tema e icono seleccionados previamente
+    const selectedTheme = localStorage.getItem('selected-theme');
+    const selectedIcon = localStorage.getItem('selected-icon');
 
-     // Obtiene el tema e icono actuales
-     const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
-     const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line';
+    // Obtiene el tema e icono actuales
+    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line';
 
-     // Valida si el usuario eligió un tema previamente
-     if (selectedTheme) {
-         document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
-         themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme);
-     }
+    // Valida si el usuario eligió un tema previamente
+    if (selectedTheme) {
+        document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+        themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme);
+    }
 
-     // Activa/desactiva el tema con el botón
-     themeButton.addEventListener('click', () => {
-         document.body.classList.toggle(darkTheme);
-         themeButton.classList.toggle(iconTheme);
-         localStorage.setItem('selected-theme', getCurrentTheme());
-         localStorage.setItem('selected-icon', getCurrentIcon());
-     });
+    // Activa/desactiva el tema con el botón
+    themeButton.addEventListener('click', () => {
+        document.body.classList.toggle(darkTheme);
+        themeButton.classList.toggle(iconTheme);
+        localStorage.setItem('selected-theme', getCurrentTheme());
+        localStorage.setItem('selected-icon', getCurrentIcon());
+    });
 
+    /*=============== LOGIN ===============*/
+
+
+    const loginButton = document.getElementById('login-button'),
+        loginClose = document.getElementById('login-close'),
+        loginContent = document.getElementById('login-content')
+
+    /* login show */
+    if (loginButton) {
+        loginButton.addEventListener('click', () => {
+            loginContent.classList.add('show-login')
+        })
+    }
+
+    /* login hidden */
+    if (loginClose) {
+        loginClose.addEventListener('click', () => {
+            loginContent.classList.remove('show-login')
+        })
+    }
 };
