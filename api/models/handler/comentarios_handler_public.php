@@ -12,7 +12,7 @@ class ComentarioHandlerPublic
      */
     protected $id = null;
     protected $comentario = null;
-    protected $estado = null;
+    protected $calificacion = null;
 
     /*
      * Método para buscar registros en la tabla tb_comentarios.
@@ -49,6 +49,28 @@ class ComentarioHandlerPublic
 
         // Ejecutar la consulta y devolver las filas resultantes
         return Database::getRows($sql, $params);
+    }
+
+    public function createRow()
+    {
+        $sql = 'INSERT INTO tb_comentarios(comentario, calificacion)
+            VALUES(?, ?)';
+        $params = array($this->comentario, $this->calificacion);
+        return Database::executeRow($sql, $params);
+    }
+
+    public function updateRow()
+    {
+        // Definir la consulta SQL para actualizar el estado del comentario
+        $sql = 'UPDATE tb_comentarios
+                SET calificacion = ?
+                WHERE id_comentario = ?';
+
+        // Establecer los parámetros para la consulta (estado y id)
+        $params = array($this->calificacion, $this->id);
+
+        // Ejecutar la consulta y devolver el resultado
+        return Database::executeRow($sql, $params);
     }
 
     /*
