@@ -31,6 +31,21 @@
     margin: 0.5em; /* Margen entre los botones */
 }
 
+/* Estilo para el boton de redireccionar */
+.btnFlecha {
+    background-color: #6759ff;
+    color: #ffffff;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+    height: 50px;
+}
+
+/* Estilo para el icono dentro del botón */
+.btnFlecha i {
+    font-size: 2em; /* Ajusta este valor al tamaño deseado */
+}
 
 
   
