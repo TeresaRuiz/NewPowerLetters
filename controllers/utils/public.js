@@ -131,13 +131,13 @@ const loadTemplate = async () => {
                     </ul>
                 </div>
                 <div class="nav__actions">
-                    <!-- search button  -->
-                    <i class="ri-search-line search-button" id="search-button"></i>
-                    <!-- theme button  -->
-                    <i class="ri-moon-line change-theme" id="theme-button"></i>
-                    <!-- login link -->
-                    <a href="index.html" class="nav__link"><i class="ri-user-line login-button" id="login-button"></i> Iniciar sesión</a>
-                </div>
+                <!-- search button  -->
+                <i class="ri-search-line search-button" id="search-button"></i>
+                <!-- theme button  -->
+                <i class="ri-moon-line change-theme" id="theme-button"></i>
+                <!-- login link -->
+               <i class="ri-user-line login-button" id="login-button">    Iniciar sesión</i> 
+            </div>
                 <!--==================== SEARCH ====================-->
                 <div class="search" id="search-content">
                     <form action="search-button" class="search__form">
@@ -152,17 +152,17 @@ const loadTemplate = async () => {
                         <h3 class="login__title">Log In</h3>
                         <div class="login__group grid">
                             <div>
-                                <label for="login-email" class="login__label">Email</label>
-                                <input type="email" placeholder="Write your email" id="login-email" class="login__input">
+                                <label for="login-email" class="login__label">Correo</label>
+                                <input type="email" placeholder="Escribe tu correo electrónico" id="login-email" class="login__input">
                             </div>
                             <div>
-                                <label for="login-pass" class="login__label">Password</label>
-                                <input type="password" placeholder="Enter your password" id="login-pass" class="login__input">
+                                <label for="login-pass" class="login__label">Contraseña</label>
+                                <input type="password" placeholder="Escribe tu contraseña" id="login-pass" class="login__input">
                             </div>
                         </div>
                         <div>
-                            <span class="login__signup">You do not have an account? <a href="#">Sign up</a></span>
-                            <a href="#" class="login__forget">You forgot your password</a>
+                            <span class="login__signup">¿No tienes una cuenta? <a href="registro_c.html">Registrate acá</a></span>
+                            <a href="#" class="login__forget">¿No encuentras tu contraseña?</a>
                             <button type="submit" class="login__button button">Log In</button>
                         </div>
                     </form>
@@ -173,56 +173,69 @@ const loadTemplate = async () => {
         document.body.insertBefore(header, document.body.firstChild);
     }
 
-    // Se agrega el pie de la página web después del último hijo del body.
-    const footer = document.createElement('footer');
-    footer.classList.add('footer');
-    document.body.appendChild(footer);
+    const searchButton = document.getElementById('search-button');
+    const searchClose = document.getElementById('search-close');
+    const searchContent = document.getElementById('search-content');
+
+    /* Mostrar formulario de búsqueda */
+    if (searchButton && searchContent) {
+        searchButton.addEventListener('click', () => {
+            searchContent.classList.add('active');
+        });
+    }
+
+    /* Ocultar formulario de búsqueda */
+    if (searchClose && searchContent) {
+        searchClose.addEventListener('click', () => {
+            searchContent.classList.remove('active');
+        });
+    }
+
+    // Configurar el cambio de tema
+    const themeButton = document.getElementById('theme-button');
+    const darkTheme = 'dark-theme';
+    const iconTheme = 'ri-sun-line';
+
+    // Obtiene el tema e icono seleccionados previamente
+    const selectedTheme = localStorage.getItem('selected-theme');
+    const selectedIcon = localStorage.getItem('selected-icon');
+
+    // Obtiene el tema e icono actuales
+    const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+    const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'ri-moon-line' : 'ri-sun-line';
+
+    // Valida si el usuario eligió un tema previamente
+    if (selectedTheme) {
+        document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+        themeButton.classList[selectedIcon === 'ri-moon-line' ? 'add' : 'remove'](iconTheme);
+    }
+
+    // Activa/desactiva el tema con el botón
+    themeButton.addEventListener('click', () => {
+        document.body.classList.toggle(darkTheme);
+        themeButton.classList.toggle(iconTheme);
+        localStorage.setItem('selected-theme', getCurrentTheme());
+        localStorage.setItem('selected-icon', getCurrentIcon());
+    });
+
+    /*=============== LOGIN ===============*/
+
+
+    const loginButton = document.getElementById('login-button'),
+        loginClose = document.getElementById('login-close'),
+        loginContent = document.getElementById('login-content')
+
+    /* login show */
+    if (loginButton) {
+        loginButton.addEventListener('click', () => {
+            loginContent.classList.add('show-login')
+        })
+    }
+
+    /* login hidden */
+    if (loginClose) {
+        loginClose.addEventListener('click', () => {
+            loginContent.classList.remove('show-login')
+        })
+    }
 };
-
-document.addEventListener('DOMContentLoaded', function () {
-    loadTemplate().then(() => {
-        /* Search Functionality */
-        const searchButton = document.getElementById('search-button');
-        const searchClose = document.getElementById('search-close');
-        const searchContent = document.getElementById('search-content');
-
-        if (searchButton) {
-            searchButton.addEventListener('click', () => {
-                searchContent.classList.add('show-search');
-            });
-        }
-
-        if (searchClose) {
-            searchClose.addEventListener('click', () => {
-                searchContent.classList.remove('show-search');
-            });
-        }
-
-        /* Login Functionality */
-        const loginButton = document.getElementById('login-button');
-        const loginClose = document.getElementById('login-close');
-        const loginContent = document.getElementById('login-content');
-
-        if (loginButton) {
-            loginButton.addEventListener('click', () => {
-                loginContent.classList.add('show-login');
-            });
-        }
-
-        if (loginClose) {
-            loginClose.addEventListener('click', () => {
-                loginContent.classList.remove('show-login');
-            });
-        }
-
-        /* Shadow Header */
-        const shadowHeader = () => {
-            const header = document.getElementById('header');
-            this.scrollY >= 50 ? header.classList.add('shadow-header') : header.classList.remove('shadow-header');
-        };
-        window.addEventListener('scroll', shadowHeader);
-    });});
-
-
-
-
