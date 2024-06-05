@@ -12,7 +12,6 @@ if (isset($_GET['action'])) {
     $result = array('status' => 0, 'session' => 0, 'message' => null, 'error' => null, 'exception' => null, 'dataset' => null);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
     
-    $_SESSION['idUsuario'] = 1;
     if (isset($_SESSION['idUsuario'])) {
         $result['session'] = 1;
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
