@@ -136,7 +136,7 @@ const loadTemplate = async () => {
                 <!-- theme button  -->
                 <i class="ri-moon-line change-theme" id="theme-button"></i>
                 <!-- login link -->
-                <a href="index.html" class="nav__link"><i class="ri-user-line login-button" id="login-button"></i> Iniciar sesión</a>
+                <a href="index.html"><i class="ri-user-line login-button" id="login-button"></i> Iniciar sesión</a>
             </div>
                 <!--==================== SEARCH ====================-->
                 <div class="search" id="search-content">
