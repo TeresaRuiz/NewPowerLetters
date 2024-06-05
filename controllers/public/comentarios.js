@@ -1,64 +1,124 @@
-// Constante para completar la ruta de la API.
-const COMENTARIOA = 'services/public/libros.php';
-// Constante tipo objeto para obtener los parámetros disponibles en la URL.
-const PARAMS = new URLSearchParams(location.search);
-const COMENTARIO = document.getElementById('libros');
+// URL de la API para gestionar los comentarios.
+const COMENTARIOS_API = 'services/admin/comentarios.php';
 
-// Método manejador de eventos para cuando el documento ha cargado.
-document.addEventListener('DOMContentLoaded', async () => {
-    // Se define un objeto con los datos de la categoría seleccionada.
-    const FORM = new FormData();
-    FORM.append('idClas', PARAMS.get('id'));
-    // Petición para solicitar los productos de la categoría seleccionada.
-    const DATA = await fetchData(LIBROS_API, 'readLibrosGeneros', FORM);
+// Elementos del DOM utilizados en el script.
+const SEARCH_FORM = document.getElementById('searchForm'); // Formulario de búsqueda.
+const TABLE_BODY = document.getElementById('tableBody'); // Cuerpo de la tabla donde se mostrarán los comentarios.
+const ROWS_FOUND = document.getElementById('rowsFound'); // Elemento donde se mostrará la cantidad de filas encontradas.
+
+// Elementos del formulario para guardar un comentario.
+const SAVE_FORM = document.getElementById('saveForm'), // Formulario para guardar un comentario.
+    id_comentario = document.getElementById('id_comentario'), // Campo de entrada para el ID del comentario.
+    comentario = document.getElementById('comentario'), // Campo de entrada para el contenido del comentario.
+    calificacion = document.getElementById('calificacion'), // Campo de entrada para la calificación del comentario.
+    estadoComentario = document.getElementById('estadoComentario'); // Campo de entrada para el estado del comentario.
+
+// Event listener que se ejecuta cuando el contenido del DOM ha sido completamente cargado.
+document.addEventListener('DOMContentLoaded', () => {
+    fillTable(); // Llama a la función fillTable para llenar la tabla con los comentarios.
+});
+
+
+
+// Método del evento para cuando se envía el formulario de guardar.
+SAVE_FORM.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Se verifica la acción a realizar.
+    const action = (id_comentario.value) ? 'updateRow' : 'createRow';
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SAVE_FORM);
+    // Petición para guardar los datos del formulario.
+    const DATA = await fetchData(COMENTARIO_API, action, FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        // Se inicializa el contenedor de productos.
-        LIBROS.innerHTML = '';
-        // Se recorre el conjunto de registros fila por fila a través del objeto row.
-        DATA.dataset.forEach(row => {
-            // Se crean y concatenan las tarjetas con los datos de cada producto.
-            LIBROS.innerHTML += `
-                <article class="featured__card  swiper-slide">
-                    <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo_libro}">
-                    <h2 class="featured__title">${row.titulo_libro}</h2>
-                    <div class="featured__prices">
-                        <span class="featured__discount"> ${row.precio}</span>
-                    </div>
-                    <buttton class="button">Añadir al carrito</buttton>
-                    <div class="featured__actions">
-                        <button><i class="ri-search-line"></i></button>
-                        <button><i class="ri-heart-3-line"></i></button>
-                        <a href="detalle_libro.html?id=${row.id_libro}"><button><i class="ri-eye-line"></i></button></a>
-                    </div>
-                </article>
-
-                <article class="testimonial__card swiper-slide">
-
-                            <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo_libro}">
-                    
-                            <h2 class="testimonial__title">Rial Loz</h2>
-                            <p class="testimonial__description">
-
-                                The best website to buy books, the purchase
-                                is very easy to make and has great discounts.
-                            </p>
-
-
-                            <div class="testimonial__stars">
-
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-half-fill"></i>
-                            </div>
-
-                        </article>
-            `;
-        });
+        // Se cierra la caja de diálogo.
+        closeModal();
+        // Se muestra un mensaje de éxito.
+        sweetAlert(1, DATA.message, true);
+        // Se carga nuevamente la tabla para visualizar los cambios.
+        fillTable();
     } else {
-        // Se presenta un mensaje de error cuando no existen datos para mostrar.
-        console.log(DATA.error);
+        // Se muestra un mensaje de error.
+        sweetAlert(2, DATA.error, false);
     }
 });
+
+// Función para llenar la tabla con los datos.
+const fillTable = async (form = null) => {
+    // Se inicializa el contenido de la tabla.
+    ROWS_FOUND.textContent = '';
+    TABLE_BODY.innerHTML = '';
+    // Se verifica la acción a realizar.
+    const action = (form) ? 'searchRows' : 'readAll';
+    // Petición para obtener los registros disponibles.
+    const DATA = await fetchData(COMENTARIO_API, action, form);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se recorre el conjunto de registros fila por fila.
+        DATA.dataset.forEach(row => {
+            // Se crean y concatenan las filas de la tabla con los datos de cada registro.
+            TABLE_BODY.innerHTML += `
+            <tr>
+                <td>${row.comentario}</td>
+                <td>${row.nombre_usuario}</td>
+                <td>${getStarsHTML(row.calificacion)}</td>
+                <td>
+                    <div>
+                        ${row.estado_comentario}
+                    </div>
+                </td>
+                <td class="action-icons">
+                    <a onclick="viewDetails(${row.id_comentario})">
+                        <i class="ri-eye-fill"></i>
+                    </a>
+                    <a onclick="openUpdate(${row.id_comentario})">
+                        <i class="ri-edit-line"></i>
+                    </a>
+                </td>
+            </tr>
+            `;
+        });
+        // Se muestra un mensaje de acuerdo con el resultado.
+        ROWS_FOUND.textContent = DATA.message;
+    } else {
+        // Se muestra un mensaje de error.
+        sweetAlert(4, DATA.error, true);
+    }
+}
+
+// Función para obtener el HTML de las estrellas basado en la calificación.
+const getStarsHTML = (rating) => {
+    let starsHTML = '';
+    for (let i = 1; i <= 5; i++) {
+        if (i <= rating) {
+            starsHTML += '<span class="fa fa-star checked"></span>';
+        } else {
+            starsHTML += '<span class="fa fa-star"></span>';
+        }
+    }
+    return starsHTML;
+}
+
+// Función para abrir el modal de actualización con los datos del comentario.
+const openUpdate = async (id) => {
+    // Se define una constante tipo objeto con los datos del registro seleccionado.
+    const FORM = new FormData();
+    FORM.append('id_comentario', id);
+    // Petición para obtener los datos del registro solicitado.
+    const DATA = await fetchData(COMENTARIO_API, 'readOne', FORM);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        const ROW = DATA.dataset;
+        id_comentario.value = ROW.id_comentario;
+        comentario.value = ROW.comentario;
+        document.getElementById('calificacionContainer').innerHTML = getStarsHTML(ROW.calificacion);
+        fillSelect(COMENTARIO_API, 'getEstados', 'estadoComentario', ROW.estado_comentario);
+        AbrirModal();
+        MODAL_TITLE.textContent = 'Actualizar un comentario';
+    } else {
+        // Se muestra un mensaje de error.
+        sweetAlert(2, DATA.error, false);
+    }
+}
+
