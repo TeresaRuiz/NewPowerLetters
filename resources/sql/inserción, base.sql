@@ -1,82 +1,34 @@
 USE powerletters;
 
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Juan Pérez', 'jperez', 'jperez@gmail.com', 'clave123', 'Calle Principal 123', '555-1234', 'imagen1.jpg', 1, CURDATE());
+INSERT INTO tb_usuarios (nombre_usuario, apellido_usuario, dui_usuario, correo_usuario, telefono_usuario, direccion_usuario, nacimiento_usuario, clave_usuario, imagen, estado_cliente, fecha_registro)
+VALUES 
+('Juan', 'Pérez', '01234567-8', 'jperez@gmail.com', '5551234', 'Calle Principal 123', '1980-01-15', 'clave123', 'imagen1.jpg', 1, CURRENT_TIMESTAMP),
+('María', 'García', '12345678-9', 'mgarcia@gmail.com', '5555678', 'Avenida Central 456', '1985-05-23', 'password456', 'imagen2.jpg', 0, CURRENT_TIMESTAMP),
+('Luis', 'Rodríguez', '23456789-0', 'lrodriguez@gmail.com', '5559012', 'Plaza Mayor 789', '1990-09-12', 'contraseña789', 'imagen3.jpg', 0, CURRENT_TIMESTAMP),
+('Ana', 'Martínez', '34567890-1', 'amartinez@gmail.com', '5553456', 'Calle Secundaria 456', '1992-03-11', 'clave456', 'imagen4.jpg', 1, CURRENT_TIMESTAMP),
+('Pedro', 'López', '45678901-2', 'plopez@gmail.com', '5556789', 'Avenida Principal 789', '1978-07-27', 'password789', 'imagen5.jpg', 0, CURRENT_TIMESTAMP),
+('Laura', 'Sánchez', '56789012-3', 'lsanchez@gmail.com', '5552345', 'Calle Central 789', '1983-12-14', 'clave789', 'imagen6.jpg', 1, CURRENT_TIMESTAMP),
+('Carlos', 'Ramírez', '67890123-4', 'cramirez@gmail.com', '5554567', 'Avenida Secundaria 123', '1981-06-08', 'contraseña123', 'imagen7.jpg', 1, CURRENT_TIMESTAMP),
+('Sofía', 'Torres', '78901234-5', 'storres@gmail.com', '5557890', 'Calle Mayor 234', '1995-04-22', 'password1234', 'imagen8.jpg', 1, CURRENT_TIMESTAMP),
+('Javier', 'Gómez', '89012345-6', 'jgomez@gmail.com', '5551234', 'Plaza Central 5678', '1987-11-30', 'clave5678', 'imagen9.jpg', 1, CURRENT_TIMESTAMP),
+('Marcela', 'López', '90123456-7', 'mlopez@gmail.com', '5555678', 'Calle Principal 234', '1990-02-25', 'password234', 'imagen10.jpg', 1, CURRENT_TIMESTAMP),
+('Ricardo', 'Martínez', '01234567-8', 'rmartinez@gmail.com', '5559012', 'Avenida Central 7890', '1982-08-19', 'clave7890', 'imagen11.jpg', 1, CURRENT_TIMESTAMP),
+('Isabel', 'Fernández', '12345678-9', 'ifernandez@gmail.com', '5553456', 'Plaza Secundaria 5678', '1984-10-05', 'password5678', 'imagen12.jpg', 1, CURRENT_TIMESTAMP),
+('Diego', 'Soto', '23456789-0', 'dsoto@gmail.com', '5556789', 'Calle Nueva 78901', '1986-07-17', 'clave78901', 'imagen13.jpg', 1, CURRENT_TIMESTAMP),
+('Carolina', 'Ramírez', '34567890-1', 'cramirez2@gmail.com', '5552345', 'Avenida Nueva 3456', '1989-05-09', 'password3456', 'imagen14.jpg', 1, CURRENT_TIMESTAMP),
+('Roberto', 'Torres', '45678901-2', 'rtorres2@gmail.com', '5554567', 'Calle Vieja 1234', '1993-01-22', 'clave1234', 'imagen15.jpg', 1, CURRENT_TIMESTAMP),
+('Elena', 'Gutiérrez', '56789012-3', 'egutierrez@gmail.com', '5557890', 'Avenida Vieja 6789', '1980-09-09', 'password6789', 'imagen16.jpg', 1, CURRENT_TIMESTAMP),
+('Francisco', 'Silva', '67890123-4', 'fsilva@gmail.com', '5551234', 'Plaza Nueva 5678', '1991-06-26', 'clave5678', 'imagen17.jpg', 1, CURRENT_TIMESTAMP),
+('Carmen', 'Morales', '78901234-5', 'cmorales@gmail.com', '5555678', 'Calle Antigua 9012', '1979-10-14', 'password9012', 'imagen18.jpg', 1, CURRENT_TIMESTAMP),
+('Alejandro', 'Pérez', '89012345-6', 'aperez2@gmail.com', '5559012', 'Avenida Antigua 2345', '1985-02-18', 'clave2345', 'imagen19.jpg', 1, CURRENT_TIMESTAMP),
+('Silvia', 'Navarro', '90123456-7', 'snavarro@gmail.com', '5553456', 'Plaza Vieja 6789', '1994-07-13', 'password6789', 'imagen20.jpg', 1, CURRENT_TIMESTAMP),
+('Jorge', 'Vargas', '01234567-8', 'jvargas2@gmail.com', '5556789', 'Calle Moderna 4567', '1983-11-21', 'clave4567', 'imagen21.jpg', 1, CURRENT_TIMESTAMP),
+('Andrea', 'Jiménez', '12345678-9', 'ajimenez@gmail.com', '5552345', 'Avenida Moderna 3456', '1988-03-28', 'password3456', 'imagen22.jpg', 1, CURRENT_TIMESTAMP),
+('Martín', 'Castro', '23456789-0', 'mcastro@gmail.com', '5554567', 'Calle Futura 7890', '1990-12-02', 'clave7890', 'imagen23.jpg', 1, CURRENT_TIMESTAMP),
+('Lucía', 'Herrera', '34567890-1', 'lherrera@gmail.com', '5556789', 'Plaza Moderna 1234', '1986-04-15', 'password1234', 'imagen24.jpg', 1, CURRENT_TIMESTAMP),
+('Pablo', 'Ortega', '45678901-2', 'portega@gmail.com', '5559012', 'Avenida Futura 5678', '1977-09-01', 'clave5678', 'imagen25.jpg', 1, CURRENT_TIMESTAMP);
 
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('María García', 'mgarcia', 'mgarcia@gmail.com', 'password456', 'Avenida Central 456', '555-5678', 'imagen2.jpg', 0, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Luis Rodríguez', 'lrodriguez', 'lrodriguez@gmail.com', 'contraseña789', 'Plaza Mayor 789', '555-9012', 'imagen3.jpg', 0, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Ana Martínez', 'amartinez', 'amartinez@gmail.com', 'clave456', 'Calle Secundaria 456', '555-3456', 'imagen4.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Pedro López', 'plopez', 'plopez@gmail.com', 'password789', 'Avenida Principal 789', '555-6789', 'imagen5.jpg', 0, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Laura Sánchez', 'lsanchez', 'lsanchez@gmail.com', 'clave789', 'Calle Central 789', '555-2345', 'imagen6.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Carlos Ramírez', 'cramirez', 'cramirez@gmail.com', 'contraseña123', 'Avenida Secundaria 123', '555-4567', 'imagen7.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Sofía Torres', 'storres', 'storres@gmail.com', 'password1234', 'Calle Mayor 234', '555-7890', 'imagen8.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Javier Gómez', 'jgomez', 'jgomez@gmail.com', 'clave5678', 'Plaza Central 5678', '555-1234', 'imagen9.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Marcela López', 'mlopez', 'mlopez@gmail.com', 'password234', 'Calle Principal 234', '555-5678', 'imagen10.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Ricardo Martínez', 'rmartinez', 'rmartinez@gmail.com', 'clave7890', 'Avenida Central 7890', '555-9012', 'imagen11.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Isabel Fernández', 'ifernandez', 'ifernandez@gmail.com', 'password5678', 'Plaza Secundaria 5678', '555-3456', 'imagen12.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Diego Soto', 'dsoto', 'dsoto@gmail.com', 'clave78901', 'Calle Nueva 78901', '555-6789', 'imagen13.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Carolina Ramírez', 'cramirez2', 'cramirez2@gmail.com', 'password3456', 'Avenida Nueva 3456', '555-2345', 'imagen14.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Roberto Torres', 'rtorres2', 'rtorres2@gmail.com', 'clave1234', 'Calle Vieja 1234', '555-4567', 'imagen15.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Elena Gutiérrez', 'egutierrez', 'egutierrez@gmail.com', 'password6789', 'Avenida Vieja 6789', '555-7890', 'imagen16.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Francisco Silva', 'fsilva', 'fsilva@gmail.com', 'clave5678', 'Plaza Nueva 5678', '555-1234', 'imagen17.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Carmen Morales', 'cmorales', 'cmorales@gmail.com', 'password9012', 'Calle Antigua 9012', '555-5678', 'imagen18.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Alejandro Pérez', 'aperez2', 'aperez2@gmail.com', 'clave2345', 'Avenida Antigua 2345', '555-9012', 'imagen19.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Silvia Navarro', 'snavarro', 'snavarro@gmail.com', 'password6789', 'Plaza Vieja 6789', '555-3456', 'imagen20.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Jorge Vargas', 'jvargas2', 'jvargas2@gmail.com', 'clave4567', 'Calle Moderna 4567', '555-6789', 'imagen21.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Andrea Jiménez', 'ajimenez', 'ajimenez@gmail.com', 'password3456', 'Avenida Moderna 3456', '555-2345', 'imagen22.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Martín Castro', 'mcastro', 'mcastro@gmail.com', 'clave7890', 'Calle Futura 7890', '555-4567', 'imagen23.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Lucía Herrera', 'lherrera', 'lherrera@gmail.com', 'password1234', 'Plaza Moderna 1234', '555-6789', 'imagen24.jpg', 1, CURDATE());
-
-INSERT INTO tb_usuarios (nombre, nombre_usuario, correo, clave, direccion, telefono, imagen, estado_cliente, fecha_registro)
-VALUES ('Pablo Ortega', 'portega', 'portega@gmail.com', 'clave5678', 'Avenida Futura 5678', '555-9012', 'imagen25.jpg', 1, CURDATE());
-
-
-SELECT * FROM tb_usuarios;
+SELECT*FROM tb_usuarios;
 
 INSERT INTO administrador (
     nombre_administrador,
@@ -271,9 +223,9 @@ VALUES
   ('La hora de la estrella',23,11.99,'Historia de Macabéa en Río de Janeiro','imagen23.jpg',23,23,25,23),
   ('Siddhartha',24,15.50,'Búsqueda espiritual y despertar interior en la India','imagen24.jpg',24,24,35,24),
   ('Demian',25,14.75,'Desarrollo personal y dualidad interna del protagonista Emil Sinclair','imagen25.jpg',25,25,30,25);
+  
   SELECT*FROM tb_libros;
   
-  -- Insertar datos en la tabla tb_pedidos
 INSERT INTO tb_pedidos (id_usuario, direccion_pedido, estado, fecha_pedido) VALUES 
     (1, 'Calle Principal 123', 'PENDIENTE', NOW()),
     (2, 'Avenida Central 456', 'ENTREGADO', NOW()),
