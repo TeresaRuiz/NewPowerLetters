@@ -131,13 +131,13 @@ const loadTemplate = async () => {
                     </ul>
                 </div>
                 <div class="nav__actions">
-                    <!-- search button  -->
-                    <i class="ri-search-line search-button" id="search-button"></i>
-                    <!-- theme button  -->
-                    <i class="ri-moon-line change-theme" id="theme-button"></i>
-                    <!-- login link -->
-                    <a href="index.html" class="nav__link"><i class="ri-user-line login-button" id="login-button"></i> Iniciar sesión</a>
-                </div>
+                <!-- search button  -->
+                <i class="ri-search-line search-button" id="search-button"></i>
+                <!-- theme button  -->
+                <i class="ri-moon-line change-theme" id="theme-button"></i>
+                <!-- login link -->
+                <a href="index.html" class="nav__link"><i class="ri-user-line login-button" id="login-button"></i> Iniciar sesión</a>
+            </div>
                 <!--==================== SEARCH ====================-->
                 <div class="search" id="search-content">
                     <form action="search-button" class="search__form">
@@ -173,56 +173,22 @@ const loadTemplate = async () => {
         document.body.insertBefore(header, document.body.firstChild);
     }
 
-    // Se agrega el pie de la página web después del último hijo del body.
-    const footer = document.createElement('footer');
-    footer.classList.add('footer');
-    document.body.appendChild(footer);
+    const searchButton = document.getElementById('search-button');
+    const searchClose = document.getElementById('search-close');
+    const searchContent = document.getElementById('search-content');
+
+    /* Mostrar formulario de búsqueda */
+    if (searchButton && searchContent) {
+        searchButton.addEventListener('click', () => {
+            searchContent.classList.add('active');
+        });
+    }
+
+    /* Ocultar formulario de búsqueda */
+    if (searchClose && searchContent) {
+        searchClose.addEventListener('click', () => {
+            searchContent.classList.remove('active');
+        });
+    }
+
 };
-
-document.addEventListener('DOMContentLoaded', function () {
-    loadTemplate().then(() => {
-        /* Search Functionality */
-        const searchButton = document.getElementById('search-button');
-        const searchClose = document.getElementById('search-close');
-        const searchContent = document.getElementById('search-content');
-
-        if (searchButton) {
-            searchButton.addEventListener('click', () => {
-                searchContent.classList.add('show-search');
-            });
-        }
-
-        if (searchClose) {
-            searchClose.addEventListener('click', () => {
-                searchContent.classList.remove('show-search');
-            });
-        }
-
-        /* Login Functionality */
-        const loginButton = document.getElementById('login-button');
-        const loginClose = document.getElementById('login-close');
-        const loginContent = document.getElementById('login-content');
-
-        if (loginButton) {
-            loginButton.addEventListener('click', () => {
-                loginContent.classList.add('show-login');
-            });
-        }
-
-        if (loginClose) {
-            loginClose.addEventListener('click', () => {
-                loginContent.classList.remove('show-login');
-            });
-        }
-
-        /* Shadow Header */
-        const shadowHeader = () => {
-            const header = document.getElementById('header');
-            this.scrollY >= 50 ? header.classList.add('shadow-header') : header.classList.remove('shadow-header');
-        };
-        window.addEventListener('scroll', shadowHeader);
-    });});
-
-
-
-

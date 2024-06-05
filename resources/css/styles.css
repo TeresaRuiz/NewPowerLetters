@@ -445,8 +445,9 @@ body.dark-theme {
 /* Show search */
 
 
-.show-search {
+.active {
   top: 0;
+  
 }
 
 
