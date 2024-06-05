@@ -44,12 +44,14 @@ class LibroDescuentoHandler
             tb_generos AS g ON l.id_genero = g.id_genero
         WHERE
             l.titulo LIKE ? OR
-            l.descripcion LIKE ?
+            l.descripcion LIKE ? OR
+            e.nombre LIKE ?
         ORDER BY
             l.titulo;';
-        $params = array($value, $value);
+        $params = array($value, $value, $value);
         return Database::getRows($sql, $params);
     }
+    
 
     
     /*

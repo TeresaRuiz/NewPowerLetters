@@ -16,7 +16,7 @@
 }
 
 /* Contenedor de los botones */
-.botones-container {
+.botones {
     display: flex; /* Utiliza flexbox */
     justify-content: center; /* Centra los botones horizontalmente */
     margin-top: 1em; /* Añade un margen arriba para separarlos de otros elementos */
@@ -47,7 +47,49 @@
     font-size: 2em; /* Ajusta este valor al tamaño deseado */
 }
 
+/********************************Diseño de estrellas**************************************/
 
+ /* Estilos existentes */
+ .rating:not(:checked) > input {
+    position: absolute;
+    appearance: none;
+}
+
+.rating:not(:checked) > label {
+    float: right;
+    cursor: pointer;
+    font-size: 30px;
+    color: #666;
+}
+
+.rating:not(:checked) > label:before {
+    content: '★';
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: #e58e09;
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #ff9e0b;
+}
+
+.rating > input:checked ~ label {
+    color: #ffa723;
+}
+
+/* Nuevos estilos para centrar las estrellas */
+.rating-container {
+    display: flex;
+    justify-content: center; /* Centra horizontalmente */
+    align-items: center; /* Centra verticalmente (opcional) */
+    height: 100%; /* Asegura que el contenedor tenga una altura para centrar verticalmente */
+}
   
  
 
