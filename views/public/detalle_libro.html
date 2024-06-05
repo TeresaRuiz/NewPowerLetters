@@ -28,7 +28,7 @@
         <section class="section">
             <div class="container">
 
- <!--==================== BOTONDE REDIRECCIONAR ====================-->
+                <!--==================== BOTONDE REDIRECCIONAR ====================-->
 
                 <button id="redirectButton" class="btnFlecha"><i class="ri-arrow-left-circle-line"></i></button>
 
@@ -83,13 +83,26 @@
             <input type="text" name="titulo" id="comentario" placeholder="Agrega un comentario..." class="libro__input"
                 required>
             <div class="botones-container">
+                <br><br><br>
+                <div class="rating-container">
+                    <div class="rating">
+                        <input type="radio" name="star" id="star5"><label for="star5"></label>
+                        <input type="radio" name="star" id="star4"><label for="star4"></label>
+                        <input type="radio" name="star" id="star3"><label for="star3"></label>
+                        <input type="radio" name="star" id="star2"><label for="star2"></label>
+                        <input type="radio" name="star" id="star1"><label for="star1"></label>
+                    </div>
+                </div>
+
+
+            </div>
+            <div class="botones">
                 <button class="comentario-button">Comentar</button>
                 <button class="cancelar-button">Cancelar</button>
             </div>
 
 
         </div>
-
 
     </div>
 
@@ -234,20 +247,21 @@
             <script src="../../controllers/utils/components.js"></script>
             <script src="../../controllers/utils/public.js"></script>
             <script src="../../controllers/public/detalle.js"></script>
+            <script src="../../controllers/public/comentarios.js"></script>
 
-    <!--=============== SWIPER JS ===============-->
-    <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
-    <script src="../../Resources/js/scrollreveal.min.js"></script>
-    <script src="../../Resources/js/sweetalert.min.js"></script>
-    <script src="../../controllers/utils/components.js"></script>
-    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
-    <script src="../../controllers/public/detalle.js"></script>
-      <!-- Llamada a la función loadTemplate -->
-      <script>
-        // Llamada a la función loadTemplate para cargar el encabezado y pie de la página
-        loadTemplate();
-    </script>
+            <!--=============== SWIPER JS ===============-->
+            <script src="../../Resources/js/swiper-bundle.min.js"></script>
+            <!--=============== SCROLLREVEAL ===============-->
+            <script src="../../Resources/js/scrollreveal.min.js"></script>
+            <script src="../../Resources/js/sweetalert.min.js"></script>
+            <script src="../../controllers/utils/components.js"></script>
+            <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+            <script src="../../controllers/public/detalle.js"></script>
+            <!-- Llamada a la función loadTemplate -->
+            <script>
+                // Llamada a la función loadTemplate para cargar el encabezado y pie de la página
+                loadTemplate();
+            </script>
 </body>
 
 </html>
