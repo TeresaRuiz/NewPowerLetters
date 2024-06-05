@@ -150,14 +150,15 @@ const loadTemplate = async () => {
                 <div class="login grid" id="login-content">
                     <form action="" class="login__form grid">
                         <h3 class="login__title">Log In</h3>
+                     
                         <div class="login__group grid">
                             <div>
                                 <label for="login-email" class="login__label">Correo</label>
-                                <input type="email" placeholder="Escribe tu correo electrónico" id="login-email" class="login__input">
+                                <input type="email" placeholder="Escribe tu correo electrónico" id="correo_usuario" class="login__input">
                             </div>
                             <div>
                                 <label for="login-pass" class="login__label">Contraseña</label>
-                                <input type="password" placeholder="Escribe tu contraseña" id="login-pass" class="login__input">
+                                <input type="password" placeholder="Escribe tu contraseña" id="clave_usuario" class="login__input">
                             </div>
                         </div>
                         <div>
@@ -165,6 +166,7 @@ const loadTemplate = async () => {
                             <a href="#" class="login__forget">¿No encuentras tu contraseña?</a>
                             <button type="submit" class="login__button button">Log In</button>
                         </div>
+                     
                     </form>
                     <i class="ri-close-line login__close" id="login-close"></i>
                 </div>
