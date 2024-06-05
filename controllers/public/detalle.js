@@ -8,6 +8,7 @@ const LIBROS = document.getElementById('libros');
 const SHOPPING_FORM = document.getElementById('shoppingForm');
 
 
+
 // Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
     // Se define un objeto con los datos de la categoría seleccionada.
@@ -33,6 +34,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
         console.log(DATA.error);
     }
+});
+
+document.addEventListener('DOMContentLoaded', (event) => {
+    const redirectButton = document.getElementById('redirectButton');
+
+    redirectButton.addEventListener('click', () => {
+        window.location.href = 'descuento.html'; // Pagina html para redireccionar
+    });
 });
 
 
