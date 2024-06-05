@@ -32,10 +32,33 @@ document.addEventListener('DOMContentLoaded', async () => {
                         <a href="detalle_libro.html?id=${row.id_libro}"><button><i class="ri-eye-line"></i></button></a>
                     </div>
                 </article>
+
+                <article class="testimonial__card swiper-slide">
+
+                            <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.titulo_libro}">
+                    
+                            <h2 class="testimonial__title">Rial Loz</h2>
+                            <p class="testimonial__description">
+
+                                The best website to buy books, the purchase
+                                is very easy to make and has great discounts.
+                            </p>
+
+
+                            <div class="testimonial__stars">
+
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                            </div>
+
+                        </article>
             `;
         });
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
-        console.log (DATA.error);
+        console.log(DATA.error);
     }
 });
