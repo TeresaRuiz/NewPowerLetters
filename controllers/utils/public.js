@@ -50,16 +50,48 @@ const loadTemplate = async () => {
                         </ul>
                     </div>
                     <div class="nav__actions">
-                        <!-- serach button  -->
+                        <!-- search button  -->
                         <i class="ri-search-line search-button" id="search-button"></i>
                         <!-- login button  -->
                         <i class="ri-user-line login-button" id="login-button"></i>
                         <!-- Carrito button  -->
                         <a href="carrito.html"><i class="ri-shopping-cart-fill carrito-button" id="carrito-button"></i></a>
-                        <!-- theame button  -->
+                        <!-- theme button  -->
                         <i class="ri-moon-line change-theme" id="theme-button"></i>
                         <!-- logout button -->
                         <a href="#" onclick="logOut()"><i class="ri-logout-box-line"></i> Cerrar sesión</a>
+                    </div>
+
+                    <!--==================== SEARCH ====================-->
+                    <div class="search" id="search-content">
+                        <form action="" class="search__form">
+                            <i class="ri-search-line search__icon"></i>
+                            <input type="search" placeholder="What are you looking for?" class="search__input">
+                        </form>
+                        <i class="ri-close-line search__close" id="search-close"></i>
+                    </div>
+
+                    <!--==================== LOGIN ====================-->
+                    <div class="login grid" id="login-content">
+                        <form action="" class="login__form grid">
+                            <h3 class="login__title">Log In</h3>
+                            <div class="login__group grid">
+                                <div>
+                                    <label for="login-email" class="login__label">Email</label>
+                                    <input type="email" placeholder="Write your email" id="login-email" class="login__input">
+                                </div>
+                                <div>
+                                    <label for="login-pass" class="login__label">Password</label>
+                                    <input type="password" placeholder="Enter your password" id="login-pass" class="login__input">
+                                </div>
+                            </div>
+                            <div>
+                                <span class="login__signup">You do not have an account? <a href="#">Sign up</a></span>
+                                <a href="#" class="login__forget">You forgot your password</a>
+                                <button type="submit" class="login__button button">Log In</button>
+                            </div>
+                        </form>
+                        <i class="ri-close-line login__close" id="login-close"></i>
                     </div>
                 </nav>
             `;
@@ -96,25 +128,45 @@ const loadTemplate = async () => {
                                 <span>Recomendados</span>
                             </a>
                         </li>
-                        <li class="nav__item">
-                            <a href="../Public/comentarios.html" class="nav__link">
-                                <i class="ri-message-3-line"></i>
-                                <span>Comentarios</span>
-                            </a>
-                        </li>
                     </ul>
                 </div>
                 <div class="nav__actions">
-                    <!-- serach button  -->
+                    <!-- search button  -->
                     <i class="ri-search-line search-button" id="search-button"></i>
-                    <!-- login button  -->
-                    <i class="ri-user-line login-button" id="login-button"></i>
-                    <!-- Carrito button  -->
-                    <a href="carrito.html"><i class="ri-shopping-cart-fill carrito-button" id="carrito-button"></i></a>
-                    <!-- theame button  -->
+                    <!-- theme button  -->
                     <i class="ri-moon-line change-theme" id="theme-button"></i>
                     <!-- login link -->
-                    <a href="login.html" class="nav__link"><i class="ri-login-box-line"></i> Iniciar sesión</a>
+                    <a href="index.html" class="nav__link"><i class="ri-user-line login-button" id="login-button"></i> Iniciar sesión</a>
+                </div>
+                <!--==================== SEARCH ====================-->
+                <div class="search" id="search-content">
+                    <form action="search-button" class="search__form">
+                        <i class="ri-search-line search__icon"></i>
+                        <input type="search" placeholder="What are you looking for?" class="search__input">
+                    </form>
+                    <i class="ri-close-line search__close" id="search-close"></i>
+                </div>
+                <!--==================== LOGIN ====================-->
+                <div class="login grid" id="login-content">
+                    <form action="" class="login__form grid">
+                        <h3 class="login__title">Log In</h3>
+                        <div class="login__group grid">
+                            <div>
+                                <label for="login-email" class="login__label">Email</label>
+                                <input type="email" placeholder="Write your email" id="login-email" class="login__input">
+                            </div>
+                            <div>
+                                <label for="login-pass" class="login__label">Password</label>
+                                <input type="password" placeholder="Enter your password" id="login-pass" class="login__input">
+                            </div>
+                        </div>
+                        <div>
+                            <span class="login__signup">You do not have an account? <a href="#">Sign up</a></span>
+                            <a href="#" class="login__forget">You forgot your password</a>
+                            <button type="submit" class="login__button button">Log In</button>
+                        </div>
+                    </form>
+                    <i class="ri-close-line login__close" id="login-close"></i>
                 </div>
             </nav>
         `;
@@ -125,7 +177,52 @@ const loadTemplate = async () => {
     const footer = document.createElement('footer');
     footer.classList.add('footer');
     document.body.appendChild(footer);
-}
+};
+
+document.addEventListener('DOMContentLoaded', function () {
+    loadTemplate().then(() => {
+        /* Search Functionality */
+        const searchButton = document.getElementById('search-button');
+        const searchClose = document.getElementById('search-close');
+        const searchContent = document.getElementById('search-content');
+
+        if (searchButton) {
+            searchButton.addEventListener('click', () => {
+                searchContent.classList.add('show-search');
+            });
+        }
+
+        if (searchClose) {
+            searchClose.addEventListener('click', () => {
+                searchContent.classList.remove('show-search');
+            });
+        }
+
+        /* Login Functionality */
+        const loginButton = document.getElementById('login-button');
+        const loginClose = document.getElementById('login-close');
+        const loginContent = document.getElementById('login-content');
+
+        if (loginButton) {
+            loginButton.addEventListener('click', () => {
+                loginContent.classList.add('show-login');
+            });
+        }
+
+        if (loginClose) {
+            loginClose.addEventListener('click', () => {
+                loginContent.classList.remove('show-login');
+            });
+        }
+
+        /* Shadow Header */
+        const shadowHeader = () => {
+            const header = document.getElementById('header');
+            this.scrollY >= 50 ? header.classList.add('shadow-header') : header.classList.remove('shadow-header');
+        };
+        window.addEventListener('scroll', shadowHeader);
+    });});
+
 
 
 
