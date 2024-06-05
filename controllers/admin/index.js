@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else if (DATA.status) {
         // Se establece el título del contenido principal.
         MAIN_TITLE.textContent = 'Iniciar sesión';
-        // Se muestra el formulario para iniciar sesión.
+        // Se muestra el formulario para iniciar la sesión.
         LOGIN_FORM.classList.remove('d-none');
         sweetAlert(4, DATA.message, true);
     } else {
