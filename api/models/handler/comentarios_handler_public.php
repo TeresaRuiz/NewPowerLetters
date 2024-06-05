@@ -115,20 +115,5 @@ class ComentarioHandlerPublic
         return Database::getRow($sql, $params);
     }
 
-    /*
-     * Método para actualizar una fila específica de la tabla tb_comentarios por id.
-     */
-    public function updateRow()
-    {
-        // Definir la consulta SQL para actualizar el estado del comentario
-        $sql = 'UPDATE tb_comentarios
-                SET estado_comentario = ?
-                WHERE id_comentario = ?';
-
-        // Establecer los parámetros para la consulta (estado y id)
-        $params = array($this->estado, $this->id);
-
-        // Ejecutar la consulta y devolver el resultado
-        return Database::executeRow($sql, $params);
-    }
+   
 }
