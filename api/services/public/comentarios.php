@@ -7,7 +7,7 @@ if (isset($_GET['action'])) {
     session_start();
 
     // Crear una instancia de la clase 'LibroData' para interactuar con los datos relacionados con 'comentarios'.
-    $comentario = new ComentarioDataPublic;
+    $comentariop = new ComentarioDataPublic;
 
     // Inicializar un arreglo para almacenar el resultado de las operaciones de la API.
     $result = array(
@@ -23,27 +23,17 @@ if (isset($_GET['action'])) {
    
         // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
         switch ($_GET['action']) {
-            case 'searchRows':
-                if (!Validator::validateSearch($_POST['search'])) {
-                    $result['error'] = Validator::getSearchError();
-                } elseif ($result['dataset'] = $comentario->searchRows()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Existen ' . count($result['dataset']) . ' coincidencias';
-                } else {
-                    $result['error'] = 'No hay coincidencias';
-                }
-                break;
-
+            
             case 'createRow': // Acción para crear un nuevo comentario.
                 $_POST = Validator::validateForm($_POST);
 
                 // Validar y establecer los campos necesarios para crear un comentario.
                 if (
-                    !$comentario->setId($_POST['id_comentario']) or
-                    !$comentario->setComentario($_POST['comentario'])
+                    !$comentariop->setId($_POST['id_comentario']) or
+                    !$comentariop->setComentario($_POST['comentario'])
                 ) {
-                    $result['error'] = $comentario->getDataError(); // Obtener mensaje de error si la validación falla.
-                } elseif ($comentario->createRow()) { // Intentar crear un nuevo comentario.
+                    $result['error'] = $comentariop->getDataError(); // Obtener mensaje de error si la validación falla.
+                } elseif ($comentariop->createRow()) { // Intentar crear un nuevo comentario.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Comentario creado con éxito';
                 } else {
@@ -51,7 +41,7 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readAll':
-                if ($result['dataset'] = $comentario->readAll()) {
+                if ($result['dataset'] = $comentariop->readAll()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } else {
@@ -59,9 +49,9 @@ if (isset($_GET['action'])) {
                 }
                 break;
             case 'readOne':
-                if (!$comentario->setId($_POST['id_comentario'])) {
-                    $result['error'] = $comentario->getDataError();
-                } elseif ($result['dataset'] = $comentario->readOne()) {
+                if (!$comentariop->setId($_POST['id_comentario'])) {
+                    $result['error'] = $comentariop->getDataError();
+                } elseif ($result['dataset'] = $comentariop->readOne()) {
                     $result['status'] = 1;
                 } else {
                     $result['error'] = 'Comentario inexistente';
@@ -71,11 +61,11 @@ if (isset($_GET['action'])) {
             case 'updateRow':
                 $_POST = Validator::validateForm($_POST);
                 if (
-                    !$comentario->setId($_POST['id_comentario'])
+                    !$comentariop->setId($_POST['id_comentario'])
 
                 ) {
-                    $result['error'] = $comentario->getDataError();
-                } elseif ($comentario->updateRow()) {
+                    $result['error'] = $comentariop->getDataError();
+                } elseif ($comentariop->updateRow()) {
                     $result['status'] = 1;
                     $result['message'] = 'Comentario modificado correctamente';
                 } else {

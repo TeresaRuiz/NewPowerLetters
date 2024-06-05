@@ -17,40 +17,6 @@ class ComentarioHandlerPublic
     /*
      * Método para buscar registros en la tabla tb_comentarios.
      */
-    public function searchRows()
-    {
-        // Obtener el valor de búsqueda y envolverlo con comodines para usar con LIKE
-        $value = '%' . Validator::getSearchValue() . '%';
-
-        // Definir la consulta SQL para buscar coincidencias en la tabla tb_comentarios y tablas relacionadas
-        $sql = 'SELECT
-                    c.id_comentario,
-                    c.comentario,
-                    c.calificacion,
-                    c.estado_comentario,
-                    u.nombre_usuario
-                FROM
-                    tb_comentarios AS c
-                JOIN
-                    tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
-                JOIN
-                    tb_pedidos AS p ON dp.id_pedido = p.id_pedido
-                JOIN
-                    tb_usuarios AS u ON p.id_usuario = u.id_usuario
-                WHERE
-                    c.comentario LIKE ? OR
-                    c.estado_comentario LIKE ? OR
-                    u.nombre_usuario LIKE ?
-                ORDER BY
-                    c.id_comentario';
-
-        // Establecer los parámetros para la consulta (el término de búsqueda)
-        $params = array($value, $value, $value);
-
-        // Ejecutar la consulta y devolver las filas resultantes
-        return Database::getRows($sql, $params);
-    }
-
     public function createRow()
     {
         $sql = 'INSERT INTO tb_comentarios(comentario, calificacion)
