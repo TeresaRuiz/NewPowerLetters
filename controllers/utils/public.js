@@ -152,8 +152,8 @@ const loadTemplate = async () => {
                         <h3 class="login__title">Log In</h3>
                         <div class="login__group grid">
                             <div>
-                                <label for="login-email" class="login__label">Email</label>
-                                <input type="email" placeholder="Write your email" id="login-email" class="login__input">
+                                <label for="login-email" class="login__label">Correo</label>
+                                <input type="email" placeholder="Escribe tu correo electrónico" id="login-email" class="login__input">
                             </div>
                             <div>
                                 <label for="login-pass" class="login__label">Password</label>
