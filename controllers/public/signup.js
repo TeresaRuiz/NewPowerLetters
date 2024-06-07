@@ -41,7 +41,7 @@ SIGNUP_FORM.addEventListener('submit', async (event) => {
     const DATA = await fetchData(USER_API, 'signUp', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        sweetAlert(1, DATA.message, true, 'index.html');
+        sweetAlert(1, DATA.message, true, 'login.html');
     } else if (DATA.recaptcha) {
         sweetAlert(2, DATA.error, false, 'registro_c.html');
     } else {
