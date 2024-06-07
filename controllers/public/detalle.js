@@ -1,6 +1,6 @@
 // Constante para completar la ruta de la API.
-const LIBROS_API = 'services/public/libros.php';
 const PEDIDO_API = 'services/public/pedido.php';
+const LIBROS_API = 'services/public/libros.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
 const PARAMS = new URLSearchParams(location.search);
 const LIBROS = document.getElementById('libros');
