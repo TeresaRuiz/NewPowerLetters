@@ -17,7 +17,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     FORM.append('idLibro', PARAMS.get('id'));
     // Petición para solicitar los productos de la categoría seleccionada.
     const DATA = await fetchData(LIBROS_API, 'readOne', FORM);
-    console.log(DATA)
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Actualizar los elementos del HTML con la información del libro
@@ -54,6 +53,7 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
     const FORM = new FormData(SHOPPING_FORM);
     // Petición para guardar los datos del formulario.
     const DATA = await fetchData(PEDIDO_API, 'createDetail', FORM);
+    console.log(DATA);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
     if (DATA.status) {
         sweetAlert(1, DATA.message, false, 'carrito.html');
