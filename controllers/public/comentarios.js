@@ -37,54 +37,56 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se muestra un mensaje de éxito.
         sweetAlert(1, DATA.message, true);
         // Se carga nuevamente la tabla para visualizar los cambios.
-        fillTable();
+        muestraLibros();
     } else {
         // Se muestra un mensaje de error.
         sweetAlert(2, DATA.error, false);
     }
 });
 
-// Función para llenar la tabla con los datos.
-const fillTable = async (form = null) => {
-    // Se inicializa el contenido de la tabla.
-    ROWS_FOUND.textContent = '';
-    TABLE_BODY.innerHTML = '';
-    // Se verifica la acción a realizar.
-    const action = (form) ? 'searchRows' : 'readAll';
-    // Petición para obtener los registros disponibles.
-    const DATA = await fetchData(COMENTARIO_API, action, form);
+
+  
+const muestraLibros = async (form = null) => {
+    (form) ? action = 'searchRows' : action = 'readAll';
+    const DATA = await fetchData(LIBROS_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        // Se recorre el conjunto de registros fila por fila.
+        // Se inicializa el contenedor de productos.
+        LIBROSN.innerHTML = '';
+        // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
-            // Se crean y concatenan las filas de la tabla con los datos de cada registro.
-            TABLE_BODY.innerHTML += `
-            <tr>
-                <td>${row.comentario}</td>
-                <td>${row.nombre_usuario}</td>
-                <td>${getStarsHTML(row.calificacion)}</td>
-                <td>
-                    <div>
-                        ${row.estado_comentario}
-                    </div>
-                </td>
-                <td class="action-icons">
-                    <a onclick="viewDetails(${row.id_comentario})">
-                        <i class="ri-eye-fill"></i>
-                    </a>
-                    <a onclick="openUpdate(${row.id_comentario})">
-                        <i class="ri-edit-line"></i>
-                    </a>
-                </td>
-            </tr>
+            // Se crean y concatenan las tarjetas con los datos de cada producto.
+            LIBROSN.innerHTML += `
+
+                    <article class="testimonial__card swiper-slide">
+
+                            
+                           <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top" alt="${row.u}">
+                      
+                           <h2 class="featured__title">${row.u}</h2>
+                      
+                            <p class="testimonial__description">${row.c}</p>
+
+
+                            <div class="testimonial__stars">
+
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-half-fill"></i>
+                            </div>
+
+                        </article>
+            
             `;
         });
-        // Se muestra un mensaje de acuerdo con el resultado.
-        ROWS_FOUND.textContent = DATA.message;
     } else {
-        // Se muestra un mensaje de error.
-        sweetAlert(4, DATA.error, true);
+      
+      sweetAlert(4, DATA.error, true);
+
     }
+
 }
 
 // Función para obtener el HTML de las estrellas basado en la calificación.
