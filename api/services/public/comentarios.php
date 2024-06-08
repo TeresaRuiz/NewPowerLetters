@@ -21,6 +21,7 @@ if (isset($_GET['action'])) {
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
    
+    if (isset($_SESSION['idUsuario'])) {
         // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
         switch ($_GET['action']) {
             
@@ -72,14 +73,21 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el estado';
                 }
                 break;
+            }
 
-        // Capturar cualquier excepción de la base de datos.
-        $result['exception'] = Database::getException();
-
-        // Configurar el tipo de contenido para la respuesta y la codificación de caracteres.
-        header('Content-type: application/json; charset=utf-8');
-
-        // Convertir el resultado a formato JSON y enviarlo como respuesta.
-        print (json_encode($result));
-    } 
-}
+            // Capturar cualquier excepción de la base de datos.
+            $result['exception'] = Database::getException();
+    
+            // Configurar el tipo de contenido para la respuesta y la codificación de caracteres.
+            header('Content-type: application/json; charset=utf-8');
+    
+            // Convertir el resultado a formato JSON y enviarlo como respuesta.
+            print (json_encode($result));
+        } else {
+            // Si no hay una sesión válida, se devuelve un mensaje de acceso denegado.
+            print (json_encode('Acceso denegado'));
+        }
+    } else {
+        // Si no se recibe una acción, se devuelve un mensaje de recurso no disponible.
+        print (json_encode('Recurso no disponible'));
+    }
