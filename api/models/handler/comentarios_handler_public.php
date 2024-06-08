@@ -83,7 +83,6 @@ class ComentarioHandlerPublic
                 dp.precio,
                 l.titulo,
                 l.imagen
-                
             FROM
                 tb_comentarios AS c
             JOIN
