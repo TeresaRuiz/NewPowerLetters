@@ -13,15 +13,11 @@ if (isset($_GET['action'])) {
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
     if (isset($_SESSION['idUsuario'])) {
         $result['session'] = 1;
-        $result['cliente'] = $_SESSION['idUsuario'];
-        $result['pedido'] = $_SESSION['idPedido'];
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
             // Acción para agregar un producto al carrito de compras.
             case 'createDetail':
                 $_POST = Validator::validateForm($_POST);
-                $result['cliente'] = $_SESSION['idUsuario'];
-                $result['pedido'] = $_SESSION['idPedido'];
                 if (!$pedido->startOrder()) {
                     $result['error'] = 'Ocurrió un problema al iniciar el pedido';
                 } elseif (
@@ -32,18 +28,20 @@ if (isset($_GET['action'])) {
                 } elseif ($pedido->createDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Libro agregado correctamente';
+                    $result['cliente'] = $_SESSION['idUsuario'];
+                    $result['pedido'] = $_SESSION['idPedido'];
                 } else {
                     $result['error'] = 'Ocurrió un problema al agregar el libro';
                 }
                 break;
             // Acción para obtener los productos agregados en el carrito de compras.
             case 'readDetail':
-                $result['cliente'] = $_SESSION['idUsuario'];
-                $result['pedido'] = $_SESSION['idPedido'];
                 if ($pedido->getOrder()) {
                     $result['dataset'] = $pedido->readDetail();
                     if ($result['dataset']) {
                         $result['status'] = 1;
+                        $result['cliente'] = $_SESSION['idUsuario'];
+                        $result['pedido'] = $_SESSION['idPedido'];
                     } else {
                         $result['error'] = 'No existen libros en el carrito';
                     }
@@ -54,8 +52,6 @@ if (isset($_GET['action'])) {
                 
             // Acción para actualizar la cantidad de un producto en el carrito de compras.
             case 'updateDetail':
-                $result['cliente'] = $_SESSION['idUsuario'];
-                $result['pedido'] = $_SESSION['idPedido'];
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$pedido->setIdDetalle($_POST['idDetalle']) or
@@ -65,19 +61,21 @@ if (isset($_GET['action'])) {
                 } elseif ($pedido->updateDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Cantidad modificada correctamente';
+                    $result['cliente'] = $_SESSION['idUsuario'];
+                    $result['pedido'] = $_SESSION['idPedido'];
                 } else {
                     $result['error'] = 'Ocurrió un problema al modificar la cantidad';
                 }
                 break;
             // Acción para remover un producto del carrito de compras.
             case 'deleteDetail':
-                $result['cliente'] = $_SESSION['idUsuario'];
-                $result['pedido'] = $_SESSION['idPedido'];
                 if (!$pedido->setIdDetalle($_POST['idDetalle'])) {
                     $result['error'] = $pedido->getDataError();
                 } elseif ($pedido->deleteDetail()) {
                     $result['status'] = 1;
                     $result['message'] = 'Producto removido correctamente';
+                    $result['cliente'] = $_SESSION['idUsuario'];
+                    $result['pedido'] = $_SESSION['idPedido'];
                 } else {
                     $result['error'] = 'Ocurrió un problema al remover el producto';
                 }
@@ -89,6 +87,8 @@ if (isset($_GET['action'])) {
                 if ($pedido->finishOrder()) {
                     $result['status'] = 1;
                     $result['message'] = 'Pedido finalizado correctamente';
+                    $result['cliente'] = $_SESSION['idUsuario'];
+                    $result['pedido'] = $_SESSION['idPedido'];
                 } else {
                     $result['error'] = 'Ocurrió un problema al finalizar el pedido';
                 }
