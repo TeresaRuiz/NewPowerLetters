@@ -13,7 +13,7 @@ class ComentarioHandlerPublic
     protected $id = null;
     protected $comentario = null;
     protected $calificacion = null;
-    protected $producto = null;
+    protected $libros = null;
 
     /*
      * Método para buscar registros en la tabla tb_comentarios.
@@ -114,7 +114,7 @@ class ComentarioHandlerPublic
         AND p.estado = "Entregado"
         ORDER BY dp.id_detalle DESC
         LIMIT 1;';
-        $params = array($_SESSION['idUsuario'], $this->producto);
+        $params = array($_SESSION['idUsuario'], $this->libros);
         if ($data = Database::getRow($sql, $params)) {
             $_SESSION['idDetalle'] = $data['id_detalle'];
             return true;

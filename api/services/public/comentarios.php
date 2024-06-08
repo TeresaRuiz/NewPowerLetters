@@ -27,10 +27,10 @@ if (isset($_GET['action'])) {
             
             case 'createRow': // Acción para crear un nuevo comentario.
                 $_POST = Validator::validateForm($_POST);
-
                 // Validar y establecer los campos necesarios para crear un comentario.
                 if (
-                    !$comentariop->setId($_POST['id_comentario']) or
+                    !$comentariop->setLibro($_POST['id_comentario']) or
+                    !$comentariop->setCalificacion($_POST['id_comentario']) or
                     !$comentariop->setComentario($_POST['comentario'])
                 ) {
                     $result['error'] = $comentariop->getDataError(); // Obtener mensaje de error si la validación falla.

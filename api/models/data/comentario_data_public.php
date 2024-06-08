@@ -32,11 +32,11 @@ class ComentarioDataPublic extends ComentarioHandlerPublic
     }
 
     // Método para establecer el ID del producto.
-    public function setProducto($value)
+    public function setLibro($value)
     {
         // Valida que el identificador sea un número natural.
         if (Validator::validateNaturalNumber($value)) {
-            $this->producto = $value; // Asigna el valor del identificador.
+            $this->libros = $value; // Asigna el valor del identificador.
             return true;
         } else {
             $this->data_error = 'El identificador del producto es incorrecto'; // Almacena mensaje de error.
