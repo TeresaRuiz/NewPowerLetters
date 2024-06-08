@@ -54,6 +54,7 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
     // Petición para guardar los datos del formulario.
     const DATA = await fetchData(PEDIDO_API, 'createDetail', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
+    console.log(DATA);
     if (DATA.status) {
         sweetAlert(1, DATA.message, false, 'carrito.html');
     } else if (DATA.session) {
@@ -61,4 +62,5 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
     } else {
         sweetAlert(3, DATA.error, true, 'index.html');
     }
+    console.log(DATA);
 });

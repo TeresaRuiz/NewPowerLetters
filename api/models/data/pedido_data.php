@@ -101,7 +101,7 @@ class PedidoData extends PedidoHandler
     {
         // Valida que el identificador sea un número natural.
         if (Validator::validateNaturalNumber($value)) {
-            $this->id = $value; // Asigna el valor del identificador.
+            $this->libro = $value; // Asigna el valor del identificador.
             return true;
         } else {
             $this->data_error = 'El libro del pedido es incorrecto'; // Almacena mensaje de error.

@@ -83,13 +83,6 @@ async function readDetail() {
 *   Parámetros: id (identificador del producto) y quantity (cantidad actual del producto).
 *   Retorno: ninguno.
 */
-function openUpdate(id, quantity) {
-    // Se abre la caja de diálogo que contiene el formulario.
-    ITEM_MODAL.show();
-    // Se inicializan los campos del formulario con los datos del registro seleccionado.
-    document.getElementById('idDetalle').value = id;
-    document.getElementById('cantidadLibro').value = cantidad;
-}
 
 /*
 *   Función asíncrona para mostrar un mensaje de confirmación al momento de finalizar el pedido.

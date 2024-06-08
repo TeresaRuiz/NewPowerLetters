@@ -9,11 +9,12 @@ if (isset($_GET['action'])) {
     // Se instancia la clase correspondiente.
     $pedido = new PedidoData;
     // Se declara e inicializa un arreglo para guardar el resultado que retorna la API.
-    $result = array('status' => 0, 'session' => 0, 'message' => null, 'error' => null, 'exception' => null, 'dataset' => null);
+    $result = array('status' => 0, 'session' => 0, 'message' => null, 'error' => null, 'exception' => null, 'dataset' => null, 'cliente' => 0, 'pedido' => 0);
     // Se verifica si existe una sesión iniciada como cliente para realizar las acciones correspondientes.
-    
     if (isset($_SESSION['idUsuario'])) {
         $result['session'] = 1;
+        $result['cliente'] = $_SESSION['idUsuario'];
+        $result['pedido'] = $_SESSION['idPedido'];
         // Se compara la acción a realizar cuando un cliente ha iniciado sesión.
         switch ($_GET['action']) {
             // Acción para agregar un producto al carrito de compras.
@@ -45,6 +46,7 @@ if (isset($_GET['action'])) {
                 } else {
                     $result['error'] = 'No ha agregado libros al carrito';
                 }
+                break;
                 
             // Acción para actualizar la cantidad de un producto en el carrito de compras.
             case 'updateDetail':
