@@ -8,18 +8,12 @@ const LIBROS = document.getElementById('libros');
 const SHOPPING_FORM = document.getElementById('shoppingForm');
 
 
-
-// Método manejador de eventos para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', async () => {
-    // Se define un objeto con los datos de la categoría seleccionada.
     const FORM = new FormData();
     FORM.append('idLibro', PARAMS.get('id'));
-    // Petición para solicitar los productos de la categoría seleccionada.
     const DATA = await fetchData(LIBROS_API, 'readOne', FORM);
-    console.log(DATA)
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    console.log(DATA);
     if (DATA.status) {
-        // Actualizar los elementos del HTML con la información del libro
         document.getElementById('idLibro').value = DATA.dataset.id_libro;
         document.getElementById('tituloDetalle').textContent = DATA.dataset.titulo_libro;
         document.querySelector('#ImagenDetalle').src = `${SERVER_URL}images/libros/${DATA.dataset.imagen}`;
@@ -29,38 +23,38 @@ document.addEventListener('DOMContentLoaded', async () => {
         document.getElementById('clasificacionDetalle').textContent = DATA.dataset.nombre_clasificacion;
         document.getElementById('editorialDetalle').textContent = DATA.dataset.nombre_editorial;
         document.getElementById('existenciasProducto').textContent = DATA.dataset.existencias;
-    }
-    else {
-        // Se presenta un mensaje de error cuando no existen datos para mostrar.
+        document.getElementById('existenciasProducto').setAttribute('data-existencias', DATA.dataset.existencias);
+    } else {
         console.log(DATA.error);
     }
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
     const redirectButton = document.getElementById('redirectButton');
-
     redirectButton.addEventListener('click', () => {
-        window.location.href = 'descuento.html'; // Pagina html para redireccionar
+        window.location.href = 'descuento.html';
     });
 });
 
-
-// Método del evento para cuando se envía el formulario de agregar un producto al carrito.
 SHOPPING_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();
-    // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SHOPPING_FORM);
-    // Petición para guardar los datos del formulario.
+    const existencias = parseInt(document.getElementById('existenciasProducto').getAttribute('data-existencias'), 10);
+    const cantidadSolicitada = parseInt(FORM.get('cantidadLibro'), 10);
+
+    if (cantidadSolicitada > existencias) {
+        await sweetAlert(2, `No puedes solicitar ${cantidadSolicitada} unidades. Solo hay ${existencias} disponibles.`, false);
+        return;
+    }
+
     const DATA = await fetchData(PEDIDO_API, 'createDetail', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se constata si el cliente ha iniciado sesión.
     console.log(DATA);
     if (DATA.status) {
-        sweetAlert(1, DATA.message, false, 'carrito.html');
+        await sweetAlert(1, DATA.message, false, 'carrito.html');
     } else if (DATA.session) {
-        sweetAlert(2, DATA.error, false);
+        await sweetAlert(2, DATA.error, false);
     } else {
-        sweetAlert(3, DATA.error, true, 'index.html');
+        await sweetAlert(3, DATA.error, true, 'index.html');
     }
     console.log(DATA);
 });
