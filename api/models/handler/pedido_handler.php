@@ -24,21 +24,22 @@ class PedidoHandler
      */
 
 
-    public function getOrder()
-    {
-        $this->estado = 'PENDIENTE';
-        $sql = 'SELECT p.id_pedido
-                FROM tb_pedidos AS p
-                JOIN tb_usuarios AS u ON p.id_usuario = u.id_usuario
-                WHERE p.estado = ? AND u.id_usuario = ?';
-        $params = array($this->estado, $_SESSION['idUsuario']);
-        if ($data = Database::getRow($sql, $params)) {
-            $_SESSION['idPedido'] = $data['id_pedido'];
-            return true;
-        } else {
-            return false;
-        }
-    }
+     public function getOrder()
+     {
+         $this->estado = 'PENDIENTE';
+         $sql = 'SELECT p.id_pedido
+                 FROM tb_pedidos AS p
+                 JOIN tb_usuarios AS u ON p.id_usuario = u.id_usuario
+                 WHERE p.estado = ? AND u.id_usuario = ?';
+         $params = array($this->estado, $_SESSION['idUsuario']);
+         if ($data = Database::getRow($sql, $params)) {
+             $_SESSION['idPedido'] = $data['id_pedido']; // Corregido de 'idUsuario' a 'idPedido'
+             return true;
+         } else {
+             return false;
+         }
+     }
+     
 
     public function startOrder()
     {
@@ -47,9 +48,9 @@ class PedidoHandler
         } else {
             $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_usuario)
                 VALUES((SELECT direccion_cliente FROM tb_usuarios WHERE id_usuario = ?), ?)';
-            $params = array($_SESSION['id_usuario'], $_SESSION['idUsuario']);
+            $params = array($_SESSION['idUsuario'], $_SESSION['idUsuario']);
             // Se obtiene el ultimo valor insertado de la llave primaria en la tabla tb_pedidos.
-            if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
+            if ($_SESSION['idUsuario'] = Database::getLastRow($sql, $params)) {
                 return true;
             } else {
                 return false;
@@ -59,24 +60,25 @@ class PedidoHandler
 
     public function createDetail()
     {
-        // Se realiza una subconsulta para obtener el precio del producto.
         $sql = 'INSERT INTO tb_detalle_pedidos(id_libro, cantidad, precio, id_pedido)
             VALUES(?, ?, (SELECT precio FROM tb_libros WHERE id_libro = ?), ?)';
         $params = array($this->libro, $this->cantidad, $this->libro, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
+    
 
     // Método para obtener los productos que se encuentran en el carrito de compras.
     public function readDetail()
-{
-    $sql = 'SELECT dp.id_detalle, l.titulo AS nombre_producto, dp.precio, dp.cantidad
-            FROM tb_detalle_pedidos AS dp
-            INNER JOIN tb_pedidos AS p ON dp.id_pedido = p.id_pedido
-            INNER JOIN tb_libros AS l ON dp.id_libro = l.id_libro
-            WHERE p.id_pedido = ?';
-    $params = array($_SESSION['idPedido']);
-    return Database::getRows($sql, $params);
-}
+    {
+        $sql = 'SELECT dp.id_detalle, l.titulo AS nombre_producto, dp.precio, dp.cantidad
+                FROM tb_detalle_pedidos AS dp
+                INNER JOIN tb_pedidos AS p ON dp.id_pedido = p.id_pedido
+                INNER JOIN tb_libros AS l ON dp.id_libro = l.id_libro
+                WHERE p.id_pedido = ?';
+        $params = array($_SESSION['idPedido']);
+        return Database::getRows($sql, $params);
+    }
+    
 
 
     public function finishOrder()
@@ -85,7 +87,7 @@ class PedidoHandler
         $sql = 'UPDATE tb_pedidos
             SET estado = ?
             WHERE id_pedido = ?';
-        $params = array($this->estado, $_SESSION['idPedido']);
+        $params = array($this->estado, $_SESSION['idUsuario']);
         return Database::executeRow($sql, $params);
     }
 
@@ -95,7 +97,7 @@ class PedidoHandler
         $sql = 'UPDATE tb_detalle_pedidos
             SET cantidad = ?
             WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idPedido']);
+        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idUsuario']);
         return Database::executeRow($sql, $params);
     }
     public function searchRows()
@@ -266,7 +268,7 @@ class PedidoHandler
     {
         $sql = 'DELETE FROM tb_detalle_pedidos
             WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->id_detalle, $_SESSION['idPedido']);
+        $params = array($this->id_detalle, $_SESSION['idUsuario']);
         return Database::executeRow($sql, $params);
     }
 }

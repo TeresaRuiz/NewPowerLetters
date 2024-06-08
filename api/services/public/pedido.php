@@ -35,14 +35,17 @@ if (isset($_GET['action'])) {
                 break;
             // Acción para obtener los productos agregados en el carrito de compras.
             case 'readDetail':
-                if (!$pedido->getOrder()) {
-                    $result['error'] = 'No ha agregado libros al carrito';
-                } elseif ($result['dataset'] = $pedido->readDetail()) {
-                    $result['status'] = 1;
+                if ($pedido->getOrder()) {
+                    $result['dataset'] = $pedido->readDetail();
+                    if ($result['dataset']) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['error'] = 'No existen libros en el carrito';
+                    }
                 } else {
-                    $result['error'] = 'No existen libros en el carrito';
+                    $result['error'] = 'No ha agregado libros al carrito';
                 }
-                break;
+                
             // Acción para actualizar la cantidad de un producto en el carrito de compras.
             case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
