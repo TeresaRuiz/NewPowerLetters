@@ -20,6 +20,8 @@ if (isset($_GET['action'])) {
             // Acción para agregar un producto al carrito de compras.
             case 'createDetail':
                 $_POST = Validator::validateForm($_POST);
+                $result['cliente'] = $_SESSION['idUsuario'];
+                $result['pedido'] = $_SESSION['idPedido'];
                 if (!$pedido->startOrder()) {
                     $result['error'] = 'Ocurrió un problema al iniciar el pedido';
                 } elseif (
@@ -36,6 +38,8 @@ if (isset($_GET['action'])) {
                 break;
             // Acción para obtener los productos agregados en el carrito de compras.
             case 'readDetail':
+                $result['cliente'] = $_SESSION['idUsuario'];
+                $result['pedido'] = $_SESSION['idPedido'];
                 if ($pedido->getOrder()) {
                     $result['dataset'] = $pedido->readDetail();
                     if ($result['dataset']) {
@@ -50,6 +54,8 @@ if (isset($_GET['action'])) {
                 
             // Acción para actualizar la cantidad de un producto en el carrito de compras.
             case 'updateDetail':
+                $result['cliente'] = $_SESSION['idUsuario'];
+                $result['pedido'] = $_SESSION['idPedido'];
                 $_POST = Validator::validateForm($_POST);
                 if (
                     !$pedido->setIdDetalle($_POST['idDetalle']) or
@@ -65,6 +71,8 @@ if (isset($_GET['action'])) {
                 break;
             // Acción para remover un producto del carrito de compras.
             case 'deleteDetail':
+                $result['cliente'] = $_SESSION['idUsuario'];
+                $result['pedido'] = $_SESSION['idPedido'];
                 if (!$pedido->setIdDetalle($_POST['idDetalle'])) {
                     $result['error'] = $pedido->getDataError();
                 } elseif ($pedido->deleteDetail()) {
@@ -76,6 +84,8 @@ if (isset($_GET['action'])) {
                 break;
             // Acción para finalizar el carrito de compras.
             case 'finishOrder':
+                $result['cliente'] = $_SESSION['idUsuario'];
+                $result['pedido'] = $_SESSION['idPedido'];
                 if ($pedido->finishOrder()) {
                     $result['status'] = 1;
                     $result['message'] = 'Pedido finalizado correctamente';

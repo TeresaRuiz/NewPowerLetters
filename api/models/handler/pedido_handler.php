@@ -50,7 +50,7 @@ class PedidoHandler
                 VALUES((SELECT direccion_usuario FROM tb_usuarios WHERE id_usuario = ?), ?)';
             $params = array($_SESSION['idUsuario'], $_SESSION['idUsuario']);
             // Se obtiene el ultimo valor insertado de la llave primaria en la tabla tb_pedidos.
-            if ($_SESSION['idUsuario'] = Database::getLastRow($sql, $params)) {
+            if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
                 return true;
             } else {
                 return false;
@@ -88,7 +88,7 @@ class PedidoHandler
         $sql = 'UPDATE tb_pedidos
             SET estado = ?
             WHERE id_pedido = ?';
-        $params = array($this->estado, $_SESSION['idUsuario']);
+        $params = array($this->estado, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
 

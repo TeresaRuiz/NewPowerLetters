@@ -13,25 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Método del evento para cuando se envía el formulario de cambiar cantidad de producto.
-ITEM_FORM.addEventListener('submit', async (event) => {
+//ITEM_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
-    event.preventDefault();
+   // event.preventDefault();
     // Constante tipo objeto con los datos del formulario.
-    const FORM = new FormData(ITEM_FORM);
+    //const FORM = new FormData(ITEM_FORM);
     // Petición para actualizar la cantidad de producto.
-    const DATA = await fetchData(PEDIDO_API, 'updateDetail', FORM);
+    //const DATA = await fetchData(PEDIDO_API, 'updateDetail', FORM);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    if (DATA.status) {
+    //if (DATA.status) {
         // Se actualiza la tabla para visualizar los cambios.
-        readDetail();
+      //  readDetail();
         // Se cierra la caja de diálogo del formulario.
-        ITEM_MODAL.hide();
+    //    ITEM_MODAL.hide();
         // Se muestra un mensaje de éxito.
-        sweetAlert(1, DATA.message, true);
-    } else {
-        sweetAlert(2, DATA.error, false);
-    }
-});
+    //    sweetAlert(1, DATA.message, true);
+  //  } else {
+       // sweetAlert(2, DATA.error, false);
+  //  }
+//});//
 
 /*
 *   Función para obtener el detalle del carrito de compras.
@@ -98,7 +98,7 @@ async function finishOrder() {
         const DATA = await fetchData(PEDIDO_API, 'finishOrder');
         // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
         if (DATA.status) {
-            sweetAlert(1, DATA.message, true, 'index.html');
+            sweetAlert(1, DATA.message, false, 'index.html');
         } else {
             sweetAlert(2, DATA.error, false);
         }
