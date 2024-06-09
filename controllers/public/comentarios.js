@@ -64,7 +64,7 @@ const showsBooks = async (form = null) => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
             ComentarioContenedor.innerHTML += `
 
-                    <article class="testimonial__card swiper-slide">
+                    <article class="featured__card">
 
                            <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top"  alt="image" class="testimonial__img">
                       
