@@ -45,7 +45,8 @@
                         <label for="clasificacion" class="libro__label">Clasificación:</label>
                         <p class="book-detail__author" id="clasificacionDetalle">Clasificación</p>
                         <p class="book-detail__price" id="precioDetalle">$XX.XX</p>
-                        <p class="book-detail__price">Existencias: <b id="existenciasProducto" data-existencias=""></b></p>
+                        <p class="book-detail__price">Existencias: <b id="existenciasProducto" data-existencias=""></b>
+                        </p>
                         <p class="book-detail__description" id="descripcionDetalle">Lorem ipsum dolor sit amet,
                             consectetur adipiscing elit. Quisque sit amet accumsan tortor. Integer vel libero nec erat
                             scelerisque suscipit.</p>
@@ -76,41 +77,41 @@
 
 
     <br><br><br><br>
-    <div class="comentarios">
+    <form id="saveForm">
+        <div class="comentarios">
 
-        <div>
-            <label for="comentario" class="libro__label"></label>
-            <input type="text" name="titulo" id="comentario" placeholder="Agrega un comentario..." class="libro__input"
-                required>
+            <div>
+                <label for="comentario" class="libro__label"></label>
+                <input type="text" name="comentario" id="comentario" placeholder="Agrega un comentario..."
+                    class="libro__input" required>
 
-                
-            <div class="botones-container">
 
-                <br><br><br>
+                <div class="botones-container">
 
-                <div class="rating-container">
-                    <div class="rating">
-                        <input type="radio" name="star" id="star5" value="5"><label for="star5"></label>
-                        <input type="radio" name="star" id="star4" value="4"><label for="star4"></label>
-                        <input type="radio" name="star" id="star3" value="3"><label for="star3"></label>
-                        <input type="radio" name="star" id="star2" value="2"><label for="star2"></label>
-                        <input type="radio" name="star" id="star1" value="1"><label for="star1"></label>
+                    <br><br><br>
+
+                    <div class="rating-container">
+                        <div class="rating">
+                            <input type="radio" name="star" id="star5" value="5"><label for="star5"></label>
+                            <input type="radio" name="star" id="star4" value="4"><label for="star4"></label>
+                            <input type="radio" name="star" id="star3" value="3"><label for="star3"></label>
+                            <input type="radio" name="star" id="star2" value="2"><label for="star2"></label>
+                            <input type="radio" name="star" id="star1" value="1"><label for="star1"></label>
+                        </div>
                     </div>
+
+                </div>
+
+                <div class="botones">
+                    <button type="submit" class="comentario-button">Comentar</button>
                 </div>
 
             </div>
-            
-            <div class="botones">
-                <button class="comentario-button">Comentar</button>
-            </div>
-
 
         </div>
 
-    </div>
+    </form>
 
-
-    <br>
     <br><br><br><br><br>
 
 
@@ -123,6 +124,7 @@
     <script src="../../controllers/utils/components.js"></script>
     <script type="text/javascript" src="../../controllers/utils/public.js"></script>
     <script src="../../controllers/public/detalle.js"></script>
+    <script src="../../controllers/public/comentarios.js"></script>
     <!--<script src="../../controllers/public/comentarios.js"></script>-->
     <!-- Llamada a la función loadTemplate -->
     <script>

@@ -1,22 +1,55 @@
 // URL de la API para gestionar los comentarios.
-const COMENTARIOS_API = 'services/admin/comentarios.php';
+const COMENTARIOS_API = 'services/public/comentarios.php';
 
 
 // Elementos del formulario para guardar un comentario.
-const SAVE_FORM = document.getElementById('saveForm'), // Formulario para guardar un comentario.
-    id_comentario = document.getElementById('id_comentario'), // Campo de entrada para el ID del comentario.
-    comentario = document.getElementById('comentario'), // Campo de entrada para el contenido del comentario.
-    calificacion = document.getElementById('calificacion'), // Campo de entrada para la calificación del comentario.
-    estadoComentario = document.getElementById('estadoComentario'); // Campo de entrada para el estado del comentario.
+const SAVE_FORM = document.getElementById('saveForm');
 
 // Event listener que se ejecuta cuando el contenido del DOM ha sido completamente cargado.
 document.addEventListener('DOMContentLoaded', () => {
-    fillTable(); // Llama a la función fillTable para llenar la tabla con los comentarios.
+    muestraLibros(); // Llama a la función fillTable para llenar la tabla con los comentarios.
+});
+
+
+// Método del evento para cuando se envía el formulario de guardar.
+SAVE_FORM.addEventListener('submit', async (event) => {
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    const notas = document.getElementsByName('star');
+    let seleccion = null;
+    for (const nota of notas) {
+        if (nota.checked) {
+            seleccion = nota.value;
+            break;
+        }
+    }
+    console.log(PARAMS.get('id'));
+    console.log(seleccion);
+    // Se verifica la acción a realizar.
+    // const action = (id_comentario.value) ? 'updateRow' : 'createRow';
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SAVE_FORM);
+          FORM.append('id_libro', PARAMS.get('id'));
+          FORM.append('calificacion', seleccion);
+          console.log(FORM);
+        // Petición para guardar los datos del formulario.
+    const DATA = await fetchData(COMENTARIOS_API, 'createRow', FORM);
+    console.log(DATA);
+    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+    if (DATA.status) {
+        // Se muestra un mensaje de éxito.
+        sweetAlert(1, DATA.message, true);
+        // Se carga nuevamente la tabla para visualizar los cambios.
+        muestraLibros();
+    } else {
+        // Se muestra un mensaje de error.
+        sweetAlert(2, DATA.error, false);
+    }
 });
 
 
 
-  
+
 const muestraLibros = async (form = null) => {
     (form) ? action = 'searchRows' : action = 'readAll';
     const DATA = await fetchData(COMENTARIOS_API, action, form);
@@ -53,8 +86,8 @@ const muestraLibros = async (form = null) => {
             `;
         });
     } else {
-      
-      sweetAlert(4, DATA.error, true);
+
+        sweetAlert(4, DATA.error, true);
 
     }
 
