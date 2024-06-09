@@ -19,7 +19,11 @@ async function loadHistorial() {
                     <td>${row.cantidad}</td>
                     <td>${row.subtotal}</td>
                     <td>${row.estado}</td>
-                    <td><button onclick="viewDetails(${row.id_pedido})">Ver detalles</button></td>
+                     <td class="action-icons">
+                    <a onclick="viewDetails(${row.id_pedido})">
+                    <i class="ri-eye-fill"></i>
+                    </a>
+                </td>
                 </tr>
             `;
         });
