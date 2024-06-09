@@ -38,7 +38,7 @@ if (isset($_GET['action'])) {
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Comentario creado con éxito';
                 } else {
-                    $result['error'] = 'Ocurrió un problema al crear el comentario'; // Mensaje de error si ocurre un problema.
+                    $result['error'] = 'Debe comprar el producto para comentar'; // Mensaje de error si ocurre un problema.
                 }
                 break;
             case 'readAll':
