@@ -19,11 +19,6 @@ async function loadHistorial() {
                     <td>${row.cantidad}</td>
                     <td>${row.subtotal}</td>
                     <td>${row.estado}</td>
-                     <td class="action-icons">
-                    <a onclick="viewDetails(${row.id_pedido})">
-                    <i class="ri-eye-fill"></i>
-                    </a>
-                </td>
                 </tr>
             `;
         });
@@ -34,6 +29,11 @@ async function loadHistorial() {
 
 function viewDetails(idPedido) {
     // Aquí puedes implementar la lógica para ver los detalles del pedido
+    //<td class="action-icons">
+    //<a onclick="viewDetails(${row.id_pedido})">
+ //   <i class="ri-eye-fill"></i>
+    //</a>
+//</td>
 }
 
 async function viewDetails(idPedido) {
