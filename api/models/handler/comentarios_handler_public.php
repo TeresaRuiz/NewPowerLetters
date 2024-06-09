@@ -13,6 +13,7 @@ class ComentarioHandlerPublic
     protected $id = null;
     protected $comentario = null;
     protected $calificacion = null;
+    protected $libros = null;
 
     /*
      * Método para buscar registros en la tabla tb_comentarios.
@@ -103,5 +104,35 @@ class ComentarioHandlerPublic
         return Database::getRow($sql, $params);
     }
 
-   
+    public function verificarCompra()
+    {
+        $sql = 'SELECT dp.id_detalle
+        FROM tb_detalle_pedidos dp
+        INNER JOIN tb_pedidos p ON dp.id_pedido = p.id_pedido
+        WHERE p.id_usuario = ?
+        AND dp.id_libro = ?
+        AND p.estado = "Entregado"
+        ORDER BY dp.id_detalle DESC
+        LIMIT 1;';
+        $params = array($_SESSION['idUsuario'], $this->libros);
+        if ($data = Database::getRow($sql, $params)) {
+            $_SESSION['idDetalle'] = $data['id_detalle'];
+            return true;
+        } else {
+            return false;
+        }
+    }
+ 
+   public function crearComentario(){
+      if($this->verificarCompra()){
+        // Se realiza una subconsulta para obtener el precio del producto.
+        $sql = 'INSERT INTO tb_comentarios(calificacion, comentario, id_detalle)
+                VALUES(?, ?, ?)';
+        $params = array($this->calificacion, $this->comentario, $_SESSION['idDetalle']);
+        return Database::executeRow($sql, $params);
+      }
+      else{
+         return false;
+      }
+   }
 }

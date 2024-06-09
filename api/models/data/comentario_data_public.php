@@ -31,6 +31,32 @@ class ComentarioDataPublic extends ComentarioHandlerPublic
         }
     }
 
+    // Método para establecer el ID del producto.
+    public function setLibro($value)
+    {
+        // Valida que el identificador sea un número natural.
+        if (Validator::validateNaturalNumber($value)) {
+            $this->libros = $value; // Asigna el valor del identificador.
+            return true;
+        } else {
+            $this->data_error = 'El identificador del producto es incorrecto'; // Almacena mensaje de error.
+            return false;
+        }
+    }
+
+    // Método para establecer valor de la calificación
+    public function setCalificacion($value)
+    {
+        // Valida que el identificador sea un número natural.
+        if (Validator::validateNaturalNumber($value)) {
+            $this->calificacion = $value; // Asigna el valor de la nota.
+            return true;
+        } else {
+            $this->data_error = 'El valor de la nota es incorrecto'; // Almacena mensaje de error.
+            return false;
+        }
+    }
+
     // Método para establecer el contenido del comentario.
     public function setComentario($value, $min = 2, $max = 50)
     {

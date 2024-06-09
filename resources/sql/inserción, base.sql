@@ -1,32 +1,5 @@
 USE powerletters;
 
-INSERT INTO tb_usuarios (nombre_usuario, apellido_usuario, dui_usuario, correo_usuario, telefono_usuario, direccion_usuario, nacimiento_usuario, clave_usuario, imagen, estado_cliente, fecha_registro)
-VALUES 
-('Juan', 'Pérez', '01234567-8', 'jperez@gmail.com', '5551234', 'Calle Principal 123', '1980-01-15', 'clave123', 'imagen1.jpg', 1, CURRENT_TIMESTAMP),
-('María', 'García', '12345678-9', 'mgarcia@gmail.com', '5555678', 'Avenida Central 456', '1985-05-23', 'password456', 'imagen2.jpg', 0, CURRENT_TIMESTAMP),
-('Luis', 'Rodríguez', '23456789-0', 'lrodriguez@gmail.com', '5559012', 'Plaza Mayor 789', '1990-09-12', 'contraseña789', 'imagen3.jpg', 0, CURRENT_TIMESTAMP),
-('Ana', 'Martínez', '34567890-1', 'amartinez@gmail.com', '5553456', 'Calle Secundaria 456', '1992-03-11', 'clave456', 'imagen4.jpg', 1, CURRENT_TIMESTAMP),
-('Pedro', 'López', '45678901-2', 'plopez@gmail.com', '5556789', 'Avenida Principal 789', '1978-07-27', 'password789', 'imagen5.jpg', 0, CURRENT_TIMESTAMP),
-('Laura', 'Sánchez', '56789012-3', 'lsanchez@gmail.com', '5552345', 'Calle Central 789', '1983-12-14', 'clave789', 'imagen6.jpg', 1, CURRENT_TIMESTAMP),
-('Carlos', 'Ramírez', '67890123-4', 'cramirez@gmail.com', '5554567', 'Avenida Secundaria 123', '1981-06-08', 'contraseña123', 'imagen7.jpg', 1, CURRENT_TIMESTAMP),
-('Sofía', 'Torres', '78901234-5', 'storres@gmail.com', '5557890', 'Calle Mayor 234', '1995-04-22', 'password1234', 'imagen8.jpg', 1, CURRENT_TIMESTAMP),
-('Javier', 'Gómez', '89012345-6', 'jgomez@gmail.com', '5551234', 'Plaza Central 5678', '1987-11-30', 'clave5678', 'imagen9.jpg', 1, CURRENT_TIMESTAMP),
-('Marcela', 'López', '90123456-7', 'mlopez@gmail.com', '5555678', 'Calle Principal 234', '1990-02-25', 'password234', 'imagen10.jpg', 1, CURRENT_TIMESTAMP),
-('Ricardo', 'Martínez', '01234567-8', 'rmartinez@gmail.com', '5559012', 'Avenida Central 7890', '1982-08-19', 'clave7890', 'imagen11.jpg', 1, CURRENT_TIMESTAMP),
-('Isabel', 'Fernández', '12345678-9', 'ifernandez@gmail.com', '5553456', 'Plaza Secundaria 5678', '1984-10-05', 'password5678', 'imagen12.jpg', 1, CURRENT_TIMESTAMP),
-('Diego', 'Soto', '23456789-0', 'dsoto@gmail.com', '5556789', 'Calle Nueva 78901', '1986-07-17', 'clave78901', 'imagen13.jpg', 1, CURRENT_TIMESTAMP),
-('Carolina', 'Ramírez', '34567890-1', 'cramirez2@gmail.com', '5552345', 'Avenida Nueva 3456', '1989-05-09', 'password3456', 'imagen14.jpg', 1, CURRENT_TIMESTAMP),
-('Roberto', 'Torres', '45678901-2', 'rtorres2@gmail.com', '5554567', 'Calle Vieja 1234', '1993-01-22', 'clave1234', 'imagen15.jpg', 1, CURRENT_TIMESTAMP),
-('Elena', 'Gutiérrez', '56789012-3', 'egutierrez@gmail.com', '5557890', 'Avenida Vieja 6789', '1980-09-09', 'password6789', 'imagen16.jpg', 1, CURRENT_TIMESTAMP),
-('Francisco', 'Silva', '67890123-4', 'fsilva@gmail.com', '5551234', 'Plaza Nueva 5678', '1991-06-26', 'clave5678', 'imagen17.jpg', 1, CURRENT_TIMESTAMP),
-('Carmen', 'Morales', '78901234-5', 'cmorales@gmail.com', '5555678', 'Calle Antigua 9012', '1979-10-14', 'password9012', 'imagen18.jpg', 1, CURRENT_TIMESTAMP),
-('Alejandro', 'Pérez', '89012345-6', 'aperez2@gmail.com', '5559012', 'Avenida Antigua 2345', '1985-02-18', 'clave2345', 'imagen19.jpg', 1, CURRENT_TIMESTAMP),
-('Silvia', 'Navarro', '90123456-7', 'snavarro@gmail.com', '5553456', 'Plaza Vieja 6789', '1994-07-13', 'password6789', 'imagen20.jpg', 1, CURRENT_TIMESTAMP),
-('Jorge', 'Vargas', '01234567-8', 'jvargas2@gmail.com', '5556789', 'Calle Moderna 4567', '1983-11-21', 'clave4567', 'imagen21.jpg', 1, CURRENT_TIMESTAMP),
-('Andrea', 'Jiménez', '12345678-9', 'ajimenez@gmail.com', '5552345', 'Avenida Moderna 3456', '1988-03-28', 'password3456', 'imagen22.jpg', 1, CURRENT_TIMESTAMP),
-('Martín', 'Castro', '23456789-0', 'mcastro@gmail.com', '5554567', 'Calle Futura 7890', '1990-12-02', 'clave7890', 'imagen23.jpg', 1, CURRENT_TIMESTAMP),
-('Lucía', 'Herrera', '34567890-1', 'lherrera@gmail.com', '5556789', 'Plaza Moderna 1234', '1986-04-15', 'password1234', 'imagen24.jpg', 1, CURRENT_TIMESTAMP),
-('Pablo', 'Ortega', '45678901-2', 'portega@gmail.com', '5559012', 'Avenida Futura 5678', '1977-09-01', 'clave5678', 'imagen25.jpg', 1, CURRENT_TIMESTAMP);
 
 SELECT*FROM tb_usuarios;
 
@@ -253,3 +226,8 @@ INSERT INTO tb_comentarios (comentario, calificacion, estado_comentario, id_deta
 SELECT*FROM tb_pedidos;
 SELECT*FROM tb_detalle_pedidos;
 SELECT*FROM tb_comentarios;
+
+SELECT p.id_pedido
+                 FROM tb_pedidos AS p
+                 JOIN tb_usuarios AS u ON p.id_usuario = u.id_usuario
+                 WHERE p.estado = 1 AND u.id_usuario = 1

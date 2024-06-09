@@ -13,9 +13,12 @@ CREATE TABLE tb_usuarios (
   direccion_usuario varchar(250) NOT NULL,
   nacimiento_usuario date NOT NULL,
   clave_usuario varchar(100) NOT NULL,
+  imagen VARCHAR(25),
   estado_cliente tinyint(1) NOT NULL DEFAULT 1,
-  fecha_registro date NOT NULL DEFAULT current_timestamp()
-)
+  fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
+);
+
+SELECT*FROM tb_usuarios;
 
 CREATE TABLE administrador (
 	id_administrador INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -72,8 +75,8 @@ CREATE TABLE tb_pedidos (
     id_pedido INT PRIMARY KEY AUTO_INCREMENT,
     id_usuario INT,
     direccion_pedido varchar(250) NOT NULL,
-    estado ENUM('FINALIZADO', 'PENDIENTE', 'ENTREGADO', 'CANCELADO'),
-    fecha_pedido DATETIME,
+    estado ENUM('FINALIZADO', 'PENDIENTE', 'ENTREGADO', 'CANCELADO') NULL DEFAULT 'PENDIENTE',
+    fecha_pedido DATETIME DEFAULT NOW(),
     CONSTRAINT fk_usuario FOREIGN KEY (id_usuario) REFERENCES tb_usuarios(id_usuario)
 );
 
