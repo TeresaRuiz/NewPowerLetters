@@ -57,7 +57,7 @@ const loadTemplate = async () => {
                             <i class="ri-arrow-down-s-line dropdown-icon"></i>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="../public/autores.html">Editar perfil</a></li>
+                            <li><a href="../public/editarPerfil.html">Editar perfil</a></li>
                         </ul>
                         <!-- logout button -->
                         <a href="#" onclick="logOut()"><i class="ri-logout-box-line"></i>Cerrar sesión</a>

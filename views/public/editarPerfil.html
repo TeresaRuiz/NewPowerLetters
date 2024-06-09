@@ -11,11 +11,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- IMPORTACIÓN DE RECURSOS EXTERNOS -->
     <!-- Llamada al icono de la página web -->
-    <link type="image/png" rel="icon" href="../../resources/img/icon.png">
     <!-- Llamada a las hojas de estilos del framework e iconos -->
     <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap-icons.min.css">
-    
+    <link type="text/css" rel="stylesheet" href="../../resources/css/styles.css">
+    <!--=============== REMIXICONS ===============-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+
 </head>
 
 <body>
@@ -77,13 +79,13 @@
                 <input type="file" name="imagen" id="imagen" accept=".png, .jpg" class="form-control">
             </div>
             <div class="text-center">
-                <button type="submit" class="btn btn-primary"><i class="bi bi-save"></i> Guardar</button>
+                <button type="submit" class="btn btn-primary"><i class="ri-save-fill"></i></i> Guardar</button>
             </div>
         </form>
         <!-- Contenedor con enlace para abrir la caja de diálogo del formulario de cambiar constraseña -->
         <div class="text-center p-3">
             <button type="button" class="btn btn-secondary" onclick="openPassword()">
-                <i class="bi bi-shield-lock"></i> Cambiar contraseña
+                <i class="ri-key-fill"></i> Cambiar contraseña
             </button>
         </div>
         <!-- Componente Modal para mostrar el formulario de cambio de contraseña -->
@@ -137,10 +139,7 @@
     
     <!-- Llamada al controlador de la página web -->
     <script type="text/javascript" src="../../controllers/public/profile.js"></script>
-        <script>
-        // Llamada a la función loadTemplate para cargar el encabezado y pie de la página
-        loadTemplate();
-    </script>
+      
 </body>
 
 </html>
