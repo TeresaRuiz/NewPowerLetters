@@ -1,12 +1,14 @@
 // Constantes para establecer los elementos del formulario de editar perfil.
 const PROFILE_FORM = document.getElementById('profileForm'),
-    NOMBRE_USUARIO = document.getElementById('nombreAdministrador'),
-    APELLIDO_USUARIO = document.getElementById('apellidoAdministrador'),
-    CORREO_USUARIO = document.getElementById('correoAdministrador'),
-    DUI_USUARIO = document.getElementById('aliasAdministrador');
-    TELEFONO_USUARIO = document.getElementById('aliasAdministrador');
-    NACIMIENTO_USUARIO = document.getElementById('aliasAdministrador');
-    DIRECCION_USUARIO = document.getElementById('aliasAdministrador');
+    NOMBRE_USUARIO = document.getElementById('nombre_usuario'),
+    APELLIDO_USUARIO = document.getElementById('apellido_usuario'),
+    CORREO_USUARIO = document.getElementById('correo_usuario'),
+    DUI_USUARIO = document.getElementById('dui_usuario');
+    TELEFONO_USUARIO = document.getElementById('telefono_usuario');
+    NACIMIENTO_USUARIO = document.getElementById('nacimiento_usuario');
+    DIRECCION_USUARIO = document.getElementById('direccion_usuario');
+    IMAGEN_USUARIO = document.getElementById('imagen');
+    ID_CLAS = document.getElementById('idUsuario');
 // Constante para establecer la modal de cambiar contraseña.
 const PASSWORD_MODAL = new bootstrap.Modal('#passwordModal');
 // Constante para establecer el formulario de cambiar contraseña.
@@ -19,15 +21,20 @@ document.addEventListener('DOMContentLoaded', async () => {
     // Se establece el título del contenido principal.
     MAIN_TITLE.textContent = 'Editar perfil';
     // Petición para obtener los datos del usuario que ha iniciado sesión.
-    const DATA = await fetchData(USER_API, 'readOne');
+    const DATA = await fetchData(USER_API, 'readProfile');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
+        
         // Se inicializan los campos del formulario con los datos del usuario que ha iniciado sesión.
         const ROW = DATA.dataset;
-        NOMBRE_USUARIO.value = ROW.NOMBRE_USUARIO;
-        APELLIDO_USUARIO.value = ROW.APELLIDO_USUARIO;
-        CORREO_USUARIO.value = ROW.CORREO_USUARIO;
-        DUI_USUARIO.value = ROW.DUI_USUARIO;
+        NOMBRE_USUARIO.value = ROW.nombre_usuario;
+        APELLIDO_USUARIO.value = ROW.apellido_usuario;
+        CORREO_USUARIO.value = ROW.correo_usuario;
+        DUI_USUARIO.value = ROW.dui_usuario;
+        TELEFONO_USUARIO.value = ROW.telefono_usuario;
+        NACIMIENTO_USUARIO.value = ROW.nacimiento_usuario;
+        DIRECCION_USUARIO.value = ROW.direccion_usuario;
+        IMAGEN_USUARIO.value = ROW.imagen;
     } else {
         sweetAlert(2, DATA.error, null);
     }
@@ -49,7 +56,7 @@ PROFILE_FORM.addEventListener('submit', async (event) => {
     }
 });
 
-// Mètodo del evento para cuando se envía el formulario de cambiar contraseña.
+// Método del evento para cuando se envía el formulario de cambiar contraseña.
 PASSWORD_FORM.addEventListener('submit', async (event) => {
     // Se evita recargar la página web después de enviar el formulario.
     event.preventDefault();

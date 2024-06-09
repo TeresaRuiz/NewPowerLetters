@@ -45,6 +45,21 @@ class UsuarioHandler
         }
     }
 
+    public function checkPassword($password)
+    {
+        $sql = 'SELECT clave_usuario
+                FROM tb_usuarios
+                WHERE id_usuario = ?';
+        $params = array($_SESSION['idUsuario']);
+        $data = Database::getRow($sql, $params);
+        // Se verifica si la contraseña coincide con el hash almacenado en la base de datos.
+        if (password_verify($password, $data['clave_usuario'])) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public function checkStatus()
     {
         if ($this->estado) {
