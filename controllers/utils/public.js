@@ -50,10 +50,7 @@ const loadTemplate = async () => {
                         </ul>
                     </div>
                     <div class="nav__actions">
-                        <!-- search button  -->
-                        <i class="ri-search-line search-button" id="search-button"></i>
-                        <!-- login button  -->
-                        <i class="ri-user-line login-button" id="login-button"></i>
+                        <b>${DATA.username}</b>
                         <!-- Carrito button  -->
                         <a href="carrito.html"><i class="ri-shopping-cart-fill carrito-button" id="carrito-button"></i></a>
                         <!-- theme button  -->

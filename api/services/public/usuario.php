@@ -16,11 +16,11 @@ if (isset($_GET['action'])) {
         // Se compara la acción a realizar cuando un usuario ha iniciado sesión.
         switch ($_GET['action']) {
             case 'getUser':
-                if (isset($_SESSION['correo_usuario'])) {
+                if (isset($_SESSION['correoUsuario'])) {
                     $result['status'] = 1;
-                    $result['username'] = $_SESSION['correo_usuario'];
+                    $result['username'] = $_SESSION['correoUsuario']; // Usamos 'correo_usuario' en lugar de 'nombre_usuario'
                 } else {
-                    $result['error'] = 'Correo de usuario indefinido';
+                    $result['error'] = 'Correo de usuario indefinido'; // Actualizamos el mensaje de error para reflejar el cambio
                 }
                 break;
             case 'logOut':
