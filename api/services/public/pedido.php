@@ -49,6 +49,16 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No ha agregado libros al carrito';
                 }
                 break;
+                case 'readOne':
+                    // Implementación del caso readOne
+                    if (!$pedido->setId($_POST['id_pedido'])) {
+                        $result['error'] = $pedido->getDataError();
+                    } elseif ($result['dataset'] = $pedido->readOne()) {
+                        $result['status'] = 1;
+                    } else {
+                        $result['error'] = 'Pedido inexistente';
+                    }
+                    break;
                 
             // Acción para actualizar la cantidad de un producto en el carrito de compras.
             case 'updateDetail':
