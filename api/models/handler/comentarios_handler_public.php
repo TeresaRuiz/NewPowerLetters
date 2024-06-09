@@ -103,7 +103,7 @@ INNER JOIN
         return Database::getRow($sql, $params);
     }
 
-    public function verificarCompra()
+    public function verifyPurchase()
     {
         $sql = 'SELECT dp.id_detalle as id
         FROM tb_detalle_pedidos dp
@@ -123,9 +123,9 @@ INNER JOIN
         }
     }
 
-    public function crearComentario()
+    public function createComment()
     {
-        if ($this->verificarCompra()) {
+        if ($this->verifyPurchase()) {
             // Se realiza una subconsulta para obtener el precio del producto.
             $sql = 'INSERT INTO tb_comentarios(calificacion, comentario, id_detalle)
                 VALUES(?, ?, ?)';
@@ -136,31 +136,5 @@ INNER JOIN
         }
     }
 
-    public function manipularComentario()
-    {
-        $sql = 'SELECT dp.id_detalle AS ID
-    FROM tb_detalle_pedidos dp
-    INNER JOIN tb_pedidos p ON dp.id_pedido = p.id_pedido
-    WHERE p.id_usuario = ?
-    AND dp.id_libro = ?
-    AND p.estado = "ENTREGADO"
-    ORDER BY dp.id_detalle DESC
-    LIMIT 1;';
-        $params = array($_SESSION['idUsuario'], $this->libros);
-        if ($data = Database::getRow($sql, $params)) {
-            $_SESSION['idDetalle'] = $data['ID'];
-            $_SESSION['libro'] = $this->libros;
-            if ($_SESSION['idDetalle'] != null) {
-                // Se realiza una subconsulta para obtener el precio del producto.
-                $sqlI = 'INSERT INTO tb_comentarios(calificacion, comentario, id_detalle)
-        VALUES(?, ?, ?)';
-                $paramsI = array($this->calificacion, $this->comentario, $_SESSION['idDetalle']);
-                return Database::executeRow($sqlI, $paramsI);
-            } else {
-                return false;
-            }
-        } else {
-            return false;
-        }
-    }
+    
 }

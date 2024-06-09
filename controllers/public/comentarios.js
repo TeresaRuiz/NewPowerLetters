@@ -7,7 +7,7 @@ const SAVE_FORM = document.getElementById('saveForm');
 
 // Event listener que se ejecuta cuando el contenido del DOM ha sido completamente cargado.
 document.addEventListener('DOMContentLoaded', () => {
-    muestraLibros(); // Llama a la función fillTable para llenar la tabla con los comentarios.
+    showsBooks(); // Llama a la función fillTable para llenar la tabla con los comentarios.
 });
 
 
@@ -42,7 +42,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
         // Se muestra un mensaje de éxito.
         sweetAlert(1, DATA.message, true);
         // Se carga nuevamente la tabla para visualizar los cambios.
-        muestraLibros();
+        showsBooks();
     } else {
         // Se muestra un mensaje de error.
         sweetAlert(2, DATA.error, false);
@@ -52,7 +52,7 @@ SAVE_FORM.addEventListener('submit', async (event) => {
 
 
 
-const muestraLibros = async (form = null) => {
+const showsBooks = async (form = null) => {
     (form) ? action = 'searchRows' : action = 'readAll';
     const DATA = await fetchData(COMENTARIOS_API, action, form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.

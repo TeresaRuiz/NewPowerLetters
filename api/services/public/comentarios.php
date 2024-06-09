@@ -37,7 +37,7 @@ if (isset($_GET['action'])) {
                     !$comentariop->setComentario($_POST['comentario'])
                 ) {
                     $result['error'] = $comentariop->getDataError(); // Obtener mensaje de error si la validación falla.
-                } elseif ($comentariop->crearComentario()) { // Intentar crear un nuevo comentario.
+                } elseif ($comentariop->createComment()) { // Intentar crear un nuevo comentario.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['cliente'] = $_SESSION['idUsuario'];
                     $result['libro'] = $_SESSION['libro'];
