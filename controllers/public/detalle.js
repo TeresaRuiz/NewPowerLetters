@@ -7,7 +7,6 @@ const LIBROS = document.getElementById('libros');
 // Constante para establecer el formulario de agregar un producto al carrito de compras.
 const SHOPPING_FORM = document.getElementById('shoppingForm');
 
-
 document.addEventListener('DOMContentLoaded', async () => {
     const FORM = new FormData();
     FORM.append('idLibro', PARAMS.get('id'));
@@ -27,6 +26,19 @@ document.addEventListener('DOMContentLoaded', async () => {
     } else {
         console.log(DATA.error);
     }
+
+    // Event listener para actualizar existencias al cambiar la cantidad solicitada
+    const cantidadInput = document.getElementById('cantidadLibro');
+    cantidadInput.addEventListener('input', () => {
+        const existencias = parseInt(document.getElementById('existenciasProducto').getAttribute('data-existencias'), 10);
+        const cantidadSolicitada = parseInt(cantidadInput.value, 10) || 0;
+
+        if (cantidadSolicitada <= existencias) {
+            document.getElementById('existenciasProducto').textContent = existencias - cantidadSolicitada;
+        } else {
+            document.getElementById('existenciasProducto').textContent = existencias;
+        }
+    });
 });
 
 document.addEventListener('DOMContentLoaded', (event) => {
