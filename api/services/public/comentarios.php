@@ -16,7 +16,10 @@ if (isset($_GET['action'])) {
         'dataset' => null, // Datos resultantes de la operación.
         'error' => null, // Mensaje de error si ocurre un problema.
         'exception' => null,// Excepción del servidor de base de datos si es aplicable.
-        'fileStatus' => null
+        'fileStatus' => null,
+        'cliente' => 0, 
+        'detalle' => 0,
+        'libro' => 0
     );// Estado de archivo (si es necesario para alguna operación).
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
@@ -34,8 +37,11 @@ if (isset($_GET['action'])) {
                     !$comentariop->setComentario($_POST['comentario'])
                 ) {
                     $result['error'] = $comentariop->getDataError(); // Obtener mensaje de error si la validación falla.
-                } elseif ($comentariop->createRow()) { // Intentar crear un nuevo comentario.
+                } elseif ($comentariop->crearComentario()) { // Intentar crear un nuevo comentario.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
+                    $result['cliente'] = $_SESSION['idUsuario'];
+                    $result['libro'] = $_SESSION['libro'];
+                    $result['detalle'] = $_SESSION['idDetalle'];
                     $result['message'] = 'Comentario creado con éxito';
                 } else {
                     $result['error'] = 'Debe comprar el producto para comentar'; // Mensaje de error si ocurre un problema.

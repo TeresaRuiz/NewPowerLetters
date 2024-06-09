@@ -1,6 +1,6 @@
 // URL de la API para gestionar los comentarios.
 const COMENTARIOS_API = 'services/public/comentarios.php';
-
+const ComentarioContenedor = document.getElementById('comentarioContenedor')
 
 // Elementos del formulario para guardar un comentario.
 const SAVE_FORM = document.getElementById('saveForm');
@@ -9,6 +9,8 @@ const SAVE_FORM = document.getElementById('saveForm');
 document.addEventListener('DOMContentLoaded', () => {
     muestraLibros(); // Llama a la función fillTable para llenar la tabla con los comentarios.
 });
+
+
 
 
 // Método del evento para cuando se envía el formulario de guardar.
@@ -56,11 +58,11 @@ const muestraLibros = async (form = null) => {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se inicializa el contenedor de productos.
-        COMENTARIOS_API.innerHTML = '';
+        ComentarioContenedor.innerHTML = '';
         // Se recorre el conjunto de registros fila por fila a través del objeto row.
         DATA.dataset.forEach(row => {
             // Se crean y concatenan las tarjetas con los datos de cada producto.
-            COMENTARIOS_API.innerHTML += `
+            ComentarioContenedor.innerHTML += `
 
                     <article class="testimonial__card swiper-slide">
 

@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once ('../../helpers/database.php');
+require_once('../../helpers/database.php');
 
 /*
  * Clase para manejar el comportamiento de los datos de la tabla COMENTARIOS.
@@ -46,22 +46,21 @@ class ComentarioHandlerPublic
     public function readAll()
     {
         // Definir la consulta SQL para obtener todos los registros
-        $sql = 'SELECT
-                    c.id_comentario,
-                    c.comentario,
-                    c.calificacion,
-                    c.estado_comentario,
-                    u.nombre_usuario
-                FROM
-                    tb_comentarios AS c
-                JOIN
-                    tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
-                JOIN
-                    tb_pedidos AS p ON dp.id_pedido = p.id_pedido
-                JOIN
-                    tb_usuarios AS u ON p.id_usuario = u.id_usuario
-                ORDER BY
-                    c.id_comentario';
+        $sql = 'SELECT 
+    c.id_comentario,
+    c.comentario,
+    c.calificacion,
+    c.estado_comentario,
+    u.nombre_usuario,
+    u.apellido_usuario
+FROM 
+    tb_comentarios AS c
+INNER JOIN 
+    tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
+INNER JOIN 
+    tb_pedidos AS p ON dp.id_pedido = p.id_pedido
+INNER JOIN 
+    tb_usuarios AS u ON p.id_usuario = u.id_usuario';
 
         // Ejecutar la consulta y devolver las filas resultantes
         return Database::getRows($sql);
@@ -106,33 +105,62 @@ class ComentarioHandlerPublic
 
     public function verificarCompra()
     {
-        $sql = 'SELECT dp.id_detalle
+        $sql = 'SELECT dp.id_detalle as id
         FROM tb_detalle_pedidos dp
         INNER JOIN tb_pedidos p ON dp.id_pedido = p.id_pedido
         WHERE p.id_usuario = ?
         AND dp.id_libro = ?
-        AND p.estado = "Entregado"
+        AND p.estado = "ENTREGADO"
         ORDER BY dp.id_detalle DESC
         LIMIT 1;';
         $params = array($_SESSION['idUsuario'], $this->libros);
         if ($data = Database::getRow($sql, $params)) {
-            $_SESSION['idDetalle'] = $data['id_detalle'];
+            $_SESSION['idDetalle'] = $data['id'];
+            $_SESSION['libro'] = $this->libros;
             return true;
         } else {
             return false;
         }
     }
- 
-   public function crearComentario(){
-      if($this->verificarCompra()){
-        // Se realiza una subconsulta para obtener el precio del producto.
-        $sql = 'INSERT INTO tb_comentarios(calificacion, comentario, id_detalle)
+
+    public function crearComentario()
+    {
+        if ($this->verificarCompra()) {
+            // Se realiza una subconsulta para obtener el precio del producto.
+            $sql = 'INSERT INTO tb_comentarios(calificacion, comentario, id_detalle)
                 VALUES(?, ?, ?)';
-        $params = array($this->calificacion, $this->comentario, $_SESSION['idDetalle']);
-        return Database::executeRow($sql, $params);
-      }
-      else{
-         return false;
-      }
-   }
+            $params = array($this->calificacion, $this->comentario, $_SESSION['idDetalle']);
+            return Database::executeRow($sql, $params);
+        } else {
+            return false;
+        }
+    }
+
+    public function manipularComentario()
+    {
+        $sql = 'SELECT dp.id_detalle AS ID
+    FROM tb_detalle_pedidos dp
+    INNER JOIN tb_pedidos p ON dp.id_pedido = p.id_pedido
+    WHERE p.id_usuario = ?
+    AND dp.id_libro = ?
+    AND p.estado = "ENTREGADO"
+    ORDER BY dp.id_detalle DESC
+    LIMIT 1;';
+        $params = array($_SESSION['idUsuario'], $this->libros);
+        if ($data = Database::getRow($sql, $params)) {
+            $_SESSION['idDetalle'] = $data['ID'];
+            $_SESSION['libro'] = $this->libros;
+            if ($_SESSION['idDetalle'] != null) {
+                // Se realiza una subconsulta para obtener el precio del producto.
+                $sqlI = 'INSERT INTO tb_comentarios(calificacion, comentario, id_detalle)
+        VALUES(?, ?, ?)';
+                $paramsI = array($this->calificacion, $this->comentario, $_SESSION['idDetalle']);
+                return Database::executeRow($sqlI, $paramsI);
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
 }
