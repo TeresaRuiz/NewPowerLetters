@@ -1,8 +1,8 @@
 
-const AUTORES_API = 'services/admin/autores.php';
-const CLASIFICACION_API = 'services/admin/clasificacion.php';
-const EDITORIAL_API = 'services/admin/editoriales.php';
-const GENERO_API = 'services/admin/genero.php';
+const AUTORES_API = 'services/public/autores_public.php';
+const CLASIFICACION_API = 'services/public/clasificaciones_public.php';
+const EDITORIAL_API = 'services/public/editoriales_public.php';
+const GENERO_API = 'services/public/genero_public.php';
 // Constante para completar la ruta de la API.
 const LIBROS_API = 'services/public/libros_descuentos.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
