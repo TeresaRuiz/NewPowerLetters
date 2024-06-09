@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pedidos</title>
+    <link rel="stylesheet" href="../../Resources/css/styles.css">
+    <link rel="stylesheet" href="../../Resources/css/estilo_tabla.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
+    <!-- Agregamos la hoja de estilos de RemixIcon -->
+</head>
+
+<body>
+
+    <header class="header">
+        <!-- Código del encabezado omitido por brevedad -->
+    </header>
+
+    <main class="main section">
+        <div class="container">
+            <br>
+            <h1 class="section__title">Historial de pedidos</h1>
+            <!-- Formulario de búsqueda y botón de agregar -->
+            <form id="searchForm" class="search-container">
+                <div class="search-form" id="search_generos">
+                    <input type="search" name="search" class="search-input"
+                        placeholder="Buscar por dirección, cliente, fecha o estado...">
+                    <button class="search-button" type="submit"><i class="ri-search-line"></i></button>
+                </div>
+            </form>
+            <!-- Tabla con estilo elegante -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td colspan="2" id="rowsFound"></td>
+                    </tr>
+                    <tr>
+                        <th>Fecha de pedido</th>
+                        <th>Dirección de pedido</th>
+                        <th>Cliente</th>
+                        <th>Estado</th>
+                        <th>Acciones</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody">
+
+                </tbody>
+
+            </table>
+        </div>
+
+        <!-- Modal -->
+        <div id="myModal" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModal()" class="close" style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2>
+                    <br>
+                    <form id="saveForm">
+                        <!-- Campo oculto para asignar el id del registro al momento de modificar -->
+                        <input type="number" id="id_pedido" name="id_pedido" style=" display: none;">
+                        <div>
+                            <label class="genero__label">Cliente</label>
+                            <input type="text" name="usuario" id="usuario" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+                        <div>
+                            <label class="genero__label">Dirección</label>
+                            <input type="text" name="direccion" id="direccion" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+
+                        <div>
+                            <label class="genero__label">Estado</label>
+                            <select name="estadoPedido" id="estadoPedido" class="libro__input" required>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="genero__label">Fecha</label>
+                            <input type="text" name="fecha" id="fecha" placeholder="Escribe tu género"
+                                class="genero__input">
+                        </div>
+
+                        <br><br>
+                        <button type="submit" class="genero__button button">Guardar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal de la vista con imagen a la izquierda -->
+        <div id="myModalView" class="modal">
+            <div class="modal-background"></div>
+            <div class="modal-content card">
+                <span onclick="closeModalDetalles()" class="close"
+                    style="font-size: 40px; font-weight: bold;">&times;</span>
+                <div class="card-body">
+                    <h2 id="modalTitle"></h2><br>
+                    <div class="libros_group grid">
+                        <div>
+                            <h3 id="tituloVista"></h3>
+                            <br>
+                            <img id="vista" src="${SERVER_URL}images/libros/${row.imagen}" width="100">
+                        </div>
+                        <div>
+                            <div>
+                                <label for="Cantidad" class="genero__label">Cantidad:</label>
+                                <p id="Cantidad"></p>
+                            </div>
+                            <div>
+                                <label for="Comentario" class="genero__label">Comentario:</label>
+                                <p id="Comentario"></p>
+                            </div>
+                            <div>
+                                <label for="Cliente" class="genero__label">Solicitado por el cliente:</label>
+                                <p id="Cliente"></p>
+                            </div>
+                            <div>
+                                <label for="direccion" class="genero__label">Dirección de pedido:</label>
+                                <p id="direccionPedido"></p>
+                            </div>
+                            <div>
+                                <label for="Estado" class="genero__label">Estado:</label>
+                                <p id="Estado"></p>
+                            </div>
+                            <div>
+                                <label for="Fecha" class="genero__label">Fecha:</label>
+                                <p id="Fecha"></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </main>
+    <!--=============== SWIPER JS ===============-->
+    <script src="../../Resources/js/swiper-bundle.min.js"></script>
+    <!--=============== SCROLLREVEAL ===============-->
+    <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <!--<script src="../../Resources/js/footer.js"></script>-->
+    <script src="../../Resources/js/modals_.js"></script>
+    <script src="../../Resources/js/main.js"></script>
+    <script src="../../Resources/js/sweetalert.min.js"></script>
+    <script src="../../controllers/utils/components.js"></script>
+    <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <script src="../../controllers/public/pedidos.js"></script>
+    <script>
+        // Llamada a la función loadTemplate para cargar el encabezado y pie de la página
+        loadTemplate();
+    </script>
+</body>
+
+</html>

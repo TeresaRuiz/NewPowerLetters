@@ -58,6 +58,7 @@ const loadTemplate = async () => {
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="../public/editarPerfil.html">Editar perfil</a></li>
+                            <li><a href="../public/historial_pedidos.html">Historial de pedidos</a></li>
                         </ul>
                         <!-- logout button -->
                         <a href="#" onclick="logOut()"><i class="ri-logout-box-line"></i>Cerrar sesión</a>
