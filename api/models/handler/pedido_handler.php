@@ -269,7 +269,7 @@ class PedidoHandler
     {
         $sql = 'DELETE FROM tb_detalle_pedidos
             WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->id_detalle, $_SESSION['idUsuario']);
+        $params = array($this->id_detalle, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
 }
