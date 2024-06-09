@@ -17,8 +17,8 @@ const MAIN_TITLE = document.getElementById('mainTitle');
 MAIN_TITLE.classList.add('text-center', 'py-3');
 
 /*  Función asíncrona para cargar el encabezado y pie del documento.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
+*   Parámetros: ninguno
+*   Retorno: ninguno
 */
 const loadTemplate = async () => {
     // Petición para obtener en nombre del usuario que ha iniciado sesión.
@@ -27,7 +27,7 @@ const loadTemplate = async () => {
     if (DATA.session) {
         // Se comprueba si existe un alias definido para el usuario, de lo contrario se muestra un mensaje con la excepción.
         if (DATA.status) {
-            // Se agrega el encabezado de la página web antes del contenido principal.
+            // Se agrega el encabezado de la página web antes del contenido principal
             MAIN.insertAdjacentHTML('beforebegin', `
             
             <nav class="nav container">
@@ -133,7 +133,7 @@ const loadTemplate = async () => {
             location.href = 'index.html';
         }
     }
-      // Configurar el cambio de tema
+      // Configurar el cambio de tema.
       const themeButton = document.getElementById('theme-button');
       const darkTheme = 'dark-theme';
       const iconTheme = 'ri-sun-line';
