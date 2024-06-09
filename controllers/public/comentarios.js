@@ -64,13 +64,11 @@ const muestraLibros = async (form = null) => {
 
                     <article class="testimonial__card swiper-slide">
 
-                            
                            <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top"  alt="image" class="testimonial__img">
                       
                            <h2 class="featured__title">${row.nombre_usuario}</h2>
                       
                             <p class="testimonial__description">${row.comentario}</p>
-
 
                             <div class="testimonial__stars">
 
