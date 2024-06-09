@@ -73,7 +73,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = $pedido->getDataError();
                 } elseif ($pedido->deleteDetail()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto removido correctamente';
+                    $result['message'] = 'Libro removido correctamente';
                     $result['cliente'] = $_SESSION['idUsuario'];
                     $result['pedido'] = $_SESSION['idPedido'];
                 } else {

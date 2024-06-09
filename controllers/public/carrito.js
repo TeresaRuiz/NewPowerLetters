@@ -14,23 +14,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Método del evento para cuando se envía el formulario de cambiar cantidad de producto.
 //ITEM_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-   // event.preventDefault();
-    // Constante tipo objeto con los datos del formulario.
-    //const FORM = new FormData(ITEM_FORM);
-    // Petición para actualizar la cantidad de producto.
-    //const DATA = await fetchData(PEDIDO_API, 'updateDetail', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    //if (DATA.status) {
-        // Se actualiza la tabla para visualizar los cambios.
-      //  readDetail();
-        // Se cierra la caja de diálogo del formulario.
-    //    ITEM_MODAL.hide();
-        // Se muestra un mensaje de éxito.
-    //    sweetAlert(1, DATA.message, true);
-  //  } else {
-       // sweetAlert(2, DATA.error, false);
-  //  }
+// Se evita recargar la página web después de enviar el formulario.
+// event.preventDefault();
+// Constante tipo objeto con los datos del formulario.
+//const FORM = new FormData(ITEM_FORM);
+// Petición para actualizar la cantidad de producto.
+//const DATA = await fetchData(PEDIDO_API, 'updateDetail', FORM);
+// Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+//if (DATA.status) {
+// Se actualiza la tabla para visualizar los cambios.
+//  readDetail();
+// Se cierra la caja de diálogo del formulario.
+//    ITEM_MODAL.hide();
+// Se muestra un mensaje de éxito.
+//    sweetAlert(1, DATA.message, true);
+//  } else {
+// sweetAlert(2, DATA.error, false);
+//  }
 //});//
 
 /*
@@ -61,12 +61,14 @@ async function readDetail() {
                     <td>${row.cantidad}</td>
                     <td>${subtotal.toFixed(2)}</td>
                     <td>
-                        <button type="button" onclick="openUpdate(${row.id_detalle}, ${row.cantidad})" class="btn btn-info">
-                            <i class="bi bi-plus-slash-minus"></i>
-                        </button>
-                        <button type="button" onclick="openDelete(${row.id_detalle})" class="btn btn-danger">
-                            <i class="bi bi-cart-dash"></i>
-                        </button>
+                    <button type="button" onclick="openUpdate(${row.id_detalle}, ${row.cantidad})" class="btn btn-info btn-custom-info btn-lg">
+                    <i class="ri-add-fill"></i>
+                </button>
+                
+                <button type="button" onclick="openDelete(${row.id_detalle})" class="btn btn-danger btn-custom-danger btn-lg">
+                    <i class="ri-shopping-cart-2-line"></i>
+                </button>
+                
                     </td>
                 </tr>
             `;
