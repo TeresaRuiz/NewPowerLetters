@@ -41,16 +41,11 @@ const loadTemplate = async () => {
                                     <span>Recomendados</span>
                                 </a>
                             </li>
-                            <li class="nav__item">
-                                <a href="../Public/comentarios.html" class="nav__link">
-                                    <i class="ri-message-3-line"></i>
-                                    <span>Comentarios</span>
-                                </a>
-                            </li>
+                            
                         </ul>
                     </div>
                     <div class="nav__actions">
-                        <b>${DATA.username}</b>
+                        Cuenta:<b>${DATA.username}</b>
                         <!-- Carrito button  -->
                         <a href="carrito.html"><i class="ri-shopping-cart-fill carrito-button" id="carrito-button"></i></a>
                         <!-- theme button  -->
