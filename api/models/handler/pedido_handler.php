@@ -98,7 +98,7 @@ class PedidoHandler
         $sql = 'UPDATE tb_detalle_pedidos
             SET cantidad = ?
             WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idUsuario']);
+        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
     public function searchRows()
