@@ -31,10 +31,10 @@ SAVE_FORM.addEventListener('submit', async (event) => {
     // const action = (id_comentario.value) ? 'updateRow' : 'createRow';
     // Constante tipo objeto con los datos del formulario.
     const FORM = new FormData(SAVE_FORM);
-          FORM.append('id_libro', PARAMS.get('id'));
-          FORM.append('calificacion', seleccion);
-          console.log(FORM);
-        // Petición para guardar los datos del formulario.
+    FORM.append('id_libro', PARAMS.get('id'));
+    FORM.append('calificacion', seleccion);
+    console.log(FORM);
+    // Petición para guardar los datos del formulario.
     const DATA = await fetchData(COMENTARIOS_API, 'createRow', FORM);
     console.log(DATA);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.

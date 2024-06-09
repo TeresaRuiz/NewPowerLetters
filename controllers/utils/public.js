@@ -45,13 +45,22 @@ const loadTemplate = async () => {
                         </ul>
                     </div>
                     <div class="nav__actions">
-                        Cuenta:<b>${DATA.username}</b>
+                    </li>
                         <!-- Carrito button  -->
                         <a href="carrito.html"><i class="ri-shopping-cart-fill carrito-button" id="carrito-button"></i></a>
                         <!-- theme button  -->
                         <i class="ri-moon-line change-theme" id="theme-button"></i>
+                        <li class="nav__item nav__item-dropdown">
+                        <a href="#" class="nav__link nav__link-dropdown">
+                            <i class="ri-book-3-line"></i>
+                            Cuenta:<b>${DATA.username}</b>
+                            <i class="ri-arrow-down-s-line dropdown-icon"></i>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="../public/autores.html">Editar perfil</a></li>
+                        </ul>
                         <!-- logout button -->
-                        <a href="#" onclick="logOut()"><i class="ri-logout-box-line"></i> Cerrar sesión</a>
+                        <a href="#" onclick="logOut()"><i class="ri-logout-box-line"></i>Cerrar sesión</a>
                     </div>
 
                     <!--==================== SEARCH ====================-->
