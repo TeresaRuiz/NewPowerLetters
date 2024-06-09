@@ -2,7 +2,8 @@
 const PEDIDO_API = 'services/public/pedido.php';
 // Constante para establecer el cuerpo de la tabla.
 const TABLE_BODY = document.getElementById('tableBody');
-
+// Constante para el modal.
+const MODAL = document.getElementById('myModal');
 
 // Método del evento para cuando el documento ha cargado.
 document.addEventListener('DOMContentLoaded', () => {
@@ -10,28 +11,43 @@ document.addEventListener('DOMContentLoaded', () => {
     loadTemplate();
     // Llamada a la función para mostrar los productos del carrito de compras.
     readDetail();
+
+    // Evento para enviar el formulario de cambiar cantidad de producto.
+    document.getElementById('saveForm').addEventListener('submit', async (event) => {
+        // Se evita recargar la página web después de enviar el formulario.
+        event.preventDefault();
+        // Constante tipo objeto con los datos del formulario.
+        const FORM = new FormData(document.getElementById('saveForm'));
+        // Petición para actualizar la cantidad de producto.
+        const DATA = await fetchData(PEDIDO_API, 'updateDetail', FORM);
+        // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
+        if (DATA.status) {
+            // Se actualiza la tabla para visualizar los cambios.
+            readDetail();
+            // Se cierra la caja de diálogo del formulario.
+            closeModal();
+            // Se muestra un mensaje de éxito.
+            sweetAlert(1, DATA.message, true);
+        } else {
+            sweetAlert(2, DATA.error, false);
+        }
+    });
 });
 
-// Método del evento para cuando se envía el formulario de cambiar cantidad de producto.
-//ITEM_FORM.addEventListener('submit', async (event) => {
-    // Se evita recargar la página web después de enviar el formulario.
-   // event.preventDefault();
-    // Constante tipo objeto con los datos del formulario.
-    //const FORM = new FormData(ITEM_FORM);
-    // Petición para actualizar la cantidad de producto.
-    //const DATA = await fetchData(PEDIDO_API, 'updateDetail', FORM);
-    // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-    //if (DATA.status) {
-        // Se actualiza la tabla para visualizar los cambios.
-      //  readDetail();
-        // Se cierra la caja de diálogo del formulario.
-    //    ITEM_MODAL.hide();
-        // Se muestra un mensaje de éxito.
-    //    sweetAlert(1, DATA.message, true);
-  //  } else {
-       // sweetAlert(2, DATA.error, false);
-  //  }
-//});//
+// Método para cerrar el modal.
+function closeModal() {
+    MODAL.style.display = 'none';
+}
+
+// Método para abrir el modal y cargar los datos del producto.
+function openModal(idDetalle, cantidadLibro) {
+    // Asignar el ID del detalle al formulario.
+    document.getElementById('idDetalle').value = idDetalle;
+    // Asignar la cantidad del libro al formulario.
+    document.getElementById('cantidadLibro').value = cantidadLibro;
+    // Mostrar el modal.
+    MODAL.style.display = 'block';
+}
 
 /*
 *   Función para obtener el detalle del carrito de compras.
@@ -61,11 +77,11 @@ async function readDetail() {
                     <td>${row.cantidad}</td>
                     <td>${subtotal.toFixed(2)}</td>
                     <td>
-                        <button type="button" onclick="openUpdate(${row.id_detalle}, ${row.cantidad})" class="btn btn-info">
-                            <i class="bi bi-plus-slash-minus"></i>
+                        <button type="button" onclick="openUpdate(${row.id_detalle}, ${row.cantidad})" class="btn btn-info btn-custom-info btn-lg">
+                            <i class="ri-add-fill"></i>
                         </button>
-                        <button type="button" onclick="openDelete(${row.id_detalle})" class="btn btn-danger">
-                            <i class="bi bi-cart-dash"></i>
+                        <button type="button" onclick="openDelete(${row.id_detalle})" class="btn btn-danger btn-custom-danger btn-lg">
+                            <i class="ri-shopping-cart-2-line"></i>
                         </button>
                     </td>
                 </tr>
@@ -78,17 +94,15 @@ async function readDetail() {
     }
 }
 
-/*
-*   Función para abrir la caja de diálogo con el formulario de cambiar cantidad de producto.
-*   Parámetros: id (identificador del producto) y quantity (cantidad actual del producto).
-*   Retorno: ninguno.
-*/
+// Método para abrir la caja de diálogo con el formulario de cambiar cantidad de producto.
+function openUpdate(id, quantity) {
+    // Se abre la caja de diálogo que contiene el formulario.
+    MODAL.style.display = 'block';
+    // Se inicializan los campos del formulario con los datos del registro seleccionado.
+    document.getElementById('idDetalle').value = id;
+    document.getElementById('cantidadLibro').value = quantity;
+}
 
-/*
-*   Función asíncrona para mostrar un mensaje de confirmación al momento de finalizar el pedido.
-*   Parámetros: ninguno.
-*   Retorno: ninguno.
-*/
 async function finishOrder() {
     // Llamada a la función para mostrar un mensaje de confirmación, capturando la respuesta en una constante.
     const RESPONSE = await confirmAction('¿Está seguro de finalizar el pedido?');
@@ -104,7 +118,6 @@ async function finishOrder() {
         }
     }
 }
-
 /*
 *   Función asíncrona para mostrar un mensaje de confirmación al momento de eliminar un producto del carrito.
 *   Parámetros: id (identificador del producto).

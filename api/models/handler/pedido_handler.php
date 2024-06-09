@@ -24,22 +24,22 @@ class PedidoHandler
      */
 
 
-     public function getOrder()
-     {
-         $this->estado = 'PENDIENTE';
-         $sql = 'SELECT p.id_pedido
+    public function getOrder()
+    {
+        $this->estado = 'PENDIENTE';
+        $sql = 'SELECT p.id_pedido
                  FROM tb_pedidos AS p
                  JOIN tb_usuarios AS u ON p.id_usuario = u.id_usuario
                  WHERE p.estado = ? AND u.id_usuario = ?';
-         $params = array($this->estado, $_SESSION['idUsuario']);
-         if ($data = Database::getRow($sql, $params)) {
+        $params = array($this->estado, $_SESSION['idUsuario']);
+        if ($data = Database::getRow($sql, $params)) {
             $_SESSION['idPedido'] = $data['id_pedido'];
-             return true;
-         } else {
-             return false;
-         }
-     }
-     
+            return true;
+        } else {
+            return false;
+        }
+    }
+
 
     public function startOrder()
     {
@@ -58,7 +58,7 @@ class PedidoHandler
         }
     }
 
-    
+
     public function createDetail()
     {
         $sql = 'INSERT INTO tb_detalle_pedidos(id_libro, cantidad, precio, id_pedido)
@@ -66,19 +66,19 @@ class PedidoHandler
         $params = array($this->libro, $this->cantidad, $this->libro, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
-    
+
 
     // Método para obtener los productos que se encuentran en el carrito de compras.
-   public function readDetail()
-{
-    $sql = 'SELECT dp.id_detalle, l.titulo AS nombre_producto, dp.precio, dp.cantidad
+    public function readDetail()
+    {
+        $sql = 'SELECT dp.id_detalle, l.titulo AS nombre_producto, dp.precio, dp.cantidad
             FROM tb_detalle_pedidos AS dp
             INNER JOIN tb_pedidos AS p ON dp.id_pedido = p.id_pedido
             INNER JOIN tb_libros AS l ON dp.id_libro = l.id_libro
             WHERE p.id_pedido = ?';
-    $params = array($_SESSION['idPedido']);
-    return Database::getRows($sql, $params);
-}
+        $params = array($_SESSION['idPedido']);
+        return Database::getRows($sql, $params);
+    }
 
 
 
@@ -86,11 +86,28 @@ class PedidoHandler
     {
         $this->estado = 'FINALIZADO';
         $sql = 'UPDATE tb_pedidos
-            SET estado = ?
-            WHERE id_pedido = ?';
+        SET estado = ?, fecha_pedido = NOW()
+        WHERE id_pedido = ?';
         $params = array($this->estado, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
+
+    // Método para leer el historial de pedidos finalizados
+    public function readHistorial($idUsuario)
+    {
+        $sql = 'SELECT p.id_pedido, p.fecha_pedido, p.direccion_pedido, p.estado, 
+                   l.titulo AS nombre_libro, dp.precio, dp.cantidad, 
+                   (dp.precio * dp.cantidad) AS subtotal
+            FROM tb_pedidos AS p
+            INNER JOIN tb_detalle_pedidos AS dp ON p.id_pedido = dp.id_pedido
+            INNER JOIN tb_libros AS l ON dp.id_libro = l.id_libro
+            WHERE p.id_usuario = ? AND p.estado = "FINALIZADO"
+            ORDER BY p.fecha_pedido DESC';
+        $params = array($idUsuario);
+        return Database::getRows($sql, $params);
+    }
+
+
 
     // Método para actualizar la cantidad de un producto agregado al carrito de compras.
     public function updateDetail()
@@ -98,7 +115,7 @@ class PedidoHandler
         $sql = 'UPDATE tb_detalle_pedidos
             SET cantidad = ?
             WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idUsuario']);
+        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
     public function searchRows()
@@ -269,7 +286,7 @@ class PedidoHandler
     {
         $sql = 'DELETE FROM tb_detalle_pedidos
             WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->id_detalle, $_SESSION['idUsuario']);
+        $params = array($this->id_detalle, $_SESSION['idPedido']);
         return Database::executeRow($sql, $params);
     }
 }

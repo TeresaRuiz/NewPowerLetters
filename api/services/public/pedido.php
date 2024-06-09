@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase del modelo.
-require_once('../../models/data/pedido_data.php');
+require_once ('../../models/data/pedido_data.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -49,7 +49,17 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No ha agregado libros al carrito';
                 }
                 break;
-                
+            case 'readOne':
+                // Implementación del caso readOne
+                if (!$pedido->setId($_POST['id_pedido'])) {
+                    $result['error'] = $pedido->getDataError();
+                } elseif ($result['dataset'] = $pedido->readOne()) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'Pedido inexistente';
+                }
+                break;
+
             // Acción para actualizar la cantidad de un producto en el carrito de compras.
             case 'updateDetail':
                 $_POST = Validator::validateForm($_POST);
@@ -73,7 +83,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = $pedido->getDataError();
                 } elseif ($pedido->deleteDetail()) {
                     $result['status'] = 1;
-                    $result['message'] = 'Producto removido correctamente';
+                    $result['message'] = 'Libro removido correctamente';
                     $result['cliente'] = $_SESSION['idUsuario'];
                     $result['pedido'] = $_SESSION['idPedido'];
                 } else {
@@ -93,6 +103,18 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al finalizar el pedido';
                 }
                 break;
+
+            // Caso para leer el historial de pedidos
+            case 'readHistorial':
+                $result['dataset'] = $pedido->readHistorial($_SESSION['idUsuario']);
+                if ($result['dataset']) {
+                    $result['status'] = 1;
+                } else {
+                    $result['error'] = 'No tiene pedidos realizados';
+                }
+                break;
+
+
             default:
                 $result['error'] = 'Acción no disponible dentro de la sesión';
         }
@@ -111,7 +133,7 @@ if (isset($_GET['action'])) {
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
     header('Content-type: application/json; charset=utf-8');
     // Se imprime el resultado en formato JSON y se retorna al controlador.
-    print(json_encode($result));
+    print (json_encode($result));
 } else {
-    print(json_encode('Recurso no disponible'));
+    print (json_encode('Recurso no disponible'));
 }

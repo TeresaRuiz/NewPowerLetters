@@ -157,7 +157,7 @@ border-radius: 8px; /* Bordes redondeados */
 box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra de la tarjeta */
 padding: 20px; /* Espaciado interno */
 width: 700px; /* Ancho de la tarjeta */
-height: 500px; /* Altura de la tarjeta */
+height: 550px; /* Altura de la tarjeta */
 z-index: 2; /* Asegura que esté por encima del fondo oscuro */
 }
 

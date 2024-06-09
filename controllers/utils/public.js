@@ -58,6 +58,7 @@ const loadTemplate = async () => {
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="../public/editarPerfil.html">Editar perfil</a></li>
+                            <li><a href="../public/historial_pedidos.html">Historial de pedidos</a></li>
                         </ul>
                         <!-- logout button -->
                         <a href="#" onclick="logOut()"><i class="ri-logout-box-line"></i>Cerrar sesión</a>
@@ -137,7 +138,7 @@ const loadTemplate = async () => {
                 <!-- theme button  -->
                 <i class="ri-moon-line change-theme" id="theme-button"></i>
                 <!-- login link -->
-               <i class="ri-user-line login-button" id="login-button">    Iniciar sesión</i> 
+                 <a href="login.html"> <i class="ri-user-line login-button" id=""> Iniciar sesión</i></a> 
             </div>
                 <!--==================== SEARCH ====================-->
                 <div class="search" id="search-content">
