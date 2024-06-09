@@ -28,11 +28,10 @@ if (isset($_GET['action'])) {
                 if ($result['dataset'] = $clasificacion->readAll()) { // Leer todos los clasificación de la base de datos.
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros'; // Mensaje con la cantidad de registros encontrados.
-                } else {
-                    $result['error'] = 'No existen clasificaciones registradas'; // Mensaje si no se encuentran clasificación.
-                }
-                break;
-            }
+                } else 
+                {
+                 
+        }
 
         // Capturar cualquier excepción de la base de datos.
         $result['exception'] = Database::getException();
@@ -42,4 +41,6 @@ if (isset($_GET['action'])) {
 
         // Convertir el resultado a formato JSON y enviarlo como respuesta.
         print (json_encode($result));
+
+    }
 }

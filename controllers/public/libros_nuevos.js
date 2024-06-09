@@ -93,12 +93,6 @@ const muestraLibros = async (form = null) => {
 
 }
 
-function filtro(){
-
-}
-
-
-
 function comboBox(){
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
    

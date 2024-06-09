@@ -146,15 +146,12 @@
   margin-left: 20px;
 }
 
-#autorbtn{
-  margin-left: 15px;
-  margin-top: 60px;
-}
+
 
 
   /****************************DISEÑO DE LOS SELECT*************************************/
 .libro__input {
-   width: 10px;
+   width: 150px;
    background-color: transparent;
    padding: 1rem;
    color: var(--text-color);
