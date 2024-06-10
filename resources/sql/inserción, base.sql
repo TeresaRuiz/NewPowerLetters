@@ -1,53 +1,5 @@
 USE powerletters;
 
-
-SELECT*FROM tb_usuarios;
-
-INSERT INTO administrador (
-    nombre_administrador,
-    apellido_administrador,
-    correo_administrador,
-    alias_administrador,
-    clave_administrador
-) VALUES (
-    'Juan',
-    'Pérez',
-    'juan.perez@example.com',
-    'juanp',
-    'clave123'
-);
-
-INSERT INTO administrador (
-    nombre_administrador,
-    apellido_administrador,
-    correo_administrador,
-    alias_administrador,
-    clave_administrador
-) VALUES (
-    'Ana',
-    'García',
-    'ana.garcia@example.com',
-    'anag',
-    'clave456'
-);
-
-INSERT INTO administrador (
-    nombre_administrador,
-    apellido_administrador,
-    correo_administrador,
-    alias_administrador,
-    clave_administrador
-) VALUES (
-    'Luis',
-    'Martínez',
-    'luis.martinez@example.com',
-    'luism',
-    'clave789'
-);
-
-SELECT * FROM administrador;
-
-
 INSERT INTO tb_generos (nombre)
 VALUES ('Ficción'), 
 ('Ciencia Ficción'),
