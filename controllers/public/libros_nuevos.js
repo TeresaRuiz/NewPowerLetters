@@ -12,10 +12,10 @@ const LIBROSN = document.getElementById('librosNuevos');
 const SEARCH_FORM = document.getElementById('searchForm');
 const searchInput = document.getElementById('search-input2');
 id_libro_descuento = document.getElementById('id_libro_descuento'),
-titulo = document.getElementById('titulo'),
-precio = document.getElementById('precio'),
-descripcion = document.getElementById('descripcion'),
-existencias = document.getElementById('existencias');
+    titulo = document.getElementById('titulo'),
+    precio = document.getElementById('precio'),
+    descripcion = document.getElementById('descripcion'),
+    existencias = document.getElementById('existencias');
 
 
 
@@ -27,27 +27,27 @@ document.addEventListener('DOMContentLoaded', async () => {
     muestraLibros();
     buscar_filtro();
 
-  });
+});
 
-  // Método del evento para cuando se envía el formulario de buscar.
+// Método del evento para cuando se envía el formulario de buscar.
 SEARCH_FORM.addEventListener('submit', (event) => {
-  // Se evita recargar la página web después de enviar el formulario.
-  event.preventDefault();
-  // Constante tipo objeto con los datos del formulario.
-  const FORM = new FormData(SEARCH_FORM);
-  // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
-  muestraLibros(FORM);
+    // Se evita recargar la página web después de enviar el formulario.
+    event.preventDefault();
+    // Constante tipo objeto con los datos del formulario.
+    const FORM = new FormData(SEARCH_FORM);
+    // Llamada a la función para llenar la tabla con los resultados de la búsqueda.
+    muestraLibros(FORM);
 });
 
 
 searchInput.addEventListener('input', () => {
     // Si el input está vacío y se hace clic en la "X" predeterminada
     if (searchInput.value === '') {
-      location.reload();
+        location.reload();
     }
-  });
+});
 
-  
+
 const muestraLibros = async (form = null) => {
     (form) ? action = 'searchRows' : action = 'readAll';
     const DATA = await fetchData(LIBROS_API, action, form);
@@ -86,49 +86,49 @@ const muestraLibros = async (form = null) => {
             `;
         });
     } else {
-      
-      sweetAlert(4, DATA.error, true);
+
+        sweetAlert(4, DATA.error, true);
 
     }
 
 }
 
-function comboBox(){
+function comboBox() {
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
-   
-        fillSelect(GENERO_API, 'readAll', 'nombreGEN');
-        fillSelect(EDITORIAL_API, 'readAll', 'editorial');
-        fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion');
-        fillSelect(AUTORES_API, 'readAll', 'autor');
-        
+
+    fillSelect(GENERO_API, 'readAll', 'nombreGEN');
+    fillSelect(EDITORIAL_API, 'readAll', 'editorial');
+    fillSelect(CLASIFICACION_API, 'readAll', 'clasificacion');
+    fillSelect(AUTORES_API, 'readAll', 'autor');
+
 }
 
 function buscar_filtro(precio, color, modelo) {
-  var buscar = '1';
-  var parametros = {
-      buscar: buscar,
-      precio: precio,
-      nombreGEN: nombreGEN,
-      clasificacion: clasificacion
-  };
+    var buscar = '1';
+    var parametros = {
+        buscar: buscar,
+        precio: precio,
+        nombreGEN: nombreGEN,
+        clasificacion: clasificacion
+    };
 
-  $.ajax({
-      data: parametros,
-      url: 'auxiliar/buscador.php',
-      type: 'POST',
-      timeout: 10000,
-      beforeSend: function() {
-          // document.getElementById("resultado_busqueda").innerHTML = '<img src="img/load.gif" style="width:120px;">';
-      },
-      success: function(response) {
-          console.log('DENTRO');
-          document.getElementById("resultado_busqueda").innerHTML = response;
-      },
-      error: function(response, error) {
-          console.log('ERROR');
-          document.getElementById("resultado_busqueda").innerHTML = error;
-      }
-  });
+    $.ajax({
+        data: parametros,
+        url: 'auxiliar/buscador.php',
+        type: 'POST',
+        timeout: 10000,
+        beforeSend: function () {
+            // document.getElementById("resultado_busqueda").innerHTML = '<img src="img/load.gif" style="width:120px;">';
+        },
+        success: function (response) {
+            console.log('DENTRO');
+            document.getElementById("resultado_busqueda").innerHTML = response;
+        },
+        error: function (response, error) {
+            console.log('ERROR');
+            document.getElementById("resultado_busqueda").innerHTML = error;
+        }
+    });
 }
 
 
