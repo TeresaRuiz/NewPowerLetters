@@ -27,7 +27,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.log(DATA.error);
     }
 
-    // Event listener para actualizar existencias al cambiar la cantidad solicitada
     const cantidadInput = document.getElementById('cantidadLibro');
     cantidadInput.addEventListener('input', () => {
         const existencias = parseInt(document.getElementById('existenciasProducto').getAttribute('data-existencias'), 10);
@@ -59,6 +58,18 @@ SHOPPING_FORM.addEventListener('submit', async (event) => {
         return;
     }
 
+    // Enviar actualización de existencias al servidor
+    const updateForm = new FormData();
+    updateForm.append('idLibro', PARAMS.get('id'));
+    updateForm.append('cantidad', cantidadSolicitada);
+
+    const updateResponse = await fetchData(LIBROS_API, 'updateExistencias', updateForm);
+    if (!updateResponse.status) {
+        console.log(updateResponse.error);
+        return;
+    }
+
+    // Si la actualización de existencias fue exitosa, proceder a crear el detalle del pedido
     const DATA = await fetchData(PEDIDO_API, 'createDetail', FORM);
     console.log(DATA);
     if (DATA.status) {
