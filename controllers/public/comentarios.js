@@ -53,8 +53,10 @@ SAVE_FORM.addEventListener('submit', async (event) => {
 
 
 const showsBooks = async (form = null) => {
-    (form) ? action = 'searchRows' : action = 'readAll';
-    const DATA = await fetchData(COMENTARIOS_API, action, form);
+    // (form) ? action = 'searchRows' : action = 'readOneComment';
+    form = new FormData();
+    form.append('id_libro', PARAMS.get('id'));
+    const DATA = await fetchData(COMENTARIOS_API, 'readOneComment', form);
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
         // Se inicializa el contenedor de productos.
@@ -66,19 +68,14 @@ const showsBooks = async (form = null) => {
 
                     <article class="featured__card">
 
-                           <img src="${SERVER_URL}images/libros/${row.imagen}" class="card-img-top"  alt="image" class="testimonial__img">
+                           <img src="${SERVER_URL}images/usuarios/${row.imagen}" class="card-img-top"  alt="image" class="testimonial__img">
                       
                            <h2 class="featured__title">${row.nombre_usuario}</h2>
                       
                             <p class="testimonial__description">${row.comentario}</p>
 
                             <div class="testimonial__stars">
-
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-fill"></i>
-                                <i class="ri-star-half-fill"></i>
+                            ${getStarsHTML(row.calificacion)}
                             </div>
 
                     </article>

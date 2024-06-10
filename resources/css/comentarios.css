@@ -175,7 +175,20 @@
 .section__title{
   padding-top: 60px;
 }
-
-
-
+/*******************************DISEÑO DE ESTRELLAS***********************************/
  
+.fa-star {
+  font-family: FontAwesome;
+}
+
+.checked {
+  color: orange;
+}
+
+.calificacion__input .fa-star {
+  font-family: FontAwesome;
+}
+
+.calificacion__input .checked {
+  color: orange;
+}

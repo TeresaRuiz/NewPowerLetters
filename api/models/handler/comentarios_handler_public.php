@@ -68,43 +68,35 @@ INNER JOIN
         return Database::getRows($sql);
     }
 
+    //PARA LEER COMENTARIOS DE UN SOLO LIBRO//
 
     public function readOneComent()
     {
         $sql = 'SELECT
-                c.id_comentario,
-                c.comentario,
-                c.calificacion,
-                c.estado_comentario,
-                u.nombre_usuario,
-                dp.id_detalle,
-                dp.id_libro,
-                dp.cantidad,
-                dp.precio,
-                l.titulo,
-                l.imagen
-        CASE
-
-        WHEN estado_comentario = 1 THEN "Activo"  
-        WHEN estado_comentario = 0 THEN "Bloqueado"
-        
-        END AS "ESTADO"
-        FROM 
-        tb_comentarios AS c
-       INNER JOIN 
-    tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
+ c.id_comentario,
+ c.comentario,
+ c.calificacion,
+ c.estado_comentario,
+ u.nombre_usuario,
+ dp.id_detalle,
+ dp.id_libro,
+ dp.cantidad,
+ dp.precio,
+ l.titulo,
+ u.imagen, CASE WHEN c.estado_comentario = 1 THEN "ACTIVO" WHEN c.estado_comentario = 0 THEN "BLOQUEADO" END AS "ESTADO"
+FROM 
+tb_comentarios AS c
 INNER JOIN 
-    tb_pedidos AS p ON dp.id_pedido = p.id_pedido
+tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
 INNER JOIN 
-    tb_usuarios AS u ON p.id_usuario = u.id_usuario
-         WHERE estado_comentario ="ACTIVO"';
-        
-
-
+tb_pedidos AS p ON dp.id_pedido = p.id_pedido
+INNER JOIN 
+tb_usuarios AS u ON p.id_usuario = u.id_usuario
+INNER JOIN 
+tb_libros AS l ON dp.id_libro = l.id_libro
+WHERE c.estado_comentario ="ACTIVO" AND l.id_libro = ?;';
         $params = array($this->id);
-
-
-        return Database::getRow($sql, $params);
+        return Database::getRows($sql, $params);
     }
     /*
      * Método para leer una fila específica de la tabla tb_comentarios por id.
@@ -176,5 +168,4 @@ INNER JOIN
             return false;
         }
     }
-
 }

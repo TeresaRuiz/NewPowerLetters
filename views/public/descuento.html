@@ -81,30 +81,46 @@
                 </div>
             </form>
 
-
-
+            
             <div id="buttons">
+
+                
                 <input type="number" id="id_libro_descuento" name="id_libro_descuento" style=" display: none;">
 
+                <div class="form-group col-3">
+                    <label class="pb-2">Precio</label>
+                    <select class="form-control" name="precio" id="precio">
+                        <option value="Todos">Todos</option>
+                        <option value="DESC">De mayor a menor</option>
+                        <option value="ASC">De menor a mayor</option>
+                    </select>
+                </div>
 
-                <button class="button-value" id="generobtn">Genero
-                    <select name="nombreGEN" id="nombreGEN" class="libro__input" required></select>
-                </button>
+                <br><br>
+                <div class="form-group col-3">
 
-                <button class="button-value" id="clasificacionbtn">Clasificación
-                    <select name="clasificacion" id="clasificacion" class="libro__input" required></select>
-                </button>
+                     <button class="button-value" id="generobtn">Genero
+                        <select name="nombreGEN" id="nombreGEN" class="libro__input" required></select>
+                     </button>
 
+                </div>
+                <br><br><br><br>
+                <div class="form-group col-3">
 
-                <button class="button-value" id="editorialbtn">Editorial
-                    <select name="editorial" id="editorial" class="libro__input" required></select>
-                </button>
+                    <button class="button-value" id="clasificacionbtn">Clasificación
+                        <select name="clasificacion" id="clasificacion" class="libro__input" required></select>
+                    </button>
+                    
+               </div>
 
-
-                <button class="button-value" id="autorbtn" for="product-category">Autor
-                    <select name="autor" id="autor" class="libro__input" required></select>
-                </button>
+               <br><br>
+                
             </div>
+        </div>
+
+        <div class="form-group col-3">
+            <button class="btn btn-outline" type="submit" onclick="buscarFiltro($('#precio').val(),$('#nombreGEN').val(),$('#clasificacion').val());
+            ">Buscar</button>
         </div>
 
         <!--==================== NEW BOOKS ====================-->

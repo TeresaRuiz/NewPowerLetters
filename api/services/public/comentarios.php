@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase del modelo.
-require_once ('../../models/data/comentario_data_public.php');
+require_once('../../models/data/comentario_data_public.php');
 
 if (isset($_GET['action'])) {
     // Iniciar una nueva sesión o reanudar la existente para utilizar variables de sesión.
@@ -15,19 +15,19 @@ if (isset($_GET['action'])) {
         'message' => null, // Mensaje descriptivo del resultado.
         'dataset' => null, // Datos resultantes de la operación.
         'error' => null, // Mensaje de error si ocurre un problema.
-        'exception' => null,// Excepción del servidor de base de datos si es aplicable.
+        'exception' => null, // Excepción del servidor de base de datos si es aplicable.
         'fileStatus' => null,
-        'cliente' => 0, 
+        'cliente' => 0,
         'detalle' => 0,
         'libro' => 0
-    );// Estado de archivo (si es necesario para alguna operación).
+    ); // Estado de archivo (si es necesario para alguna operación).
 
     // Verificar si el usuario tiene una sesión iniciada como administrador.
-   
+
     if (isset($_SESSION['idUsuario'])) {
         // Usar un 'switch' para manejar la acción específica solicitada por el usuario.
         switch ($_GET['action']) {
-            
+
             case 'createRow': // Acción para crear un nuevo comentario.
                 $_POST = Validator::validateForm($_POST);
                 // Validar y establecer los campos necesarios para crear un comentario.
@@ -49,6 +49,18 @@ if (isset($_GET['action'])) {
                 break;
             case 'readAll':
                 if ($result['dataset'] = $comentariop->readAll()) {
+                    $result['status'] = 1;
+                    $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
+                } else {
+                    $result['error'] = 'No existen comentarios registrados';
+                }
+                break;
+
+                //LLAMADA DE METODO PARA LEER  COMENTARIOS DE UN SOLO LIBRO//
+            case 'readOneComment':
+                if (!$comentariop->setId($_POST['id_libro'])) {
+                    $result['error'] = $comentariop->getDataError();
+                } elseif ($result['dataset'] = $comentariop->readOneComent()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } else {
@@ -79,7 +91,7 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el estado';
                 }
                 break;
-                
+
             case 'getEstados':
                 if ($result['dataset'] = $comentariop->getEstados()) {
                     $result['status'] = 1; // Indicar que la operación fue exitosa.
@@ -87,21 +99,21 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'No exiten estados disponibles'; // Mensaje si no se encuentran autores.
                 }
                 break;
-            }
-
-            // Capturar cualquier excepción de la base de datos.
-            $result['exception'] = Database::getException();
-    
-            // Configurar el tipo de contenido para la respuesta y la codificación de caracteres.
-            header('Content-type: application/json; charset=utf-8');
-    
-            // Convertir el resultado a formato JSON y enviarlo como respuesta.
-            print (json_encode($result));
-        } else {
-            // Si no hay una sesión válida, se devuelve un mensaje de acceso denegado.
-            print (json_encode('Acceso denegado'));
         }
+
+        // Capturar cualquier excepción de la base de datos.
+        $result['exception'] = Database::getException();
+
+        // Configurar el tipo de contenido para la respuesta y la codificación de caracteres.
+        header('Content-type: application/json; charset=utf-8');
+
+        // Convertir el resultado a formato JSON y enviarlo como respuesta.
+        print(json_encode($result));
     } else {
-        // Si no se recibe una acción, se devuelve un mensaje de recurso no disponible.
-        print (json_encode('Recurso no disponible'));
+        // Si no hay una sesión válida, se devuelve un mensaje de acceso denegado.
+        print(json_encode('Acceso denegado'));
     }
+} else {
+    // Si no se recibe una acción, se devuelve un mensaje de recurso no disponible.
+    print(json_encode('Recurso no disponible'));
+}
