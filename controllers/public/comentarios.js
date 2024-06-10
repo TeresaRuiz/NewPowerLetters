@@ -74,6 +74,7 @@ const showsBooks = async (form = null) => {
                       
                             <p class="testimonial__description">${row.comentario}</p>
 
+                            <br><br>
                             <div class="testimonial__stars">
                             ${getStarsHTML(row.calificacion)}
                             </div>
