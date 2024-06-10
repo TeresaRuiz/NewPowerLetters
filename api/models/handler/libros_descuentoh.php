@@ -123,6 +123,4 @@ class LibroDescuentoHandler
         $params = array($this->id);
         return Database::getRow($sql, $params);
     }
-
-
 }

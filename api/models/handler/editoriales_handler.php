@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 
 /*
  * Clase para manejar el comportamiento de los datos de la tabla EDITORIALES.
@@ -41,7 +41,7 @@ class EditorialesHandler
     {
         // Definir la consulta SQL para insertar un nuevo registro
         $sql = 'INSERT INTO tb_editoriales (nombre) VALUES (?)';
-        
+
         // Establecer los parámetros para la consulta (nombre)
         $params = array($this->nombre);
 
@@ -56,7 +56,7 @@ class EditorialesHandler
     {
         // Definir la consulta SQL para obtener todos los registros
         $sql = 'SELECT id_editorial, nombre FROM tb_editoriales ORDER BY nombre';
-        
+
         // Ejecutar la consulta y devolver las filas resultantes
         return Database::getRows($sql);
     }
@@ -68,7 +68,7 @@ class EditorialesHandler
     {
         // Definir la consulta SQL para obtener un registro específico por id
         $sql = 'SELECT id_editorial, nombre FROM tb_editoriales WHERE id_editorial = ?';
-        
+
         // Establecer los parámetros para la consulta (id)
         $params = array($this->id);
 
@@ -83,7 +83,7 @@ class EditorialesHandler
     {
         // Definir la consulta SQL para actualizar el nombre
         $sql = 'UPDATE tb_editoriales SET nombre = ? WHERE id_editorial = ?';
-        
+
         // Establecer los parámetros para la consulta (nombre y id)
         $params = array($this->nombre, $this->id);
 
@@ -98,7 +98,7 @@ class EditorialesHandler
     {
         // Definir la consulta SQL para eliminar por id
         $sql = 'DELETE FROM tb_editoriales WHERE id_editorial = ?';
-        
+
         // Establecer los parámetros para la consulta (id)
         $params = array($this->id);
 

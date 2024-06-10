@@ -1,14 +1,14 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 /*
-*	Clase para manejar el comportamiento de los datos de la tabla usuario.
-*/
+ *	Clase para manejar el comportamiento de los datos de la tabla usuario.
+ */
 class UsuarioHandler
 {
     /*
-    *   Declaración de atributos para el manejo de datos.
-    */
+     *   Declaración de atributos para el manejo de datos.
+     */
     protected $id = null;
     protected $nombre = null;
     protected $apellido = null;
@@ -26,8 +26,8 @@ class UsuarioHandler
     const RUTA_IMAGEN = '../../images/usuarios/';
 
     /*
-    *   Métodos para gestionar la cuenta del usuario.
-    */
+     *   Métodos para gestionar la cuenta del usuario.
+     */
     public function checkUser($mail, $password)
     {
         $sql = 'SELECT id_usuario, correo_usuario, clave_usuario, estado_cliente
@@ -70,7 +70,9 @@ class UsuarioHandler
             return false;
         }
     }
-
+    /*
+     *   Métodos para cambiar la contraseña
+     */
     public function changePassword()
     {
         $sql = 'UPDATE tb_usuarios
@@ -79,7 +81,9 @@ class UsuarioHandler
         $params = array($this->clave, $_SESSION['idUsuario']);
         return Database::executeRow($sql, $params);
     }
-
+    /*
+     *   Métodos para leer el perfil
+     */
     public function readProfile()
     {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, telefono_usuario, nacimiento_usuario, direccion_usuario, estado_cliente, imagen
@@ -89,6 +93,9 @@ class UsuarioHandler
         return Database::getRow($sql, $params);
     }
 
+    /*
+     *   Métodos para editar el perfil
+     */
     public function editProfile()
     {
         $sql = 'UPDATE tb_usuarios
@@ -97,6 +104,10 @@ class UsuarioHandler
         $params = array($this->nombre, $this->apellido, $this->correo, $this->dui, $this->telefono, $this->nacimiento, $this->direccion, $_SESSION['idUsuario']);
         return Database::executeRow($sql, $params);
     }
+    
+    /*
+     *   Métodos para cambiar el estado
+     */
 
     public function changeStatus()
     {
@@ -108,8 +119,8 @@ class UsuarioHandler
     }
 
     /*
-    *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
-    */
+     *   Métodos para realizar las operaciones SCRUD (search, create, read, update, and delete).
+     */
     public function searchRows()
     {
         $value = '%' . Validator::getSearchValue() . '%';
@@ -120,7 +131,10 @@ class UsuarioHandler
         $params = array($value, $value, $value);
         return Database::getRows($sql, $params);
     }
-
+    
+    /*
+     *   Métodos para crear usuarios
+     */
     public function createRow()
     {
         $sql = 'INSERT INTO tb_usuarios(nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, telefono_usuario, nacimiento_usuario, direccion_usuario, clave_usuario, imagen)
@@ -129,6 +143,10 @@ class UsuarioHandler
         return Database::executeRow($sql, $params);
     }
 
+
+    /*
+     *   Métodos para leer todo
+     */
     public function readAll()
     {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, estado_cliente, imagen
@@ -136,7 +154,10 @@ class UsuarioHandler
                 ORDER BY apellido_usuario';
         return Database::getRows($sql);
     }
-
+    
+    /*
+     *   Métodos para leer solo uno
+     */
     public function readOne()
     {
         $sql = 'SELECT id_usuario, nombre_usuario, apellido_usuario, correo_usuario, dui_usuario, telefono_usuario, nacimiento_usuario, direccion_usuario, estado_cliente, imagen
@@ -146,6 +167,9 @@ class UsuarioHandler
         return Database::getRow($sql, $params);
     }
 
+    /*
+     *   Métodos para actualizar
+     */
     public function updateRow()
     {
         $sql = 'UPDATE tb_usuarios
@@ -155,6 +179,9 @@ class UsuarioHandler
         return Database::executeRow($sql, $params);
     }
 
+    /*
+     *   Métodos para eliminar
+     */
     public function deleteRow()
     {
         $sql = 'DELETE FROM tb_usuarios
