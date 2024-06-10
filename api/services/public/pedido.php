@@ -68,15 +68,48 @@ if (isset($_GET['action'])) {
                     !$pedido->setCantidad($_POST['cantidadLibro'])
                 ) {
                     $result['error'] = $pedido->getDataError();
-                } elseif ($pedido->updateDetail()) {
-                    $result['status'] = 1;
-                    $result['message'] = 'Cantidad modificada correctamente';
-                    $result['cliente'] = $_SESSION['idUsuario'];
-                    $result['pedido'] = $_SESSION['idPedido'];
                 } else {
-                    $result['error'] = 'Ocurrió un problema al modificar la cantidad';
+                    // Obtener las existencias actuales del libro asociado al detalle del pedido
+                    $sqlExistencias = 'SELECT existencias FROM tb_libros WHERE id_libro = (
+                                        SELECT id_libro FROM tb_detalle_pedidos WHERE id_detalle = ?)';
+                    $paramsExistencias = array($_POST['idDetalle']);
+                    $existenciasActuales = Database::getRow($sqlExistencias, $paramsExistencias)['existencias'];
+            
+                    // Obtener la cantidad anterior del detalle del pedido
+                    $sqlCantidadAnterior = 'SELECT cantidad FROM tb_detalle_pedidos WHERE id_detalle = ?';
+                    $paramsCantidadAnterior = array($_POST['idDetalle']);
+                    $cantidadAnterior = Database::getRow($sqlCantidadAnterior, $paramsCantidadAnterior)['cantidad'];
+            
+                    // Calcular las nuevas existencias teniendo en cuenta la cantidad anterior y la nueva cantidad
+                    $existenciasNuevas = $existenciasActuales + $cantidadAnterior - $_POST['cantidadLibro'];
+            
+                    // Verificar si la cantidad es igual o menor que las existencias disponibles
+                    if ($_POST['cantidadLibro'] <= $existenciasNuevas) {
+                        // Actualizar el detalle del pedido
+                        $pedido->setIdDetalle($_POST['idDetalle']);
+                        $pedido->setCantidad($_POST['cantidadLibro']);
+                        if ($pedido->updateDetail()) {
+                            // Actualizar las existencias del libro en la tabla tb_libros
+                            $sqlUpdateExistencias = 'UPDATE tb_libros SET existencias = ? WHERE id_libro = (
+                                                     SELECT id_libro FROM tb_detalle_pedidos WHERE id_detalle = ?)';
+                            $paramsUpdateExistencias = array($existenciasNuevas, $_POST['idDetalle']);
+                            Database::executeRow($sqlUpdateExistencias, $paramsUpdateExistencias);
+            
+                            $result['status'] = 1;
+                            $result['message'] = 'Cantidad modificada correctamente';
+                            $result['cliente'] = $_SESSION['idUsuario'];
+                            $result['pedido'] = $_SESSION['idPedido'];
+                        } else {
+                            $result['error'] = 'Ocurrió un problema al modificar la cantidad';
+                        }
+                    } else {
+                        // La cantidad excede las existencias disponibles, devolver un mensaje de error
+                        $result['error'] = 'La cantidad especificada excede las existencias disponibles del libro.';
+                    }
                 }
                 break;
+            
+            
             // Acción para remover un producto del carrito de compras.
             case 'deleteDetail':
                 if (!$pedido->setIdDetalle($_POST['idDetalle'])) {

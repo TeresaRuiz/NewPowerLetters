@@ -112,12 +112,26 @@ class PedidoHandler
     // Método para actualizar la cantidad de un producto agregado al carrito de compras.
     public function updateDetail()
     {
-        $sql = 'UPDATE tb_detalle_pedidos
-            SET cantidad = ?
-            WHERE id_detalle = ? AND id_pedido = ?';
-        $params = array($this->cantidad, $this->id_detalle, $_SESSION['idPedido']);
-        return Database::executeRow($sql, $params);
+        // Obtener las existencias disponibles del libro asociado al detalle del pedido
+        $sqlExistencias = 'SELECT existencias FROM tb_libros WHERE id_libro = (
+                        SELECT id_libro FROM tb_detalle_pedidos WHERE id_detalle = ?)';
+        $paramsExistencias = array($this->id_detalle);
+        $existencias = Database::getRow($sqlExistencias, $paramsExistencias)['existencias'];
+
+        // Verificar si la cantidad es igual o menor que las existencias disponibles
+        if ($this->cantidad <= $existencias) {
+            // Actualizar la cantidad en el detalle del pedido
+            $sqlUpdate = 'UPDATE tb_detalle_pedidos
+                      SET cantidad = ?
+                      WHERE id_detalle = ? AND id_pedido = ?';
+            $paramsUpdate = array($this->cantidad, $this->id_detalle, $_SESSION['idPedido']);
+            return Database::executeRow($sqlUpdate, $paramsUpdate);
+        } else {
+            // La cantidad es mayor que las existencias disponibles, devolver un mensaje de error
+            return "La cantidad especificada excede las existencias disponibles del libro.";
+        }
     }
+
     public function searchRows()
     {
         // Obtener el valor de búsqueda y envolverlo con comodines para usar con LIKE
