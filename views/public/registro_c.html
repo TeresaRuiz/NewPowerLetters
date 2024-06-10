@@ -2,97 +2,44 @@
 <html lang="es">
 
 <head>
+    <!-- Metadatos de la página -->
     <meta charset="utf-8">
-    <meta name="author" content="Daniel Carranza">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la página -->
     <title>Registro de usuarios</title>
+    <!-- Icono de la página -->
     <link type="image/png" rel="icon" href="../../resources/img/icon.png">
+    <!-- Estilos CSS -->
     <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap.min.css">
     <link type="text/css" rel="stylesheet" href="../../resources/css/bootstrap-icons.min.css">
     <link rel="stylesheet" href="../../Resources/css/styles.css">
+    <link rel="stylesheet" href="../../Resources/css/registro_publico.css">
+    <!-- Librería de iconos -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-    <style>
-        .container_registro {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .imgR {
-            display: none;
-            /* Esconder en pantallas pequeñas */
-        }
-
-        .imgR img {
-            width: 100%;
-            object-fit: cover;
-        }
-
-        
-        .container_form {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            background-color: #ffffff;
-            padding: 30px;
-            border-radius: 20px;
-            font-family: sans-serif;
-            max-width: 500px;
-            width: 100%;
-        }
-
-        .label-dark {
-            color: #000000;
-            font-weight: bold;
-        }
-
-        .input-group {
-            position: relative;
-        }
-
-        .input-group .input-group-text {
-            position: absolute;
-            left: 0.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: transparent;
-            border: none;
-            padding: 0;
-        }
-
-        .input-group input {
-            padding-left: 2rem;
-            /* Espacio para el icono */
-        }
-
-        @media(min-width: 768px) {
-            .container_registro {
-                flex-direction: row;
-            }
-
-            .imgR {
-                display: block;
-                margin-right: 50px;
-            }
-        }
-    </style>
 </head>
 
 <body>
     <main>
+        <!-- Espacios para mantener el contenido alejado del borde de la ventana -->
         <br><br>
         <br><br>
         <br><br>
         <br><br><br><br>
+        <!-- Contenedor principal del formulario de registro -->
         <div class="container_registro">
+            <!-- Imagen del formulario -->
             <div class="imgR">
                 <img src="../../Resources/img/imgPrimerUso.png" alt="Imagen">
             </div>
+            <!-- Contenedor del formulario -->
             <div class="form_container">
+                <!-- Contenido del formulario -->
                 <div class="container_form">
+                    <!-- Formulario de registro -->
                     <form class="row g-3" id="signupForm">
+                        <!-- Campo para el reCAPTCHA -->
                         <input type="text" class="d-none" id="gRecaptchaResponse" name="gRecaptchaResponse">
+                        <!-- Campo para el nombre -->
                         <div class="col-12">
                             <label for="nombre_usuario" class="form-label label-dark">Nombre</label>
                             <div class="input-group">
@@ -101,11 +48,13 @@
                                 <span class="input-group-text"><i class="ri-account-circle-fill"></i></span>
                             </div>
                         </div>
+                        <!-- Campo para el apellido -->
                         <div class="col-12">
                             <label for="apellido_usuario" class="form-label label-dark">Apellido</label>
                             <input type="text" id="apellido_usuario" name="apellido_usuario" class="form-control"
                                 required>
                         </div>
+                        <!-- Campo para el correo electrónico -->
                         <div class="col-12">
                             <label for="correo_usuario" class="form-label label-dark">Correo electrónico</label>
                             <div class="input-group">
@@ -114,6 +63,7 @@
                                 <span class="input-group-text"><i class="ri-mail-fill"></i></span>
                             </div>
                         </div>
+                        <!-- Campo para el DUI -->
                         <div class="col-12">
                             <label for="dui_usuario" class="form-label label-dark">DUI</label>
                             <div class="input-group">
@@ -122,6 +72,7 @@
                                 <span class="input-group-text"><i class="ri-file-text-fill"></i></span>
                             </div>
                         </div>
+                        <!-- Campo para el teléfono -->
                         <div class="col-12">
                             <label for="telefono_usuario" class="form-label label-dark">Teléfono</label>
                             <div class="input-group">
@@ -130,11 +81,13 @@
                                 <span class="input-group-text"><i class="ri-phone-fill"></i></span>
                             </div>
                         </div>
+                        <!-- Campo para la fecha de nacimiento -->
                         <div class="col-12">
                             <label for="nacimiento_usuario" class="form-label label-dark">Nacimiento</label>
                             <input type="date" id="nacimiento_usuario" name="nacimiento_usuario" class="form-control"
                                 required>
                         </div>
+                        <!-- Campo para la contraseña -->
                         <div class="col-12">
                             <label for="clave_usuario" class="form-label label-dark">Contraseña</label>
                             <div class="input-group">
@@ -143,6 +96,7 @@
                                 <span class="input-group-text"><i class="ri-lock-fill"></i></span>
                             </div>
                         </div>
+                        <!-- Campo para confirmar la contraseña -->
                         <div class="col-12">
                             <label for="confirmarClave" class="form-label label-dark">Confirmar contraseña</label>
                             <div class="input-group">
@@ -151,20 +105,24 @@
                                 <span class="input-group-text"><i class="ri-lock-fill"></i></span>
                             </div>
                         </div>
+                        <!-- Campo para la dirección -->
                         <div class="col-12">
                             <label for="direccion_usuario" class="form-label label-dark">Dirección</label>
                             <input type="text" id="direccion_usuario" name="direccion_usuario" maxlength="250"
                                 class="form-control" required>
                         </div>
+                        <!-- Campo para subir una imagen -->
                         <div class="col-12">
                             <label for="imagen" class="form-label label-dark">Imagen</label>
                             <input type="file" name="imagen" id="imagen" accept=".png, .jpg" class="form-control">
                         </div>
+                        <!-- Checkbox para aceptar términos y condiciones -->
                         <div class="col-12 form-check">
                             <input type="checkbox" class="form-check-input" id="condicion" name="condicion" required>
                             <label class="form-check-label label-dark" for="condicion">Acepto términos y
                                 condiciones</label>
                         </div>
+                        <!-- Botones para cancelar y registrar -->
                         <div class="text-center">
                             <button type="reset" class="btn btn-secondary"><i class="bi bi-x-square-fill"></i>
                                 Cancelar</button>
@@ -176,13 +134,14 @@
             </div>
         </div>
     </main>
+    <!-- Librería de JavaScript para máscaras de texto -->
     <script type="text/javascript" src="../../resources/js/vanillaTextMask.js"></script>
     <!-- Inclusión de la librería del reCAPTCHA. Para más informacion https://developers.google.com/recaptcha/docs/v3 -->
     <script type="text/javascript"
         src="https://www.google.com/recaptcha/api.js?render=6LdBzLQUAAAAAJvH-aCUUJgliLOjLcmrHN06RFXT"></script>
     </main>
-    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT --> 
-    
+    <!-- IMPORTACIÓN DE ARCHIVOS JAVASCRIPT -->
+
     <!-- Llamada al framework y libreria de mensajes -->
     <script type="text/javascript" src="../../resources/js/sweetalert.min.js"></script>
     <!-- Llamada al controlador general de la aplicación -->

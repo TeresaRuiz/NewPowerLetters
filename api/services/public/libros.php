@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase del modelo.
-require_once('../../models/data/libros_data.php');
+require_once ('../../models/data/libros_data.php');
 
 // Se comprueba si existe una acción a realizar, de lo contrario se finaliza el script con un mensaje de error.
 if (isset($_GET['action'])) {
@@ -34,6 +34,29 @@ if (isset($_GET['action'])) {
                 $result['error'] = 'Libro inexistente';
             }
             break;
+        case 'updateExistencias':
+            if ($libro->setId($_POST['idLibro'])) {
+                $currentExistencias = $libro->getExistencias();
+                if ($currentExistencias !== false) {
+                    $newExistencias = $currentExistencias - $_POST['cantidad'];
+                    if ($newExistencias >= 0) {
+                        $libro->setExistencias($_POST['cantidad']);
+                        if ($libro->updateExistencias()) {
+                            $result['status'] = 1;
+                            $result['message'] = 'Existencias actualizadas correctamente';
+                        } else {
+                            $result['exception'] = 'Operación fallida';
+                        }
+                    } else {
+                        $result['exception'] = 'Cantidad solicitada mayor a existencias disponibles';
+                    }
+                } else {
+                    $result['exception'] = 'No se pudo obtener las existencias actuales';
+                }
+            } else {
+                $result['exception'] = 'Libro incorrecto';
+            }
+            break;
         default:
             $result['error'] = 'Acción no disponible';
     }
@@ -42,7 +65,7 @@ if (isset($_GET['action'])) {
     // Se indica el tipo de contenido a mostrar y su respectivo conjunto de caracteres.
     header('Content-type: application/json; charset=utf-8');
     // Se imprime el resultado en formato JSON y se retorna al controlador.
-    print(json_encode($result));
+    print (json_encode($result));
 } else {
-    print(json_encode('Recurso no disponible'));
+    print (json_encode('Recurso no disponible'));
 }

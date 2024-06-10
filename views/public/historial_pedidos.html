@@ -2,48 +2,54 @@
 <html lang="es">
 
 <head>
+    <!-- Codificación de caracteres y escala inicial del viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Título de la página -->
     <title>Pedidos</title>
+    <!-- Estilos CSS personalizados -->
     <link rel="stylesheet" href="../../Resources/css/styles.css">
     <link rel="stylesheet" href="../../Resources/css/estilo_tabla.css">
+    <!-- Hoja de estilos de RemixIcon -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
-    <!-- Agregamos la hoja de estilos de RemixIcon -->
 </head>
 
 <body>
-
+    <!-- Encabezado -->
     <header class="header">
         <!-- Código del encabezado omitido por brevedad -->
     </header>
 
+    <!-- Contenido principal -->
     <main class="main section">
-        <main class="main section">
-            <div class="container">
-                <h1 class="section__title">Historial de Pedidos</h1>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nombre del libro</th>
-                            <th>Precio unitario</th>
-                            <th>Cantidad</th>
-                            <th>Subtotal</th>
-                            <th>Estado</th>
-                        </tr>
-                    </thead>
-                    <tbody id="historialBody">
-                    </tbody>
-                </table>
-            </div>
-        </main>
-        
-
-
+        <div class="container">
+            <!-- Título de la sección -->
+            <h1 class="section__title">Historial de Pedidos</h1>
+            <!-- Tabla para mostrar el historial de pedidos -->
+            <table class="table">
+                <thead>
+                    <tr>
+                        <!-- Encabezados de la tabla -->
+                        <th>Nombre del libro</th>
+                        <th>Precio unitario</th>
+                        <th>Cantidad</th>
+                        <th>Subtotal</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>
+                <tbody id="historialBody">
+                    <!-- Cuerpo de la tabla que se llenará dinámicamente con JavaScript -->
+                </tbody>
+            </table>
+        </div>
     </main>
-    <!--=============== SWIPER JS ===============-->
+
+    <!-- Scripts JS -->
+    <!-- Swiper JS -->
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
+    <!-- ScrollReveal -->
     <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <!-- Scripts adicionales -->
     <!--<script src="../../Resources/js/footer.js"></script>-->
     <script src="../../Resources/js/modals_.js"></script>
     <script src="../../Resources/js/main.js"></script>
@@ -51,7 +57,7 @@
     <script src="../../controllers/utils/components.js"></script>
     <script type="text/javascript" src="../../controllers/utils/public.js"></script>
     <script src="../../controllers/public/historial_pedidos.js"></script>
-	<script>
+    <script>
         // Llamada a la función loadTemplate para cargar el encabezado y pie de la página
         loadTemplate();
     </script>
