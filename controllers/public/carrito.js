@@ -87,7 +87,7 @@ async function readDetail() {
                 </tr>
             `;
         });
-        // Se muestra el total a pagar con dos decimales.
+        // Se muestra el total a pagar con dos decimales (según las indicaciones).
         document.getElementById('pago').textContent = total.toFixed(2);
     } else {
         sweetAlert(4, DATA.error, false, 'index.html');
