@@ -29,20 +29,3 @@
     color: white; /* Color del icono blanco */
 }
 
-.centered {
-    text-align: center;
-    width: 100%;
-}
-
-.button, a {
-    background-color: #000000;
-    color: white;
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-a {
-    text-decoration: none;
-}
