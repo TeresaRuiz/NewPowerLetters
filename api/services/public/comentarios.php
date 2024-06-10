@@ -60,7 +60,7 @@ if (isset($_GET['action'])) {
             case 'readOneComment':
                 if (!$comentariop->setId($_POST['id_libro'])) {
                     $result['error'] = $comentariop->getDataError();
-                } elseif ($result['dataset'] = $comentariop->readAll()) {
+                } elseif ($result['dataset'] = $comentariop->readOneComent()) {
                     $result['status'] = 1;
                     $result['message'] = 'Existen ' . count($result['dataset']) . ' registros';
                 } else {

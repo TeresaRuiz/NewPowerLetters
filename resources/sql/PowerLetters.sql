@@ -18,7 +18,6 @@ CREATE TABLE tb_usuarios (
   fecha_registro DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP
 );
 
-SELECT*FROM tb_usuarios;
 
 CREATE TABLE administrador (
 	id_administrador INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -94,10 +93,34 @@ CREATE TABLE tb_comentarios (
     id_comentario INT PRIMARY KEY AUTO_INCREMENT,
     comentario VARCHAR(250),
     calificacion INT,
-    estado_comentario ENUM('ACTIVO', 'BLOQUEADO'), 
+    estado_comentario ENUM('ACTIVO', 'BLOQUEADO') NULL DEFAULT 'ACTIVO', 
     id_detalle INT,
     CONSTRAINT fk_comentario_detalle FOREIGN KEY (id_detalle) REFERENCES tb_detalle_pedidos(id_detalle)
 );
+
+SELECT
+ c.id_comentario,
+ c.comentario,
+ c.calificacion,
+ c.estado_comentario,
+ u.nombre_usuario,
+ dp.id_detalle,
+ dp.id_libro,
+ dp.cantidad,
+ dp.precio,
+ l.titulo,
+ l.imagen, CASE WHEN c.estado_comentario = 1 THEN "ACTIVO" WHEN c.estado_comentario = 0 THEN "BLOQUEADO" END AS "ESTADO"
+FROM 
+tb_comentarios AS c
+INNER JOIN 
+tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
+INNER JOIN 
+tb_pedidos AS p ON dp.id_pedido = p.id_pedido
+INNER JOIN 
+tb_usuarios AS u ON p.id_usuario = u.id_usuario
+INNER JOIN 
+tb_libros AS l ON dp.id_libro = l.id_libro
+WHERE c.estado_comentario ="ACTIVO";
 
 DELIMITER //
 
@@ -109,4 +132,3 @@ BEGIN
 END//
 
 DELIMITER ;
- 
