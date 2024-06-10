@@ -1,0 +1,31 @@
+.libro__input {
+    width: 100%;
+    background-color: var(--container-color);
+    border: 2px solid var(--border-color);
+    padding: 1rem;
+    color: var(--text-color);
+}
+.btn-custom-info {
+    background-color: #6c5ce7; /* Morado */
+    border-color: #6c5ce7; /* Morado */
+    font-size: 24px; /* Tamaño de fuente personalizado */
+    padding: 05px 10px; /* Padding personalizado */
+}
+
+.btn-custom-danger {
+    background-color: #0984e3; /* Azul */
+    border-color: #0984e3; /* Azul */
+    font-size: 24px; /* Tamaño de fuente personalizado */
+    padding:  05px 10px; /* Padding personalizado */
+}
+
+/* Cambiar el color del icono en el botón de info */
+.btn-custom-info .ri-add-fill {
+    color: white; /* Color del icono blanco */
+}
+
+/* Cambiar el color del icono en el botón de danger */
+.btn-custom-danger .ri-shopping-cart-2-line {
+    color: white; /* Color del icono blanco */
+}
+
