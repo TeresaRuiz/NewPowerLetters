@@ -1,4 +1,4 @@
-// Constante para completar la ruta de la API.
+// Constante para completar la ruta de la API en descuentos.
 const LIBROS_API = 'services/public/libros.php';
 const PEDIDO_API = 'services/public/pedido.php';
 // Constante tipo objeto para obtener los parámetros disponibles en la URL.
