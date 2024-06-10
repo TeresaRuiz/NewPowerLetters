@@ -1,6 +1,6 @@
 <?php
 // Se incluye la clase para trabajar con la base de datos.
-require_once('../../helpers/database.php');
+require_once ('../../helpers/database.php');
 
 /*
  * Clase para manejar el comportamiento de los datos de la tabla COMENTARIOS.
@@ -55,13 +55,13 @@ class ComentarioHandlerPublic
     c.estado_comentario,
     u.nombre_usuario,
     u.apellido_usuario
-FROM 
+    FROM 
     tb_comentarios AS c
-INNER JOIN 
+    INNER JOIN 
     tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
-INNER JOIN 
+    INNER JOIN 
     tb_pedidos AS p ON dp.id_pedido = p.id_pedido
-INNER JOIN 
+    INNER JOIN 
     tb_usuarios AS u ON p.id_usuario = u.id_usuario';
 
         // Ejecutar la consulta y devolver las filas resultantes
@@ -72,29 +72,27 @@ INNER JOIN
 
     public function readOneComent()
     {
-        $sql = 'SELECT
- c.id_comentario,
- c.comentario,
- c.calificacion,
- c.estado_comentario,
- u.nombre_usuario,
- dp.id_detalle,
- dp.id_libro,
- dp.cantidad,
- dp.precio,
- l.titulo,
- u.imagen, CASE WHEN c.estado_comentario = 1 THEN "ACTIVO" WHEN c.estado_comentario = 0 THEN "BLOQUEADO" END AS "ESTADO"
-FROM 
-tb_comentarios AS c
-INNER JOIN 
-tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
-INNER JOIN 
-tb_pedidos AS p ON dp.id_pedido = p.id_pedido
-INNER JOIN 
-tb_usuarios AS u ON p.id_usuario = u.id_usuario
-INNER JOIN 
-tb_libros AS l ON dp.id_libro = l.id_libro
-WHERE c.estado_comentario ="ACTIVO" AND l.id_libro = ?;';
+        $sql = 'SELECT c.id_comentario, c.comentario,
+    c.calificacion,
+    c.estado_comentario,
+    u.nombre_usuario,
+    dp.id_detalle,
+    dp.id_libro,
+    dp.cantidad,
+     dp.precio,
+    l.titulo,
+    u.imagen, CASE WHEN c.estado_comentario = 1 THEN "ACTIVO" WHEN c.estado_comentario = 0 THEN "BLOQUEADO" END AS "ESTADO"
+    FROM 
+    tb_comentarios AS c
+    INNER JOIN 
+    tb_detalle_pedidos AS dp ON c.id_detalle = dp.id_detalle
+    INNER JOIN 
+    tb_pedidos AS p ON dp.id_pedido = p.id_pedido
+    INNER JOIN 
+    tb_usuarios AS u ON p.id_usuario = u.id_usuario
+    INNER JOIN 
+    tb_libros AS l ON dp.id_libro = l.id_libro
+    WHERE c.estado_comentario ="ACTIVO" AND l.id_libro = ?;';
         $params = array($this->id);
         return Database::getRows($sql, $params);
     }

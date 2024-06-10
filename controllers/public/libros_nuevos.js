@@ -102,7 +102,33 @@ function comboBox() {
 
 }
 
+function buscar_filtro(precio, nombreGEN) {
+    var buscar = '1';
+    var parametros = {
+        "buscar": buscar,
+        "precio": precio,
+        "nombreGEN": nombreGEN,
+        
+    };
 
+    $.ajax({
+        data: parametros,
+        url: 'api/services/public/libros_descuentos.php',
+        type: 'POST',
+        timeout: 10000,
+        beforeSend: function () {
+            // document.getElementById("resultado_busqueda").innerHTML = '<img src="img/load.gif" style="width:120px;">';
+        },
+        success: function (response) {
+            console.log('DENTRO');
+            document.getElementById("librosNuevos").innerHTML = response;
+        },
+        error: function (response, error) {
+            console.log('ERROR');
+            document.getElementById("librosNuevos").innerHTML = error;
+        }
+    });
+}
 
 const viewDetails = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.

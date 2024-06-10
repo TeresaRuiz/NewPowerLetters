@@ -19,23 +19,27 @@ class PedidoHandler
     protected $cantidad = null;
     protected $id_detalle = null;
 
-    /*
-     * Método para buscar registros en la tabla tb_pedidos.
-     */
-
-
     public function getOrder()
     {
+        // Establece el estado del pedido como 'PENDIENTE'.
         $this->estado = 'PENDIENTE';
+        // Consulta SQL para seleccionar el ID del pedido de la tabla de pedidos,
+        // uniendo con la tabla de usuarios para asegurar que el pedido pertenece al usuario actual y está en estado 'PENDIENTE'.
         $sql = 'SELECT p.id_pedido
                  FROM tb_pedidos AS p
                  JOIN tb_usuarios AS u ON p.id_usuario = u.id_usuario
                  WHERE p.estado = ? AND u.id_usuario = ?';
+        // Parámetros para la consulta SQL: el estado 'PENDIENTE' y el ID del usuario actual.
         $params = array($this->estado, $_SESSION['idUsuario']);
+        // Ejecuta la consulta SQL utilizando el método getRow de la clase Database.
+        // getRow devuelve la primera fila del resultado de la consulta como un array asociativo.
         if ($data = Database::getRow($sql, $params)) {
+            // Si se obtiene un resultado, se guarda el ID del pedido en la sesión.
             $_SESSION['idPedido'] = $data['id_pedido'];
+            // Retorna true indicando que se encontró un pedido pendiente.
             return true;
         } else {
+            // Si no se obtiene ningún resultado, retorna false indicando que no hay pedidos pendientes.
             return false;
         }
     }
@@ -43,17 +47,20 @@ class PedidoHandler
 
     public function startOrder()
     {
+        // Llama a la función getOrder para verificar si ya existe un pedido en estado 'PENDIENTE' para el usuario actual.
         if ($this->getOrder()) {
-            return true;
+            return true;// Si ya existe un pedido pendiente, retorna true.
         } else {
+            // Si no existe un pedido pendiente, crea uno nuevo.
             $sql = 'INSERT INTO tb_pedidos(direccion_pedido, id_usuario)
                 VALUES((SELECT direccion_usuario FROM tb_usuarios WHERE id_usuario = ?), ?)';
+            // Parámetros para la consulta SQL: el ID del usuario actual dos veces.
             $params = array($_SESSION['idUsuario'], $_SESSION['idUsuario']);
-            // Se obtiene el ultimo valor insertado de la llave primaria en la tabla tb_pedidos.
+            // Ejecuta la consulta SQL para insertar un nuevo pedido y obtiene el ID del último pedido insertado.
             if ($_SESSION['idPedido'] = Database::getLastRow($sql, $params)) {
-                return true;
+                return true; // Si la inserción fue exitosa y se obtiene el ID del nuevo pedido, retorna true.
             } else {
-                return false;
+                return false;  // Si la inserción falla, retorna false.
             }
         }
     }
@@ -61,9 +68,12 @@ class PedidoHandler
 
     public function createDetail()
     {
+        // Consulta SQL para insertar un nuevo detalle de pedido.
         $sql = 'INSERT INTO tb_detalle_pedidos(id_libro, cantidad, precio, id_pedido)
             VALUES(?, ?, (SELECT precio FROM tb_libros WHERE id_libro = ?), ?)';
+        // Parámetros para la consulta SQL: el ID del libro, la cantidad, el ID del libro nuevamente para obtener el precio, y el ID del pedido actual.
         $params = array($this->libro, $this->cantidad, $this->libro, $_SESSION['idPedido']);
+        // Ejecuta la consulta SQL para insertar el detalle del pedido.
         return Database::executeRow($sql, $params);
     }
 
