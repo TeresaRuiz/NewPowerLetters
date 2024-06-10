@@ -1,0 +1,90 @@
+/* Estilos para el cuerpo de la página */
+body {
+    /* Color de fondo */
+    background-color: hsl(230, 50%, 90%);;
+    /* Flexbox para centrar elementos vertical y horizontalmente */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Altura del cuerpo igual a la altura de la ventana */
+    height: 100vh;
+    /* Elimina el margen predeterminado del cuerpo */
+    margin: 0;
+}
+
+/* Estilos para el contenedor del formulario de inicio de sesión */
+.login-container {
+    /* Fondo semi-transparente */
+    background-color: rgba(255, 255, 255, 0.8);
+    /* Espaciado interno */
+    padding: 30px;
+    /* Bordes redondeados */
+    border-radius: 10px;
+    /* Sombra */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* Ancho del contenedor */
+    width: 100%;
+    max-width: 400px; /* Ancho máximo del contenedor */
+}
+
+/* Estilos para el título del formulario */
+.login-form h2 {
+    /* Margen inferior */
+    margin-bottom: 20px;
+    /* Tamaño de fuente */
+    font-size: 24px;
+    /* Alineación centrada */
+    text-align: center;
+}
+
+/* Estilos para los grupos de formularios */
+.form-group {
+    /* Margen inferior */
+    margin-bottom: 15px;
+}
+
+/* Estilos para los controles de formulario */
+.form-control {
+    /* Altura */
+    height: 45px;
+    /* Espaciado interno */
+    padding: 10px;
+    /* Tamaño de fuente */
+    font-size: 16px;
+    /* Bordes redondeados */
+    border-radius: 5px;
+}
+
+/* Estilos para los botones */
+.btn-block {
+    /* Ancho completo */
+    width: 100%;
+    /* Espaciado interno */
+    padding: 10px;
+    /* Tamaño de fuente */
+    font-size: 16px;
+    /* Bordes redondeados */
+    border-radius: 5px;
+}
+
+/* Estilos para los enlaces adicionales */
+.login-links {
+    /* Alineación centrada */
+    text-align: center;
+    /* Margen superior */
+    margin-top: 20px;
+}
+
+/* Estilos para los enlaces */
+.login-links a {
+    /* Color del texto */
+    color: #007bff;
+    /* Sin subrayado */
+    text-decoration: none;
+}
+
+/* Estilos para los enlaces al pasar el ratón */
+.login-links a:hover {
+    /* Subrayado al pasar el ratón */
+    text-decoration: underline;
+}

@@ -2,89 +2,81 @@
 <html lang="en">
 
 <head>
+    <!-- Codificación de caracteres y escala inicial del viewport -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!--=============== REMIXICONS ===============-->
+    <!-- Iconos Remix -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/3.5.0/remixicon.css">
 
-    <!--=============== SWIPER CSS ===============-->
+    <!-- Estilos del Swiper -->
     <link rel="stylesheet" href="../../Resources/css/swiper-bundle.min.css">
 
-    <!--=============== CSS ===============-->
+    <!-- Estilos CSS personalizados -->
     <link rel="stylesheet" href="../../Resources/css/styles.css">
 
+    <!-- Título de la página -->
     <title>Power Letters</title>
 </head>
 
 <body>
-
+    <!-- Encabezado -->
     <header class="header" id="header">
 
     </header>
 
-    <!--==================== MAIN ====================-->
-
+    <!-- Contenido principal -->
     <main class="main">
 
-
-        <!--==================== HOME ====================-->
-
-
+        <!-- Sección de inicio -->
         <section class="home section" id="home">
 
-
-
+            <!-- Contenedor de la sección de inicio -->
             <div class="home__container container grid">
 
+                <!-- Datos de la sección de inicio -->
                 <div class="home__data">
 
+                    <!-- Título -->
                     <h1 class="home__title"> Bienvenido a<br>
                         nuestra librería
                     </h1>
 
+                    <!-- Descripción -->
                     <p class="home__description">Somos una librería comprometida a ofrecer la mejor
-                        selección de libros a nuestros clientes, Nuestra misión es fomentar la lectura
+                        selección de libros a nuestros clientes. Nuestra misión es fomentar la lectura
                         y el acceso a la cultura. Con una visión de ser líderes en el mercado, nuestro
                         lema es "Donde los libros encuentran un hogar".</p>
 
+                    <!-- Botón para explorar más -->
                     <a href="descuento.html" class="button">Explorar Más</a>
 
                 </div>
 
-
-
+                <!-- Imágenes de la sección de inicio -->
                 <div class="home__images">
 
+                    <!-- Swiper para mostrar las imágenes -->
                     <div class="home__swiper swiper">
 
+                        <!-- Contenedor del Swiper -->
                         <div class="swiper-wrapper">
 
+                            <!-- Artículos del Swiper -->
                             <article class="home__article  swiper-slide">
-
                                 <img src="../../Resources/img/home-book-1.png" alt="img" class="home__img">
-
                             </article>
 
-
                             <article class="home__article  swiper-slide">
-
                                 <img src="../../Resources/img/home-book-2.png" alt="img" class="home__img">
-
                             </article>
 
-
                             <article class="home__article  swiper-slide">
-
                                 <img src="../../Resources/img/home-book-3.png" alt="img" class="home__img">
-
                             </article>
 
-
                             <article class="home__article  swiper-slide">
-
                                 <img src="../../Resources/img/home-book-4.png" alt="img" class="home__img">
-
                             </article>
 
                         </div>
@@ -97,76 +89,62 @@
 
         </section>
 
-        <!--==================== SERVICES ====================-->
+        <!-- Sección de servicios -->
         <section class="services section">
 
-
+            <!-- Contenedor de la sección de servicios -->
             <div class="services__container container grid">
 
-                <!-- <article class="services__card">
-
-                     <i class="ri-truck-line"></i>
-                     <h3 class="services__title">Free Shipping</h3>
-                     <p class="services__description">Order More Than $100
-                     </p>
-
-                  </article> -->
-
-
+                <!-- Servicio: Pago seguro -->
                 <article class="services__card">
-
                     <i class="ri-lock-2-line"></i>
-                    <h3 class="services__title">Pago seguro
-                    </h3>
-                    <p class="services__description">Pago 100% Seguro
-                    </p>
-
+                    <h3 class="services__title">Pago seguro</h3>
+                    <p class="services__description">Pago 100% Seguro</p>
                 </article>
 
-
+                <!-- Servicio: Soporte 24/7 -->
                 <article class="services__card">
-
                     <i class="ri-customer-service-2-line"></i>
-                    <h3 class="services__title">24/7 Soporte
-                    </h3>
-                    <p class="services__description">Llamanos en cualquier momento
-                    </p>
-
+                    <h3 class="services__title">24/7 Soporte</h3>
+                    <p class="services__description">Llámanos en cualquier momento</p>
                 </article>
 
             </div>
 
         </section>
+
     </main>
 
-
+    <!-- Pie de página -->
     <footer class="footer" id="footer">
-
 
     </footer>
 
-    <!--========== SCROLL UP ==========-->
-
+    <!-- Botón para desplazarse hacia arriba -->
     <a href="#" class="scrollup" id="scroll-up">
-
         <i class="ri-arrow-up-line"></i>
     </a>
 
+    <!-- Scripts JS -->
+    <!-- Swiper JS -->
     <script src="../../Resources/js/swiper-bundle.min.js"></script>
-    <!--=============== SCROLLREVEAL ===============-->
+    <!-- ScrollReveal -->
     <script src="../../Resources/js/scrollreveal.min.js"></script>
+    <!-- Librería de mensajes -->
     <script src="../../Resources/js/sweetalert.min.js"></script>
+    <!-- Componentes utilitarios -->
     <script src="../../controllers/utils/components.js"></script>
+    <!-- Funciones públicas -->
     <script type="text/javascript" src="../../controllers/utils/public.js"></script>
+    <!-- Controlador de detalle -->
     <script src="../../controllers/public/detalle.js"></script>
-
+    <!-- Controlador de comentarios -->
     <script src="../../controllers/public/comentarios.js"></script>
     <!-- Llamada a la función loadTemplate -->
     <script>
         // Llamada a la función loadTemplate para cargar el encabezado y pie de la página
         loadTemplate();
     </script>
-
 
 </body>
 

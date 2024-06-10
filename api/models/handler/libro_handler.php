@@ -176,4 +176,26 @@ class LibroHandler
         $params = array($this->id);
         return Database::executeRow($sql, $params);
     }
+
+    public function updateExistencias()
+    {
+        $sql = 'UPDATE tb_libros SET existencias = existencias - ? WHERE id_libro = ? AND existencias >= ?';
+        $params = array($this->existencias, $this->id, $this->existencias);
+        return Database::executeRow($sql, $params);
+    }
+
+
+    public function getExistencias()
+{
+    $sql = 'SELECT existencias FROM tb_libros WHERE id_libro = ?';
+    $params = array($this->id);
+    $data = Database::getRow($sql, $params);
+    if ($data) {
+        return $data['existencias'];
+    } else {
+        return false;
+    }
+}
+
+
 }
