@@ -79,6 +79,14 @@ if (isset($_GET['action'])) {
                     $result['error'] = 'Ocurrió un problema al modificar el estado';
                 }
                 break;
+                
+            case 'getEstados':
+                if ($result['dataset'] = $comentariop->getEstados()) {
+                    $result['status'] = 1; // Indicar que la operación fue exitosa.
+                } else {
+                    $result['error'] = 'No exiten estados disponibles'; // Mensaje si no se encuentran autores.
+                }
+                break;
             }
 
             // Capturar cualquier excepción de la base de datos.

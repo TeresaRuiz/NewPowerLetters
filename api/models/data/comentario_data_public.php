@@ -73,6 +73,20 @@ class ComentarioDataPublic extends ComentarioHandlerPublic
         }
     }
 
+    
+    // Método para establecer el estado del comentario.
+    public function setEstado($value)
+    {
+        // Valida que el estado esté en la lista de estados posibles.
+        if (in_array($value, array_column($this->estados, 0))) {
+            $this->estados = $value; // Asigna el estado del comentario.
+            return true;
+        } else {
+            $this->data_error = 'Estado incorrecto'; // Almacena mensaje de error.
+            return false;
+        }
+    }
+
 
     /*
      * Métodos para obtener el valor de los atributos adicionales.
@@ -82,6 +96,12 @@ class ComentarioDataPublic extends ComentarioHandlerPublic
     public function getDataError()
     {
         return $this->data_error;
+    }
+
+    // Método para obtener la lista de estados posibles.
+    public function getEstados()
+    {
+        return $this->estados;
     }
 
 }
