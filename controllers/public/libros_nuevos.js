@@ -102,33 +102,7 @@ function comboBox() {
 
 }
 
-function buscar_filtro(precio, color, modelo) {
-    var buscar = '1';
-    var parametros = {
-        buscar: buscar,
-        precio: precio,
-        nombreGEN: nombreGEN,
-        clasificacion: clasificacion
-    };
 
-    $.ajax({
-        data: parametros,
-        url: 'auxiliar/buscador.php',
-        type: 'POST',
-        timeout: 10000,
-        beforeSend: function () {
-            // document.getElementById("resultado_busqueda").innerHTML = '<img src="img/load.gif" style="width:120px;">';
-        },
-        success: function (response) {
-            console.log('DENTRO');
-            document.getElementById("resultado_busqueda").innerHTML = response;
-        },
-        error: function (response, error) {
-            console.log('ERROR');
-            document.getElementById("resultado_busqueda").innerHTML = error;
-        }
-    });
-}
 
 const viewDetails = async (id) => {
     // Se define una constante tipo objeto con los datos del registro seleccionado.
