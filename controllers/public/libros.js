@@ -36,6 +36,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         });
     } else {
         // Se presenta un mensaje de error cuando no existen datos para mostrar.
-        console.log (DATA.error);
+        console.log(DATA.error);
     }
 });

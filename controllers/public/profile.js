@@ -4,11 +4,11 @@ const PROFILE_FORM = document.getElementById('profileForm'),
     APELLIDO_USUARIO = document.getElementById('apellido_usuario'),
     CORREO_USUARIO = document.getElementById('correo_usuario'),
     DUI_USUARIO = document.getElementById('dui_usuario');
-    TELEFONO_USUARIO = document.getElementById('telefono_usuario');
-    NACIMIENTO_USUARIO = document.getElementById('nacimiento_usuario');
-    DIRECCION_USUARIO = document.getElementById('direccion_usuario');
-    IMAGEN_USUARIO = document.getElementById('imagen');
-    ID_CLAS = document.getElementById('idUsuario');
+TELEFONO_USUARIO = document.getElementById('telefono_usuario');
+NACIMIENTO_USUARIO = document.getElementById('nacimiento_usuario');
+DIRECCION_USUARIO = document.getElementById('direccion_usuario');
+IMAGEN_USUARIO = document.getElementById('imagen');
+ID_CLAS = document.getElementById('idUsuario');
 // Constante para establecer la modal de cambiar contraseña.
 const PASSWORD_MODAL = new bootstrap.Modal('#passwordModal');
 // Constante para establecer el formulario de cambiar contraseña.
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const DATA = await fetchData(USER_API, 'readProfile');
     // Se comprueba si la respuesta es satisfactoria, de lo contrario se muestra un mensaje con la excepción.
     if (DATA.status) {
-        
+
         // Se inicializan los campos del formulario con los datos del usuario que ha iniciado sesión.
         const ROW = DATA.dataset;
         NOMBRE_USUARIO.value = ROW.nombre_usuario;
